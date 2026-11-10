@@ -1,0 +1,12 @@
+{
+  "appId": "app.zakira.memory",
+  "appName": "ذاكِرة",
+  "webDir": "www",
+  "backgroundColor": "#0E1626",
+  "android": { "backgroundColor": "#0E1626" },
+  "ios": { "backgroundColor": "#0E1626", "contentInset": "never" },
+  "plugins": {
+    "SplashScreen": { "launchShowDuration": 900, "backgroundColor": "#0E1626", "showSpinner": false, "androidScaleType": "CENTER_CROP" },
+    "StatusBar": { "style": "DARK", "backgroundColor": "#0E1626", "overlaysWebView": false }
+  }
+}

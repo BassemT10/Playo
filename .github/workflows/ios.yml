@@ -1,0 +1,76 @@
+name: iPhone app
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ios
+  cancel-in-progress: true
+
+jobs:
+  ios:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build && npx cap sync ios
+      - name: Check for Apple account settings
+        id: apple
+        env:
+          TEAM: ${{ secrets.APPLE_TEAM_ID }}
+          KEY: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          if [ -n "$TEAM" ] && [ -n "$KEY" ]; then echo "signed=true" >> $GITHUB_OUTPUT; else echo "signed=false" >> $GITHUB_OUTPUT; fi
+
+      # Until the Apple Developer account is ready: prove the app compiles.
+      - name: Build check (simulator)
+        if: steps.apple.outputs.signed != 'true'
+        run: |
+          set -o pipefail
+          xcodebuild -workspace ios/App/App.xcworkspace -scheme App -configuration Debug \
+            -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build 2>&1 | tee xcode.log | tail -40
+
+      # With the Apple account: sign in the cloud and upload to TestFlight.
+      - name: Build and upload to TestFlight
+        if: steps.apple.outputs.signed == 'true'
+        env:
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          set -o pipefail
+          KEY_PATH="$RUNNER_TEMP/AuthKey_${ASC_KEY_ID}.p8"
+          printf '%s' "$ASC_KEY_P8" > "$KEY_PATH"
+          AUTH="-allowProvisioningUpdates -authenticationKeyPath $KEY_PATH -authenticationKeyID $ASC_KEY_ID -authenticationKeyIssuerID $ASC_ISSUER_ID"
+          xcodebuild -workspace ios/App/App.xcworkspace -scheme App -configuration Release \
+            -destination 'generic/platform=iOS' -archivePath "$RUNNER_TEMP/App.xcarchive" \
+            DEVELOPMENT_TEAM="$APPLE_TEAM_ID" CODE_SIGN_STYLE=Automatic \
+            CURRENT_PROJECT_VERSION=${{ github.run_number }} MARKETING_VERSION=1.0 \
+            $AUTH archive 2>&1 | tee xcode.log | tail -40
+          sed "s/TEAM_ID/$APPLE_TEAM_ID/" ios/export/ExportOptions.plist > "$RUNNER_TEMP/ExportOptions.plist"
+          xcodebuild -exportArchive -archivePath "$RUNNER_TEMP/App.xcarchive" \
+            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist" -exportPath "$RUNNER_TEMP/export" \
+            $AUTH 2>&1 | tee -a xcode.log | tail -40
+
+      - name: Report build result
+        if: always()
+        run: |
+          echo "ios run ${{ github.run_number }} status=${{ job.status }} signed=${{ steps.apple.outputs.signed }} sha=${{ github.sha }}" > /tmp/status.txt
+          (grep -E "error:|BUILD|ARCHIVE|EXPORT|Upload" xcode.log | tail -80; tail -60 xcode.log) > /tmp/ios.log 2>/dev/null || echo "no xcode log" > /tmp/ios.log
+          git config user.name "zakira-ci"; git config user.email "ci@users.noreply.github.com"
+          git checkout --orphan ci-report-ios
+          git rm -rf --cached . > /dev/null
+          cp /tmp/status.txt status.txt; cp /tmp/ios.log ios.log
+          git add status.txt ios.log
+          git commit -m "ios report ${{ github.run_number }}" > /dev/null
+          git push -f origin HEAD:ci-report-ios
