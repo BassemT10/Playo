@@ -17,6 +17,7 @@
     "@capacitor/status-bar": "6.0.2",
     "@revenuecat/purchases-capacitor": "9.2.2",
     "@supabase/supabase-js": "2.45.4",
+    "qrcode-generator": "^1.4.4",
     "xlsx": "0.18.5"
   },
   "devDependencies": {

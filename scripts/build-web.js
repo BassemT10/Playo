@@ -38,6 +38,7 @@ fs.copyFileSync(path.join(root, 'src', 'config.js'), path.join(www, 'config.js')
 fs.copyFileSync(path.join(root, 'src', 'net-supabase.js'), path.join(www, 'net.js'));
 fs.copyFileSync(nm('@supabase/supabase-js/dist/umd/supabase.js'), path.join(www, 'supabase.js'));
 fs.copyFileSync(nm('xlsx/dist/xlsx.full.min.js'), path.join(www, 'xlsx.js'));
+fs.copyFileSync(nm('qrcode-generator/qrcode.js'), path.join(www, 'qrcode.js'));
 for (const f of fs.readdirSync(path.join(root, 'assets', 'web'))) fs.copyFileSync(path.join(root, 'assets', 'web', f), path.join(www, 'icons', f));
 fs.writeFileSync(path.join(www, 'manifest.webmanifest'), JSON.stringify({
   name: 'Playo', short_name: 'Playo', lang: 'ar', dir: 'rtl', start_url: './', scope: './',

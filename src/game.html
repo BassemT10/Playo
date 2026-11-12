@@ -391,7 +391,96 @@ input[type=number],input[type=email],input[type=password]{font:inherit;font-weig
 .plan b{font-family:var(--f-display);font-size:17px}
 .plan-price{font-family:var(--f-display);font-size:24px;font-weight:800;color:var(--accent)}
 .plan-badge{position:absolute;top:-11px;background:var(--teal);color:#0E1626;font-size:11px;font-weight:800;border-radius:999px;padding:2px 10px}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}/* quiz: images, double points, live rooms, TV presenter */
+.qcard{position:relative}
+.qsec{display:block;text-align:center;font-family:var(--f-display);font-size:22px;line-height:1;color:var(--muted);margin-top:-4px}
+.qimg{display:block;max-width:100%;max-height:min(28vh,230px);margin:0 auto;border-radius:14px;object-fit:contain}
+.qcard.x2{box-shadow:0 0 0 3px #FFB547}
+.qz-x2{align-self:center;background:linear-gradient(90deg,#FFB547,#FF7A93);color:#1a1033;font-weight:800;padding:4px 14px;border-radius:999px;font-size:14px;animation:qzpulse .9s ease-in-out infinite alternate}
+@keyframes qzpulse{to{transform:scale(1.07)}}
+.qz-live .qzv{display:flex;flex-direction:column;gap:12px;padding-bottom:20px}
+.qz-sec{font-family:var(--f-display);font-size:34px;text-align:center;line-height:1}
+.qz-pads{display:grid;grid-template-columns:1fr 1fr;gap:12px;height:min(60vh,520px)}
+.qz-pads.n3 .qzpad:last-child{grid-column:1/-1}
+.qzpad{min-height:0;justify-content:center;border-radius:22px}
+.qzpad .qshape{width:64px;height:64px}
+.qopt.picked{box-shadow:0 0 0 4px var(--fg),inset 0 -5px 0 rgba(0,0,0,.25);transform:scale(1.02)}
+.qz-wait{text-align:center;font-weight:700;color:var(--muted);min-height:1.4em;margin:0}
+.qz-ready{display:flex;flex-direction:column;align-items:center;gap:14px;padding:40px 0;text-align:center}
+.qz-ready .big{font-family:var(--f-display);font-size:30px}
+.qz-fb{border-radius:22px;padding:20px;text-align:center;color:#fff;display:flex;flex-direction:column;gap:4px;align-items:center;animation:up .3s}
+.qz-fb.ok{background:#1FA463}.qz-fb.no{background:#E5484D}.qz-fb.na{background:var(--surface2);color:var(--fg)}
+.qz-fb b{font-family:var(--f-display);font-size:32px;line-height:1.1}
+.qz-place{text-align:center;font-weight:700;margin:0}
+.qz-ans{display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;margin:0;text-align:center}
+.qshape.sm{width:18px;height:18px;filter:drop-shadow(0 0 1px #000)}
+.qz-lb{display:flex;flex-direction:column;gap:6px}
+.qz-row{display:grid;grid-template-columns:28px 32px minmax(0,1fr) auto auto;align-items:center;gap:8px;background:var(--surface);border-radius:14px;padding:8px 12px;animation:qzin .35s both}
+.qz-row.me{box-shadow:inset 0 0 0 2px var(--accent)}
+.qz-row .n{font-family:var(--f-display);text-align:center;font-size:17px}
+.qz-row .av{font-size:22px;text-align:center}
+.qz-row .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}
+.qz-row .d{font-size:13px;font-weight:800;color:var(--good)}
+.qz-row .s{font-family:var(--f-display);font-size:18px;min-width:3ch;text-align:end}
+@keyframes qzin{from{opacity:0;transform:translateY(10px)}}
+.chips .chip.on .ptag{color:inherit}
+
+/* TV presenter: fills a big landscape screen */
+.tvm .app{max-width:none;padding-inline:3vw}
+.tvs{display:flex;flex-direction:column;gap:2.2vh;min-height:calc(100dvh - 40px)}
+.tv-top{display:flex;align-items:center;gap:14px}
+.tv-top b{font-family:var(--f-display);font-size:clamp(18px,2vw,28px)}
+.tv-top .tv-code{letter-spacing:.15em;color:var(--accent)}
+.tv-qn{margin-inline-start:auto;font-weight:700;font-size:clamp(15px,1.6vw,24px);color:var(--muted)}
+.tv-top #tvfs{margin-inline-start:auto}.tv-qn+#tvfs{margin-inline-start:0}
+.tv-v{flex:1;display:flex;flex-direction:column;gap:2.2vh}
+.tv-center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5vh;text-align:center}
+.tv-sub{font-weight:700;color:var(--muted);font-size:clamp(16px,1.8vw,26px)}
+.tv-big{font-family:var(--f-display);font-size:clamp(28px,4vw,60px)}
+.tv-q{font-family:var(--f-display);font-size:clamp(26px,4vw,64px);line-height:1.3;margin:0;text-wrap:balance;text-align:center}
+.tv-q.sm{font-size:clamp(22px,2.8vw,46px)}
+.tv-qrow{display:flex;flex-direction:column;align-items:center;gap:1.2vh;background:var(--surface);border-radius:22px;padding:2vh 2vw}
+.tv-img{max-height:min(34vh,380px);max-width:100%;border-radius:18px;object-fit:contain}
+.tv-bar{width:min(60vw,700px);height:12px;border-radius:8px;background:var(--surface2);overflow:hidden}
+.tv-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--teal));animation:tvbar linear forwards}
+@keyframes tvbar{from{width:100%}to{width:0}}
+.tv-mid{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2vw;min-height:20vh}
+.tv-mid .tv-img{grid-column:2}
+.tv-clock{grid-column:1;justify-self:center;width:clamp(80px,9vw,140px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#1a1033;font-family:var(--f-display);font-size:clamp(34px,4.5vw,70px)}
+.tv-clock.low{background:#E5484D;color:#fff;animation:qzpulse .5s ease-in-out infinite alternate}
+.tv-ansn{grid-column:3;justify-self:center;text-align:center;font-size:clamp(16px,1.8vw,28px)}
+.tv-opts{display:grid;grid-template-columns:1fr 1fr;gap:1.6vh 1.2vw}
+.tv-opt{position:relative;overflow:hidden;display:flex;align-items:center;gap:1.2vw;color:#fff;font-weight:800;font-size:clamp(18px,2.4vw,38px);padding:2.2vh 1.6vw;border-radius:20px;min-height:11vh;box-shadow:inset 0 -6px 0 rgba(0,0,0,.25);transition:opacity .3s,transform .3s}
+.tv-opt .qshape{width:clamp(28px,3vw,52px);height:clamp(28px,3vw,52px);flex:none}
+.tv-opt span{min-width:0;overflow-wrap:anywhere}
+.tv-opt.c0{background:#E5484D}.tv-opt.c1{background:#3E7BFA}.tv-opt.c2{background:#C99400}.tv-opt.c3{background:#1FA463}
+.tv-opt.dim{opacity:.3}.tv-opt.right{transform:scale(1.02);box-shadow:0 0 0 5px #fff}
+.tv-cnt{margin-inline-start:auto;font-family:var(--f-display)}
+.tv-cnt:empty{display:none}
+.tv-next{align-self:flex-end;font-size:18px;padding-inline:26px}
+.tv-h{font-family:var(--f-display);font-size:clamp(26px,3vw,48px);text-align:center;margin:0}
+.qz-lb.tv{display:block;columns:2 420px;column-gap:1.4vw;width:100%}
+.qz-lb.tv.one{columns:1;max-width:900px;margin:0 auto}
+.qz-lb.tv .qz-row{break-inside:avoid;margin-bottom:1vh}
+.qz-lb.tv .qz-row{font-size:clamp(15px,1.5vw,24px);padding:1.2vh 1vw}
+.qz-lb.tv .qz-row .s{font-size:clamp(18px,1.8vw,30px)}
+.podium.tv{max-width:900px;margin:0 auto;width:100%}
+.tvl-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:2vw;align-items:start}
+.tvl-join{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.tvl-join h2,.tvl-players h2{font-family:var(--f-display);margin:0;font-size:clamp(20px,2.2vw,34px)}
+.tvl-join .room-code{font-size:clamp(38px,5vw,76px)}
+.tvl-join code{overflow-wrap:anywhere}
+.tv-qr{width:min(100%,280px);aspect-ratio:1;background:#fff;border-radius:16px;padding:8px}
+.tv-qr:empty{background:var(--surface2)}
+.tv-qr svg{width:100%;height:100%;display:block}
+.tvl-players{display:flex;flex-direction:column;gap:14px}
+.tv-count{font-family:var(--f-display);font-size:clamp(22px,2.4vw,38px);color:var(--accent)}
+.tvl-chips{display:flex;flex-wrap:wrap;gap:10px;min-height:80px;align-content:flex-start}
+.tvl-chip{display:inline-flex;align-items:center;gap:8px;background:var(--bg2);border-radius:999px;padding:8px 16px 8px 10px;font-weight:700;font-size:clamp(15px,1.4vw,22px);animation:up .3s}
+.tvl-chip i{font-style:normal;font-size:1.3em}
+.slots.many{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+@media (max-width:760px){.tvl-grid{grid-template-columns:1fr}.tv-mid{grid-template-columns:1fr 1fr}.tv-mid .tv-img{grid-column:1/-1;grid-row:1}.tv-clock{grid-column:1}.tv-ansn{grid-column:2}.tv-opts{grid-template-columns:1fr}}
+
 </style>
 
 <div class="app" id="app"></div>
@@ -579,7 +668,7 @@ sec_deceit:['خداع','Deception'],sec_deceitD:['اكتشف الحقيقة وا
 g_quiz:['أسئلة','Quiz'],g_quizD:['أسئلة بخيارات، والأسرع يكسب أكثر.','Multiple choice; faster answers earn more.'],
 g_sudoku:['سودوكو الأسرع','Speed Sudoku'],g_sudokuD:['نفس اللوحة للجميع، والأسرع يفوز.','Same board for everyone; fastest wins.'],
 g_deceit:['خداع','Deception'],g_deceitD:['اكتب كذبة مقنعة واكتشف الحقيقة.','Write a convincing lie, find the truth.'],
-r_quiz:[['يظهر السؤال مع 2 إلى 4 خيارات ووقت محدد.','الإجابة الصحيحة تمنح حتى 1000 نقطة، وكلما أسرعت زادت.','الإجابات الصحيحة المتتالية تضيف مكافأة سلسلة.','مع الأصدقاء: نفس الأسئلة للجميع، وكل لاعب يحسب لنفسه.'],['Each question has 2 to 4 options and a time limit.','A correct answer gives up to 1000 points; faster earns more.','Correct answers in a row add a streak bonus.','With friends: everyone gets the same questions and scores alone.']],
+r_quiz:[['كل جولة 36 سؤالاً، ولكل سؤال 20 ثانية. اختر فئة أو أكثر.','الإجابة الصحيحة 10 نقاط + نقطة لكل ثانية متبقية (أجبت والعدّاد على 19 = 29 نقطة).','بعض الأسئلة بنقاط مضاعفة ×2.','مكافآت: كل 6 إجابات صحيحة +3، وعند الإجابة الصحيحة العاشرة +5، والعشرين +10.','في الغرفة أو على التلفاز: السؤال نفسه للجميع في الوقت نفسه، وبعد كل سؤال يظهر الترتيب.'],['36 questions per round, 20 seconds each. Pick one or more categories.','A correct answer is 10 points + 1 per second left (answer with 19 left = 29).','Some questions are worth double ×2.','Bonuses: every 6 correct answers +3, the 10th correct +5, the 20th +10.','In a room or on a TV: everyone gets the same question at the same time, with standings after each one.']],
 r_sudoku:[['املأ الشبكة بحيث يحتوي كل صف وعمود ومربع 3×3 على الأرقام من 1 إلى 9.','اختر خانة ثم رقماً.','كل خطأ يضيف 15 ثانية إلى وقتك.','مع الأصدقاء: نفس اللوحة للجميع، وأقل وقت يفوز.'],['Fill the grid so every row, column and 3×3 box holds 1 to 9.','Pick a cell, then a number.','Each mistake adds 15 seconds to your time.','With friends: same board for all; lowest time wins.']],
 r_deceit:[['يظهر سؤال بإجابة غريبة لكنها حقيقية.','مع الأصدقاء: يكتب كل لاعب إجابة مخادعة، ثم تظهر كل الإجابات مختلطة مع الحقيقة.','اختيار الحقيقة = 1000 نقطة، وكل لاعب تخدعه = 500 نقطة.','وحدك: اكتشف الحقيقة بين إجابات مخادعة جاهزة.'],['A question with a strange but true answer.','With friends: each player writes a fake answer, then all answers appear mixed with the truth.','Picking the truth = 1000 points; each player you fool = 500.','Solo: find the truth among ready-made fake answers.']],
 nQ:['{0} أسئلة','{0} questions'],nRounds:['{0} جولات','{0} rounds'],category:['الفئة','Category'],allCats:['الكل','All'],
@@ -602,6 +691,19 @@ premF1:['بدون إعلانات','No ads'],premF2:['كل ألعاب الذاك�
 plMonthly:['شهري','Monthly'],plYearly:['سنوي','Yearly'],perMonth:['شهرياً','per month'],perYear:['سنوياً','per year'],trial7:['أول 7 أيام مجاناً','First 7 days free'],save2:['وفّر شهرين','Save 2 months'],
 subscribe:['اشترك الآن','Subscribe'],startTrial:['ابدأ التجربة المجانية','Start free trial'],restore:['استعادة المشتريات','Restore purchases'],
 premTerms:['يتجدد الاشتراك تلقائياً، ويمكنك إلغاؤه في أي وقت من إعدادات المتجر قبل نهاية الفترة بـ24 ساعة على الأقل. بعد التجربة المجانية يُخصم سعر الاشتراك السنوي.','Renews automatically. Cancel anytime in your store settings at least 24 hours before the period ends. After the free trial, the yearly price is charged.'],
+m_tv:['على التلفاز','On a TV'],m_tvD:['الأسئلة على شاشة كبيرة، والهواتف للإجابة','Questions on a big screen, phones to answer'],
+qzRound:['جولة 36 سؤالاً','36-question round'],qzSeeTv:['الترتيب الكامل على الشاشة','Full standings on the screen'],qzX2:['نقاط مضاعفة ×2','Double points ×2'],qzRight:['صحيح! +{0}{1}','Correct! +{0}{1}'],qzBonus:[' · مكافأة +{0}',' · bonus +{0}'],qzOk:['صحيح!','Correct!'],
+qzNoAns:['لم تُجب في الوقت','No answer in time'],qzReady:['استعد…','Get ready…'],qzLook:['انظر إلى الشاشة','Look at the screen'],
+qzSent:['تم إرسال إجابتك','Answer sent'],qzWaitAll:['بانتظار البقية…','waiting for the others…'],qzAnswer:['الإجابة الصحيحة: {0}','Correct answer: {0}'],
+qzRankOf:['المركز {0} من {1}','Place {0} of {1}'],qzBoard:['الترتيب','Standings'],qzAnswered:['أجاب {0} من {1}','{0} of {1} answered'],qzNext:['التالي','Next'],
+qzHostLost:['انقطع اتصال المقدّم، انتهت الجولة','The host disconnected; the round ended'],qzFinal:['النتيجة النهائية','Final results'],qzNewRound:['جولة جديدة','New round'],
+qzCapNote:['حتى {0} لاعبين','Up to {0} players'],qzCapPrem:['حتى 30 مع بريميوم','up to 30 with Premium'],qzFewQ:['متوفر {0} سؤالاً فقط في الفئات المختارة','Only {0} questions in the chosen categories'],
+tvJoin:['ادخل من هاتفك','Join from your phone'],tvJoinHow:['امسح الرمز بكاميرا الهاتف، أو افتح الرابط وأدخل الكود. لا حاجة لتحميل التطبيق.','Scan the code with your phone camera, or open the link and enter the code. No download needed.'],
+tvWaitP:['بانتظار انضمام اللاعبين…','Waiting for players to join…'],tvFull:['ملء الشاشة','Full screen'],tvEnd:['إنهاء الجولة','End round'],tvEndQ:['إنهاء الجولة للجميع؟','End the round for everyone?'],
+tvGuest:['المقدّم يعرض الأسئلة على الشاشة، وأنت تجيب من هنا بالألوان.','The host shows the questions on the screen; you answer here by colour.'],
+catsPick:['اختر فئة أو أكثر','Pick one or more categories'],
+adm_x2:['سؤال بنقاط مضاعفة ×2','Double-points question ×2'],adm_img:['صورة السؤال (رابط)','Question image (link)'],adm_upload:['رفع صورة','Upload image'],adm_upFail:['تعذّر رفع الصورة','Upload failed'],adm_upLogin:['سجّل دخول المدير لرفع الصور، أو ضع رابط صورة','Sign in as admin to upload, or paste an image link'],
+adm_cats:['فئات المشتركين','Premium categories'],adm_catsHint:['اضغط على الفئة لتصبح للمشتركين فقط (👑) أو لتعود مجانية.','Tap a category to make it Premium-only (👑) or free again.'],
 premActive:['أنت مشترك في بريميوم','You are a Premium member'],premUntil:['حتى {0}','Until {0}'],premLocked:['هذه الميزة في بريميوم','This is a Premium feature'],premGet:['بريميوم','Premium'],
 premTest:['وضع التجربة','Test mode'],premTestD:['الدفع غير مربوط بعد لأنه يحتاج حسابات المتاجر. فعّل اشتراكاً تجريبياً لترى الميزات المفتوحة.','Payments are not connected yet; they need the store accounts. Turn on a test subscription to see the unlocked features.'],
 premTestOn:['فعّل اشتراكاً تجريبياً','Turn on test subscription'],premTestOff:['أوقف الاشتراك التجريبي','Turn off test subscription'],premDone:['مرحباً بك في بريميوم!','Welcome to Premium!'],premRestored:['تمت استعادة اشتراكك','Your subscription was restored'],premNone:['لم نجد اشتراكاً سابقاً','No previous subscription found'],premFail:['لم تكتمل عملية الشراء','The purchase did not complete'],
@@ -682,7 +784,7 @@ const GAMES=[
 {id:'vanish',ready:false},{id:'shapes',ready:false},{id:'words',ready:false}].map(g=>({sec:'memory',...g}));
 const SOLO_MODES=['solo','friends','online'];
 GAMES.push(
-{id:'quiz',sec:'quiz',ready:true,def:1,modes:SOLO_MODES,diffs:[{k:'n5',lbl:['nQ',5],n:5,tf:1.25,mult:.7},{k:'n10',lbl:['nQ',10],n:10,tf:1,mult:1},{k:'n15',lbl:['nQ',15],n:15,tf:.8,mult:1.3}],run:()=>gQuiz()},
+{id:'quiz',sec:'quiz',ready:true,def:0,modes:['solo','friends','tv','online'],diffs:[{k:'r36',lbl:'qzRound',n:36,mult:1.3}],run:()=>gQuiz()},
 {id:'sudoku',sec:'sudoku',ready:true,def:0,modes:SOLO_MODES,lower:true,diffs:[{k:'easy',lbl:'d_easy',holes:36,target:300,mult:1},{k:'normal',lbl:'d_normal',holes:46,target:480,mult:1.4},{k:'hard',lbl:'d_hard',holes:54,target:720,mult:1.8}],run:()=>gSudoku()},
 {id:'deceit',sec:'deceit',ready:true,def:1,modes:SOLO_MODES,diffs:[{k:'r5',lbl:['nRounds',5],n:5,mult:1},{k:'r7',lbl:['nRounds',7],n:7,mult:1.2},{k:'r10',lbl:['nRounds',10],n:10,mult:1.4}],run:()=>gDeceit()});
 const SECTIONS=['memory','quiz','sudoku','deceit'];
@@ -723,7 +825,7 @@ const BUILTIN_DECEIT=[
 ['طعام','سُمّي الهامبرغر نسبة إلى مدينة ____.','هامبورغ','فرانكفورت|ميونخ|برلين|كولونيا','هامبورج'],['علوم','عدد الأسنان الدائمة عند الإنسان البالغ ____.','32','28|30|36|24','اثنان وثلاثون'],
 ['جغرافيا','أكبر محيط في العالم هو المحيط ____.','الهادئ','الأطلسي|الهندي|المتجمد الشمالي|الجنوبي','الهادي|الباسيفيكي']];
 const qn=s=>String(s==null?'':s).trim();
-function mkQuiz(id,cat,q,opts,tm,src){return{id,kind:'quiz',cat:qn(cat)||'عام',q:qn(q),a:(opts||[]).map(qn).filter(Boolean),t:Math.min(90,Math.max(5,+tm||20)),src}}
+function mkQuiz(id,cat,q,opts,tm,src,ex){ex=ex||{};return{id,kind:'quiz',cat:qn(cat)||'عام',q:qn(q),a:(opts||[]).map(qn).filter(Boolean),t:20,img:/^https?:\/\//i.test(qn(ex.img))?qn(ex.img):'',x2:!!ex.x2,src}}
 function mkDeceit(id,cat,q,a,fakes,alt,src){return{id,kind:'deceit',cat:qn(cat)||'عام',q:qn(q),a:qn(a),f:(fakes||[]).map(qn).filter(Boolean),alt:(alt||[]).map(qn).filter(Boolean),src}}
 const BANK={quiz:[],deceit:[]};
 function loadBank(){
@@ -736,22 +838,23 @@ const SB_ON=()=>!!(ZKC.supabaseUrl&&ZKC.supabaseUrl.indexOf('__')!==0);
 async function fetchRemoteBank(){if(!SB_ON())return false;
   try{const r=await fetch(ZKC.supabaseUrl+'/rest/v1/questions?select=id,kind,cat,data&active=eq.true&limit=10000',{headers:{apikey:ZKC.supabaseKey,Authorization:'Bearer '+ZKC.supabaseKey}});
     if(!r.ok)return false;const rows=await r.json();const out={quiz:[],deceit:[]};
-    rows.forEach(x=>{const d=x.data||{};if(x.kind==='quiz')out.quiz.push(mkQuiz(x.id,x.cat,d.q,d.a,d.t,'r'));else if(x.kind==='deceit')out.deceit.push(mkDeceit(x.id,x.cat,d.q,d.a,d.f,d.alt,'r'))});
+    rows.forEach(x=>{const d=x.data||{};if(x.kind==='quiz')out.quiz.push(mkQuiz(x.id,x.cat,d.q,d.a,d.t,'r',d));else if(x.kind==='deceit')out.deceit.push(mkDeceit(x.id,x.cat,d.q,d.a,d.f,d.alt,'r'))});
     store.set('bank_remote',out);loadBank();return true}catch(e){return false}}
 fetchRemoteBank();
 const bankCats=kind=>[...new Set(BANK[kind].map(q=>q.cat))];
 const bankById=id=>BANK.quiz.find(q=>q.id===id)||BANK.deceit.find(q=>q.id===id);
 const usableQ=(kind,q)=>kind==='quiz'?q.q&&q.a.length>=2:q.q&&q.a&&q.f.length>=1;
 function pickQuestions(kind,n,cat,shareable){
-  const pool=BANK[kind].filter(q=>usableQ(kind,q)&&(!cat||cat==='all'||q.cat===cat)&&(!shareable||q.src!=='l'));
+  const cats=Array.isArray(cat)?cat:(cat&&cat!=='all'?[cat]:[]);
+  const pool=BANK[kind].filter(q=>usableQ(kind,q)&&(cats.length?cats.includes(q.cat):(isPrem()||!premCat(q.cat)))&&(!shareable||q.src!=='l'));
   const seen=new Set(store.get('seen_'+kind,[]));
   const out=shuffle(pool.filter(q=>!seen.has(q.id))).concat(shuffle(pool.filter(q=>seen.has(q.id)))).slice(0,n);
   store.set('seen_'+kind,[...seen,...out.map(q=>q.id)].slice(-400));return out}
 function getQs(kind,n){const ids=M.cfg.opts&&M.cfg.opts.qids;
   if(ids){const qs=ids.map(bankById).filter(Boolean);if(qs.length<ids.length){toast(t('missingQ'));M.alive=false;if(M.net)NET.leave();go('home');return null}return qs}
-  const qs=pickQuestions(kind,n,M.cfg.opts&&M.cfg.opts.cat,false);if(!qs.length){toast(t('noQ'));M.alive=false;go('home');return null}return qs}
+  const o=M.cfg.opts||{},qs=pickQuestions(kind,n||QZ.N,o.cats||o.cat,false);if(!qs.length){toast(t('noQ'));M.alive=false;go('home');return null}return qs}
 function hostOpts(cfg,extra){const o={...(cfg.opts||{}),extraTurn:extra};delete o.qids;
-  if(cfg.game==='quiz'||cfg.game==='deceit'){const n=GAME(cfg.game).diffs[cfg.diffIdx].n;o.qids=pickQuestions(cfg.game,n,o.cat,true).map(q=>q.id)}return o}
+  if(cfg.game==='quiz'||cfg.game==='deceit'){const n=GAME(cfg.game).diffs[cfg.diffIdx].n;const qs=pickQuestions(cfg.game,n,o.cats||o.cat,true);o.qids=qs.map(q=>q.id);if(cfg.game==='quiz')o.x2=qzDoubles(qs,Math.floor(Math.random()*2**31))}return o}
 const normA=s=>String(s||'').trim().toLowerCase().replace(/[ً-ْـ]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/^ال/,'').replace(/[.,!؟?،]/g,'').replace(/\s+/g,' ');
 const isTruth=(q,txt)=>{const n=normA(txt);return !!n&&[q.a,...(q.alt||[])].some(x=>normA(x)===n)};
 
@@ -793,7 +896,7 @@ function ago(ts){const m=Math.floor((Date.now()-ts)/60000);if(m<1)return t('ago_
 /* ========= router ========= */
 let current='home',params={};
 const AD_SCREENS=new Set(['home','games','setup','profile','leaderboard','friends','settings','notifs','results','lobby','match']);
-function go(s,p){current=s;params=p||{};if(M&&s!=='game'){M.alive=false}
+function go(s,p){current=s;params=p||{};if(M&&s!=='game'){M.alive=false}document.body.classList.remove('tvm');
   const showAd=AD_SCREENS.has(s)&&!isPrem();document.body.classList.toggle('has-ad',showAd);$('#ad').hidden=!showAd;$('#ad-txt').textContent=t('adTxt');
   (SCREENS[s]||SCREENS.home)(params);window.scrollTo(0,0)}
 function applyLang(){document.documentElement.lang=L()?'en':'ar';document.documentElement.dir=L()?'ltr':'rtl'}
@@ -850,9 +953,9 @@ NET.join=async function(code,asHost,cfg,autoReady){
   if(NET.nr&&NET.code===code)return true;if(NET.nr)await NET.leave();
   let nr;try{nr=await NET.api.join('zk-'+code.toLowerCase())}catch(e){toast(t('noLiveT'));return false}
   NET.nr=nr;NET.code=code;NET.isHost=!!asHost;NET.joinedAt=Date.now();NET.lobbyCfg=cfg||null;NET.lastGid=null;NET.game=null;NET.pending=null;
-  await nr.presence({...me0(),t:Date.now(),host:!!asHost,rdy:!!(asHost||autoReady),lobby:asHost?cfg:null,game:null,acts:null,res:null,kick:null}).catch(()=>{});
+  await nr.presence({...me0(),t:Date.now(),host:!!asHost,tv:!!(asHost&&cfg&&cfg.tv),rdy:!!(asHost||autoReady),lobby:asHost?cfg:null,game:null,acts:null,res:null,kick:null,qz:null,qa:null}).catch(()=>{});
   nr.onPeers(ch=>NET.onPeers(ch),()=>{});
-  setTimeout(()=>{if(NET.nr!==nr)return;const list=NET.players();const i=list.findIndex(x=>x.pid===NET.pid);if(i>=4){toast(t('roomFullT'));NET.leave();if(current==='lobby')go('home')}},2500);
+  setTimeout(()=>{if(NET.nr!==nr)return;const all=NET.players(),h=all.find(x=>x.host),cap=(h&&h.lobby&&h.lobby.cap)||4,list=all.filter(x=>!(x.host&&x.tv));const i=list.findIndex(x=>x.pid===NET.pid);if(i>=cap){toast(t('roomFullT'));NET.leave();if(current==='lobby')go('home')}},2500);
   return true};
 NET.leave=async function(){const nr=NET.nr;NET.nr=null;NET.code=null;NET.isHost=false;NET.peers=[];NET.game=null;NET.autoStart=null;NET.waiters.forEach(w=>w.res('OUT'));NET.waiters=[];if(nr){try{await nr.leave()}catch(e){}}};
 NET.set=patch=>{if(NET.nr)NET.nr.presence(patch).catch(()=>{})};
@@ -878,10 +981,12 @@ NET.onPeers=function(ch){
 };
 NET.hostStart=function(cfg){
   cfg=cfg||NET.lobbyCfg;if(!cfg)return;
-  const order=shuffle(NET.players().slice(0,4).map(x=>({pid:x.pid,nm:String(x.nm||'').slice(0,16),av:x.av||'🙂'})));
+  const cap=cfg.cap||(NET.lobbyCfg&&NET.lobbyCfg.cap)||4,tv=!!cfg.tv;
+  const order=shuffle(NET.players().filter(x=>!(tv&&x.pid===NET.pid)).slice(0,cap).map(x=>({pid:x.pid,nm:String(x.nm||'').slice(0,16),av:x.av||'🙂'})));if(tv&&!order.length)return;
   const extra=cfg.opts&&cfg.opts.extraTurn!=null?cfg.opts.extraTurn:settings.extraTurn;
-  const g={gid:Date.now().toString(36)+Math.floor(Math.random()*1e4),seed:Math.floor(Math.random()*2**31),cfg:{game:cfg.game,diffIdx:cfg.diffIdx,opts:hostOpts(cfg,extra)},order};
-  NET.lastGid=g.gid;NET.set({game:g,lobby:cfg});NET.startLocal(g)};
+  const g={gid:Date.now().toString(36)+Math.floor(Math.random()*1e4),seed:Math.floor(Math.random()*2**31),cfg:{game:cfg.game,diffIdx:cfg.diffIdx,opts:{...hostOpts(cfg,extra),tv}},order};
+  NET.lastGid=g.gid;NET.set({game:g,lobby:{...cfg,cap,tv}});
+  if(tv){NET.game=g;NET.cache={};NET.used={};NET.res={};NET.gone={};NET.pending=null;go('tv',{g})}else NET.startLocal(g)};
 NET.startLocal=function(g){
   NET.game=g;NET.cache={};NET.used={};NET.res={};NET.gone={};NET.myActs=[];NET.pending=null;
   NET.set({acts:{gid:g.gid,a:[]},res:null});
@@ -924,11 +1029,11 @@ async function nativeShare(text,url){const S=PLUG('Share');if(S){try{await S.sha
 const PREM_AVATARS=['👑','🐉','🦅','🦈','🐺','🦩','🦋','🌟'];
 let ENT=store.get('ent',{until:0,plan:null,src:null});
 const isPrem=()=>ENT.until>Date.now();
-const FREE={memory:['stones','numbers','pairs'],diff:{quiz:['n5'],deceit:['r5'],sudoku:['easy']}};
+const FREE={memory:['stones','numbers','pairs'],diff:{deceit:['r5'],sudoku:['easy']}};
 const gameLocked=g=>!isPrem()&&g.ready&&g.sec==='memory'&&!FREE.memory.includes(g.id);
 const diffLocked=(g,d)=>!isPrem()&&!!FREE.diff[g.id]&&!FREE.diff[g.id].includes(d.k);
-const catLocked=c=>!isPrem()&&c!=='all';
-const modeLocked=m=>!isPrem()&&m==='friends';
+const catLocked=c=>!isPrem()&&premCat(c);
+const modeLocked=(m,g)=>!isPrem()&&m==='friends'&&!(g&&g.id==='quiz');
 const CROWN='<svg class="ic" viewBox="0 0 24 24" style="width:14px;height:14px;fill:currentColor;stroke:none" aria-hidden="true"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg>';
 const lockTag=()=>`<span class="ptag">${CROWN}</span>`;
 function setEnt(e){ENT=e;store.set('ent',ENT);const ad=$('#ad');if(ad&&isPrem()){ad.hidden=true;document.body.classList.remove('has-ad')}}
@@ -1085,31 +1190,33 @@ SCREENS.setup=function(p){
   const g=GAME(p.game);
   const MODES=g.modes||['solo','local','friends','online'];
   if(gameLocked(g)){go('premium',{back:'games'});return}
-  const st={mode:MODES.includes(p.mode)&&!modeLocked(p.mode)?p.mode:'solo',diff:diffLocked(g,g.diffs[g.def])?Math.max(0,g.diffs.findIndex(d=>!diffLocked(g,d))):g.def,count:2,names:['','',''],set:'animals',size:2,cat:'all',invite:p.invite||null};
+  const st={cats:[],mode:MODES.includes(p.mode)&&!modeLocked(p.mode,g)?p.mode:'solo',diff:diffLocked(g,g.diffs[g.def])?Math.max(0,g.diffs.findIndex(d=>!diffLocked(g,d))):g.def,count:2,names:['','',''],set:'animals',size:2,cat:'all',invite:p.invite||null};
   const render=()=>{
     app.innerHTML=head(t('g_'+g.id),g.sec==='memory'?'games':'home')+`<div class="stack">
     <div class="setup-art" style="--tint:${TINT[g.id]}">${ART[g.id]}</div>
     <div class="panel"><h3 style="margin-bottom:8px">${t('howTo')}</h3><ul class="rules">${t('r_'+g.id).map(r=>`<li>${r}</li>`).join('')}</ul></div>
-    <div class="panel stack"><div><h3 style="margin-bottom:8px">${t('mode')}</h3><div class="modes">${MODES.map(m=>`<button class="mode ${st.mode===m?'on':''}" data-mode="${m}"><b>${t('m_'+m)}${modeLocked(m)?lockTag():''}</b><span>${t('m_'+m+'D')}</span></button>`).join('')}</div></div>
-      <div><h3 style="margin-bottom:8px">${t('difficulty')}</h3><div class="chips">${g.diffs.map((d,i)=>`<button class="chip ${st.diff===i?'on':''}" data-diff="${i}">${dlabel(d)}${diffLocked(g,d)?lockTag():''}</button>`).join('')}</div></div>
+    <div class="panel stack"><div><h3 style="margin-bottom:8px">${t('mode')}</h3><div class="modes">${MODES.map(m=>`<button class="mode ${st.mode===m?'on':''}" data-mode="${m}"><b>${t('m_'+m)}${modeLocked(m,g)?lockTag():''}</b><span>${t('m_'+m+'D')}</span></button>`).join('')}</div></div>
+      ${g.id==='quiz'&&(st.mode==='friends'||st.mode==='tv')?`<p class="note">${t('qzCapNote',roomCap('quiz',isPrem()))}${isPrem()?'':' · '+t('qzCapPrem')}</p>`:''}
+      ${g.diffs.length<2?'':`<div><h3 style="margin-bottom:8px">${t('difficulty')}</h3><div class="chips">${g.diffs.map((d,i)=>`<button class="chip ${st.diff===i?'on':''}" data-diff="${i}">${dlabel(d)}${diffLocked(g,d)?lockTag():''}</button>`).join('')}</div></div>`}
       ${g.id==='pairs'?`<div><h3 style="margin-bottom:8px">${t('imageSet')}</h3><div class="chips">${Object.keys(PAIR_SETS).map(s=>`<button class="chip ${st.set===s?'on':''}" data-set="${s}">${splitEmoji(PAIR_SETS[s])[0]} ${t('set_'+s)}</button>`).join('')}</div>
         <div class="toggle" style="border:0;padding-bottom:0"><span>${t('extraTurn')}</span><button class="sw ${settings.extraTurn?'on':''}" id="xt" aria-pressed="${settings.extraTurn}" aria-label="${t('extraTurn')}"></button></div></div>`:''}
-      ${(g.id==='quiz'||g.id==='deceit')?`<div><h3 style="margin-bottom:8px">${t('category')}</h3><div class="chips"><button class="chip ${st.cat==='all'?'on':''}" data-cat="all">${t('allCats')}</button>${bankCats(g.id).map(c=>`<button class="chip ${st.cat===c?'on':''}" data-cat="${esc(c)}">${esc(c)}${catLocked(c)?lockTag():''}</button>`).join('')}</div></div>`:''}
+      ${(g.id==='quiz'||g.id==='deceit')?`<div><h3 style="margin-bottom:2px">${t('category')}</h3><p class="small muted" style="margin:0 0 8px">${t('catsPick')}</p><div class="chips"><button class="chip ${!st.cats.length?'on':''}" data-cat="all">${t('allCats')}</button>${bankCats(g.id).map(c=>`<button class="chip ${st.cats.includes(c)?'on':''}" data-cat="${esc(c)}">${esc(c)}${catLocked(c)?lockTag():''}</button>`).join('')}</div></div>`:''}
       ${st.mode==='local'?`<div><h3 style="margin-bottom:8px">${t('players')}</h3><div class="seg" style="margin-bottom:10px">${[2,3,4].map(n=>`<button data-count="${n}" class="${st.count===n?'on':''}">${t('nPlayers',n)}</button>`).join('')}</div>
         <div class="stack" style="gap:8px"><input type="text" value="${esc(profile.name)}" disabled aria-label="${t('playerN',1)}">${[...Array(st.count-1)].map((_,i)=>`<input type="text" id="pn${i}" maxlength="14" placeholder="${t('playerN',i+2)}" value="${esc(st.names[i])}" data-ni="${i}">`).join('')}</div></div>`:''}
       ${st.mode==='online'?`<div><h3 style="margin-bottom:8px">${t('matchSize')}</h3><div class="seg">${[2,3,4].map(n=>`<button data-size="${n}" class="${st.size===n?'on':''}">${t('nPlayers',n)}</button>`).join('')}</div></div>`:''}
       <button class="btn primary block" id="go">${ic('play')} ${t('startMatch')}</button></div></div>`;
-    $$('[data-mode]').forEach(b=>b.onclick=()=>{if(modeLocked(b.dataset.mode)){needPrem();return}sfx('tap');st.mode=b.dataset.mode;render()});
+    $$('[data-mode]').forEach(b=>b.onclick=()=>{if(modeLocked(b.dataset.mode,g)){needPrem();return}sfx('tap');st.mode=b.dataset.mode;render()});
     $$('[data-diff]').forEach(b=>b.onclick=()=>{if(diffLocked(g,g.diffs[+b.dataset.diff])){needPrem();return}sfx('tap');st.diff=+b.dataset.diff;render()});
     $$('[data-set]').forEach(b=>b.onclick=()=>{sfx('tap');st.set=b.dataset.set;render()});
-    $$('[data-cat]').forEach(b=>b.onclick=()=>{if(catLocked(b.dataset.cat)){needPrem();return}sfx('tap');st.cat=b.dataset.cat;render()});
+    $$('[data-cat]').forEach(b=>b.onclick=()=>{const c=b.dataset.cat;if(c!=='all'&&catLocked(c)){needPrem();return}sfx('tap');if(c==='all')st.cats=[];else st.cats=st.cats.includes(c)?st.cats.filter(x=>x!==c):st.cats.concat(c);render()});
     $$('[data-count]').forEach(b=>b.onclick=()=>{st.count=+b.dataset.count;render()});
     $$('[data-size]').forEach(b=>b.onclick=()=>{st.size=+b.dataset.size;render()});
     $$('[data-ni]').forEach(i=>i.oninput=()=>{st.names[+i.dataset.ni]=i.value});
     const xt=$('#xt');if(xt)xt.onclick=()=>{settings.extraTurn=!settings.extraTurn;store.set('settings',settings);render()};
-    $('#go').onclick=async()=>{if(modeLocked(st.mode)||diffLocked(g,g.diffs[st.diff])||catLocked(st.cat)){needPrem();return}sfx('tap');const cfg={game:g.id,diffIdx:st.diff,mode:st.mode,opts:{set:st.set,cat:st.cat,names:st.names.slice(0,st.count-1),size:st.size}};
+    $('#go').onclick=async()=>{if(modeLocked(st.mode,g)||diffLocked(g,g.diffs[st.diff])||st.cats.some(catLocked)){needPrem();return}sfx('tap');const cfg={game:g.id,diffIdx:st.diff,mode:st.mode,opts:{set:st.set,cats:st.cats,names:st.names.slice(0,st.count-1),size:st.size}};
+      if(st.mode==='tv'){$('#go').disabled=true;const ok=await NET.readyP;if(ok&&NET.ok&&await NET.join(newCode(),true,{game:g.id,diffIdx:st.diff,opts:{cats:st.cats},tv:true,cap:roomCap(g.id,isPrem())})){go('lobby',{});return}$('#go').disabled=false;noLiveModal();return}
       if(st.mode==='friends'){$('#go').disabled=true;const ok=await NET.readyP;
-        if(ok&&NET.ok&&await NET.join(newCode(),true,{game:g.id,diffIdx:st.diff,opts:{set:st.set,cat:st.cat}})){go('lobby',{});return}
+        if(ok&&NET.ok&&await NET.join(newCode(),true,{game:g.id,diffIdx:st.diff,opts:{set:st.set,cats:st.cats},cap:roomCap(g.id,isPrem())})){go('lobby',{});return}
         go('lobby',{cfg,demo:true,invite:st.invite})}
       else if(st.mode==='online')go('match',{cfg});else startMatch(cfg)};
   };render();
@@ -1119,7 +1226,9 @@ SCREENS.setup=function(p){
 SCREENS.lobby=function(p){
   if(p.demo)return lobbyDemo(p);
   if(!NET.nr){go('home');return}
-  const list=NET.players().slice(0,4),host=NET.host(),cfg=(NET.isHost?NET.lobbyCfg:(host&&host.lobby))||NET.lobbyCfg||{game:'stones',diffIdx:1,opts:{}};
+  const host=NET.host(),cfg=(NET.isHost?NET.lobbyCfg:(host&&host.lobby))||NET.lobbyCfg||{game:'stones',diffIdx:1,opts:{}};
+  if(NET.isHost&&cfg.tv)return tvLobby(cfg);
+  const cap=cfg.cap||4,list=NET.players().filter(x=>!(x.host&&x.tv)).slice(0,cap),hostTv=!!(host&&host.tv);
   const g=GAME(cfg.game)||GAME('stones'),code=NET.code,link=roomLink(code);
   const meX=list.find(x=>x.pid===NET.pid)||{};const guests=list.filter(x=>!x.host);
   const readyN=list.filter(x=>x.host||x.rdy).length,canStart=NET.isHost&&list.length>=2&&readyN===list.length;
@@ -1132,23 +1241,23 @@ SCREENS.lobby=function(p){
     ${NATIVE?`<div class="row"><button class="btn primary sm" style="flex:1" id="nshare">${ic('share')} ${t('shareRoom')}</button><button class="btn sm" id="cp-link">${ic('copy')}</button><button class="btn sm" id="cp-code">${t('roomCode')}</button></div>`
     :`<div class="row"><button class="btn sm" style="flex:1" id="cp-link">${ic('copy')} ${t('copyLink')}</button><a class="btn sm" style="flex:1;text-decoration:none;background:#1F8F5C" href="${wa}" target="_blank" rel="noopener">${ic('share')} ${t('shareWA')}</a><button class="btn sm" id="cp-code">${t('roomCode')}</button></div>`}
     ${STANDALONE_WEB?`<a class="btn ghost sm" style="text-decoration:none" href="playo://r/${code}">${t('openInApp')}</a>`:''}</div>
-  <div class="panel"><div class="row between" style="margin-bottom:10px"><h3>${t('players')} ${list.length}/4</h3><span class="small muted">${t('playersReady',readyN,list.length)}</span></div><div class="slots">
-    ${[0,1,2,3].map(i=>{const s=list[i];if(!s)return`<div class="slot empty">${ic('plus')} ${t('emptySeat')}</div>`;
+  <div class="panel"><div class="row between" style="margin-bottom:10px"><h3>${t('players')} ${list.length}/${cap}</h3><span class="small muted">${t('playersReady',readyN,list.length)}</span></div><div class="slots ${cap>4?'many':''}">
+    ${[...Array(cap<=4?cap:Math.min(cap,list.length+1))].map((_,i)=>{const s=list[i];if(!s)return`<div class="slot empty">${ic('plus')} ${t('emptySeat')}</div>`;
       const lbl=s.host?`<span class="st host">${t('host')}</span>`:s.rdy?`<span class="st ready">${t('readyS')}</span>`:`<span class="st wait">${t('notReady')}</span>`;
       return`<div class="slot"><div class="avatar sm">${esc(s.av||'🙂')}</div><div class="grow"><b>${esc(s.nm||'?')} ${s.cc?flag(s.cc):''}${s.pid===NET.pid?` <span class="small muted">(${t('youTag')})</span>`:''}</b>${lbl}</div>${NET.isHost&&s.pid!==NET.pid?`<button class="kick" data-kick="${esc(s.pid)}" aria-label="×">${ic('x')}</button>`:''}</div>`}).join('')}</div></div>
   <div class="panel stack" style="gap:10px"><div class="row between"><h3>${t('g_'+g.id)}</h3><span class="small muted">${dlabel(g.diffs[cfg.diffIdx]||g.diffs[g.def])}</span></div>
     ${NET.isHost?`<div class="chips">${GAMES.filter(x=>x.ready).map(x=>`<button class="chip ${x.id===g.id?'on':''}" data-lg="${x.id}">${t('g_'+x.id)}${gameLocked(x)?lockTag():''}</button>`).join('')}</div>
       <div class="chips">${g.diffs.map((d,i)=>`<button class="chip ${cfg.diffIdx===i?'on':''}" data-ld="${i}">${dlabel(d)}${diffLocked(g,d)?lockTag():''}</button>`).join('')}</div>`:`<p class="small muted">${t('hostPicks')}</p>`}</div>
-  ${inProg?`<p class="note">${t('inProgress')}</p>`:''}
+  ${hostTv?`<p class="note">${t('tvGuest')}</p>`:''}${inProg?`<p class="note">${t('inProgress')}</p>`:''}
   ${NET.isHost?`<button class="btn primary block" id="start" ${canStart?'':'disabled'}>${ic('play')} ${t('startMatch')}</button>${canStart?'':`<p class="small muted" style="text-align:center">${t('startNeed')}</p>`}`
-   :`<button class="btn ${meX.rdy?'':'primary'} block" id="rdy">${meX.rdy?t('notReady'):t('imReady')}</button><p class="small muted" style="text-align:center">${t('waitHost')}</p>`}
+   :hostTv?`<p class="small muted" style="text-align:center">${t('waitHost')}</p>`:`<button class="btn ${meX.rdy?'':'primary'} block" id="rdy">${meX.rdy?t('notReady'):t('imReady')}</button><p class="small muted" style="text-align:center">${t('waitHost')}</p>`}
   <button class="btn ghost block" id="leave">${t('leaveRoom')}</button>
   <p class="note">${ZKC.linkBase?t('liveNoteApp'):t('liveNote')}</p></div>`;
   $('#cp-link').onclick=()=>copyText(link);$('#cp-code').onclick=()=>copyText(code);
   const ns=$('#nshare');if(ns)ns.onclick=()=>nativeShare(`${t('app')} · ${t('g_'+g.id)} — ${t('roomCode')}: ${code}`,link);
   $('#leave').onclick=()=>{NET.leave();go('home')};
   $$('[data-kick]').forEach(b=>b.onclick=()=>{const host0=NET.players().find(x=>x.pid===NET.pid)||{};const k=(host0.kick||[]).concat(b.dataset.kick).slice(-12);NET.set({kick:k})});
-  $$('[data-lg]').forEach(b=>b.onclick=()=>{const ng=GAME(b.dataset.lg);if(gameLocked(ng)){needPrem();return}NET.lobbyCfg={game:ng.id,diffIdx:diffLocked(ng,ng.diffs[ng.def])?Math.max(0,ng.diffs.findIndex(d=>!diffLocked(ng,d))):ng.def,opts:{}};NET.set({lobby:NET.lobbyCfg});SCREENS.lobby({})});
+  $$('[data-lg]').forEach(b=>b.onclick=()=>{const ng=GAME(b.dataset.lg);if(gameLocked(ng)){needPrem();return}NET.lobbyCfg={game:ng.id,diffIdx:diffLocked(ng,ng.diffs[ng.def])?Math.max(0,ng.diffs.findIndex(d=>!diffLocked(ng,d))):ng.def,opts:{cats:(cfg.opts||{}).cats||[]},cap:roomCap(ng.id,isPrem())};NET.set({lobby:NET.lobbyCfg});SCREENS.lobby({})});
   $$('[data-ld]').forEach(b=>b.onclick=()=>{if(diffLocked(g,g.diffs[+b.dataset.ld])){needPrem();return}NET.lobbyCfg={...cfg,diffIdx:+b.dataset.ld};NET.set({lobby:NET.lobbyCfg});SCREENS.lobby({})});
   const st=$('#start');if(st)st.onclick=()=>{sfx('tap');NET.hostStart()};
   const rd=$('#rdy');if(rd)rd.onclick=()=>{sfx('tick');NET.set({rdy:!meX.rdy})};
@@ -1216,7 +1325,7 @@ function liveMatch(p){
     if(sig!==shown){shown=sig;$('#mm-f').innerHTML=others.map(o=>`<div style="text-align:center"><div class="avatar">${esc(o.av||'🙂')}</div><div class="small" style="margin-top:4px">${esc(o.nm||'?')} ${o.cc?flag(o.cc):''}</div></div>`).join('');if(others.length)sfx('tick')}
     if(seekers.length>=need&&seekers[0].pid===NET.pid){const pids=seekers.slice(0,need).map(x=>x.pid);const code=newCode();stop();
       NET.api.presence({assign:{code,pids,t:Date.now()},seek:null}).catch(()=>{});
-      NET.join(code,true,{game:cfg.game,diffIdx:cfg.diffIdx,opts:{set:cfg.opts.set,cat:cfg.opts.cat}}).then(ok=>{if(!ok){go('home');return}NET.autoStart=pids;go('lobby',{});
+      NET.join(code,true,{game:cfg.game,diffIdx:cfg.diffIdx,opts:{set:cfg.opts.set,cats:cfg.opts.cats}}).then(ok=>{if(!ok){go('home');return}NET.autoStart=pids;go('lobby',{});
         setTimeout(()=>{NET.api&&NET.api.presence({assign:null}).catch(()=>{})},30000)})}};
   NET.onLobby=check;
   iv=setInterval(()=>{if(done||current!=='match'){if(!done)stop();return}const s=Math.floor((Date.now()-t0)/1000);$('#mm-s').textContent=s+'s';if(s>=20){$('#mm-b').hidden=false;$('#mm-n').hidden=false}check()},1000);
@@ -1251,7 +1360,7 @@ function startMatch(cfg){
   if(cfg.mode==='online'||cfg.mode==='friends')(cfg.others||[]).forEach((o,i)=>players.push({id:'b'+i,name:o.name,avatar:o.avatar,col:PCOL[i+1],isBot:true,skill:o.skill||.65,score:0}));
   if(cfg.net){players=cfg.net.order.map((o,i)=>({id:o.pid,pid:o.pid,name:o.nm||'?',avatar:o.av||'🙂',col:PCOL[i%4],isMe:o.pid===NET.pid,remote:o.pid!==NET.pid,score:0}));G=mulberry(cfg.net.seed)}
   else G=Math.random;
-  M={id:Math.random(),alive:true,cfg,g,diff:d,mode:cfg.mode,players,net:!!cfg.net,cur:cfg.net?0:players.length>1?Math.floor(rnd()*players.length):0,solo:players.length===1,daily:!!cfg.daily,t0:Date.now()};
+  M={id:Math.random(),alive:true,cfg,g,diff:d,mode:cfg.mode,players,net:!!cfg.net,cur:cfg.net?0:players.length>1?Math.floor(rnd()*players.length):0,solo:players.length===1&&!cfg.net,daily:!!cfg.daily,t0:Date.now()};
   current='game';document.body.classList.remove('has-ad');$('#ad').hidden=true;window.scrollTo(0,0);
   g.run();
 }
@@ -1543,35 +1652,214 @@ async function gSequence(isLoc){
 /* ---------- shared: timed choice ---------- */
 const QSH=['<svg class="qshape" viewBox="0 0 24 24"><path d="M12 3l10 18H2z" fill="#fff"/></svg>','<svg class="qshape" viewBox="0 0 24 24"><path d="M12 2l10 10-10 10L2 12z" fill="#fff"/></svg>','<svg class="qshape" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff"/></svg>','<svg class="qshape" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" fill="#fff"/></svg>'];
 function timedPick(id,board,sel,limit,t0){return new Promise(res=>{let done=false;
-  const tick=()=>{if(done)return;if(!alive(id)){done=true;res(-1);return}const el=(performance.now()-t0)/1000,bar=$('#qbar');if(bar)bar.style.width=Math.max(0,100-el/limit*100)+'%';
+  const tick=()=>{if(done)return;if(!alive(id)){done=true;res(-1);return}const el=(performance.now()-t0)/1000,bar=$('#qbar'),sec=$('#qsec');if(bar)bar.style.width=Math.max(0,100-el/limit*100)+'%';if(sec)sec.textContent=Math.max(0,Math.ceil(limit-el));
     if(el>=limit){done=true;board.onclick=null;res(-1)}else requestAnimationFrame(tick)};requestAnimationFrame(tick);
   board.onclick=e=>{const b=e.target.closest(sel);if(!b||done||b.disabled)return;done=true;board.onclick=null;res(+b.dataset.k)}})}
-function botQuizScore(p,qs){let s=0;qs.forEach(()=>{if(rnd()<p.skill*.95)s+=Math.round(1000*(1-(.15+rnd()*.6)/2))});return s}
 
-/* ---------- Quiz (solo & each-for-themselves) ---------- */
+/* ========= Quiz scoring (same for solo, rooms and TV) =========
+   20 s per question. Correct = 10 + whole seconds still on the clock (answer at 19 left: 10 + 19 = 29).
+   Double-points questions score ×2. Milestones on correct answers: every 6th +3, the 10th +5, the 20th +10. */
+const QZ={N:36,T:20,BASE:10,X2N:3,CAP_FREE:10,CAP_PREM:30};
+const qzLeft=ms=>Math.max(0,Math.min(QZ.T-1,Math.floor(QZ.T-ms/1000)));
+const qzGain=(ms,x2)=>(QZ.BASE+qzLeft(ms))*(x2?2:1);
+const qzBonus=n=>(n>0&&n%6===0?3:0)+(n===10?5:0)+(n===20?10:0);
+const roomCap=(gid,prem)=>gid==='quiz'?(prem?QZ.CAP_PREM:QZ.CAP_FREE):4;
+const TRUE_RE=/^(صح|صحيح|true|yes|نعم)$/i;
+/* option order depends only on the match seed and the question number, so every screen shows the same colours */
+function qzOpts(seed,i,q){const o=q.a.map((txt,k)=>({txt,ok:k===0}));
+  if(o.length===2&&o.some(x=>TRUE_RE.test(x.txt)))return o.sort((a,b)=>(TRUE_RE.test(b.txt)?1:0)-(TRUE_RE.test(a.txt)?1:0));
+  const r=mulberry((seed^Math.imul(i+1,2654435761))|0);
+  for(let j=o.length-1;j>0;j--){const k=Math.floor(r()*(j+1));[o[j],o[k]]=[o[k],o[j]]}return o}
+/* questions the owner marked ×2; if none are in this round, a few are picked at random (never the first four) */
+function qzDoubles(qs,seed){const marked=qs.map((q,i)=>q.x2?i:-1).filter(i=>i>=0);if(marked.length)return marked;
+  const r=mulberry(seed|0),pool=[...Array(qs.length).keys()].filter(i=>i>=Math.min(4,qs.length-1)),want=Math.min(QZ.X2N,Math.max(qs.length>=6?1:0,Math.floor(qs.length/10)));const out=[];
+  while(out.length<want&&pool.length)out.push(pool.splice(Math.floor(r()*pool.length),1)[0]);return out.sort((a,b)=>a-b)}
+const qzImg=(q,cls)=>q&&q.img?`<img class="${cls||'qimg'}" src="${esc(q.img)}" alt="" onerror="this.remove()">`:'';
+
+/* ----- premium-only categories (the owner picks them in the question manager) ----- */
+let PCATS=new Set(store.get('pcats',['تاريخ','فن']));
+const premCat=c=>PCATS.has(c);
+async function fetchPremCats(){if(!SB_ON())return;
+  try{const r=await fetch(ZKC.supabaseUrl+'/rest/v1/categories?select=name,premium',{headers:{apikey:ZKC.supabaseKey,Authorization:'Bearer '+ZKC.supabaseKey}});
+    if(!r.ok)return;const rows=await r.json();PCATS=new Set(rows.filter(x=>x.premium).map(x=>x.name));store.set('pcats',[...PCATS])}catch(e){}}
+fetchPremCats();
+async function setPremCat(c,on){const sb=admClient();
+  if(sb&&ADM.session){const {error}=await sb.from('categories').upsert({name:c,premium:on});if(error){toast(t('adm_saveFail',error.message));return false}}
+  if(on)PCATS.add(c);else PCATS.delete(c);store.set('pcats',[...PCATS]);return true}
+
+/* ----- solo / online-with-bots quiz ----- */
 async function gQuiz(){
-  const id=M.id,d=M.diff,qs=getQs('quiz',d.n);if(!qs)return;
-  M.players.forEach(p=>{p.score=0;p.scoreText='0'});M.showTurn=false;gameShell();renderPlayers();
+  if(M.net)return gQuizLive();
+  const id=M.id,qs=getQs('quiz',QZ.N);if(!qs)return;
+  const seed=Math.floor(Math.random()*2**31),x2=new Set(qzDoubles(qs,seed));
+  M.players.forEach(p=>{p.score=0;p.scoreText='0';p.cor=0});M.showTurn=false;gameShell();renderPlayers();
   const board=$('#gboard'),foot=$('#gfoot'),me=M.players.find(p=>p.isMe)||M.players[0];
-  let streak=0,correct=0;
+  if(qs.length<QZ.N)toast(t('qzFewQ',qs.length));
   for(let i=0;i<qs.length;i++){
-    const q=qs[i],opts=gshuffle(q.a.map((txt,k)=>({txt,ok:k===0}))),limit=Math.max(5,Math.round(q.t*d.tf));
-    status(t('qOf',i+1,qs.length)+(streak>1?' · '+t('streakN',streak):''));foot.innerHTML='';
-    board.innerHTML=`<div class="qcard"><div class="qtimer"><i id="qbar"></i></div><p class="qtext">${esc(q.q)}</p></div><div class="qopts">${opts.map((o,k)=>`<button class="qopt c${k%4}" data-k="${k}">${QSH[k%4]}<span>${esc(o.txt)}</span></button>`).join('')}</div>`;
-    const t0=performance.now(),k=await timedPick(id,board,'.qopt',limit,t0);if(!alive(id))return;
-    const el=(performance.now()-t0)/1000,ok=k>=0&&opts[k].ok;let gain=0;
-    if(ok){streak++;correct++;gain=Math.round(1000*(1-Math.min(el,limit)/limit/2))+Math.min(streak-1,5)*100}else streak=0;
-    me.score+=gain;me.scoreText=me.score;renderPlayers();
+    const q=qs[i],opts=qzOpts(seed,i,q),isX=x2.has(i);
+    status(t('qOf',i+1,qs.length));foot.innerHTML='';
+    board.innerHTML=`<div class="qcard ${isX?'x2':''}">${isX?`<span class="qz-x2">${t('qzX2')}</span>`:''}<div class="qtimer"><i id="qbar"></i></div><b class="qsec tnum" id="qsec">${QZ.T}</b>${qzImg(q)}<p class="qtext">${esc(q.q)}</p></div><div class="qopts">${opts.map((o,k)=>`<button class="qopt c${k%4}" data-k="${k}">${QSH[k%4]}<span>${esc(o.txt)}</span></button>`).join('')}</div>`;
+    const t0=performance.now(),k=await timedPick(id,board,'.qopt',QZ.T,t0);if(!alive(id))return;
+    const ms=performance.now()-t0,ok=k>=0&&opts[k].ok&&ms<QZ.T*1000;let gain=0,bonus=0;
+    if(ok){me.cor++;gain=qzGain(ms,isX);bonus=qzBonus(me.cor)}
+    me.score+=gain+bonus;me.scoreText=me.score;
+    M.players.filter(p=>p.isBot).forEach(p=>{if(rnd()<p.skill*.85){p.cor++;p.score+=qzGain(1200+rnd()*(1.1-p.skill)*QZ.T*1000,isX)+qzBonus(p.cor);p.scoreText=p.score}});
+    renderPlayers();
     $$('.qopt',board).forEach((b,j)=>b.classList.add(opts[j].ok?'right':j===k?'wrong':'dim'));
     if(ok){sfx('good');burst(board.children[1].children[k],'#fff')}else sfx('bad');
-    status(ok?t('qRight',gain,streak>1?t('streakN',streak):''):k<0?t('qTimeout'):t('qWrong'));
-    await sleep(ok?1500:2200);if(!alive(id))return;
+    status(ok?t('qzRight',gain,bonus?t('qzBonus',bonus):''):k<0?t('qTimeout'):t('qWrong'));
+    await sleep(ok?1400:2100);if(!alive(id))return;
   }
-  M.players.filter(p=>p.isBot).forEach(p=>{p.score=botQuizScore(p,qs);p.scoreText=p.score});renderPlayers();
-  if(M.net){NET.setRes(me.score,String(me.score));if(!await waitRemotes(id,v=>String(v)))return}
-  if(M.solo)finish({perf:correct/qs.length,metric:me.score,line:`${t('correctN',correct+'/'+qs.length)} · ${me.score} ${t('pts')}`});
+  if(M.solo)finish({perf:me.cor/qs.length,metric:me.score,line:`${t('correctN',me.cor+'/'+qs.length)} · ${me.score} ${t('pts')}`});
   else finish({order:M.players.map(p=>({p,val:outVal(p,p.score),txt:p.score}))});
 }
+
+/* ========= live quiz =========
+   The host's device runs the clock: it announces each question, waits until everyone answered (or 20 s),
+   scores every answer and publishes the standings. Phones only send which colour they picked and how fast. */
+const QZD={st:null,run:0,skip:false};
+const QZL={my:null,subs:new Set()};
+const qzNotify=()=>QZL.subs.forEach(f=>{try{f()}catch(e){console.error(e)}});
+const qzState=()=>{if(NET.isHost)return QZD.st;const h=NET.host();return h&&h.qz};
+const until=(fn,ms)=>new Promise(res=>{const t0=Date.now();const tick=()=>{if(fn()||Date.now()-t0>=ms)res();else setTimeout(tick,120)};tick()});
+async function qzDirect(g){
+  const run=++QZD.run,o=g.cfg.opts,qs=(o.qids||[]).map(bankById).filter(Boolean),n=qs.length,x2=new Set(o.x2||[]);
+  const ps=g.order.map(x=>({pid:x.pid,score:0,cor:0,gain:0,bonus:0,ok:0,k:-1}));
+  const live=()=>QZD.run===run&&!!NET.nr&&!!NET.game&&NET.game.gid===g.gid;
+  const pub=st=>{if(!live())return;QZD.st={gid:g.gid,n,...st};NET.set({qz:QZD.st});qzNotify()};
+  const ans=(pid,i)=>{const a=pid===NET.pid?QZL.my:(NET.pres[pid]||{}).qa;return a&&a.gid===g.gid&&a.a?a.a[i]:null};
+  const here=pid=>pid===NET.pid||!!NET.pres[pid];
+  const board=()=>ps.slice().sort((a,b)=>b.score-a.score).map(p=>[p.pid,p.score,p.gain,p.ok,p.bonus]);
+  QZD.st=null;await sleep(1500);
+  for(let i=0;i<n;i++){
+    if(!live())return;
+    QZD.skip=false;pub({i,ph:'p',x2:x2.has(i)});await until(()=>!live()||QZD.skip,3200);
+    if(!live())return;
+    QZD.skip=false;pub({i,ph:'q',x2:x2.has(i)});const t0=Date.now();
+    await until(()=>!live()||QZD.skip||ps.every(p=>!here(p.pid)||ans(p.pid,i)),QZ.T*1000+1500);
+    if(!live())return;
+    const opts=qzOpts(g.seed,i,qs[i]),c=opts.findIndex(x=>x.ok),cnt=opts.map(()=>0);
+    ps.forEach(p=>{const a=ans(p.pid,i);p.gain=0;p.bonus=0;p.ok=0;p.k=-1;if(!a)return;
+      const k=+a[0],ms=Math.max(0,+a[1]||0);if(k>=0&&k<cnt.length){cnt[k]++;p.k=k}
+      if(k===c&&ms<QZ.T*1000){p.ok=1;p.cor++;p.gain=qzGain(ms,x2.has(i));p.bonus=qzBonus(p.cor);p.score+=p.gain+p.bonus}});
+    QZD.skip=false;pub({i,ph:'r',x2:x2.has(i),c,cnt,lb:board()});
+    await until(()=>!live()||QZD.skip,i===n-1?5000:7500);
+  }
+  if(live())pub({i:n,ph:'e',lb:board()});
+}
+const qzRank=(lb,i)=>1+lb.filter(r=>r[1]>lb[i][1]).length;
+function qzBoardHtml(lb,who,meId,max){
+  const rows=lb.map((r,i)=>({r,i}));let show=rows.slice(0,max);const mine=rows.find(x=>x.r[0]===meId);if(mine&&mine.i>=max)show=show.concat([mine]);
+  return`<div class="qz-lb">${show.map(({r,i},j)=>{const p=who[r[0]]||{};const d=r[2]+r[4];
+    return`<div class="qz-row ${r[0]===meId?'me':''}" style="animation-delay:${Math.min(j,12)*45}ms"><span class="n tnum">${qzRank(lb,i)}</span><span class="av">${esc(p.av||'🙂')}</span><span class="nm">${esc(p.nm||'?')}</span><span class="d tnum">${d?'+'+d:''}</span><b class="s tnum">${r[1]}</b></div>`}).join('')}</div>`}
+
+/* ----- a player's phone in a live quiz (also the host's phone when the host plays) ----- */
+async function gQuizLive(){
+  const id=M.id,g=NET.game,o=M.cfg.opts,tv=!!o.tv,qs=getQs('quiz');if(!qs)return;
+  const who={};g.order.forEach(x=>who[x.pid]=x);
+  QZL.my={gid:g.gid,a:{}};NET.set({qa:{gid:g.gid,a:{}}});
+  M.players.forEach(p=>{p.score=0;p.scoreText='0'});
+  app.innerHTML=`<section class="game qz-live"><header class="gtop"><button class="icon-btn" id="gquit" aria-label="${t('quit')}">${ic('x')}</button><div class="gtitle">${t('g_quiz')} <span class="small muted" id="qzn"></span></div><div class="gtimer tnum" id="qzme">0</div></header><div class="qzv" id="qzv"><p class="qz-wait">${t('qzReady')}</p></div></section>`;
+  $('#gquit').onclick=async()=>{if(await confirmBox(t('quitQ'),t('quit'))){M.alive=false;if(NET.isHost)QZD.run++;NET.leave();go('home')}};
+  const v=$('#qzv');let key='',lastLb=null,lost=0,picked=-1,raf=0;
+  const end=lb=>{if(!alive(id))return;cancelAnimationFrame(raf);lb=lb||lastLb||[];M.players.forEach(p=>{const r=lb.find(x=>x[0]===p.pid);p.score=r?r[1]:0;p.scoreText=p.score});
+    finish({order:M.players.map(p=>({p,val:p.score,txt:String(p.score)}))})};
+  const head=st=>{const e=$('#qzn');if(e)e.textContent='· '+t('qOf',Math.min(st.i+1,st.n),st.n)};
+  const showPre=st=>{const q=qs[st.i];picked=-1;head(st);
+    v.innerHTML=tv?`<div class="qz-ready">${st.x2?`<span class="qz-x2">${t('qzX2')}</span>`:''}<span class="muted">${t('qOf',st.i+1,st.n)}</span><b class="big">${t('qzLook')}</b></div>`
+      :`<div class="qcard ${st.x2?'x2':''}">${st.x2?`<span class="qz-x2">${t('qzX2')}</span>`:''}${qzImg(q)}<p class="qtext">${esc(q.q)}</p></div><p class="qz-wait">${t('qzReady')}</p>`};
+  const showQ=st=>{const q=qs[st.i],opts=qzOpts(g.seed,st.i,q),t0=performance.now();picked=-1;head(st);
+    v.innerHTML=(tv?`<div class="qtimer"><i id="qbar"></i></div><b class="qz-sec tnum" id="qsec">${QZ.T}</b><div class="qz-pads n${opts.length}">${opts.map((x,k)=>`<button class="qopt qzpad c${k%4}" data-k="${k}" aria-label="${k+1}">${QSH[k%4]}</button>`).join('')}</div>`
+      :`<div class="qcard ${st.x2?'x2':''}">${st.x2?`<span class="qz-x2">${t('qzX2')}</span>`:''}<div class="qtimer"><i id="qbar"></i></div><b class="qsec tnum" id="qsec">${QZ.T}</b>${qzImg(q)}<p class="qtext">${esc(q.q)}</p></div><div class="qopts">${opts.map((x,k)=>`<button class="qopt c${k%4}" data-k="${k}">${QSH[k%4]}<span>${esc(x.txt)}</span></button>`).join('')}</div>`)+`<p class="qz-wait" id="qzmsg"></p>`;
+    const tick=()=>{if(!alive(id)||key!=='q:'+st.i)return;const el=(performance.now()-t0)/1000,bar=$('#qbar'),sec=$('#qsec');
+      if(bar)bar.style.width=Math.max(0,100-el/QZ.T*100)+'%';if(sec)sec.textContent=Math.max(0,Math.ceil(QZ.T-el));
+      if(el>=QZ.T){if(picked<0){$$('.qopt',v).forEach(b=>{b.disabled=true;b.classList.add('dim')});const m=$('#qzmsg');if(m)m.textContent=t('qTimeout')}return}raf=requestAnimationFrame(tick)};
+    raf=requestAnimationFrame(tick);
+    $$('.qopt',v).forEach(b=>b.onclick=()=>{if(picked>=0||b.disabled)return;const ms=Math.round(performance.now()-t0);if(ms>=QZ.T*1000)return;
+      picked=+b.dataset.k;sfx('tap');QZL.my.a[st.i]=[picked,ms];NET.set({qa:{gid:g.gid,a:{...QZL.my.a}}});
+      $$('.qopt',v).forEach(x=>{x.disabled=true;x.classList.add(x===b?'picked':'dim')});const m=$('#qzmsg');if(m)m.textContent=t('qzSent')+' · '+t('qzWaitAll');if(NET.isHost)qzNotify()})};
+  const showRev=st=>{cancelAnimationFrame(raf);const q=qs[st.i],opts=qzOpts(g.seed,st.i,q),lb=st.lb||[];head(st);
+    const mi=lb.findIndex(r=>r[0]===NET.pid),r=lb[mi]||[NET.pid,0,0,0,0];const sc=$('#qzme');if(sc)sc.textContent=r[1];
+    const fb=r[3]?`<div class="qz-fb ok"><span>${t('qzOk')}</span><b class="tnum">+${r[2]}</b>${r[4]?`<span>${t('qzBonus',r[4])}</span>`:''}</div>`
+      :picked<0?`<div class="qz-fb na"><b>${t('qzNoAns')}</b></div>`:`<div class="qz-fb no"><b>${t('qWrong')}</b></div>`;
+    const place=mi>=0?`<p class="qz-place">${t('qzRankOf',qzRank(lb,mi),lb.length)} · <b class="tnum">${r[1]}</b> ${t('pts')}</p>`:'';
+    v.innerHTML=fb+place+(tv?`<p class="qz-wait">${t('qzSeeTv')}</p>`:`<p class="qz-ans">${QSH[st.c%4].replace('qshape','qshape sm')} ${t('qzAnswer',esc(opts[st.c].txt))}</p><h3>${t('qzBoard')}</h3>${qzBoardHtml(lb,who,NET.pid,10)}`);
+    if(r[3])sfx('good');else sfx('bad')};
+  return new Promise(done=>{
+    const stop=()=>{QZL.subs.delete(onCh);clearInterval(wd);if(NET.onTick===onCh)NET.onTick=null};
+    const onCh=()=>{if(!alive(id)){stop();done();return}
+      const st=qzState();if(!st||st.gid!==g.gid)return;if(st.lb)lastLb=st.lb;
+      const k=st.ph+':'+st.i;if(k===key)return;key=k;
+      if(st.ph==='p')showPre(st);else if(st.ph==='q')showQ(st);else if(st.ph==='r')showRev(st);else if(st.ph==='e'){stop();end(st.lb);done()}};
+    QZL.subs.add(onCh);NET.onTick=onCh;
+    const wd=setInterval(()=>{if(!alive(id)){stop();done();return}if(NET.isHost)return;
+      if(NET.host())lost=0;else if(!lost)lost=Date.now();else if(Date.now()-lost>15000){toast(t('qzHostLost'));stop();end(lastLb);done()}},1000);
+    if(NET.isHost)qzDirect(g);
+    onCh()});
+}
+
+/* ----- TV presenter: this screen shows the questions and the standings; it does not play ----- */
+const FS_IC='<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
+function goFull(){const d=document.documentElement;try{if(document.fullscreenElement)document.exitFullscreen();else if(d.requestFullscreen)d.requestFullscreen()}catch(e){}}
+function loadQR(){return new Promise((res,rej)=>{if(window.qrcode)return res(window.qrcode);const s=document.createElement('script');s.src=ZKC.qrUrl||'https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js';s.onload=()=>res(window.qrcode);s.onerror=rej;document.head.appendChild(s)})}
+const QRC={};
+async function qrInto(el,text){if(!el)return;if(QRC[text]){el.innerHTML=QRC[text];return}
+  try{const q=await loadQR();const qr=q(0,'M');qr.addData(text);qr.make();QRC[text]=qr.createSvgTag({cellSize:6,margin:2,scalable:true});const e2=document.getElementById(el.id);if(e2)e2.innerHTML=QRC[text]}catch(e){}}
+function tvLobby(cfg){
+  document.body.classList.add('tvm');
+  const code=NET.code,link=roomLink(code),cap=cfg.cap||QZ.CAP_FREE,list=NET.players().filter(x=>x.pid!==NET.pid).slice(0,cap);
+  const cats=(cfg.opts&&cfg.opts.cats)||[];
+  app.innerHTML=`<section class="tvs tv-lobby"><header class="tv-top"><button class="icon-btn" id="tvx" aria-label="${t('leaveRoom')}">${ic('x')}</button><b>${t('g_quiz')} · ${t('m_tv')}</b><button class="icon-btn" id="tvfs" aria-label="${t('tvFull')}">${FS_IC}</button></header>
+  <div class="tvl-grid"><div class="tvl-join panel"><h2>${t('tvJoin')}</h2><div class="tv-qr" id="tvqr"></div><div class="room-code tnum">${code}</div><code class="small" dir="ltr">${esc(link)}</code><p class="small muted">${t('tvJoinHow')}</p>
+    <div class="row"><button class="btn sm" style="flex:1" id="cp-link">${ic('copy')} ${t('copyLink')}</button>${NATIVE?`<button class="btn sm" style="flex:1" id="nshare">${ic('share')} ${t('shareRoom')}</button>`:`<a class="btn sm" style="flex:1;text-decoration:none;background:#1F8F5C" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(t('app')+' — '+t('roomCode')+': '+code+'\n'+link)}">${ic('share')} ${t('shareWA')}</a>`}</div></div>
+   <div class="tvl-players panel"><div class="row between"><h2>${t('players')}</h2><b class="tnum tv-count">${list.length}/${cap}</b></div>
+    <div class="tvl-chips">${list.map(p=>`<span class="tvl-chip"><i>${esc(p.av||'🙂')}</i>${esc(p.nm||'?')}</span>`).join('')||`<p class="muted">${t('tvWaitP')}</p>`}</div>
+    <p class="small muted">${t('category')}: ${cats.length?cats.map(esc).join('، '):t('allCats')}</p>
+    ${isPrem()?'':`<p class="note">${t('qzCapNote',cap)} · ${t('qzCapPrem')}</p>`}
+    <button class="btn primary block" id="tvgo" ${list.length?'':'disabled'}>${ic('play')} ${t('startMatch')}</button></div></div></section>`;
+  qrInto($('#tvqr'),link);
+  $('#tvx').onclick=()=>{NET.leave();go('home')};$('#tvfs').onclick=goFull;
+  $('#cp-link').onclick=()=>copyText(link);const ns=$('#nshare');if(ns)ns.onclick=()=>nativeShare(`${t('app')} — ${t('roomCode')}: ${code}`,link);
+  $('#tvgo').onclick=()=>{sfx('tap');NET.hostStart()};
+}
+SCREENS.tv=function(p){
+  const g=(p&&p.g)||NET.game;if(!g||!NET.nr||!NET.isHost){go('home');return}
+  document.body.classList.add('tvm');
+  const o=g.cfg.opts,qs=(o.qids||[]).map(bankById).filter(Boolean),who={};g.order.forEach(x=>who[x.pid]=x);
+  app.innerHTML=`<section class="tvs"><header class="tv-top"><button class="icon-btn" id="tvx" aria-label="${t('tvEnd')}">${ic('x')}</button><b class="tv-code" dir="ltr">${NET.code}</b><span class="tv-qn tnum" id="tvqn"></span><button class="icon-btn" id="tvfs" aria-label="${t('tvFull')}">${FS_IC}</button></header><div class="tv-v" id="tvv"></div></section>`;
+  const v=$('#tvv');let key='',raf=0,lastLb=null;
+  const stop=()=>{QZL.subs.delete(onCh);cancelAnimationFrame(raf);if(NET.onTick===onCh)NET.onTick=null};
+  $('#tvfs').onclick=goFull;
+  $('#tvx').onclick=async()=>{if(QZD.st&&QZD.st.ph==='e'){stop();go('lobby',{});return}
+    if(await confirmBox(t('tvEndQ'),t('tvEnd'))){QZD.run++;NET.set({qz:{gid:g.gid,n:qs.length,i:qs.length,ph:'e',lb:lastLb||g.order.map(x=>[x.pid,0,0,0,0])}});stop();go('lobby',{})}};
+  const answered=i=>g.order.filter(x=>{const a=(NET.pres[x.pid]||{}).qa;return a&&a.gid===g.gid&&a.a&&a.a[i]}).length;
+  const optsHtml=(q,i,cls)=>{const opts=qzOpts(g.seed,i,q);return`<div class="tv-opts n${opts.length}">${opts.map((x,k)=>`<div class="tv-opt c${k%4} ${cls?cls(x,k):''}">${QSH[k%4]}<span>${esc(x.txt)}</span><b class="tv-cnt tnum" data-c="${k}"></b></div>`).join('')}</div>`};
+  const nextBtn=`<button class="btn tv-next" id="tvnext">${t('qzNext')} ›</button>`;
+  const bindNext=()=>{const b=$('#tvnext');if(b)b.onclick=()=>{QZD.skip=true}};
+  const onCh=()=>{if(current!=='tv'){stop();return}
+    const st=QZD.st;if(!st||st.gid!==g.gid){if(!st)v.innerHTML=`<div class="tv-center"><b class="tv-big">${t('qzReady')}</b></div>`;return}
+    if(st.lb)lastLb=st.lb;
+    const k=st.ph+':'+st.i;
+    if(k===key){if(st.ph==='q'){const e=$('#tvans');if(e)e.textContent=t('qzAnswered',answered(st.i),g.order.length)}return}
+    key=k;cancelAnimationFrame(raf);const q=qs[st.i];
+    const qn=$('#tvqn');if(qn)qn.textContent=st.ph==='e'?'':t('qOf',st.i+1,st.n);
+    if(st.ph==='p'){sfx('turn');
+      v.innerHTML=`<div class="tv-center">${st.x2?`<span class="qz-x2 tv">${t('qzX2')}</span>`:''}<span class="tv-sub">${t('qOf',st.i+1,st.n)}</span>${qzImg(q,'tv-img')}<h1 class="tv-q">${esc(q.q)}</h1><div class="tv-bar"><i style="animation-duration:3s"></i></div></div>${nextBtn}`;bindNext()}
+    else if(st.ph==='q'){const t0=performance.now();
+      v.innerHTML=`<div class="tv-qrow">${st.x2?`<span class="qz-x2 tv">${t('qzX2')}</span>`:''}<h1 class="tv-q sm">${esc(q.q)}</h1></div>
+        <div class="tv-mid"><b class="tv-clock tnum" id="tvclk">${QZ.T}</b>${qzImg(q,'tv-img')}<div class="tv-ansn"><b class="tnum" id="tvans">${t('qzAnswered',answered(st.i),g.order.length)}</b></div></div>${optsHtml(q,st.i)}${nextBtn}`;bindNext();
+      const tick=()=>{if(key!==k||current!=='tv')return;const el=(performance.now()-t0)/1000,c=$('#tvclk');if(c){const s=Math.max(0,Math.ceil(QZ.T-el));c.textContent=s;c.classList.toggle('low',s<=5)}if(el<QZ.T)raf=requestAnimationFrame(tick)};raf=requestAnimationFrame(tick)}
+    else if(st.ph==='r'){sfx('good');const tot=Math.max(1,(st.cnt||[]).reduce((a,b)=>a+b,0));
+      v.innerHTML=`<div class="tv-qrow"><h1 class="tv-q sm">${esc(q.q)}</h1></div>${optsHtml(q,st.i,(x,j)=>j===st.c?'right':'dim')}<div id="tvlbw"></div>${nextBtn}`;bindNext();
+      $$('.tv-cnt',v).forEach(b=>{const n=(st.cnt||[])[+b.dataset.c]||0;b.textContent=n;b.style.setProperty('--w',Math.round(n/tot*100)+'%')});
+      setTimeout(()=>{if(key!==k||current!=='tv')return;v.innerHTML=`<h2 class="tv-h">${t('qzBoard')}</h2>${qzBoardHtml(st.lb||[],who,null,30).replace('qz-lb','qz-lb tv'+((st.lb||[]).length<=8?' one':''))}${nextBtn}`;bindNext()},2600)}
+    else if(st.ph==='e'){sfx('win');setTimeout(confetti,200);const lb=st.lb||[];
+      v.innerHTML=`<h2 class="tv-h">${t('qzFinal')}</h2><div class="podium tv">${[1,0,2].map(i=>lb[i]?`<div class="pod p${i+1}"><span class="place">${i+1}</span><div class="avatar ${i===0?'':'sm'}">${esc((who[lb[i][0]]||{}).av||'🙂')}</div><b>${esc((who[lb[i][0]]||{}).nm||'?')}</b><span class="tnum">${lb[i][1]}</span></div>`:'<div></div>').join('')}</div>
+        ${qzBoardHtml(lb.map(r=>[r[0],r[1],0,r[3],0]),who,null,30).replace('qz-lb','qz-lb tv'+((st.lb||[]).length<=8?' one':''))}<button class="btn primary tv-next" id="tvagain">${ic('redo')} ${t('qzNewRound')}</button>`;
+      $('#tvagain').onclick=()=>{stop();go('lobby',{})}}};
+  QZL.subs.add(onCh);NET.onTick=onCh;
+  qzDirect(g);onCh();
+};
 
 /* ---------- Speed Sudoku ---------- */
 function sdkOk(b,i,v){const r=(i/9)|0,c=i%9;for(let k=0;k<9;k++){if(b[r*9+k]===v||b[k*9+c]===v)return false}const br=r-r%3,bc=c-c%3;for(let y=0;y<3;y++)for(let x=0;x<3;x++)if(b[(br+y)*9+bc+x]===v)return false;return true}
@@ -1741,7 +2029,7 @@ function finish(o){
   if(!M.solo){order=o.order.slice().sort((a,b)=>b.val-a.val);order.forEach((r,i)=>{r.place=i&&r.val===order[i-1].val?order[i-1].place:i});
     const mine=order.find(r=>r.p.isMe);myPlace=mine.place;tie=order.filter(r=>r.place===0).length>1;win=myPlace===0&&!tie}
   const ranked=M.mode!=='local';
-  let pts;if(M.solo)pts=25*o.perf*M.diff.mult*decay;else pts=[30,15,8,3][myPlace]*(.7+.15*(n-1))*M.diff.mult*decay*(tie&&myPlace===0?.6:1);
+  let pts;if(M.solo)pts=25*o.perf*M.diff.mult*decay;else pts=([30,15,8,3][myPlace]||2)*(.7+.15*(Math.min(n,4)-1))*M.diff.mult*decay*(tie&&myPlace===0?.6:1);
   let xp=Math.round(pts+10*decay);pts=ranked?Math.round(pts):0;
   let dailyBonus=false;if(M.daily&&!profile.daily[day]){profile.daily[day]=true;pts=Math.round(pts*1.5);xp=Math.round(xp*1.5);dailyBonus=true}
   if(profile.lastDay!==day){const y=new Date(Date.now()-864e5).toISOString().slice(0,10);profile.dayStreak=profile.lastDay===y?profile.dayStreak+1:1;profile.lastDay=day}
@@ -1852,7 +2140,7 @@ SCREENS.profile=function(){
   <div class="panel"><div class="stats"><div><b class="tnum">${profile.points}</b><span>${t('pointsL')}</span></div><div><b class="tnum">${profile.matches}</b><span>${t('matches')}</span></div><div><b class="tnum">${profile.wins}</b><span>${t('wins')}</span></div><div><b class="tnum">${wr}%</b><span>${t('winRate')}</span></div></div>
     <div class="stats" style="grid-template-columns:1fr 1fr;margin-top:8px"><div><b class="tnum">#${myRank('local')}</b><span>${t('rankLocal')} ${flag(profile.country)}</span></div><div><b class="tnum">#${myRank('global')}</b><span>${t('rankGlobal')}</span></div></div></div>
   ${fav.length?`<div class="panel"><h3 style="margin-bottom:8px">${t('favGames')}</h3><div class="chips">${fav.map(([g,c])=>`<span class="chip on">${t('g_'+g)} · ${c}</span>`).join('')}</div></div>`:''}
-  ${bests.length?`<div class="panel"><h3 style="margin-bottom:6px">${t('bestScores')}</h3><div class="list">${bests.map(([k,v])=>{const[g,d]=k.split('_');if(!GAME(g))return'';const gd=GAME(g).diffs.find(x=>x.k===d);return`<div class="li"><div class="grow"><b>${t('g_'+g)}</b><span class="small muted">${gd?dlabel(gd):''}</span></div><b class="tnum" style="font-family:var(--f-display);font-size:18px;color:var(--teal)">${fmtBest(g,v)}</b></div>`}).join('')}</div></div>`:''}
+  ${bests.length?`<div class="panel"><h3 style="margin-bottom:6px">${t('bestScores')}</h3><div class="list">${bests.map(([k,v])=>{const[g,d]=k.split('_');if(!GAME(g))return'';const gd=GAME(g).diffs.find(x=>x.k===d);if(!gd)return'';return`<div class="li"><div class="grow"><b>${t('g_'+g)}</b><span class="small muted">${gd?dlabel(gd):''}</span></div><b class="tnum" style="font-family:var(--f-display);font-size:18px;color:var(--teal)">${fmtBest(g,v)}</b></div>`}).join('')}</div></div>`:''}
   <div class="panel"><h3 style="margin-bottom:10px">${t('achievements')} <span class="muted small">${profile.ach.length}/${ACH.length}</span></h3><div class="ach-grid">${ACH.map(([k])=>`<div class="ach ${profile.ach.includes(k)?'on':''}"><span class="medal">★</span><div style="min-width:0"><b>${t('a_'+k)}</b><span>${t('a_'+k+'D')}</span></div></div>`).join('')}</div></div>
   <div class="panel"><h3 style="margin-bottom:6px">${t('history')}</h3><div class="list">${profile.history.slice(0,isPrem()?40:5).map(h=>`<div class="li"><div class="grow"><b>${t('g_'+h.g)}</b><span class="small muted">${t('m_'+h.mode)} · ${h.place==null?esc(h.line||''):t('place',h.place+1)+' / '+h.n} · ${ago(h.at)}</span></div><span class="small tnum" style="color:var(--accent);font-weight:700">+${h.pts}</span></div>`).join('')||`<p class="muted">${t('noHistory')}</p>`}</div>${!isPrem()&&profile.history.length>5?`<button class="btn ghost sm" style="margin-top:8px" data-go="premium">${CROWN} ${t('historyMore')}</button>`:''}</div></div>`;
   $('#ed').onclick=editProfile;
@@ -1864,8 +2152,14 @@ function editProfile(){let av=profile.avatar;modal(`<h3 style="margin-bottom:12p
 /* ----- question manager (open with #admin) ----- */
 const ADM={sb:null,session:null};
 function admClient(){if(!SB_ON()||!window.supabase)return null;if(!ADM.sb)ADM.sb=window.supabase.createClient(ZKC.supabaseUrl,ZKC.supabaseKey,{auth:{persistSession:true,storageKey:'playo_admin_auth'}});return ADM.sb}
+/* images go to the public "qimg" bucket, shrunk to 1000 px so they load fast on phones */
+async function admUpload(file){const sb=admClient();if(!sb||!ADM.session){toast(t('adm_upLogin'));return null}
+  try{const bmp=await createImageBitmap(file),k=Math.min(1,1000/Math.max(bmp.width,bmp.height)),c=document.createElement('canvas');c.width=Math.round(bmp.width*k);c.height=Math.round(bmp.height*k);c.getContext('2d').drawImage(bmp,0,0,c.width,c.height);
+    const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',.85)),name=newQid()+'.jpg';
+    const {error}=await sb.storage.from('qimg').upload(name,blob,{contentType:'image/jpeg',upsert:true});if(error)throw error;
+    return sb.storage.from('qimg').getPublicUrl(name).data.publicUrl}catch(e){toast(t('adm_upFail'));return null}}
 const newQid=()=>'q'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
-const qData=q=>q.kind==='quiz'?{q:q.q,a:q.a,t:q.t}:{q:q.q,a:q.a,f:q.f,alt:q.alt};
+const qData=q=>q.kind==='quiz'?{q:q.q,a:q.a,t:20,img:q.img||'',x2:!!q.x2}:{q:q.q,a:q.a,f:q.f,alt:q.alt};
 async function admSave(list){
   const sb=admClient();
   if(sb&&ADM.session){const rows=list.map(q=>({id:q.id,kind:q.kind,cat:q.cat,data:qData(q),active:true}));
@@ -1878,7 +2172,7 @@ async function admDelete(q){
   if(q.src==='r'){const sb=admClient();if(!sb||!ADM.session)return false;const {error}=await sb.from('questions').update({active:false}).eq('id',q.id);if(error){toast(t('adm_saveFail',error.message));return false}await fetchRemoteBank();return true}
   const loc=store.get('bank_local',{quiz:[],deceit:[]});loc[q.kind]=(loc[q.kind]||[]).filter(x=>x.id!==q.id);store.set('bank_local',loc);loadBank();return true}
 function loadXLSX(){return new Promise((res,rej)=>{if(window.XLSX)return res(window.XLSX);const s=document.createElement('script');s.src=ZKC.xlsxUrl||'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';s.onload=()=>res(window.XLSX);s.onerror=rej;document.head.appendChild(s)})}
-/* Excel layout (see the template): sheet "أسئلة": category, question, correct, wrong 1..3, seconds.
+/* Excel layout (see the template): sheet "أسئلة": category, question, correct, wrong 1..3, image link, double (نعم).
    sheet "خداع": category, question with ____, answer, other accepted answers (comma separated), lie 1..5 */
 function parseWorkbook(X,wb){const out={quiz:[],deceit:[]};
   wb.SheetNames.forEach(name=>{const rows=X.utils.sheet_to_json(wb.Sheets[name],{header:1,defval:''}).map(r=>r.map(c=>qn(c)));if(!rows.length)return;
@@ -1886,7 +2180,7 @@ function parseWorkbook(X,wb){const out={quiz:[],deceit:[]};
     const body=/سؤال|السؤال|question/i.test(head)?rows.slice(1):rows;
     body.forEach(r=>{if(!r[1]||!r[2])return;
       if(isDeceit){const q=mkDeceit(newQid(),r[0],r[1],r[2],r.slice(4,9),r[3]?r[3].split(/[,،]/):[],'l');if(q.f.length>=1)out.deceit.push(q)}
-      else{const q=mkQuiz(newQid(),r[0],r[1],[r[2],r[3],r[4],r[5]],r[6],'l');if(q.a.length>=2)out.quiz.push(q)}})});
+      else{const q=mkQuiz(newQid(),r[0],r[1],[r[2],r[3],r[4],r[5]],20,'l',{img:r[6],x2:/^(نعم|yes|y|x2|×2|2|✓|true)$/i.test(r[7]||'')});if(q.a.length>=2)out.quiz.push(q)}})});
   return out}
 SCREENS.admin=function(p){
   try{store.set('isAdmin',true)}catch(e){}
@@ -1902,12 +2196,14 @@ SCREENS.admin=function(p){
       <div class="panel">${conn}</div>
       <div class="tabs"><button data-tab="quiz" class="${st.tab==='quiz'?'on':''}">${t('adm_quiz')} ${BANK.quiz.length}</button><button data-tab="deceit" class="${st.tab==='deceit'?'on':''}">${t('adm_deceit')} ${BANK.deceit.length}</button></div>
       <div class="row wrap"><button class="btn primary sm" id="adm-add">${ic('plus')} ${t('adm_add')}</button><label class="btn sm" style="cursor:pointer">${t('adm_import')}<input type="file" id="adm-file" accept=".xlsx,.xls,.csv" hidden></label><button class="btn ghost sm" id="adm-exp">${t('adm_export')}</button></div>
+      <div class="panel"><b>${t('adm_cats')}</b><p class="small muted" style="margin:2px 0 8px">${t('adm_catsHint')}</p><div class="chips">${[...new Set([...bankCats('quiz'),...bankCats('deceit')])].map(c=>`<button class="chip ${premCat(c)?'on':''}" data-pc="${esc(c)}">${premCat(c)?CROWN+' ':''}${esc(c)}</button>`).join('')}</div></div>
       <input type="text" id="adm-q" placeholder="${t('adm_search')}" value="${esc(st.q)}">
-      <div class="panel">${shown.map(q=>`<div class="adm-row"><div class="grow"><div class="row" style="gap:6px;margin-bottom:2px"><span class="src ${q.src}">${t('adm_src_'+q.src)}</span><span class="small muted">${esc(q.cat)}</span></div><b>${esc(q.q)}</b><span class="small" style="color:var(--good)">✓ ${esc(Array.isArray(q.a)?q.a[0]:q.a)}</span> <span class="small muted">${esc(q.kind==='quiz'?q.a.slice(1).join(' · '):q.f.join(' · '))}</span></div>${q.src==='b'?'':`<button class="btn sm ghost" data-ed="${q.id}">${t('adm_edit')}</button>`}</div>`).join('')||`<p class="muted">—</p>`}
+      <div class="panel">${shown.map(q=>`<div class="adm-row"><div class="grow"><div class="row" style="gap:6px;margin-bottom:2px"><span class="src ${q.src}">${t('adm_src_'+q.src)}</span><span class="small muted">${esc(q.cat)}${premCat(q.cat)?' 👑':''}</span>${q.img?'<span class="small">🖼</span>':''}${q.x2?'<span class="small" style="color:var(--accent);font-weight:800">×2</span>':''}</div><b>${esc(q.q)}</b><span class="small" style="color:var(--good)">✓ ${esc(Array.isArray(q.a)?q.a[0]:q.a)}</span> <span class="small muted">${esc(q.kind==='quiz'?q.a.slice(1).join(' · '):q.f.join(' · '))}</span></div>${q.src==='b'?'':`<button class="btn sm ghost" data-ed="${q.id}">${t('adm_edit')}</button>`}</div>`).join('')||`<p class="muted">—</p>`}
       ${list.length>shown.length?`<p class="small muted">${t('adm_more',list.length-shown.length)}</p>`:''}</div></div>`;
     $$('[data-tab]').forEach(b=>b.onclick=()=>{st.tab=b.dataset.tab;render()});
     const qi=$('#adm-q');qi.oninput=()=>{st.q=qi.value;clearTimeout(qi._t);qi._t=setTimeout(()=>{render().then(()=>{const n=$('#adm-q');if(n){n.focus();n.setSelectionRange(n.value.length,n.value.length)}})},250)};
     $('#adm-add').onclick=()=>admForm(st.tab,null,render);
+    $$('[data-pc]').forEach(b=>b.onclick=async()=>{const c=b.dataset.pc;if(await setPremCat(c,!premCat(c)))render()});
     $$('[data-ed]').forEach(b=>b.onclick=()=>admForm(st.tab,bankById(b.dataset.ed),render));
     const lf=$('#adm-login');if(lf)lf.onsubmit=async e=>{e.preventDefault();const {data,error}=await sb.auth.signInWithPassword({email:$('#adm-e').value.trim(),password:$('#adm-p').value});if(error){toast(t('adm_badlogin'));return}ADM.session=data.session;render()};
     const lo=$('#adm-out');if(lo)lo.onclick=async()=>{await sb.auth.signOut();ADM.session=null;render()};
@@ -1918,7 +2214,7 @@ SCREENS.admin=function(p){
       catch(err){toast(t('adm_noRows'))}};
     $('#adm-exp').onclick=async()=>{if(NATIVE||!ZKC.linkBase){toast(t('adm_dlFail'));return}
       const X=await loadXLSX();const wb=X.utils.book_new();
-      X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال','الإجابة الصحيحة','خيار خاطئ 1','خيار خاطئ 2','خيار خاطئ 3','الوقت (ثانية)'],...BANK.quiz.filter(q=>q.src!=='b').map(q=>[q.cat,q.q,q.a[0],q.a[1]||'',q.a[2]||'',q.a[3]||'',q.t])]),'أسئلة');
+      X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال','الإجابة الصحيحة','خيار خاطئ 1','خيار خاطئ 2','خيار خاطئ 3','رابط الصورة','نقاط مضاعفة'],...BANK.quiz.filter(q=>q.src!=='b').map(q=>[q.cat,q.q,q.a[0],q.a[1]||'',q.a[2]||'',q.a[3]||'',q.img||'',q.x2?'نعم':''])]),'أسئلة');
       X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال (ضع ____ مكان الإجابة)','الإجابة الصحيحة','إجابات مقبولة أخرى','خداع 1','خداع 2','خداع 3','خداع 4','خداع 5'],...BANK.deceit.filter(q=>q.src!=='b').map(q=>[q.cat,q.q,q.a,(q.alt||[]).join('، '),...q.f.slice(0,5)])]),'خداع');
       X.writeFile(wb,'playo-questions.xlsx')};
   };render();
@@ -1929,7 +2225,9 @@ function admForm(kind,q,done){
   const body=kind==='quiz'?`<label class="field">${t('adm_q')}<textarea id="f-q" maxlength="200">${esc(q.q)}</textarea></label>
     <label class="field">${t('adm_correct')}<input type="text" id="f-a0" maxlength="60" value="${esc(q.a[0]||'')}"></label>
     ${[1,2,3].map(i=>`<label class="field">${t('adm_wrong',i)}<input type="text" id="f-a${i}" maxlength="60" value="${esc(q.a[i]||'')}"></label>`).join('')}
-    <label class="field">${t('adm_time')}<input type="number" id="f-t" min="5" max="90" value="${q.t||20}"></label>`
+    <label class="field">${t('adm_img')}<input type="url" id="f-img" dir="ltr" placeholder="https://…" value="${esc(q.img||'')}"></label>
+    <div class="row wrap" style="gap:8px"><label class="btn sm" style="cursor:pointer">${t('adm_upload')}<input type="file" id="f-up" accept="image/*" hidden></label><img id="f-prev" alt="" style="max-height:60px;border-radius:8px;${q.img?'':'display:none'}" src="${esc(q.img||'')}"></div>
+    <label class="toggle" style="border:0;padding:0"><span>${t('adm_x2')}</span><input type="checkbox" id="f-x2" ${q.x2?'checked':''} style="width:22px;height:22px"></label>`
    :`<label class="field">${t('adm_q')}<textarea id="f-q" maxlength="200" placeholder="${t('adm_dqHint')}">${esc(q.q)}</textarea><span class="small muted" style="font-weight:500">${t('adm_dqHint')}</span></label>
     <label class="field">${t('adm_correct')}<input type="text" id="f-a" maxlength="40" value="${esc(q.a||'')}"></label>
     <label class="field">${t('adm_alt')}<input type="text" id="f-alt" maxlength="200" value="${esc((q.alt||[]).join('، '))}"></label>
@@ -1938,9 +2236,11 @@ function admForm(kind,q,done){
     <label class="field">${t('category')}<input type="text" id="f-cat" list="f-cats" maxlength="30" value="${esc(q.cat)}"><datalist id="f-cats">${cats.map(c=>`<option value="${esc(c)}">`).join('')}</datalist></label>${body}
     <div class="row" style="justify-content:space-between;flex-wrap:wrap">${isNew?'<span></span>':`<button type="button" class="btn ghost sm" id="f-del" style="color:var(--bad)">${t('remove')}</button>`}<div class="row"><button type="button" class="btn ghost" id="f-x">${t('cancel')}</button><button class="btn primary" type="submit">${t('save')}</button></div></div></form>`,(m,close)=>{
     $('#f-x',m).onclick=close;
+    const up=$('#f-up',m);if(up)up.onchange=async e=>{const f=e.target.files[0];if(!f)return;const url=await admUpload(f);if(url){$('#f-img',m).value=url;const pv=$('#f-prev',m);pv.src=url;pv.style.display=''}};
+    const fi=$('#f-img',m);if(fi)fi.oninput=()=>{const pv=$('#f-prev',m);pv.src=fi.value;pv.style.display=fi.value?'':'none'};
     const del=$('#f-del',m);if(del)del.onclick=async()=>{close();if(await confirmBox(t('adm_delQ'),t('remove'))&&await admDelete(q)){toast(t('adm_deleted'));done()}};
     $('#qf',m).onsubmit=async e=>{e.preventDefault();if(q.src==='r'&&!ADM.session){toast(t('adm_login'));return}const cat=$('#f-cat',m).value;let nq;
-      if(kind==='quiz'){nq=mkQuiz(q.id,cat,$('#f-q',m).value,[0,1,2,3].map(i=>$('#f-a'+i,m).value),$('#f-t',m).value,q.src);if(!nq.q||!qn($('#f-a0',m).value)||nq.a.length<2){toast(t('adm_needOpts'));return}}
+      if(kind==='quiz'){nq=mkQuiz(q.id,cat,$('#f-q',m).value,[0,1,2,3].map(i=>$('#f-a'+i,m).value),20,q.src,{img:$('#f-img',m).value,x2:$('#f-x2',m).checked});if(!nq.q||!qn($('#f-a0',m).value)||nq.a.length<2){toast(t('adm_needOpts'));return}}
       else{nq=mkDeceit(q.id,cat,$('#f-q',m).value,$('#f-a',m).value,$('#f-f',m).value.split('\n'),$('#f-alt',m).value.split(/[,،]/),q.src);if(!nq.q||!nq.a||nq.f.length<3){toast(t('adm_needFakes'));return}}
       if(await admSave([nq])){close();toast(t('adm_saved'));done()}}})}
 

@@ -4,6 +4,7 @@ window.ZK_CONFIG = {
   supabaseKey: '__SUPABASE_ANON_KEY__',
   linkBase: 'https://bassemt10.github.io/playo-app/',
   xlsxUrl: 'xlsx.js',
+  qrUrl: 'qrcode.js',
   // Subscriptions (RevenueCat public SDK keys, one per store) and the entitlement that unlocks Premium
   rcKeys: { android: '__RC_ANDROID_KEY__', ios: '__RC_IOS_KEY__' },
   entitlement: 'premium',
