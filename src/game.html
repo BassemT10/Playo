@@ -1,4 +1,4 @@
-<title>Zakira Memory Games</title>
+<title>Playo</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -314,6 +314,65 @@ table.lb tr:last-child td{border-bottom:0}
 .onb-hero{text-align:center;padding:20px 0 6px}
 .onb-hero .logo{width:76px;height:76px}
 .onb-hero h1{font-size:40px;margin-top:6px}
+/* hub sections */
+.hub{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.hub-card{--tint:var(--teal);border:0;border-radius:20px;padding:12px;cursor:pointer;text-align:start;background:color-mix(in srgb,var(--tint) 18%,var(--surface));display:flex;flex-direction:column;gap:6px;box-shadow:0 3px 0 #0A1120;transition:transform .15s}
+.hub-card:hover{transform:translateY(-2px)}
+.hub-card .art{border-radius:14px;background:color-mix(in srgb,var(--tint) 24%,var(--bg2));aspect-ratio:3/2;display:grid;place-items:center;overflow:hidden}
+.hub-card .art svg{width:100%;height:100%}
+.hub-card b{font-family:var(--f-display);font-size:18px;line-height:1.2}
+.hub-card span{font-size:12px;color:var(--muted);line-height:1.35}
+.sec-h{margin:16px 2px 8px}
+/* quiz */
+.qcard{background:var(--surface);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.qtimer{height:8px;border-radius:5px;background:var(--surface2);overflow:hidden}
+.qtimer i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--accent),var(--teal));border-radius:5px}
+.qtext{font-family:var(--f-display);font-size:clamp(19px,5.4vw,26px);line-height:1.35;text-align:center;text-wrap:balance;min-height:2.8em;display:grid;place-items:center;margin:0}
+.qopts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.qopt{border:0;border-radius:16px;padding:14px 12px;min-height:76px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;color:#fff;cursor:pointer;text-align:start;box-shadow:inset 0 -5px 0 rgba(0,0,0,.25);transition:opacity .2s,transform .15s}
+.qopt span:last-child{min-width:0;overflow-wrap:anywhere}
+.qopt.c0{background:#E5484D}.qopt.c1{background:#3E7BFA}.qopt.c2{background:#C99400}.qopt.c3{background:#1FA463}
+.qshape{width:24px;height:24px;flex:none}
+.qopt.dim{opacity:.28}.qopt.wrong{opacity:.6;outline:3px dashed #fff;outline-offset:-5px}.qopt.right{transform:scale(1.03);box-shadow:0 0 0 4px #fff}
+/* sudoku */
+.sdk{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));width:100%;max-width:440px;margin:0 auto;border:2.5px solid var(--fg);border-radius:10px;overflow:hidden;background:var(--surface)}
+.sdk button{aspect-ratio:1;border:0;border-inline-end:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface);color:var(--teal);font-family:var(--f-display);font-weight:700;font-size:clamp(16px,5.2vw,25px);padding:0;cursor:pointer;font-variant-numeric:tabular-nums;line-height:1}
+.sdk button.giv{color:var(--fg)}
+.sdk button.b3{border-inline-end:2.5px solid var(--fg)}.sdk button.r3{border-bottom:2.5px solid var(--fg)}
+.sdk button.c8{border-inline-end:0}.sdk button.r8{border-bottom:0}
+.sdk button.hl{background:var(--surface2)}.sdk button.same{background:color-mix(in srgb,var(--accent) 22%,var(--surface))}
+.sdk button.sel{background:color-mix(in srgb,var(--accent) 48%,var(--surface))}
+.sdk button.err{color:#fff;background:var(--bad)}
+.pad9{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;width:100%;max-width:440px;margin:0 auto}
+.pad9 button{border:0;border-radius:12px;background:var(--surface2);font-family:var(--f-display);font-size:22px;font-weight:800;padding:6px 0;cursor:pointer;box-shadow:inset 0 -4px 0 rgba(0,0,0,.25);line-height:1.1}
+.pad9 button:disabled{opacity:.25;cursor:default}
+.pad9 button small{display:block;font-size:10px;color:var(--muted);font-weight:500;font-family:var(--f-body)}
+/* deception */
+.dq{font-family:var(--f-display);font-size:clamp(19px,5.4vw,25px);line-height:1.45;text-align:center;text-wrap:balance;margin:0}
+.dq mark{background:none;color:var(--accent);border-bottom:3px dashed var(--accent);padding:0 .5em}
+.dopts{display:flex;flex-direction:column;gap:8px}
+.dopt{border:2px solid var(--line);background:var(--surface);border-radius:14px;padding:12px 14px;font-weight:700;font-size:16px;text-align:start;cursor:pointer;display:flex;flex-direction:column;gap:6px;color:var(--fg)}
+.dopt:disabled{cursor:default}
+.dopt.mine{opacity:.5}
+.dopt.picked{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 14%,var(--surface))}
+.dopt.truth{border-color:var(--good);background:color-mix(in srgb,var(--good) 16%,var(--surface))}
+.dopt .who{display:flex;flex-wrap:wrap;gap:8px;font-size:12px;font-weight:500;color:var(--muted);align-items:center}
+.dopt .tag{font-size:11px;font-weight:700;border-radius:999px;padding:1px 8px;background:var(--surface2);color:var(--fg)}
+.dopt.truth .tag{background:var(--good);color:#0E1626}
+.wbox{display:flex;gap:8px}
+.wbox input{flex:1;min-width:0}
+/* question manager */
+.adm-row{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.adm-row:last-child{border-bottom:0}
+.adm-row .grow{flex:1;min-width:0}
+.adm-row .grow b{display:block;font-weight:700;overflow-wrap:anywhere}
+.adm-row .grow span{overflow-wrap:anywhere}
+.src{font-size:10px;font-weight:700;border-radius:6px;padding:1px 6px;background:var(--surface2);color:var(--muted);white-space:nowrap}
+.src.r{background:color-mix(in srgb,var(--good) 30%,var(--surface2));color:var(--fg)}
+.src.l{background:color-mix(in srgb,var(--accent) 30%,var(--surface2));color:var(--fg)}
+textarea{font:inherit;font-weight:500;background:var(--bg2);color:var(--fg);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;width:100%;min-height:84px;resize:vertical}
+input[type=number],input[type=email],input[type=password]{font:inherit;font-weight:500;background:var(--bg2);color:var(--fg);border:1.5px solid var(--line);border-radius:12px;padding:11px 12px;width:100%}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 
@@ -360,7 +419,7 @@ const L=()=>settings.lang==='en'?1:0;
 
 /* ========= i18n ========= */
 const STR={
-app:['ذاكِرة','Zakira'],tagline:['ألعاب الذاكرة والتركيز','Memory & focus games'],
+app:['Playo','Playo'],tagline:['ذاكرة، أسئلة، سودوكو وخداع','Memory, quiz, sudoku & deception'],
 play:['العب الآن','Play now'],games:['الألعاب','Games'],allGames:['كل الألعاب','All games'],
 friends:['الأصدقاء','Friends'],playFriends:['مع الأصدقاء','With friends'],playFriendsD:['أنشئ غرفة وادعُ حتى 3','Make a room, invite up to 3'],
 playOnline:['أونلاين','Online'],playOnlineD:['لاعبون من كل مكان','Players from anywhere'],
@@ -494,6 +553,32 @@ iosSoon:['آيفون: النسخة تصل عبر TestFlight قريباً. حتى
 shareRoom:['مشاركة','Share'],
 noNet:['تعذّر الاتصال بخادم اللعب. تأكد من الإنترنت وحاول مرة أخرى. يمكنك الآن التجربة مع لاعبين افتراضيين.','Could not reach the game server. Check your internet and try again. You can try with virtual players for now.'],
 liveNoteApp:['أرسل الرابط لأصدقائك: من لديه التطبيق يفتحه، ومن لا يملكه يلعب فوراً من المتصفح.','Send the link: friends with the app open it there, others play instantly in their browser.'],
+sections:['الأقسام','Sections'],
+sec_memory:['ذاكرة','Memory'],sec_memoryD:['ألعاب تقوّي الذاكرة والتركيز','Games that train memory and focus'],
+sec_quiz:['أسئلة','Quiz'],sec_quizD:['أجب أسرع لتجمع نقاطاً أكثر','Answer faster, score more'],
+sec_sudoku:['سودوكو الأسرع','Speed Sudoku'],sec_sudokuD:['من يحلّها أولاً؟','Who solves it first?'],
+sec_deceit:['خداع','Deception'],sec_deceitD:['اكتشف الحقيقة واخدع أصدقاءك','Spot the truth, fool your friends'],
+g_quiz:['أسئلة','Quiz'],g_quizD:['أسئلة بخيارات، والأسرع يكسب أكثر.','Multiple choice; faster answers earn more.'],
+g_sudoku:['سودوكو الأسرع','Speed Sudoku'],g_sudokuD:['نفس اللوحة للجميع، والأسرع يفوز.','Same board for everyone; fastest wins.'],
+g_deceit:['خداع','Deception'],g_deceitD:['اكتب كذبة مقنعة واكتشف الحقيقة.','Write a convincing lie, find the truth.'],
+r_quiz:[['يظهر السؤال مع 2 إلى 4 خيارات ووقت محدد.','الإجابة الصحيحة تمنح حتى 1000 نقطة، وكلما أسرعت زادت.','الإجابات الصحيحة المتتالية تضيف مكافأة سلسلة.','مع الأصدقاء: نفس الأسئلة للجميع، وكل لاعب يحسب لنفسه.'],['Each question has 2 to 4 options and a time limit.','A correct answer gives up to 1000 points; faster earns more.','Correct answers in a row add a streak bonus.','With friends: everyone gets the same questions and scores alone.']],
+r_sudoku:[['املأ الشبكة بحيث يحتوي كل صف وعمود ومربع 3×3 على الأرقام من 1 إلى 9.','اختر خانة ثم رقماً.','كل خطأ يضيف 15 ثانية إلى وقتك.','مع الأصدقاء: نفس اللوحة للجميع، وأقل وقت يفوز.'],['Fill the grid so every row, column and 3×3 box holds 1 to 9.','Pick a cell, then a number.','Each mistake adds 15 seconds to your time.','With friends: same board for all; lowest time wins.']],
+r_deceit:[['يظهر سؤال بإجابة غريبة لكنها حقيقية.','مع الأصدقاء: يكتب كل لاعب إجابة مخادعة، ثم تظهر كل الإجابات مختلطة مع الحقيقة.','اختيار الحقيقة = 1000 نقطة، وكل لاعب تخدعه = 500 نقطة.','وحدك: اكتشف الحقيقة بين إجابات مخادعة جاهزة.'],['A question with a strange but true answer.','With friends: each player writes a fake answer, then all answers appear mixed with the truth.','Picking the truth = 1000 points; each player you fool = 500.','Solo: find the truth among ready-made fake answers.']],
+nQ:['{0} أسئلة','{0} questions'],nRounds:['{0} جولات','{0} rounds'],category:['الفئة','Category'],allCats:['الكل','All'],
+qOf:['سؤال {0} من {1}','Question {0} of {1}'],qRight:['صحيح! +{0} {1}','Correct! +{0} {1}'],streakN:['سلسلة ×{0}','streak ×{0}'],qWrong:['خطأ','Wrong'],qTimeout:['انتهى الوقت','Time is up'],correctN:['{0} صحيحة','{0} correct'],
+sdkMist:['أخطاء {0}','Mistakes {0}'],erase:['مسح','Erase'],sdkGen:['نجهّز اللوحة…','Preparing the board…'],sdkLeft:['متبقٍ {0} خانة','{0} cells left'],
+dcWrite:['اكتب إجابة مخادعة تقنع بها الآخرين','Write a fake answer to fool the others'],dcWritePh:['إجابتك المخادعة','Your fake answer'],dcSend:['إرسال','Submit'],dcTooTrue:['هذه هي الإجابة الصحيحة تقريباً! اكتب كذبة أخرى','That is basically the real answer! Write another lie'],
+dcPick:['أيّ إجابة هي الحقيقية؟','Which answer is the truth?'],dcYours:['إجابتك','Yours'],dcWaiting:['بانتظار: {0}','Waiting for: {0}'],dcTruth:['الحقيقة','The truth'],dcBy:['خداع {0}','{0}\'s lie'],
+dcFooled:['خدعت {0}! +{1}','You fooled {0}! +{1}'],dcGotTruth:['اكتشفت الحقيقة! +{0}','You found the truth! +{0}'],dcGotFooled:['خدعك {0}','{0} fooled you'],dcRound:['جولة {0} من {1}','Round {0} of {1}'],dcHostLeft:['انقطع المضيف، انتهت المباراة','The host disconnected; the match ended'],dcSoloPick:['اختر الإجابة الحقيقية','Pick the real answer'],dcBank:['خداع جاهز','Ready-made lie'],dcNoPick:['لم تختر','No pick'],
+missingQ:['أسئلة هذه المباراة غير موجودة على جهازك. حدّث التطبيق.','This match\'s questions are missing on your device. Update the app.'],noQ:['لا توجد أسئلة كافية في هذه الفئة','Not enough questions in this category'],
+admin:['إدارة الأسئلة','Question manager'],adm_quiz:['أسئلة','Quiz'],adm_deceit:['خداع','Deception'],adm_add:['إضافة','Add'],adm_import:['استيراد Excel','Import Excel'],adm_export:['تصدير Excel','Export Excel'],adm_search:['بحث في الأسئلة','Search questions'],
+adm_src_b:['مثال مدمج','Built-in sample'],adm_src_r:['الخادم','Server'],adm_src_l:['هذا الجهاز','This device'],adm_q:['السؤال','Question'],adm_correct:['الإجابة الصحيحة','Correct answer'],adm_wrong:['خيار خاطئ {0}','Wrong option {0}'],adm_time:['الوقت (ثانية)','Time (seconds)'],
+adm_alt:['إجابات صحيحة أخرى مقبولة (افصل بينها بفاصلة)','Other accepted answers (comma separated)'],adm_fakes:['إجابات خداع جاهزة (واحدة في كل سطر، 3 على الأقل)','Ready fake answers (one per line, at least 3)'],adm_dqHint:['ضع ____ مكان الإجابة داخل السؤال','Put ____ where the answer goes'],
+adm_saved:['تم الحفظ','Saved'],adm_deleted:['تم الحذف','Deleted'],adm_delQ:['حذف هذا السؤال؟','Delete this question?'],adm_where_l:['ما تضيفه هنا يُحفظ على هذا الجهاز فقط ويظهر في لعبك الفردي. بعد ربط الخادم يصل لكل اللاعبين.','What you add here is saved on this device only and appears in your solo games. Once the server is connected it reaches all players.'],adm_where_r:['متصل بالخادم: ما تحفظه يصل لكل اللاعبين.','Connected to the server: what you save reaches every player.'],
+adm_login:['سجّل دخول المدير لنشر الأسئلة لكل اللاعبين','Sign in as admin to publish questions to all players'],adm_email:['البريد','Email'],adm_pass:['كلمة المرور','Password'],adm_signin:['دخول','Sign in'],adm_signout:['خروج','Sign out'],adm_badlogin:['تعذّر الدخول، تحقق من البريد وكلمة المرور','Sign-in failed; check email and password'],
+adm_imported:['تم استيراد {0} سؤالاً','{0} questions imported'],adm_preview:['وجدنا {0} سؤال أسئلة و{1} سؤال خداع. استيرادها؟','Found {0} quiz and {1} deception questions. Import them?'],adm_noRows:['لم نجد أسئلة في الملف. استخدم نموذج Excel.','No questions found. Use the Excel template.'],
+adm_needOpts:['أكمل السؤال والإجابة وخياراً خاطئاً واحداً على الأقل','Fill in the question, the answer and at least one wrong option'],adm_needFakes:['أكمل السؤال والإجابة و3 إجابات خداع','Fill in the question, the answer and 3 fake answers'],adm_readonly:['الأمثلة المدمجة للقراءة فقط','Built-in samples are read-only'],
+adm_saveFail:['تعذّر الحفظ على الخادم: {0}','Could not save to the server: {0}'],adm_edit:['تعديل','Edit'],adm_dlFail:['التصدير متاح في نسخة المتصفح على الكمبيوتر','Export works in the web version on a computer'],adm_loading:['جارٍ قراءة الملف…','Reading the file…'],adm_more:['و{0} أخرى… استخدم البحث','and {0} more… use search'],
 };
 function t(k,...a){const v=STR[k];let s=v?(v[L()]??v[0]):k;if(typeof s==='string')a.forEach((x,i)=>{s=s.split('{'+i+'}').join(x)});return s}
 
@@ -543,7 +628,11 @@ vanish:`<svg viewBox="0 0 120 80"><circle cx="42" cy="40" r="13" fill="#FF7A93"/
 shapes:`<svg viewBox="0 0 120 80"><path d="M30 52l12-22 12 22z" fill="#35D07F"/><rect x="52" y="30" width="20" height="22" rx="3" fill="#4C8DFF"/><circle cx="88" cy="41" r="11" fill="#FFD23F"/></svg>`,
 words:`<svg viewBox="0 0 120 80"><rect x="22" y="20" width="76" height="11" rx="5.5" fill="#B47CFF"/><rect x="22" y="36" width="52" height="11" rx="5.5" fill="#1F2E4D"/><rect x="22" y="52" width="64" height="11" rx="5.5" fill="#1F2E4D"/></svg>`,
 };
-const TINT={stones:'var(--c-violet)',numbers:'var(--teal)',pairs:'var(--c-red)',drawing:'var(--c-yellow)',sequence:'var(--c-green)',locations:'var(--c-blue)',vanish:'var(--c-red)',shapes:'var(--c-green)',words:'var(--c-violet)'};
+ART.quiz=`<svg viewBox="0 0 120 80"><rect x="22" y="12" width="36" height="26" rx="6" fill="#E5484D"/><path d="M40 18l8 14H32z" fill="#fff"/><rect x="62" y="12" width="36" height="26" rx="6" fill="#3E7BFA"/><path d="M80 17l8 8-8 8-8-8z" fill="#fff"/><rect x="22" y="42" width="36" height="26" rx="6" fill="#D9A100"/><circle cx="40" cy="55" r="7" fill="#fff"/><rect x="62" y="42" width="36" height="26" rx="6" fill="#1FA463"/><rect x="74" y="49" width="12" height="12" rx="2" fill="#fff"/></svg>`;
+ART.sudoku=`<svg viewBox="0 0 120 80" font-family="Baloo Bhaijaan 2,sans-serif" font-weight="800" font-size="11" text-anchor="middle"><rect x="31" y="7" width="58" height="66" rx="8" fill="#17223A"/>${[0,1,2].flatMap(r=>[0,1,2].map(c=>`<rect x="${35+c*17}" y="${11+r*20}" width="16" height="19" rx="3" fill="${(r+c)%2?'#1F2E4D':'#25365A'}"/>`)).join('')}${[[0,0,'5'],[1,1,'3'],[2,0,'8'],[0,2,'1'],[2,2,'9'],[1,0,'7']].map(([r,c,n])=>`<text x="${43+c*17}" y="${24+r*20}" fill="${n==='3'?'#FFB547':'#F4F1E8'}">${n}</text>`).join('')}<circle cx="96" cy="62" r="11" fill="#FFB547"/><path d="M96 56v6l4 3" stroke="#2B1900" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>`;
+ART.deceit=`<svg viewBox="0 0 120 80"><path d="M28 30c0-10 14-14 32-14s32 4 32 14c0 14-14 26-32 26S28 44 28 30z" fill="#B47CFF"/><path d="M38 30c3-4 9-4 12 0-3 3-9 3-12 0zM70 30c3-4 9-4 12 0-3 3-9 3-12 0z" fill="#0E1626"/><path d="M48 44c8 5 16 5 24 0" stroke="#0E1626" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="74" y="50" width="30" height="20" rx="6" fill="#FFB547"/><text x="89" y="65" font-size="14" text-anchor="middle" font-weight="800" fill="#2B1900">?</text></svg>`;
+ART.memory=ART.pairs;
+const TINT={quiz:'var(--c-blue)',sudoku:'var(--teal)',deceit:'var(--c-violet)',memory:'var(--c-red)',stones:'var(--c-violet)',numbers:'var(--teal)',pairs:'var(--c-red)',drawing:'var(--c-yellow)',sequence:'var(--c-green)',locations:'var(--c-blue)',vanish:'var(--c-red)',shapes:'var(--c-green)',words:'var(--c-violet)'};
 
 /* drawing shapes (100x100) */
 function starPath(){let s='';for(let i=0;i<10;i++){const r=i%2?16:38,a=-Math.PI/2+i*Math.PI/5;s+=(i?'L':'M')+(50+r*Math.cos(a)).toFixed(1)+' '+(53+r*Math.sin(a)).toFixed(1)}return s+'Z'}
@@ -559,8 +648,82 @@ const GAMES=[
 {id:'drawing',ready:true,def:0,diffs:[{k:'d12',lbl:['nDraw',12],n:12,cols:4,rows:4,view:25,mult:1},{k:'d15',lbl:['nDraw',15],n:15,cols:5,rows:4,view:30,mult:1.3},{k:'d20',lbl:['nDraw',20],n:20,cols:5,rows:5,view:35,mult:1.7}],run:()=>gDrawing()},
 {id:'sequence',ready:true,def:1,diffs:[{k:'easy',lbl:'d_easy',speed:720,mult:1},{k:'normal',lbl:'d_normal',speed:540,mult:1.3},{k:'hard',lbl:'d_hard',speed:400,mult:1.6}],run:()=>gSequence(false)},
 {id:'locations',ready:true,def:1,diffs:[{k:'g3',lbl:['nGrid','3×3'],grid:3,mult:1},{k:'g4',lbl:['nGrid','4×4'],grid:4,mult:1.3},{k:'g5',lbl:['nGrid','5×5'],grid:5,mult:1.6}],run:()=>gSequence(true)},
-{id:'vanish',ready:false},{id:'shapes',ready:false},{id:'words',ready:false}];
+{id:'vanish',ready:false},{id:'shapes',ready:false},{id:'words',ready:false}].map(g=>({sec:'memory',...g}));
+const SOLO_MODES=['solo','friends','online'];
+GAMES.push(
+{id:'quiz',sec:'quiz',ready:true,def:1,modes:SOLO_MODES,diffs:[{k:'n5',lbl:['nQ',5],n:5,tf:1.25,mult:.7},{k:'n10',lbl:['nQ',10],n:10,tf:1,mult:1},{k:'n15',lbl:['nQ',15],n:15,tf:.8,mult:1.3}],run:()=>gQuiz()},
+{id:'sudoku',sec:'sudoku',ready:true,def:0,modes:SOLO_MODES,lower:true,diffs:[{k:'easy',lbl:'d_easy',holes:36,target:300,mult:1},{k:'normal',lbl:'d_normal',holes:46,target:480,mult:1.4},{k:'hard',lbl:'d_hard',holes:54,target:720,mult:1.8}],run:()=>gSudoku()},
+{id:'deceit',sec:'deceit',ready:true,def:1,modes:SOLO_MODES,diffs:[{k:'r5',lbl:['nRounds',5],n:5,mult:1},{k:'r7',lbl:['nRounds',7],n:7,mult:1.2},{k:'r10',lbl:['nRounds',10],n:10,mult:1.4}],run:()=>gDeceit()});
+const SECTIONS=['memory','quiz','sudoku','deceit'];
 const GAME=id=>GAMES.find(g=>g.id===id);
+const fmtTime=s=>{s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
+const PCT_GAMES=['drawing','stones','numbers','pairs'];
+function fmtBest(gid,v){if(v==null)return '–';if(gid==='sudoku')return fmtTime(v);return v+(PCT_GAMES.includes(gid)?'%':'')}
+
+/* ========= question bank =========
+   Built-in samples ship with the game; the owner adds real questions in the question manager
+   (#admin): saved to the server when connected, otherwise on this device. */
+const BUILTIN_QUIZ=[
+['عام','كم عدد ألوان قوس قزح؟','7','5','6','8'],['جغرافيا','ما عاصمة اليابان؟','طوكيو','أوساكا','كيوتو','سيول'],
+['جغرافيا','ما أكبر قارة في العالم؟','آسيا','أفريقيا','أمريكا الشمالية','أوروبا'],['عام','كم عدد أيام السنة الكبيسة؟','366','365','364','360'],
+['علوم','ما الغاز الذي تمتصه النباتات في عملية البناء الضوئي؟','ثاني أكسيد الكربون','الأكسجين','النيتروجين','الهيدروجين'],['علوم','ما أسرع حيوان بري؟','الفهد','الأسد','الحصان','الغزال'],
+['رياضة','كم عدد لاعبي فريق كرة القدم داخل الملعب؟','11','10','9','12'],['تاريخ','في أي دولة تقع أهرامات الجيزة؟','مصر','السودان','المغرب','العراق'],
+['علوم','ما أكبر كوكب في المجموعة الشمسية؟','المشتري','زحل','الأرض','نبتون'],['عام','ما العملة الرسمية في اليابان؟','الين','اليوان','الوون','الروبية'],
+['جغرافيا','كم عدد قارات العالم؟','7','5','6','8'],['جغرافيا','ما أعلى جبل في العالم؟','إيفرست','كليمنجارو','مون بلان','كي 2'],
+['عام','ما الحيوان الملقّب بسفينة الصحراء؟','الجمل','الحصان','الفيل','الحمار'],['جغرافيا','ما عاصمة لبنان؟','بيروت','طرابلس','صيدا','جبيل'],
+['جغرافيا','ما عاصمة كندا؟','أوتاوا','تورنتو','مونتريال','فانكوفر'],['علوم','ما المعدن الذي يكون سائلاً في درجة حرارة الغرفة؟','الزئبق','الحديد','الألمنيوم','النحاس'],
+['علوم','ما الكوكب الملقّب بالكوكب الأحمر؟','المريخ','الزهرة','المشتري','عطارد'],['فن','من رسم لوحة الموناليزا؟','ليوناردو دافنشي','بابلو بيكاسو','فان غوخ','مايكل أنجلو'],
+['تاريخ','في أي عام هبط الإنسان على القمر لأول مرة؟','1969','1959','1975','1981'],['رياضيات','كم عدد أضلاع المسدس؟','6','5','7','8'],
+['رياضة','من فاز بكأس العالم لكرة القدم 2022؟','الأرجنتين','فرنسا','البرازيل','كرواتيا'],['رياضة','أين أقيمت كأس العالم لكرة القدم 2022؟','قطر','روسيا','البرازيل','السعودية'],
+['جغرافيا','ما العاصمة التي يمر بها نهر السين؟','باريس','لندن','روما','فيينا'],['رياضيات','ما أصغر عدد أولي؟','2','1','3','0'],
+['رياضيات','ما ناتج 7 × 8؟','56','54','63','48'],['جغرافيا','ما أكبر صحراء حارة في العالم؟','الصحراء الكبرى','الربع الخالي','صحراء غوبي','صحراء كالاهاري'],
+['علوم','أي عضو يضخ الدم في الجسم؟','القلب','الرئة','الكبد','الكلية'],['رياضة','كم عدد لاعبي فريق كرة السلة داخل الملعب؟','5','6','7','4'],
+['علوم','ما أكبر حيوان في العالم؟','الحوت الأزرق','الفيل الأفريقي','القرش الأبيض','الزرافة'],['جغرافيا','ما عاصمة المغرب؟','الرباط','الدار البيضاء','مراكش','فاس'],
+['جغرافيا','ما عاصمة السعودية؟','الرياض','جدة','مكة المكرمة','الدمام'],['علوم','كم عدد أرجل الحشرة؟','6','8','4','10'],
+['علوم','عند كم درجة مئوية يغلي الماء عند مستوى سطح البحر؟','100','90','80','120'],['علوم','الشمس نجم.','صح','خطأ'],
+['جغرافيا','أستراليا قارة ودولة في الوقت نفسه.','صح','خطأ'],['علوم','الخفاش من الطيور.','خطأ','صح']];
+const BUILTIN_DECEIT=[
+['حيوانات','عدد قلوب الأخطبوط ____.','ثلاثة','اثنان|خمسة|تسعة|ستة','3|ثلاث'],['جغرافيا','عاصمة أستراليا هي ____.','كانبرا','سيدني|ملبورن|بيرث|بريزبن',''],
+['حيوانات','لون دم الأخطبوط ____.','أزرق','أخضر|أصفر|شفاف|بنفسجي','الأزرق'],['علوم','الكوكب الأقرب إلى الشمس هو ____.','عطارد','الزهرة|المريخ|بلوتو|المشتري',''],
+['علوم','عدد عظام جسم الإنسان البالغ ____.','206','212|198|300|180','مئتان وستة'],['حيوانات','الحيوان البري صاحب أكبر عين هو ____.','النعامة','البومة|الزرافة|الحصان|الفيل',''],
+['علوم','يُصنع الزجاج أساساً من ____.','الرمل','الملح|الحجر الجيري|الطين|الصدف',''],['حيوانات','عدد أرجل العنكبوت ____.','ثمانية','ستة|عشرة|اثنا عشر|أربعة','8|ثمان'],
+['طعام','الفاكهة التي تظهر بذورها على سطحها الخارجي هي ____.','الفراولة','الكيوي|التين|الرمان|الجوافة','الفريز'],['علوم','العنصر الكيميائي الذي رمزه Fe هو ____.','الحديد','الفلور|الفضة|الفوسفور|الفرانسيوم',''],
+['تاريخ','أول إنسان مشى على سطح القمر هو ____.','نيل أرمسترونغ','يوري غاغارين|باز ألدرين|جون غلين|مايكل كولينز','أرمسترونغ|ارمسترونج|نيل ارمسترونج'],['جغرافيا','اللغة الرسمية في البرازيل هي ____.','البرتغالية','الإسبانية|الإنجليزية|الفرنسية|الإيطالية',''],
+['طعام','سُمّي الهامبرغر نسبة إلى مدينة ____.','هامبورغ','فرانكفورت|ميونخ|برلين|كولونيا','هامبورج'],['علوم','عدد الأسنان الدائمة عند الإنسان البالغ ____.','32','28|30|36|24','اثنان وثلاثون'],
+['جغرافيا','أكبر محيط في العالم هو المحيط ____.','الهادئ','الأطلسي|الهندي|المتجمد الشمالي|الجنوبي','الهادي|الباسيفيكي']];
+const qn=s=>String(s==null?'':s).trim();
+function mkQuiz(id,cat,q,opts,tm,src){return{id,kind:'quiz',cat:qn(cat)||'عام',q:qn(q),a:(opts||[]).map(qn).filter(Boolean),t:Math.min(90,Math.max(5,+tm||20)),src}}
+function mkDeceit(id,cat,q,a,fakes,alt,src){return{id,kind:'deceit',cat:qn(cat)||'عام',q:qn(q),a:qn(a),f:(fakes||[]).map(qn).filter(Boolean),alt:(alt||[]).map(qn).filter(Boolean),src}}
+const BANK={quiz:[],deceit:[]};
+function loadBank(){
+  const loc=store.get('bank_local',{quiz:[],deceit:[]}),rem=store.get('bank_remote',{quiz:[],deceit:[]});
+  BANK.quiz=[...BUILTIN_QUIZ.map((r,i)=>mkQuiz('bq'+(i+1),r[0],r[1],r.slice(2),20,'b')),...(rem.quiz||[]).map(x=>({...x,src:'r'})),...(loc.quiz||[]).map(x=>({...x,src:'l'}))];
+  BANK.deceit=[...BUILTIN_DECEIT.map((r,i)=>mkDeceit('bd'+(i+1),r[0],r[1],r[2],r[3].split('|'),r[4]?r[4].split('|'):[],'b')),...(rem.deceit||[]).map(x=>({...x,src:'r'})),...(loc.deceit||[]).map(x=>({...x,src:'l'}))];
+}
+loadBank();
+const SB_ON=()=>!!(ZKC.supabaseUrl&&ZKC.supabaseUrl.indexOf('__')!==0);
+async function fetchRemoteBank(){if(!SB_ON())return false;
+  try{const r=await fetch(ZKC.supabaseUrl+'/rest/v1/questions?select=id,kind,cat,data&active=eq.true&limit=10000',{headers:{apikey:ZKC.supabaseKey,Authorization:'Bearer '+ZKC.supabaseKey}});
+    if(!r.ok)return false;const rows=await r.json();const out={quiz:[],deceit:[]};
+    rows.forEach(x=>{const d=x.data||{};if(x.kind==='quiz')out.quiz.push(mkQuiz(x.id,x.cat,d.q,d.a,d.t,'r'));else if(x.kind==='deceit')out.deceit.push(mkDeceit(x.id,x.cat,d.q,d.a,d.f,d.alt,'r'))});
+    store.set('bank_remote',out);loadBank();return true}catch(e){return false}}
+fetchRemoteBank();
+const bankCats=kind=>[...new Set(BANK[kind].map(q=>q.cat))];
+const bankById=id=>BANK.quiz.find(q=>q.id===id)||BANK.deceit.find(q=>q.id===id);
+const usableQ=(kind,q)=>kind==='quiz'?q.q&&q.a.length>=2:q.q&&q.a&&q.f.length>=1;
+function pickQuestions(kind,n,cat,shareable){
+  const pool=BANK[kind].filter(q=>usableQ(kind,q)&&(!cat||cat==='all'||q.cat===cat)&&(!shareable||q.src!=='l'));
+  const seen=new Set(store.get('seen_'+kind,[]));
+  const out=shuffle(pool.filter(q=>!seen.has(q.id))).concat(shuffle(pool.filter(q=>seen.has(q.id)))).slice(0,n);
+  store.set('seen_'+kind,[...seen,...out.map(q=>q.id)].slice(-400));return out}
+function getQs(kind,n){const ids=M.cfg.opts&&M.cfg.opts.qids;
+  if(ids){const qs=ids.map(bankById).filter(Boolean);if(qs.length<ids.length){toast(t('missingQ'));M.alive=false;if(M.net)NET.leave();go('home');return null}return qs}
+  const qs=pickQuestions(kind,n,M.cfg.opts&&M.cfg.opts.cat,false);if(!qs.length){toast(t('noQ'));M.alive=false;go('home');return null}return qs}
+function hostOpts(cfg,extra){const o={...(cfg.opts||{}),extraTurn:extra};delete o.qids;
+  if(cfg.game==='quiz'||cfg.game==='deceit'){const n=GAME(cfg.game).diffs[cfg.diffIdx].n;o.qids=pickQuestions(cfg.game,n,o.cat,true).map(q=>q.id)}return o}
+const normA=s=>String(s||'').trim().toLowerCase().replace(/[ً-ْـ]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/^ال/,'').replace(/[.,!؟?،]/g,'').replace(/\s+/g,' ');
+const isTruth=(q,txt)=>{const n=normA(txt);return !!n&&[q.a,...(q.alt||[])].some(x=>normA(x)===n)};
+
 const dlabel=d=>Array.isArray(d.lbl)?t(d.lbl[0],d.lbl[1]):t(d.lbl);
 const CORE4=['stones','numbers','pairs','drawing'];
 
@@ -669,6 +832,8 @@ NET.onPeers=function(ch){
     if(g&&x.res&&x.res.gid===g.gid)NET.res[x.pid]=x.res});
   if(g)g.order.forEach(o=>{if(o.pid===NET.pid)return;if(list.some(x=>x.pid===o.pid))delete NET.gone[o.pid];else if(!NET.gone[o.pid])NET.gone[o.pid]=now});
   NET.pump();
+  NET.pres={};list.forEach(x=>{NET.pres[x.pid]=x});
+  if(NET.onTick)try{NET.onTick()}catch(e){console.error(e)}
   let host=list.find(x=>x.host);
   if(!host&&list.length&&list[0].pid===NET.pid&&now-NET.joinedAt>3000){NET.isHost=true;NET.set({host:true,rdy:true,lobby:NET.lobbyCfg||{game:'stones',diffIdx:1,opts:{}}});toast(t('nowHost'));host=null}
   if(host&&host.pid!==NET.pid){
@@ -684,7 +849,7 @@ NET.hostStart=function(cfg){
   cfg=cfg||NET.lobbyCfg;if(!cfg)return;
   const order=shuffle(NET.players().slice(0,4).map(x=>({pid:x.pid,nm:String(x.nm||'').slice(0,16),av:x.av||'🙂'})));
   const extra=cfg.opts&&cfg.opts.extraTurn!=null?cfg.opts.extraTurn:settings.extraTurn;
-  const g={gid:Date.now().toString(36)+Math.floor(Math.random()*1e4),seed:Math.floor(Math.random()*2**31),cfg:{game:cfg.game,diffIdx:cfg.diffIdx,opts:{...(cfg.opts||{}),extraTurn:extra}},order};
+  const g={gid:Date.now().toString(36)+Math.floor(Math.random()*1e4),seed:Math.floor(Math.random()*2**31),cfg:{game:cfg.game,diffIdx:cfg.diffIdx,opts:hostOpts(cfg,extra)},order};
   NET.lastGid=g.gid;NET.set({game:g,lobby:cfg});NET.startLocal(g)};
 NET.startLocal=function(g){
   NET.game=g;NET.cache={};NET.used={};NET.res={};NET.gone={};NET.myActs=[];NET.pending=null;
@@ -714,7 +879,7 @@ function joinModal(){modal(`<form id="jf" class="stack"><h3>${t('joinRoom')}</h3
   $('[data-x]',m).onclick=close;$('#jc',m).focus();
   $('#jf',m).onsubmit=async e=>{e.preventDefault();const c=$('#jc',m).value.trim().toUpperCase();if(!/^[A-Z0-9]{6}$/.test(c)){$('#je',m).textContent=t('badCode');return}
     close();const ok=await NET.readyP;if(!ok||!NET.ok){noLiveModal();return}toast(t('joining',c));if(await NET.join(c,false,null,false))go('lobby',{})}})}
-const APK_URL=ZKC.apkUrl||'https://github.com/BassemT10/zakira-app/releases/latest/download/zakira.apk';
+const APK_URL=ZKC.apkUrl||'https://github.com/BassemT10/playo-app/releases/latest/download/playo.apk';
 function installModal(){modal(`<h3 style="margin-bottom:10px">${t('getApp')}</h3><div class="stack" style="gap:10px">
   <a class="btn primary block" style="text-decoration:none" href="${APK_URL}" target="_blank" rel="noopener">${ic('play')} ${t('dlAndroid')}</a>
   <p class="small muted">${t('apkHint')}</p><p class="small">${t('iosSoon')}</p>
@@ -766,12 +931,13 @@ SCREENS.home=function(){
     <button class="tile" id="join-btn" ${NATIVE?'style="grid-column:1/-1"':''}>${ic('plus')}<b>${t('joinRoom')}</b><span>${t('joinRoomD')}</span></button>
     ${NATIVE?'':`<button class="tile" id="inst-btn">${ic('home')}<b>${t('getApp')}</b><span>${t('getAppD')}</span></button>`}</div>
   <div class="daily">${ic('star')}<div><b>${t('daily')}</b><span class="small muted">${done?t('dailyDone'):t('dailyD',t('g_'+dc.game)+' · '+dlabel(GAME(dc.game).diffs[dc.diffIdx]))}</span></div>${done?ic('check'):`<button class="btn primary sm" id="daily-go">${t('start')}</button>`}</div>
-  <div class="section-title"><h3>${t('games')}</h3><button class="btn ghost sm" data-go="games">${t('allGames')}</button></div>
-  <div class="games-grid">${GAMES.filter(g=>g.ready).slice(0,6).map(gameCard).join('')}</div>
+  <div class="section-title"><h3>${t('sections')}</h3><button class="btn ghost sm" data-go="games">${t('allGames')}</button></div>
+  <div class="hub">${SECTIONS.map(x=>`<button class="hub-card" style="--tint:${TINT[x]}" data-sec="${x}"><div class="art">${ART[x]}</div><b>${t('sec_'+x)}</b><span>${t('sec_'+x+'D')}</span></button>`).join('')}</div>
   <div class="nav4"><button data-go="leaderboard">${ic('trophy')}${t('leaderboard')}</button><button data-go="friends">${ic('users')}${t('friends')}</button><button data-go="profile">${ic('user')}${t('profile')}</button><button data-go="settings">${ic('gear')}${t('settings')}</button></div>`;
   const dg=$('#daily-go');if(dg)dg.onclick=()=>{sfx('tap');startMatch(dc)};
   $('#join-btn').onclick=()=>{sfx('tap');joinModal()};const ib=$('#inst-btn');if(ib)ib.onclick=()=>{sfx('tap');installModal()};
   if(NET.nr){NET.leave()}
+  $$('[data-sec]').forEach(b=>b.onclick=()=>{sfx('tap');const x=b.dataset.sec;if(x==='memory')go('games',{sec:'memory'});else go('setup',{game:x,mode:'solo'})});
   bindGameCards();
   if(pendingJoin)setTimeout(tryPendingJoin,300);
 };
@@ -780,21 +946,24 @@ function bindGameCards(mode){$$('[data-game]').forEach(b=>b.onclick=()=>{const g
 
 SCREENS.games=function(p){
   const sub=p.mode==='friends'?t('playFriends'):p.mode==='online'?t('playOnline'):'';
-  app.innerHTML=head(t('games')+(sub?` · ${sub}`:''))+`<div class="games-grid wide">${GAMES.map(gameCard).join('')}</div>`;
+  const secs=p.sec?[p.sec]:SECTIONS;
+  app.innerHTML=head((p.sec?t('sec_'+p.sec):t('games'))+(sub?` · ${sub}`:''))+secs.map(x=>`${secs.length>1?`<h3 class="sec-h">${t('sec_'+x)}</h3>`:''}<div class="games-grid wide">${GAMES.filter(g=>g.sec===x).map(gameCard).join('')}</div>`).join('');
   bindGameCards(p.mode);
 };
 
 SCREENS.setup=function(p){
   const g=GAME(p.game);
-  const st={mode:p.mode||'solo',diff:g.def,count:2,names:['','',''],set:'animals',size:2,invite:p.invite||null};
+  const MODES=g.modes||['solo','local','friends','online'];
+  const st={mode:MODES.includes(p.mode)?p.mode:'solo',diff:g.def,count:2,names:['','',''],set:'animals',size:2,cat:'all',invite:p.invite||null};
   const render=()=>{
-    app.innerHTML=head(t('g_'+g.id),'games')+`<div class="stack">
+    app.innerHTML=head(t('g_'+g.id),g.sec==='memory'?'games':'home')+`<div class="stack">
     <div class="setup-art" style="--tint:${TINT[g.id]}">${ART[g.id]}</div>
     <div class="panel"><h3 style="margin-bottom:8px">${t('howTo')}</h3><ul class="rules">${t('r_'+g.id).map(r=>`<li>${r}</li>`).join('')}</ul></div>
-    <div class="panel stack"><div><h3 style="margin-bottom:8px">${t('mode')}</h3><div class="modes">${['solo','local','friends','online'].map(m=>`<button class="mode ${st.mode===m?'on':''}" data-mode="${m}"><b>${t('m_'+m)}</b><span>${t('m_'+m+'D')}</span></button>`).join('')}</div></div>
+    <div class="panel stack"><div><h3 style="margin-bottom:8px">${t('mode')}</h3><div class="modes">${MODES.map(m=>`<button class="mode ${st.mode===m?'on':''}" data-mode="${m}"><b>${t('m_'+m)}</b><span>${t('m_'+m+'D')}</span></button>`).join('')}</div></div>
       <div><h3 style="margin-bottom:8px">${t('difficulty')}</h3><div class="chips">${g.diffs.map((d,i)=>`<button class="chip ${st.diff===i?'on':''}" data-diff="${i}">${dlabel(d)}</button>`).join('')}</div></div>
       ${g.id==='pairs'?`<div><h3 style="margin-bottom:8px">${t('imageSet')}</h3><div class="chips">${Object.keys(PAIR_SETS).map(s=>`<button class="chip ${st.set===s?'on':''}" data-set="${s}">${splitEmoji(PAIR_SETS[s])[0]} ${t('set_'+s)}</button>`).join('')}</div>
         <div class="toggle" style="border:0;padding-bottom:0"><span>${t('extraTurn')}</span><button class="sw ${settings.extraTurn?'on':''}" id="xt" aria-pressed="${settings.extraTurn}" aria-label="${t('extraTurn')}"></button></div></div>`:''}
+      ${(g.id==='quiz'||g.id==='deceit')?`<div><h3 style="margin-bottom:8px">${t('category')}</h3><div class="chips"><button class="chip ${st.cat==='all'?'on':''}" data-cat="all">${t('allCats')}</button>${bankCats(g.id).map(c=>`<button class="chip ${st.cat===c?'on':''}" data-cat="${esc(c)}">${esc(c)}</button>`).join('')}</div></div>`:''}
       ${st.mode==='local'?`<div><h3 style="margin-bottom:8px">${t('players')}</h3><div class="seg" style="margin-bottom:10px">${[2,3,4].map(n=>`<button data-count="${n}" class="${st.count===n?'on':''}">${t('nPlayers',n)}</button>`).join('')}</div>
         <div class="stack" style="gap:8px"><input type="text" value="${esc(profile.name)}" disabled aria-label="${t('playerN',1)}">${[...Array(st.count-1)].map((_,i)=>`<input type="text" id="pn${i}" maxlength="14" placeholder="${t('playerN',i+2)}" value="${esc(st.names[i])}" data-ni="${i}">`).join('')}</div></div>`:''}
       ${st.mode==='online'?`<div><h3 style="margin-bottom:8px">${t('matchSize')}</h3><div class="seg">${[2,3,4].map(n=>`<button data-size="${n}" class="${st.size===n?'on':''}">${t('nPlayers',n)}</button>`).join('')}</div></div>`:''}
@@ -802,13 +971,14 @@ SCREENS.setup=function(p){
     $$('[data-mode]').forEach(b=>b.onclick=()=>{sfx('tap');st.mode=b.dataset.mode;render()});
     $$('[data-diff]').forEach(b=>b.onclick=()=>{sfx('tap');st.diff=+b.dataset.diff;render()});
     $$('[data-set]').forEach(b=>b.onclick=()=>{sfx('tap');st.set=b.dataset.set;render()});
+    $$('[data-cat]').forEach(b=>b.onclick=()=>{sfx('tap');st.cat=b.dataset.cat;render()});
     $$('[data-count]').forEach(b=>b.onclick=()=>{st.count=+b.dataset.count;render()});
     $$('[data-size]').forEach(b=>b.onclick=()=>{st.size=+b.dataset.size;render()});
     $$('[data-ni]').forEach(i=>i.oninput=()=>{st.names[+i.dataset.ni]=i.value});
     const xt=$('#xt');if(xt)xt.onclick=()=>{settings.extraTurn=!settings.extraTurn;store.set('settings',settings);render()};
-    $('#go').onclick=async()=>{sfx('tap');const cfg={game:g.id,diffIdx:st.diff,mode:st.mode,opts:{set:st.set,names:st.names.slice(0,st.count-1),size:st.size}};
+    $('#go').onclick=async()=>{sfx('tap');const cfg={game:g.id,diffIdx:st.diff,mode:st.mode,opts:{set:st.set,cat:st.cat,names:st.names.slice(0,st.count-1),size:st.size}};
       if(st.mode==='friends'){$('#go').disabled=true;const ok=await NET.readyP;
-        if(ok&&NET.ok&&await NET.join(newCode(),true,{game:g.id,diffIdx:st.diff,opts:{set:st.set}})){go('lobby',{});return}
+        if(ok&&NET.ok&&await NET.join(newCode(),true,{game:g.id,diffIdx:st.diff,opts:{set:st.set,cat:st.cat}})){go('lobby',{});return}
         go('lobby',{cfg,demo:true,invite:st.invite})}
       else if(st.mode==='online')go('match',{cfg});else startMatch(cfg)};
   };render();
@@ -830,7 +1000,7 @@ SCREENS.lobby=function(p){
     <div class="copyline"><code>${link}</code></div>
     ${NATIVE?`<div class="row"><button class="btn primary sm" style="flex:1" id="nshare">${ic('share')} ${t('shareRoom')}</button><button class="btn sm" id="cp-link">${ic('copy')}</button><button class="btn sm" id="cp-code">${t('roomCode')}</button></div>`
     :`<div class="row"><button class="btn sm" style="flex:1" id="cp-link">${ic('copy')} ${t('copyLink')}</button><a class="btn sm" style="flex:1;text-decoration:none;background:#1F8F5C" href="${wa}" target="_blank" rel="noopener">${ic('share')} ${t('shareWA')}</a><button class="btn sm" id="cp-code">${t('roomCode')}</button></div>`}
-    ${STANDALONE_WEB?`<a class="btn ghost sm" style="text-decoration:none" href="zakira://r/${code}">${t('openInApp')}</a>`:''}</div>
+    ${STANDALONE_WEB?`<a class="btn ghost sm" style="text-decoration:none" href="playo://r/${code}">${t('openInApp')}</a>`:''}</div>
   <div class="panel"><div class="row between" style="margin-bottom:10px"><h3>${t('players')} ${list.length}/4</h3><span class="small muted">${t('playersReady',readyN,list.length)}</span></div><div class="slots">
     ${[0,1,2,3].map(i=>{const s=list[i];if(!s)return`<div class="slot empty">${ic('plus')} ${t('emptySeat')}</div>`;
       const lbl=s.host?`<span class="st host">${t('host')}</span>`:s.rdy?`<span class="st ready">${t('readyS')}</span>`:`<span class="st wait">${t('notReady')}</span>`;
@@ -855,7 +1025,7 @@ SCREENS.lobby=function(p){
 function lobbyDemo(p){
   const cfg=p.cfg,g=GAME(cfg.game);
   const code=[...Array(6)].map(()=>'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[Math.floor(rnd()*32)]).join('');
-  const link='https://zakira.app/r/'+code;
+  const link=roomLink(code);
   const slots=[{me:true,name:profile.name,avatar:profile.avatar,state:'host'}];
   const timers=[];let alive=true;
   const addFriend=f=>{if(slots.length>=4){toast(t('roomFull'));return}if(slots.some(s=>s.id===f.id))return;
@@ -915,7 +1085,7 @@ function liveMatch(p){
     if(sig!==shown){shown=sig;$('#mm-f').innerHTML=others.map(o=>`<div style="text-align:center"><div class="avatar">${esc(o.av||'🙂')}</div><div class="small" style="margin-top:4px">${esc(o.nm||'?')} ${o.cc?flag(o.cc):''}</div></div>`).join('');if(others.length)sfx('tick')}
     if(seekers.length>=need&&seekers[0].pid===NET.pid){const pids=seekers.slice(0,need).map(x=>x.pid);const code=newCode();stop();
       NET.api.presence({assign:{code,pids,t:Date.now()},seek:null}).catch(()=>{});
-      NET.join(code,true,{game:cfg.game,diffIdx:cfg.diffIdx,opts:{set:cfg.opts.set}}).then(ok=>{if(!ok){go('home');return}NET.autoStart=pids;go('lobby',{});
+      NET.join(code,true,{game:cfg.game,diffIdx:cfg.diffIdx,opts:{set:cfg.opts.set,cat:cfg.opts.cat}}).then(ok=>{if(!ok){go('home');return}NET.autoStart=pids;go('lobby',{});
         setTimeout(()=>{NET.api&&NET.api.presence({assign:null}).catch(()=>{})},30000)})}};
   NET.onLobby=check;
   iv=setInterval(()=>{if(done||current!=='match'){if(!done)stop();return}const s=Math.floor((Date.now()-t0)/1000);$('#mm-s').textContent=s+'s';if(s>=20){$('#mm-b').hidden=false;$('#mm-n').hidden=false}check()},1000);
@@ -1239,6 +1409,196 @@ async function gSequence(isLoc){
   else finish({order:M.players.map(p=>({p,val:outVal(p,p.score),txt:p.score}))});
 }
 
+/* ---------- shared: timed choice ---------- */
+const QSH=['<svg class="qshape" viewBox="0 0 24 24"><path d="M12 3l10 18H2z" fill="#fff"/></svg>','<svg class="qshape" viewBox="0 0 24 24"><path d="M12 2l10 10-10 10L2 12z" fill="#fff"/></svg>','<svg class="qshape" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff"/></svg>','<svg class="qshape" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" fill="#fff"/></svg>'];
+function timedPick(id,board,sel,limit,t0){return new Promise(res=>{let done=false;
+  const tick=()=>{if(done)return;if(!alive(id)){done=true;res(-1);return}const el=(performance.now()-t0)/1000,bar=$('#qbar');if(bar)bar.style.width=Math.max(0,100-el/limit*100)+'%';
+    if(el>=limit){done=true;board.onclick=null;res(-1)}else requestAnimationFrame(tick)};requestAnimationFrame(tick);
+  board.onclick=e=>{const b=e.target.closest(sel);if(!b||done||b.disabled)return;done=true;board.onclick=null;res(+b.dataset.k)}})}
+function botQuizScore(p,qs){let s=0;qs.forEach(()=>{if(rnd()<p.skill*.95)s+=Math.round(1000*(1-(.15+rnd()*.6)/2))});return s}
+
+/* ---------- Quiz (solo & each-for-themselves) ---------- */
+async function gQuiz(){
+  const id=M.id,d=M.diff,qs=getQs('quiz',d.n);if(!qs)return;
+  M.players.forEach(p=>{p.score=0;p.scoreText='0'});M.showTurn=false;gameShell();renderPlayers();
+  const board=$('#gboard'),foot=$('#gfoot'),me=M.players.find(p=>p.isMe)||M.players[0];
+  let streak=0,correct=0;
+  for(let i=0;i<qs.length;i++){
+    const q=qs[i],opts=gshuffle(q.a.map((txt,k)=>({txt,ok:k===0}))),limit=Math.max(5,Math.round(q.t*d.tf));
+    status(t('qOf',i+1,qs.length)+(streak>1?' · '+t('streakN',streak):''));foot.innerHTML='';
+    board.innerHTML=`<div class="qcard"><div class="qtimer"><i id="qbar"></i></div><p class="qtext">${esc(q.q)}</p></div><div class="qopts">${opts.map((o,k)=>`<button class="qopt c${k%4}" data-k="${k}">${QSH[k%4]}<span>${esc(o.txt)}</span></button>`).join('')}</div>`;
+    const t0=performance.now(),k=await timedPick(id,board,'.qopt',limit,t0);if(!alive(id))return;
+    const el=(performance.now()-t0)/1000,ok=k>=0&&opts[k].ok;let gain=0;
+    if(ok){streak++;correct++;gain=Math.round(1000*(1-Math.min(el,limit)/limit/2))+Math.min(streak-1,5)*100}else streak=0;
+    me.score+=gain;me.scoreText=me.score;renderPlayers();
+    $$('.qopt',board).forEach((b,j)=>b.classList.add(opts[j].ok?'right':j===k?'wrong':'dim'));
+    if(ok){sfx('good');burst(board.children[1].children[k],'#fff')}else sfx('bad');
+    status(ok?t('qRight',gain,streak>1?t('streakN',streak):''):k<0?t('qTimeout'):t('qWrong'));
+    await sleep(ok?1500:2200);if(!alive(id))return;
+  }
+  M.players.filter(p=>p.isBot).forEach(p=>{p.score=botQuizScore(p,qs);p.scoreText=p.score});renderPlayers();
+  if(M.net){NET.setRes(me.score,String(me.score));if(!await waitRemotes(id,v=>String(v)))return}
+  if(M.solo)finish({perf:correct/qs.length,metric:me.score,line:`${t('correctN',correct+'/'+qs.length)} · ${me.score} ${t('pts')}`});
+  else finish({order:M.players.map(p=>({p,val:outVal(p,p.score),txt:p.score}))});
+}
+
+/* ---------- Speed Sudoku ---------- */
+function sdkOk(b,i,v){const r=(i/9)|0,c=i%9;for(let k=0;k<9;k++){if(b[r*9+k]===v||b[k*9+c]===v)return false}const br=r-r%3,bc=c-c%3;for(let y=0;y<3;y++)for(let x=0;x<3;x++)if(b[(br+y)*9+bc+x]===v)return false;return true}
+function sdkCount(b,lim){let best=-1,bn=10,cands=null;
+  for(let i=0;i<81;i++){if(b[i])continue;const cs=[];for(let v=1;v<=9;v++)if(sdkOk(b,i,v))cs.push(v);if(cs.length<bn){bn=cs.length;best=i;cands=cs;if(!bn)return 0}}
+  if(best<0)return 1;let n=0;for(const v of cands){b[best]=v;n+=sdkCount(b,lim-n);b[best]=0;if(n>=lim)break}return n}
+/* uses the shared game RNG, so every player in a live match gets the same puzzle */
+function sudokuMake(holes){const g=Array(81).fill(0);
+  const fill=i=>{if(i===81)return true;for(const v of gshuffle([1,2,3,4,5,6,7,8,9])){if(sdkOk(g,i,v)){g[i]=v;if(fill(i+1))return true;g[i]=0}}return false};
+  fill(0);const sol=g.slice();let removed=0;
+  for(const i of gshuffle([...Array(81).keys()])){if(removed>=holes)break;const v=g[i];g[i]=0;if(sdkCount(g,2)!==1)g[i]=v;else removed++}
+  return{puz:g,sol}}
+async function gSudoku(){
+  const id=M.id,d=M.diff;M.players.forEach(p=>{p.score=0;p.scoreText='–'});M.showTurn=false;gameShell();renderPlayers();
+  const board=$('#gboard'),foot=$('#gfoot'),me=M.players.find(p=>p.isMe)||M.players[0];
+  status(t('sdkGen'));await sleep(40);if(!alive(id))return;
+  const {puz,sol}=sudokuMake(d.holes);M.t0=Date.now();
+  const cur=puz.slice();let sel=-1,mistakes=0,done=false;
+  const left=()=>cur.reduce((a,v,i)=>a+(v!==sol[i]?1:0),0);
+  const say=()=>status(`${t('sdkLeft',left())} · ${t('sdkMist',mistakes)}${mistakes?` (+${mistakes*15}s)`:''}`);
+  const draw=()=>{const sv=sel>=0?cur[sel]:0,sr=sel>=0?(sel/9)|0:-1,sc=sel>=0?sel%9:-1,sb=sel>=0?((sr/3)|0)*3+((sc/3)|0):-1;
+    board.innerHTML=`<div class="sdk">${cur.map((v,i)=>{const r=(i/9)|0,c=i%9,b=((r/3)|0)*3+((c/3)|0);
+      const cls=[puz[i]?'giv':'',c===8?'c8':c%3===2?'b3':'',r===8?'r8':r%3===2?'r3':'',i===sel?'sel':(sv&&v===sv?'same':(sel>=0&&(r===sr||c===sc||b===sb)?'hl':'')),v&&v!==sol[i]?'err':''].join(' ');
+      return`<button class="${cls}" data-i="${i}" aria-label="${r+1}-${c+1}">${v||''}</button>`}).join('')}</div>`;
+    const cnt=Array(10).fill(0);cur.forEach((v,i)=>{if(v&&v===sol[i])cnt[v]++});
+    foot.innerHTML=`<div class="pad9">${[1,2,3,4,5,6,7,8,9].map(n=>`<button data-n="${n}" ${cnt[n]>=9?'disabled':''}>${n}<small>${9-cnt[n]}</small></button>`).join('')}<button data-n="0" aria-label="${t('erase')}">⌫<small>${t('erase')}</small></button></div>`};
+  const put=n=>{if(done||sel<0||puz[sel]||!alive(id))return;if(n===0){if(cur[sel]!==sol[sel])cur[sel]=0;draw();return}
+    if(cur[sel]===sol[sel])return;cur[sel]=n;
+    if(n!==sol[sel]){mistakes++;sfx('bad')}else sfx('pad',n);
+    draw();say();if(!left())finishSdk()};
+  board.onclick=e=>{const b=e.target.closest('[data-i]');if(!b||done)return;sel=+b.dataset.i;sfx('tap');draw()};
+  foot.onclick=e=>{const b=e.target.closest('[data-n]');if(!b||b.disabled)return;put(+b.dataset.n)};
+  const onKey=e=>{if(!alive(id)){removeEventListener('keydown',onKey);return}if(/^[1-9]$/.test(e.key))put(+e.key);else if(e.key==='Backspace'||e.key==='Delete'||e.key==='0')put(0);
+    else if(e.key.startsWith('Arrow')&&sel>=0){const dir=document.documentElement.dir==='rtl'?-1:1;sel=Math.max(0,Math.min(80,sel+({ArrowLeft:-dir,ArrowRight:dir,ArrowUp:-9,ArrowDown:9}[e.key]||0)));draw()}};
+  addEventListener('keydown',onKey);
+  draw();say();
+  async function finishSdk(){done=true;removeEventListener('keydown',onKey);sfx('win');
+    const total=Math.round((Date.now()-M.t0)/1000)+mistakes*15;me.score=total;me.scoreText=fmtTime(total);
+    M.players.filter(p=>p.isBot).forEach(p=>{p.score=Math.round(d.target*(1.75-p.skill)*(.8+rnd()*.4));p.scoreText=fmtTime(p.score)});renderPlayers();
+    await sleep(700);if(!alive(id))return;
+    if(M.net){NET.setRes(total,fmtTime(total));if(!await waitRemotes(id,v=>fmtTime(v)))return}
+    if(M.solo)finish({perf:clamp(d.target/total,0,1),metric:total,line:`${fmtTime(total)} · ${t('sdkMist',mistakes)}`});
+    else finish({order:M.players.map(p=>({p,val:outVal(p,-p.score),txt:fmtTime(p.score)}))});
+  }
+}
+
+/* ---------- Deception ---------- */
+function dqHtml(q){const parts=esc(q.q).split(/_{3,}/);return parts.length>1?parts.join('<mark>?</mark>'):esc(q.q)}
+async function gDeceit(){
+  const id=M.id,d=M.diff,qs=getQs('deceit',d.n);if(!qs)return;
+  M.players.forEach(p=>{p.score=0;p.scoreText='0'});M.showTurn=false;gameShell();renderPlayers();
+  return M.players.length===1?deceitSolo(id,qs):deceitMulti(id,qs);
+}
+async function deceitSolo(id,qs){
+  const me=M.players[0],board=$('#gboard'),foot=$('#gfoot');let correct=0;foot.innerHTML='';
+  for(let i=0;i<qs.length;i++){const q=qs[i];
+    const opts=shuffle([{txt:q.a,truth:true},...shuffle(q.f.slice()).slice(0,4).map(txt=>({txt}))]);
+    status(t('dcRound',i+1,qs.length));
+    board.innerHTML=`<div class="qcard"><div class="qtimer"><i id="qbar"></i></div><p class="dq">${dqHtml(q)}</p></div><p class="small muted" style="text-align:center;margin:12px 0 8px">${t('dcSoloPick')}</p><div class="dopts">${opts.map((o,k)=>`<button class="dopt" data-k="${k}"><span>${esc(o.txt)}</span></button>`).join('')}</div>`;
+    const limit=25,t0=performance.now(),k=await timedPick(id,board,'.dopt',limit,t0);if(!alive(id))return;
+    const el=(performance.now()-t0)/1000,ok=k>=0&&opts[k].truth,gain=ok?Math.round(1000*(1-el/limit/2)):0;if(ok)correct++;
+    me.score+=gain;me.scoreText=me.score;renderPlayers();
+    $$('.dopt',board).forEach((b,j)=>{b.disabled=true;if(opts[j].truth){b.classList.add('truth');b.insertAdjacentHTML('beforeend',`<span class="who"><span class="tag">${t('dcTruth')}</span></span>`)}else if(j===k)b.classList.add('picked');else b.style.opacity='.45'});
+    sfx(ok?'good':'bad');status(ok?t('dcGotTruth',gain):k<0?t('qTimeout'):t('qWrong'));
+    await sleep(2300);if(!alive(id))return;
+  }
+  finish({perf:correct/qs.length,metric:me.score,line:`${t('correctN',correct+'/'+qs.length)} · ${me.score} ${t('pts')}`});
+}
+/* Multiplayer: the host (room creator, or this device when playing virtual players) runs the round:
+   collects lies, builds the options, collects picks, scores, and publishes one state everyone renders. */
+async function deceitMulti(id,qs){
+  const board=$('#gboard'),me=M.players.find(p=>p.isMe)||M.players[0],host=!M.net||NET.isHost;
+  const gid=M.net?NET.game.gid:'local';
+  const nameOf=pid=>{const p=M.players.find(x=>x.id===pid);return p?p.name:'?'};
+  const myFake={},myPick={};let S=null,lastKey='',deadline=0;
+  const tick=()=>{if(!alive(id))return;const bar=$('#qbar');if(bar&&S&&S.lim)bar.style.width=Math.max(0,(deadline-Date.now())/S.lim*100)+'%';requestAnimationFrame(tick)};requestAnimationFrame(tick);
+  function render(){if(!alive(id)||!S)return;const q=qs[S.q];if(!q)return;
+    M.players.forEach(p=>{p.score=(S.sc&&S.sc[p.id])||0;p.scoreText=p.score});renderPlayers();
+    const key=[S.q,S.stage,(S.done||[]).join(','),myFake[S.q]!=null,myPick[S.q]!=null].join('|');if(key===lastKey)return;lastKey=key;
+    const waiting=M.players.filter(p=>!p.out&&!(S.done||[]).includes(p.id)).map(p=>esc(p.name)).join('، ');
+    const qh=`<div class="qcard">${S.stage==='reveal'?'':'<div class="qtimer"><i id="qbar"></i></div>'}<p class="dq">${dqHtml(q)}</p></div>`;
+    board.onclick=null;
+    if(S.stage==='write'){status(t('dcRound',S.q+1,qs.length));
+      if(myFake[S.q]==null){
+        board.innerHTML=qh+`<form class="stack" id="dcf" style="margin-top:12px;gap:8px"><p class="small muted" style="text-align:center">${t('dcWrite')}</p><div class="wbox"><input type="text" id="dci" maxlength="40" autocomplete="off" placeholder="${t('dcWritePh')}"><button class="btn primary" type="submit">${t('dcSend')}</button></div><p class="small" id="dce" style="color:var(--bad);min-height:18px"></p></form>`;
+        $('#dcf').onsubmit=e=>{e.preventDefault();const v=$('#dci').value.trim();if(!v)return;if(isTruth(q,v)){$('#dce').textContent=t('dcTooTrue');sfx('bad');return}
+          myFake[S.q]=v.slice(0,40);sfx('tap');submit();lastKey='';render()};
+        setTimeout(()=>{const i=$('#dci');if(i)i.focus()},60)}
+      else board.innerHTML=qh+`<p class="note" style="margin-top:12px;text-align:center">${t('dcWaiting',waiting||'…')}</p>`}
+    else if(S.stage==='pick'){status(t('dcRound',S.q+1,qs.length));
+      const mine=S.by.map(b=>Array.isArray(b)&&b.includes(me.id)),picked=myPick[S.q];
+      board.innerHTML=qh+`<p class="small muted" style="text-align:center;margin:12px 0 8px">${picked!=null?t('dcWaiting',waiting||'…'):t('dcPick')}</p><div class="dopts">${S.opts.map((o,k)=>`<button class="dopt ${mine[k]?'mine':''} ${picked===k?'picked':''}" data-k="${k}" ${mine[k]||picked!=null?'disabled':''}><span>${esc(o)}</span>${mine[k]?`<span class="who"><span class="tag">${t('dcYours')}</span></span>`:''}</button>`).join('')}</div>`;
+      if(picked==null)board.onclick=e=>{const b=e.target.closest('.dopt');if(!b||b.disabled||myPick[S.q]!=null)return;myPick[S.q]=+b.dataset.k;sfx('tap');submit();lastKey='';render()}}
+    else if(S.stage==='reveal'){
+      const picks=S.picks||{};
+      board.innerHTML=qh+`<div class="dopts" style="margin-top:12px">${S.opts.map((o,k)=>{const by=S.by[k];
+        const tag=by===null?t('dcTruth'):by==='bank'?t('dcBank'):t('dcBy',by.map(nameOf).join('، '));
+        const who=Object.keys(picks).filter(pid=>picks[pid]===k).map(pid=>{const p=M.players.find(x=>x.id===pid);return p?`<span>${esc(p.avatar)} ${esc(p.name)}</span>`:''}).join('');
+        return`<div class="dopt ${by===null?'truth':''}"><span>${esc(o)}</span><span class="who"><span class="tag">${esc(tag)}</span>${who}</span></div>`}).join('')}</div>`;
+      const mp=picks[me.id];let line=mp==null?t('dcNoPick'):S.by[mp]===null?t('dcGotTruth',1000):Array.isArray(S.by[mp])?t('dcGotFooled',S.by[mp].map(nameOf).join('، ')):t('qWrong');
+      const fooled=Object.keys(picks).filter(pid=>pid!==me.id&&Array.isArray(S.by[picks[pid]])&&S.by[picks[pid]].includes(me.id)).map(nameOf);
+      if(fooled.length)line+=' · '+t('dcFooled',fooled.join('، '),fooled.length*500);
+      status(esc(line));sfx(((S.gain||{})[me.id]||0)>0?'good':'turn')}
+  }
+  function endGame(){if(!alive(id))return;NET.onTick=null;M.players.forEach(p=>{p.score=(S&&S.sc&&S.sc[p.id])||0;p.scoreText=p.score});
+    finish({order:M.players.map(p=>({p,val:outVal(p,p.score),txt:p.score}))})}
+
+  /* ----- guest: render what the host publishes, send own lie/pick through presence ----- */
+  if(!host){
+    let hostGoneAt=0;
+    var submit=()=>{const q=S?S.q:0;NET.set({dc:{gid,q,fake:myFake[q]==null?null:myFake[q],pick:myPick[q]==null?null:myPick[q]}})};
+    NET.onTick=()=>{if(!alive(id)){NET.onTick=null;return}const h=NET.host();
+      if(h&&h.dl&&h.dl.gid===gid){hostGoneAt=0;const prevQ=S?S.q:-1;S=h.dl;deadline=Date.now()+(S.left||0);if(S.q!==prevQ)lastKey='';render();if(S.stage==='end')endGame()}
+      else if(!h){if(!hostGoneAt)hostGoneAt=Date.now()}};
+    NET.onTick();
+    while(alive(id)){await sleep(1000);if(hostGoneAt&&Date.now()-hostGoneAt>20000){toast(t('dcHostLeft'));endGame();return}}
+    return}
+
+  /* ----- host ----- */
+  const inputs={};const inp=q=>inputs[q]||(inputs[q]={fake:{},pick:{}});
+  let waker=null;const wake=()=>{if(waker){const w=waker;waker=null;w()}};
+  const engineIn=(pid,kind,q,val)=>{const I=inp(q);if(kind==='fake'){if(I.fake[pid]==null&&typeof val==='string')I.fake[pid]=val.slice(0,40)}else if(I.pick[pid]==null&&typeof val==='number')I.pick[pid]=val;wake()};
+  var submit=()=>{const q=S.q;if(myFake[q]!=null)engineIn(me.id,'fake',q,myFake[q]);if(myPick[q]!=null)engineIn(me.id,'pick',q,myPick[q])};
+  if(M.net)NET.onTick=()=>{if(!alive(id)){NET.onTick=null;return}
+    M.players.forEach(p=>{if(!p.remote)return;const x=NET.pres&&NET.pres[p.id],dc=x&&x.dc;if(!dc||dc.gid!==gid||typeof dc.q!=='number')return;
+      if(dc.fake!=null)engineIn(p.id,'fake',dc.q,String(dc.fake));if(dc.pick!=null)engineIn(p.id,'pick',dc.q,+dc.pick)});wake()};
+  const pub=()=>{S.left=Math.max(0,deadline-Date.now());if(M.net)NET.set({dl:JSON.parse(JSON.stringify(S))});render()};
+  const active=()=>M.players.filter(p=>!p.out);
+  async function waitFor(cond,ms,doneOf){deadline=Date.now()+ms;S.lim=ms;S.done=[];pub();
+    while(alive(id)&&Date.now()<deadline){
+      if(M.net)M.players.forEach(p=>{if(p.remote&&!p.out&&NET.gone[p.id]&&Date.now()-NET.gone[p.id]>20000)markOut(p)});
+      const dn=active().filter(doneOf).map(p=>p.id);if(dn.join()!==S.done.join()){S.done=dn;pub()}
+      if(cond())break;await new Promise(r=>{waker=r;setTimeout(r,400)})}}
+  const botsWrite=(qi,q)=>{const used=new Set();M.players.filter(p=>p.isBot).forEach(p=>{const f=shuffle(q.f.filter(x=>!used.has(x)))[0];if(!f)return;used.add(f);setTimeout(()=>alive(id)&&engineIn(p.id,'fake',qi,f),2500+rnd()*9000)})};
+  const botsPick=qi=>{M.players.filter(p=>p.isBot).forEach(p=>setTimeout(()=>{if(!alive(id))return;const ok=S.by.map((b,k)=>k).filter(k=>!(Array.isArray(S.by[k])&&S.by[k].includes(p.id)));
+    const truth=S.by.indexOf(null);engineIn(p.id,'pick',qi,rnd()<p.skill*.7?truth:pick(ok))},2000+rnd()*7000))};
+  S={gid,q:0,stage:'write',opts:null,by:null,picks:{},gain:{},sc:{},done:[],lim:0,left:0};M.players.forEach(p=>S.sc[p.id]=0);
+  for(let i=0;i<qs.length;i++){if(!alive(id))return;
+    const q=qs[i],I=inp(i);Object.assign(S,{q:i,stage:'write',opts:null,by:null,picks:{},gain:{}});lastKey='';
+    botsWrite(i,q);
+    await waitFor(()=>active().every(p=>I.fake[p.id]!=null),45000,p=>I.fake[p.id]!=null);if(!alive(id))return;
+    const list=[{txt:q.a,by:null}];
+    active().forEach(p=>{const f=I.fake[p.id];if(f==null||!f.trim()||isTruth(q,f))return;const ex=list.find(o=>normA(o.txt)===normA(f));if(ex){if(Array.isArray(ex.by))ex.by.push(p.id)}else list.push({txt:f.trim(),by:[p.id]})});
+    const bank=shuffle(q.f.filter(f=>!list.some(o=>normA(o.txt)===normA(f))));
+    while(list.length<Math.max(4,active().length+2)&&bank.length)list.push({txt:bank.shift(),by:'bank'});
+    const opts=shuffle(list);Object.assign(S,{stage:'pick',opts:opts.map(o=>o.txt),by:opts.map(o=>o.by)});
+    botsPick(i);
+    await waitFor(()=>active().every(p=>I.pick[p.id]!=null),30000,p=>I.pick[p.id]!=null);if(!alive(id))return;
+    const gain={},picks={};M.players.forEach(p=>gain[p.id]=0);
+    Object.keys(I.pick).forEach(pid=>{const k=I.pick[pid];if(!(k>=0&&k<S.opts.length))return;const by=S.by[k];if(Array.isArray(by)&&by.includes(pid))return;picks[pid]=k;
+      if(by===null)gain[pid]+=1000;else if(Array.isArray(by))by.forEach(a=>{if(a!==pid)gain[a]+=500})});
+    Object.keys(gain).forEach(pid=>S.sc[pid]=(S.sc[pid]||0)+gain[pid]);
+    Object.assign(S,{stage:'reveal',picks,gain,done:[]});deadline=Date.now()+7000;S.lim=7000;lastKey='';pub();
+    await sleep(7000);
+  }
+  if(!alive(id))return;S.stage='end';pub();await sleep(400);endGame();
+}
+
 /* ========= finish & rewards ========= */
 function finish(o){
   if(!M||!M.alive)return;clearInterval(M.tid);M.alive=false;
@@ -1257,7 +1617,7 @@ function finish(o){
   const lvBefore=levelOf(profile.xp),rankBefore=myRank('local');
   profile.xp+=xp;profile.points+=pts;profile.matches++;profile.played[g.id]=(profile.played[g.id]||0)+1;
   if(!M.solo){if(win){profile.wins++;profile.winStreak++}else profile.winStreak=0}
-  let newBest=false;if(M.solo&&o.metric!=null){const key=g.id+'_'+dk;if(o.metric>(profile.best[key]||0)){newBest=!!profile.best[key];profile.best[key]=o.metric}}
+  let newBest=false;if(M.solo&&o.metric!=null){const key=g.id+'_'+dk,prev=profile.best[key];if(prev==null||(g.lower?o.metric<prev:o.metric>prev)){newBest=prev!=null;profile.best[key]=o.metric}}
   profile.history.unshift({g:g.id,dk,mode:M.mode,place:M.solo?null:myPlace,n,pts,xp,win,at:Date.now(),line:M.solo?o.line:null});profile.history=profile.history.slice(0,40);
   const newAch=[];ACH.forEach(([k,f])=>{if(!profile.ach.includes(k)&&f(profile)){profile.ach.push(k);newAch.push(k);pushNotif('ach',t('n_ach',t('a_'+k)))}});
   const lvAfter=levelOf(profile.xp);if(lvAfter>lvBefore)pushNotif('lvl',t('n_lvl',lvAfter));
@@ -1274,7 +1634,7 @@ SCREENS.results=function(r){
   const title=r.solo?(r.newBest?t('newBest'):t('wellDone')):r.tie&&r.myPlace===0?t('tie'):r.win?t('youWin'):t('place',r.myPlace+1);
   const shareTxt=`${t('app')} · ${t('g_'+r.g.id)} (${dlabel(r.diff)}): ${r.solo?r.o.line:t('place',r.myPlace+1)} 🧠`;
   app.innerHTML=`<div class="stack"><div class="res-hero"><h1>${title}</h1><p class="muted">${t('g_'+r.g.id)} · ${dlabel(r.diff)} · ${t('m_'+r.cfg.mode)}</p></div>
-  ${r.solo?`<div class="panel" style="text-align:center"><span class="muted small">${t('score')}</span><div style="font-family:var(--f-display);font-size:34px;color:var(--teal)">${esc(r.o.line)}</div><span class="small muted">${t('best')}: ${profile.best[r.g.id+'_'+r.diff.k]||0}${['drawing','stones','numbers','pairs'].includes(r.g.id)?'%':''}</span></div>`
+  ${r.solo?`<div class="panel" style="text-align:center"><span class="muted small">${t('score')}</span><div style="font-family:var(--f-display);font-size:34px;color:var(--teal)">${esc(r.o.line)}</div><span class="small muted">${t('best')}: ${fmtBest(r.g.id,profile.best[r.g.id+'_'+r.diff.k])}</span></div>`
   :`<div class="rank-list">${r.order.map(x=>`<div class="rank-row ${x.p.isMe?'me':''}" style="${x.p.out?'opacity:.5':''}"><span class="rank-n">${x.place+1}</span><div class="avatar sm">${esc(x.p.avatar)}</div><b style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(x.p.name)}${x.p.isBot?'<i class="bot">BOT</i>':''}</b><b class="tnum" style="font-family:var(--f-display);font-size:18px;color:${x.p.col}">${x.txt}</b></div>`).join('')}</div>`}
   <div class="reward"><div><b class="tnum">+${r.pts}</b><span class="small muted">${t('ptsEarned')}</span></div><div><b class="tnum">+${r.xp}</b><span class="small muted">${t('xp')}</span></div></div>
   <div class="panel"><div class="row between"><span class="lvl">${t('level',levelOf(profile.xp))}</span><span class="small muted tnum">${profile.xp} XP</span></div><div class="xpbar"><i style="width:${Math.round(lvlProgress(profile.xp)*100)}%"></i></div>${r.lvUp?`<p style="margin-top:8px;font-weight:700;color:var(--accent)">${t('levelUp',r.lvUp)}</p>`:''}</div>
@@ -1361,7 +1721,7 @@ SCREENS.profile=function(){
   <div class="panel"><div class="stats"><div><b class="tnum">${profile.points}</b><span>${t('pointsL')}</span></div><div><b class="tnum">${profile.matches}</b><span>${t('matches')}</span></div><div><b class="tnum">${profile.wins}</b><span>${t('wins')}</span></div><div><b class="tnum">${wr}%</b><span>${t('winRate')}</span></div></div>
     <div class="stats" style="grid-template-columns:1fr 1fr;margin-top:8px"><div><b class="tnum">#${myRank('local')}</b><span>${t('rankLocal')} ${flag(profile.country)}</span></div><div><b class="tnum">#${myRank('global')}</b><span>${t('rankGlobal')}</span></div></div></div>
   ${fav.length?`<div class="panel"><h3 style="margin-bottom:8px">${t('favGames')}</h3><div class="chips">${fav.map(([g,c])=>`<span class="chip on">${t('g_'+g)} · ${c}</span>`).join('')}</div></div>`:''}
-  ${bests.length?`<div class="panel"><h3 style="margin-bottom:6px">${t('bestScores')}</h3><div class="list">${bests.map(([k,v])=>{const[g,d]=k.split('_');const gd=GAME(g).diffs.find(x=>x.k===d);return`<div class="li"><div class="grow"><b>${t('g_'+g)}</b><span class="small muted">${gd?dlabel(gd):''}</span></div><b class="tnum" style="font-family:var(--f-display);font-size:18px;color:var(--teal)">${v}${['sequence','locations'].includes(g)?'':'%'}</b></div>`}).join('')}</div></div>`:''}
+  ${bests.length?`<div class="panel"><h3 style="margin-bottom:6px">${t('bestScores')}</h3><div class="list">${bests.map(([k,v])=>{const[g,d]=k.split('_');if(!GAME(g))return'';const gd=GAME(g).diffs.find(x=>x.k===d);return`<div class="li"><div class="grow"><b>${t('g_'+g)}</b><span class="small muted">${gd?dlabel(gd):''}</span></div><b class="tnum" style="font-family:var(--f-display);font-size:18px;color:var(--teal)">${fmtBest(g,v)}</b></div>`}).join('')}</div></div>`:''}
   <div class="panel"><h3 style="margin-bottom:10px">${t('achievements')} <span class="muted small">${profile.ach.length}/${ACH.length}</span></h3><div class="ach-grid">${ACH.map(([k])=>`<div class="ach ${profile.ach.includes(k)?'on':''}"><span class="medal">★</span><div style="min-width:0"><b>${t('a_'+k)}</b><span>${t('a_'+k+'D')}</span></div></div>`).join('')}</div></div>
   <div class="panel"><h3 style="margin-bottom:6px">${t('history')}</h3><div class="list">${profile.history.slice(0,15).map(h=>`<div class="li"><div class="grow"><b>${t('g_'+h.g)}</b><span class="small muted">${t('m_'+h.mode)} · ${h.place==null?esc(h.line||''):t('place',h.place+1)+' / '+h.n} · ${ago(h.at)}</span></div><span class="small tnum" style="color:var(--accent);font-weight:700">+${h.pts}</span></div>`).join('')||`<p class="muted">${t('noHistory')}</p>`}</div></div></div>`;
   $('#ed').onclick=editProfile;
@@ -1369,6 +1729,89 @@ SCREENS.profile=function(){
 function editProfile(){let av=profile.avatar;modal(`<h3 style="margin-bottom:12px">${t('editProfile')}</h3><div class="stack"><label class="field">${t('username')}<input type="text" id="ep-n" maxlength="16" dir="ltr" value="${esc(profile.name)}"></label><div class="av-pick">${AVATARS.map(a=>`<button type="button" data-av="${a}" class="${a===av?'on':''}">${a}</button>`).join('')}</div><label class="field">${t('country')}<select id="ep-c">${COUNTRIES.map(c=>`<option value="${c[0]}" ${c[0]===profile.country?'selected':''}>${c[1]} ${L()?c[3]:c[2]}</option>`).join('')}</select></label><p class="small" id="ep-e" style="color:var(--bad)"></p><div class="row" style="justify-content:flex-end"><button class="btn ghost" id="ep-x">${t('cancel')}</button><button class="btn primary" id="ep-s">${t('save')}</button></div></div>`,(m,close)=>{
   $$('[data-av]',m).forEach(b=>b.onclick=()=>{av=b.dataset.av;$$('[data-av]',m).forEach(x=>x.classList.toggle('on',x===b))});
   $('#ep-x',m).onclick=close;$('#ep-s',m).onclick=()=>{const n=$('#ep-n',m).value.trim();if(!/^[\p{L}\p{N}_]{3,16}$/u.test(n)){$('#ep-e',m).textContent=t('errName');return}profile.name=n;profile.avatar=av;profile.country=$('#ep-c',m).value;saveAll();if(NET.api)NET.api.presence(me0()).catch(()=>{});close();SCREENS.profile()}})}
+
+/* ----- question manager (open with #admin) ----- */
+const ADM={sb:null,session:null};
+function admClient(){if(!SB_ON()||!window.supabase)return null;if(!ADM.sb)ADM.sb=window.supabase.createClient(ZKC.supabaseUrl,ZKC.supabaseKey,{auth:{persistSession:true,storageKey:'playo_admin_auth'}});return ADM.sb}
+const newQid=()=>'q'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const qData=q=>q.kind==='quiz'?{q:q.q,a:q.a,t:q.t}:{q:q.q,a:q.a,f:q.f,alt:q.alt};
+async function admSave(list){
+  const sb=admClient();
+  if(sb&&ADM.session){const rows=list.map(q=>({id:q.id,kind:q.kind,cat:q.cat,data:qData(q),active:true}));
+    for(let i=0;i<rows.length;i+=200){const {error}=await sb.from('questions').upsert(rows.slice(i,i+200));if(error){toast(t('adm_saveFail',error.message));return false}}
+    await fetchRemoteBank();return true}
+  const loc=store.get('bank_local',{quiz:[],deceit:[]});
+  list.forEach(q=>{const arr=loc[q.kind]||(loc[q.kind]=[]);const clean={...q};delete clean.src;const i=arr.findIndex(x=>x.id===q.id);if(i>=0)arr[i]=clean;else arr.push(clean)});
+  store.set('bank_local',loc);loadBank();return true}
+async function admDelete(q){
+  if(q.src==='r'){const sb=admClient();if(!sb||!ADM.session)return false;const {error}=await sb.from('questions').update({active:false}).eq('id',q.id);if(error){toast(t('adm_saveFail',error.message));return false}await fetchRemoteBank();return true}
+  const loc=store.get('bank_local',{quiz:[],deceit:[]});loc[q.kind]=(loc[q.kind]||[]).filter(x=>x.id!==q.id);store.set('bank_local',loc);loadBank();return true}
+function loadXLSX(){return new Promise((res,rej)=>{if(window.XLSX)return res(window.XLSX);const s=document.createElement('script');s.src=ZKC.xlsxUrl||'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';s.onload=()=>res(window.XLSX);s.onerror=rej;document.head.appendChild(s)})}
+/* Excel layout (see the template): sheet "أسئلة": category, question, correct, wrong 1..3, seconds.
+   sheet "خداع": category, question with ____, answer, other accepted answers (comma separated), lie 1..5 */
+function parseWorkbook(X,wb){const out={quiz:[],deceit:[]};
+  wb.SheetNames.forEach(name=>{const rows=X.utils.sheet_to_json(wb.Sheets[name],{header:1,defval:''}).map(r=>r.map(c=>qn(c)));if(!rows.length)return;
+    const head=rows[0].join(' ');const isDeceit=/خداع|decept|deceit|bluff/i.test(name)||/خداع|lie|fake/i.test(head);
+    const body=/سؤال|السؤال|question/i.test(head)?rows.slice(1):rows;
+    body.forEach(r=>{if(!r[1]||!r[2])return;
+      if(isDeceit){const q=mkDeceit(newQid(),r[0],r[1],r[2],r.slice(4,9),r[3]?r[3].split(/[,،]/):[],'l');if(q.f.length>=1)out.deceit.push(q)}
+      else{const q=mkQuiz(newQid(),r[0],r[1],[r[2],r[3],r[4],r[5]],r[6],'l');if(q.a.length>=2)out.quiz.push(q)}})});
+  return out}
+SCREENS.admin=function(p){
+  try{store.set('isAdmin',true)}catch(e){}
+  const st={tab:(p&&p.tab)||'quiz',q:''};const sb=admClient();
+  const render=async()=>{
+    if(sb&&!ADM.session){try{const {data}=await sb.auth.getSession();ADM.session=data.session}catch(e){}}
+    const list=BANK[st.tab].filter(q=>!st.q||(q.q+' '+q.cat+' '+(Array.isArray(q.a)?q.a.join(' '):q.a)).toLowerCase().includes(st.q.toLowerCase())).slice().reverse();
+    const shown=list.slice(0,150);
+    const conn=sb?(ADM.session?`<div class="row between wrap"><span class="small">${t('adm_where_r')}</span><button class="btn ghost sm" id="adm-out">${t('adm_signout')}</button></div>`
+      :`<form class="stack" id="adm-login" style="gap:8px"><b class="small">${t('adm_login')}</b><div class="fgrid"><input type="email" id="adm-e" placeholder="${t('adm_email')}" autocomplete="username" dir="ltr"><input type="password" id="adm-p" placeholder="${t('adm_pass')}" autocomplete="current-password" dir="ltr"></div><button class="btn sm" type="submit">${t('adm_signin')}</button><p class="small muted">${t('adm_where_l')}</p></form>`)
+      :`<p class="small muted">${t('adm_where_l')}</p>`;
+    app.innerHTML=head(t('admin'),'home')+`<div class="stack">
+      <div class="panel">${conn}</div>
+      <div class="tabs"><button data-tab="quiz" class="${st.tab==='quiz'?'on':''}">${t('adm_quiz')} ${BANK.quiz.length}</button><button data-tab="deceit" class="${st.tab==='deceit'?'on':''}">${t('adm_deceit')} ${BANK.deceit.length}</button></div>
+      <div class="row wrap"><button class="btn primary sm" id="adm-add">${ic('plus')} ${t('adm_add')}</button><label class="btn sm" style="cursor:pointer">${t('adm_import')}<input type="file" id="adm-file" accept=".xlsx,.xls,.csv" hidden></label><button class="btn ghost sm" id="adm-exp">${t('adm_export')}</button></div>
+      <input type="text" id="adm-q" placeholder="${t('adm_search')}" value="${esc(st.q)}">
+      <div class="panel">${shown.map(q=>`<div class="adm-row"><div class="grow"><div class="row" style="gap:6px;margin-bottom:2px"><span class="src ${q.src}">${t('adm_src_'+q.src)}</span><span class="small muted">${esc(q.cat)}</span></div><b>${esc(q.q)}</b><span class="small" style="color:var(--good)">✓ ${esc(Array.isArray(q.a)?q.a[0]:q.a)}</span> <span class="small muted">${esc(q.kind==='quiz'?q.a.slice(1).join(' · '):q.f.join(' · '))}</span></div>${q.src==='b'?'':`<button class="btn sm ghost" data-ed="${q.id}">${t('adm_edit')}</button>`}</div>`).join('')||`<p class="muted">—</p>`}
+      ${list.length>shown.length?`<p class="small muted">${t('adm_more',list.length-shown.length)}</p>`:''}</div></div>`;
+    $$('[data-tab]').forEach(b=>b.onclick=()=>{st.tab=b.dataset.tab;render()});
+    const qi=$('#adm-q');qi.oninput=()=>{st.q=qi.value;clearTimeout(qi._t);qi._t=setTimeout(()=>{render().then(()=>{const n=$('#adm-q');if(n){n.focus();n.setSelectionRange(n.value.length,n.value.length)}})},250)};
+    $('#adm-add').onclick=()=>admForm(st.tab,null,render);
+    $$('[data-ed]').forEach(b=>b.onclick=()=>admForm(st.tab,bankById(b.dataset.ed),render));
+    const lf=$('#adm-login');if(lf)lf.onsubmit=async e=>{e.preventDefault();const {data,error}=await sb.auth.signInWithPassword({email:$('#adm-e').value.trim(),password:$('#adm-p').value});if(error){toast(t('adm_badlogin'));return}ADM.session=data.session;render()};
+    const lo=$('#adm-out');if(lo)lo.onclick=async()=>{await sb.auth.signOut();ADM.session=null;render()};
+    $('#adm-file').onchange=async e=>{const f=e.target.files[0];if(!f)return;toast(t('adm_loading'));
+      try{const X=await loadXLSX();const wb=X.read(await f.arrayBuffer(),{type:'array'});const got=parseWorkbook(X,wb);const n=got.quiz.length+got.deceit.length;
+        if(!n){toast(t('adm_noRows'));return}
+        if(await confirmBox(t('adm_preview',got.quiz.length,got.deceit.length),t('adm_import'))){if(await admSave([...got.quiz,...got.deceit]))toast(t('adm_imported',n));render()}}
+      catch(err){toast(t('adm_noRows'))}};
+    $('#adm-exp').onclick=async()=>{if(NATIVE||!ZKC.linkBase){toast(t('adm_dlFail'));return}
+      const X=await loadXLSX();const wb=X.utils.book_new();
+      X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال','الإجابة الصحيحة','خيار خاطئ 1','خيار خاطئ 2','خيار خاطئ 3','الوقت (ثانية)'],...BANK.quiz.filter(q=>q.src!=='b').map(q=>[q.cat,q.q,q.a[0],q.a[1]||'',q.a[2]||'',q.a[3]||'',q.t])]),'أسئلة');
+      X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال (ضع ____ مكان الإجابة)','الإجابة الصحيحة','إجابات مقبولة أخرى','خداع 1','خداع 2','خداع 3','خداع 4','خداع 5'],...BANK.deceit.filter(q=>q.src!=='b').map(q=>[q.cat,q.q,q.a,(q.alt||[]).join('، '),...q.f.slice(0,5)])]),'خداع');
+      X.writeFile(wb,'playo-questions.xlsx')};
+  };render();
+};
+function admForm(kind,q,done){
+  const isNew=!q;q=q||(kind==='quiz'?mkQuiz(newQid(),'عام','',[],20,'l'):mkDeceit(newQid(),'عام','','',[],[],'l'));
+  const cats=bankCats(kind);
+  const body=kind==='quiz'?`<label class="field">${t('adm_q')}<textarea id="f-q" maxlength="200">${esc(q.q)}</textarea></label>
+    <label class="field">${t('adm_correct')}<input type="text" id="f-a0" maxlength="60" value="${esc(q.a[0]||'')}"></label>
+    ${[1,2,3].map(i=>`<label class="field">${t('adm_wrong',i)}<input type="text" id="f-a${i}" maxlength="60" value="${esc(q.a[i]||'')}"></label>`).join('')}
+    <label class="field">${t('adm_time')}<input type="number" id="f-t" min="5" max="90" value="${q.t||20}"></label>`
+   :`<label class="field">${t('adm_q')}<textarea id="f-q" maxlength="200" placeholder="${t('adm_dqHint')}">${esc(q.q)}</textarea><span class="small muted" style="font-weight:500">${t('adm_dqHint')}</span></label>
+    <label class="field">${t('adm_correct')}<input type="text" id="f-a" maxlength="40" value="${esc(q.a||'')}"></label>
+    <label class="field">${t('adm_alt')}<input type="text" id="f-alt" maxlength="200" value="${esc((q.alt||[]).join('، '))}"></label>
+    <label class="field">${t('adm_fakes')}<textarea id="f-f">${esc((q.f||[]).join('\n'))}</textarea></label>`;
+  modal(`<form class="stack" id="qf"><h3>${isNew?t('adm_add'):t('adm_edit')} · ${t('adm_'+kind)}</h3>
+    <label class="field">${t('category')}<input type="text" id="f-cat" list="f-cats" maxlength="30" value="${esc(q.cat)}"><datalist id="f-cats">${cats.map(c=>`<option value="${esc(c)}">`).join('')}</datalist></label>${body}
+    <div class="row" style="justify-content:space-between;flex-wrap:wrap">${isNew?'<span></span>':`<button type="button" class="btn ghost sm" id="f-del" style="color:var(--bad)">${t('remove')}</button>`}<div class="row"><button type="button" class="btn ghost" id="f-x">${t('cancel')}</button><button class="btn primary" type="submit">${t('save')}</button></div></div></form>`,(m,close)=>{
+    $('#f-x',m).onclick=close;
+    const del=$('#f-del',m);if(del)del.onclick=async()=>{close();if(await confirmBox(t('adm_delQ'),t('remove'))&&await admDelete(q)){toast(t('adm_deleted'));done()}};
+    $('#qf',m).onsubmit=async e=>{e.preventDefault();if(q.src==='r'&&!ADM.session){toast(t('adm_login'));return}const cat=$('#f-cat',m).value;let nq;
+      if(kind==='quiz'){nq=mkQuiz(q.id,cat,$('#f-q',m).value,[0,1,2,3].map(i=>$('#f-a'+i,m).value),$('#f-t',m).value,q.src);if(!nq.q||!qn($('#f-a0',m).value)||nq.a.length<2){toast(t('adm_needOpts'));return}}
+      else{nq=mkDeceit(q.id,cat,$('#f-q',m).value,$('#f-a',m).value,$('#f-f',m).value.split('\n'),$('#f-alt',m).value.split(/[,،]/),q.src);if(!nq.q||!nq.a||nq.f.length<3){toast(t('adm_needFakes'));return}}
+      if(await admSave([nq])){close();toast(t('adm_saved'));done()}}})}
 
 /* ----- settings ----- */
 SCREENS.settings=function(){
@@ -1378,7 +1821,7 @@ SCREENS.settings=function(){
   <div class="panel">${sw('s-sound',settings.sound,t('sound'))}${sw('s-music',settings.music,t('music'))}</div>
   <div class="panel"><h3 style="margin-bottom:4px">${t('gameplay')}</h3>${sw('s-xt',settings.extraTurn,t('extraTurn'))}</div>
   <div class="panel"><h3 style="margin-bottom:4px">${t('notifSet')}</h3>${['friend','invite','rank','ach','online'].map(k=>sw('n-'+k,settings.notif[k],t('nf_'+k))).join('')}</div>
-  <div class="panel stack" style="gap:8px"><button class="btn ghost block" id="pp">${t('privacy')}</button><button class="btn ghost block" id="tm">${t('terms')}</button><button class="btn ghost block" id="rs" style="color:var(--bad)">${t('reset')}</button></div></div>`;
+  ${store.get('isAdmin',false)?`<button class="btn block" data-go="admin">${t('admin')}</button>`:''}<div class="panel stack" style="gap:8px"><button class="btn ghost block" id="pp">${t('privacy')}</button><button class="btn ghost block" id="tm">${t('terms')}</button><button class="btn ghost block" id="rs" style="color:var(--bad)">${t('reset')}</button></div></div>`;
   $$('[data-l]').forEach(b=>b.onclick=()=>{settings.lang=b.dataset.l;store.set('settings',settings);applyLang();SCREENS.settings()});
   const bind=(id,fn)=>{$('#'+id).onclick=()=>{fn();store.set('settings',settings);SCREENS.settings()}};
   bind('s-sound',()=>{settings.sound=!settings.sound;if(settings.sound)sfx('good')});bind('s-music',()=>{settings.music=!settings.music;ac();musicSync()});bind('s-xt',()=>settings.extraTurn=!settings.extraTurn);
@@ -1402,6 +1845,7 @@ document.addEventListener('pointerdown',()=>{ac();if(settings.music&&!musicTimer
 if(!profile){SCREENS.onboard()}else{if(!social){social=seedSocial();store.set('social',social)}
   if(!profile.flags)profile.flags={};
   const on=social.friends.find(f=>f.online);if(on&&rnd()<.5)pushNotif('online',t('n_online',on.u));
-  go('home')}
+  if(location.hash==='#admin')go('admin');else go('home')}
+addEventListener('hashchange',()=>{if(location.hash==='#admin'&&profile)go('admin')});
 })();
 </script>

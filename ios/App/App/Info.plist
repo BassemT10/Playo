@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-        <string>ذاكِرة</string>
+        <string>Playo</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -38,10 +38,10 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>app.zakira.memory</string>
+			<string>app.playo.games</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>zakira</string>
+				<string>playo</string>
 			</array>
 		</dict>
 	</array>

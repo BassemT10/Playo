@@ -27,8 +27,8 @@ const head = `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#0E1626"><meta name="color-scheme" content="dark">
 <meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="ذاكِرة">
-<meta name="description" content="ألعاب ذاكرة وتركيز تلعبها وحدك أو مع أصدقائك مباشرة">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Playo">
+<meta name="description" content="ذاكرة، أسئلة، سودوكو وخداع: العب وحدك أو مع أصدقائك">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/icon-180.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif;-webkit-user-select:none;user-select:none;overscroll-behavior:none}input{-webkit-user-select:text;user-select:text}img{max-width:100%}[hidden]{display:none!important}</style>
 <script src="config.js"></script><script src="supabase.js"></script><script src="net.js"></script>
@@ -37,9 +37,10 @@ fs.writeFileSync(path.join(www, 'index.html'), head + game + '</body></html>');
 fs.copyFileSync(path.join(root, 'src', 'config.js'), path.join(www, 'config.js'));
 fs.copyFileSync(path.join(root, 'src', 'net-supabase.js'), path.join(www, 'net.js'));
 fs.copyFileSync(nm('@supabase/supabase-js/dist/umd/supabase.js'), path.join(www, 'supabase.js'));
+fs.copyFileSync(nm('xlsx/dist/xlsx.full.min.js'), path.join(www, 'xlsx.js'));
 for (const f of fs.readdirSync(path.join(root, 'assets', 'web'))) fs.copyFileSync(path.join(root, 'assets', 'web', f), path.join(www, 'icons', f));
 fs.writeFileSync(path.join(www, 'manifest.webmanifest'), JSON.stringify({
-  name: 'ذاكِرة – ألعاب الذاكرة', short_name: 'ذاكِرة', lang: 'ar', dir: 'rtl', start_url: './', scope: './',
+  name: 'Playo', short_name: 'Playo', lang: 'ar', dir: 'rtl', start_url: './', scope: './',
   display: 'standalone', orientation: 'portrait', background_color: '#0E1626', theme_color: '#0E1626',
   icons: [{ src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' }, { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },
           { src: 'icons/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }]

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">ذاكِرة</string>
-    <string name="title_activity_main">ذاكِرة</string>
-    <string name="package_name">app.zakira.memory</string>
-    <string name="custom_url_scheme">app.zakira.memory</string>
+    <string name="app_name">Playo</string>
+    <string name="title_activity_main">Playo</string>
+    <string name="package_name">app.playo.games</string>
+    <string name="custom_url_scheme">app.playo.games</string>
 </resources>

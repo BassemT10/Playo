@@ -36,21 +36,21 @@ jobs:
           chmod +x gradlew
           set -o pipefail
           ./gradlew assembleRelease --no-daemon --stacktrace 2>&1 | tee ../gradle.log
-      - run: cp android/app/build/outputs/apk/release/app-release.apk zakira.apk
+      - run: cp android/app/build/outputs/apk/release/app-release.apk playo.apk
       - name: Publish download
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v1.0.${{ github.run_number }}
-          name: ذاكِرة 1.0.${{ github.run_number }}
+          name: Playo 1.0.${{ github.run_number }}
           make_latest: true
-          files: zakira.apk
+          files: playo.apk
           body: |
-            حمّل zakira.apk على هاتف أندرويد وافتحه للتثبيت.
-            Download zakira.apk on an Android phone and open it to install.
+            حمّل playo.apk على هاتف أندرويد وافتحه للتثبيت.
+            Download playo.apk on an Android phone and open it to install.
       - uses: actions/upload-artifact@v4
         with:
-          name: zakira-apk
-          path: zakira.apk
+          name: playo-apk
+          path: playo.apk
       - name: Report build result
         if: always()
         run: |

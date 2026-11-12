@@ -23,12 +23,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <!-- Room invite links: zakira://r/CODE -->
+            <!-- Room invite links: playo://r/CODE -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="zakira" />
+                <data android:scheme="playo" />
             </intent-filter>
 
         </activity>

@@ -1,37 +1,45 @@
-# ذاكِرة — Zakira Memory Games
+# Playo (اسم مبدئي)
 
-تطبيق ألعاب ذاكرة وتركيز يعمل على **أندرويد** و**آيفون** وفي **المتصفح**، مع لعب مباشر بين الأصدقاء.
+ألعاب فردية يلعبها الشخص وحده أو مع أصدقائه، وكل لاعب يحسب لنفسه، على **أندرويد** و**آيفون** و**المتصفح**:
 
-| النسخة | من أين |
+| القسم | الفكرة |
 |---|---|
-| أندرويد | [تحميل zakira.apk](https://github.com/BassemT10/zakira-app/releases/latest/download/zakira.apk) |
-| آيفون | TestFlight (بعد تفعيل حساب Apple Developer) |
-| المتصفح | https://bassemt10.github.io/zakira-app/ |
+| ذاكرة | 6 ألعاب ذاكرة: الأحجار، ترتيب الأرقام، تطابق الصور، تذكّر وارسم، تسلسل الألوان، تذكّر المواقع |
+| أسئلة | أسئلة بخيارات (2 إلى 4) بوقت محدد، الأسرع يكسب نقاطاً أكثر، مع مكافأة سلسلة |
+| سودوكو الأسرع | نفس اللوحة للجميع، كل خطأ +15 ثانية، أقل وقت يفوز |
+| خداع | مع الأصدقاء: كل لاعب يكتب كذبة مقنعة ثم يختار الجميع الحقيقة. وحدك: اكتشف الحقيقة بين أكاذيب جاهزة |
 
-## كيف يُبنى
-كل تعديل على فرع `main` يبني تلقائياً على GitHub Actions:
-- **Android app** ← ملف APK موقّع في صفحة Releases.
-- **iPhone app** ← فحص بناء؛ ومع إعدادات Apple يرفع إلى TestFlight.
-- **Web version** ← ينشر نسخة المتصفح على GitHub Pages.
+أنماط اللعب: وحدك، غرفة أصدقاء برابط أو كود (حتى 4)، أونلاين مع لاعبين عشوائيين.
+
+## إضافة الأسئلة
+- افتح اللعبة مع `#admin` في آخر الرابط ← **إدارة الأسئلة**: إضافة وتعديل وحذف، واستيراد/تصدير Excel.
+- نموذج Excel: `assets/playo-questions-template.xlsx` (ورقة «أسئلة» وورقة «خداع»).
+- قبل ربط الخادم: تُحفظ الأسئلة على جهازك وتظهر في لعبك الفردي.
+- بعد ربط Supabase: سجّل دخول المدير في الصفحة نفسها، وكل ما تحفظه يصل لكل اللاعبين.
+
+## ربط الخادم (Supabase، مجاني)
+1. أنشئ مشروعاً وانسخ **Project URL** و **anon public key** إلى `src/config.js`.
+2. Authentication ← Users ← Add user: أنشئ حساب المدير (بريدك وكلمة مرور).
+3. SQL Editor: الصق `supabase/questions.sql` بعد وضع بريد المدير مكان `OWNER_EMAIL`، ثم Run.
+
+## البناء
+كل تعديل على `main` يبني تلقائياً على GitHub Actions: Android (APK في Releases)، iPhone (فحص، ثم TestFlight بعد إضافة أسرار Apple)، والمتصفح (GitHub Pages أو الدومين).
 
 ## البنية
 ```
-src/game.html          اللعبة كاملة (نفس الكود في التطبيق والمتصفح وصفحة Claude)
+src/game.html          اللعبة كاملة (نفس الكود في التطبيق والمتصفح)
 src/net-supabase.js    الغرف المباشرة عبر Supabase Realtime
-src/config.js          رابط Supabase والمفتاح العام وروابط التحميل
+src/config.js          إعدادات الخادم والروابط
+supabase/questions.sql جدول الأسئلة وصلاحياته
 scripts/build-web.js   يبني مجلد www/
-android/  ios/         مشروعا Capacitor للهاتف
+android/  ios/         مشروعا Capacitor
 ```
-اللعب المباشر: كل جهاز يشغّل نفس محرك اللعبة بنفس البذرة العشوائية، ويُرسل فقط اختيارات كل لاعب عبر Supabase Presence، فتبقى كل الشاشات متطابقة.
 
 ## تفعيل آيفون (TestFlight)
-1. فعّل Apple Developer Program.
-2. في App Store Connect أنشئ تطبيقاً جديداً بالمعرّف `app.zakira.memory`.
-3. أنشئ مفتاح API من App Store Connect ← Users and Access ← Integrations (دور App Manager).
-4. أضف في GitHub ← Settings ← Secrets and variables ← Actions:
-   `APPLE_TEAM_ID`, `ASC_KEY_ID`, `ASC_ISSUER_ID`, `ASC_KEY_P8` (محتوى ملف .p8 كاملاً).
-5. شغّل workflow **iPhone app** من تبويب Actions.
+1. Apple Developer Program، ثم أنشئ التطبيق في App Store Connect بالمعرّف `app.playo.games`.
+2. مفتاح API من App Store Connect ← Users and Access ← Integrations (دور App Manager).
+3. أسرار GitHub: `APPLE_TEAM_ID`, `ASC_KEY_ID`, `ASC_ISSUER_ID`, `ASC_KEY_P8`.
 
 ## ملاحظات
-- APK الحالي موقّع بمفتاح اختبار موجود في المستودع، مناسب للتجربة مع الأصدقاء. قبل Google Play نُنشئ مفتاحاً خاصاً سرياً.
+- APK موقّع بمفتاح اختبار في المستودع، للتجربة فقط. قبل Google Play نُنشئ مفتاحاً سرياً.
 - مكان إعلان البانر محجوز؛ AdMob يُضاف في مرحلة النشر.

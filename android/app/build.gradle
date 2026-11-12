@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "app.zakira.memory"
+    namespace "app.playo.games"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "app.zakira.memory"
+        applicationId "app.playo.games"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode (System.getenv("VERSION_CODE") ?: "1").toInteger()

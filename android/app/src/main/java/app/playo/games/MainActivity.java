@@ -1,4 +1,4 @@
-package app.zakira.memory;
+package app.playo.games;
 
 import com.getcapacitor.BridgeActivity;
 
