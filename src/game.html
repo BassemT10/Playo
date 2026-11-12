@@ -373,6 +373,24 @@ table.lb tr:last-child td{border-bottom:0}
 textarea{font:inherit;font-weight:500;background:var(--bg2);color:var(--fg);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;width:100%;min-height:84px;resize:vertical}
 input[type=number],input[type=email],input[type=password]{font:inherit;font-weight:500;background:var(--bg2);color:var(--fg);border:1.5px solid var(--line);border-radius:12px;padding:11px 12px;width:100%}
 .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+/* premium */
+.prem-btn{border:0;border-radius:13px;height:42px;padding:0 12px;display:inline-flex;align-items:center;gap:6px;font-family:var(--f-display);font-weight:700;font-size:14px;cursor:pointer;color:var(--accent-ink);background:linear-gradient(135deg,#FFD27A,var(--accent));box-shadow:0 3px 0 var(--accent-d)}
+.ptag{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:7px;background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent);margin-inline-start:6px;vertical-align:middle}
+.ptag.on{background:var(--accent);color:var(--accent-ink)}
+.lock-tag.prem{color:var(--accent)}
+.prem-hero{text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;padding:8px 0}
+.prem-crown{width:72px;height:72px;border-radius:24px;display:grid;place-items:center;background:linear-gradient(135deg,#FFD27A,var(--accent));color:var(--accent-ink);box-shadow:0 8px 30px color-mix(in srgb,var(--accent) 40%,transparent)}
+.prem-crown .ic{width:38px!important;height:38px!important}
+.prem-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.prem-list li{display:flex;gap:10px;align-items:center;font-weight:700}
+.prem-list .ic{color:var(--teal)}
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.plan{position:relative;border:2px solid var(--line);background:var(--surface);border-radius:18px;padding:18px 10px 14px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;color:var(--fg)}
+.plan.on{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--surface))}
+.plan b{font-family:var(--f-display);font-size:17px}
+.plan-price{font-family:var(--f-display);font-size:24px;font-weight:800;color:var(--accent)}
+.plan-badge{position:absolute;top:-11px;background:var(--teal);color:#0E1626;font-size:11px;font-weight:800;border-radius:999px;padding:2px 10px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 
@@ -514,7 +532,7 @@ lang:['اللغة','Language'],sound:['المؤثرات الصوتية','Sound e
 nf_friend:['طلبات الصداقة','Friend requests'],nf_invite:['دعوات الغرف','Room invites'],nf_rank:['تحديث الترتيب','Rank updates'],nf_ach:['الإنجازات','Achievements'],nf_online:['أصدقاء متصلون','Friends online'],
 gameplay:['اللعب','Gameplay'],privacy:['سياسة الخصوصية','Privacy policy'],terms:['شروط الاستخدام','Terms of use'],reset:['حذف بياناتي من هذا الجهاز','Delete my data on this device'],resetQ:['سيتم حذف الحساب والنتائج من هذا الجهاز. متابعة؟','This deletes your account and scores from this device. Continue?'],
 privacyTxt:['نجمع اسم المستخدم والدولة ونتائج المباريات فقط لتشغيل اللعب والتصنيفات. لا نبيع بياناتك. تعرض الإعلانات شبكة إعلانية قد تستخدم معرّف الإعلان وفق موافقتك. يمكنك حذف حسابك في أي وقت. (مسودة أولية تُراجع قانونياً قبل النشر)','We collect your username, country and match results only to run games and rankings. We never sell your data. Ads come from an ad network that may use your ad ID based on your consent. You can delete your account anytime. (Initial draft, legal review before launch)'],
-termsTxt:['يُمنع الغش واستخدام برامج مساعدة والأسماء المسيئة. يحق للإدارة إيقاف الحسابات المخالفة. التطبيق مجاني بالكامل ويعتمد على إعلانات البانر. (مسودة أولية)','No cheating, helper software or offensive names. Accounts that break the rules may be suspended. The app is fully free and supported by banner ads. (Initial draft)'],
+termsTxt:['يُمنع الغش واستخدام برامج مساعدة والأسماء المسيئة. يحق للإدارة إيقاف الحسابات المخالفة. التطبيق مجاني مع إعلانات بانر، ويمكن الاشتراك شهرياً أو سنوياً في بريميوم لفتح كل الميزات وإزالة الإعلانات. يتجدد الاشتراك تلقائياً ويُلغى من إعدادات المتجر. (مسودة أولية)','No cheating, helper software or offensive names. Accounts that break the rules may be suspended. The app is free with banner ads; an optional monthly or yearly Premium subscription unlocks every feature and removes ads. Subscriptions renew automatically and are cancelled in your store settings. (Initial draft)'],
 a_first:['البداية','First steps'],a_firstD:['العب أول مباراة','Play your first match'],
 a_win:['أول فوز','First win'],a_winD:['افز في مباراة جماعية','Win a multiplayer match'],
 a_ten:['لاعب مثابر','Regular'],a_tenD:['العب 10 مباريات','Play 10 matches'],
@@ -579,6 +597,19 @@ adm_login:['سجّل دخول المدير لنشر الأسئلة لكل الل
 adm_imported:['تم استيراد {0} سؤالاً','{0} questions imported'],adm_preview:['وجدنا {0} سؤال أسئلة و{1} سؤال خداع. استيرادها؟','Found {0} quiz and {1} deception questions. Import them?'],adm_noRows:['لم نجد أسئلة في الملف. استخدم نموذج Excel.','No questions found. Use the Excel template.'],
 adm_needOpts:['أكمل السؤال والإجابة وخياراً خاطئاً واحداً على الأقل','Fill in the question, the answer and at least one wrong option'],adm_needFakes:['أكمل السؤال والإجابة و3 إجابات خداع','Fill in the question, the answer and 3 fake answers'],adm_readonly:['الأمثلة المدمجة للقراءة فقط','Built-in samples are read-only'],
 adm_saveFail:['تعذّر الحفظ على الخادم: {0}','Could not save to the server: {0}'],adm_edit:['تعديل','Edit'],adm_dlFail:['التصدير متاح في نسخة المتصفح على الكمبيوتر','Export works in the web version on a computer'],adm_loading:['جارٍ قراءة الملف…','Reading the file…'],adm_more:['و{0} أخرى… استخدم البحث','and {0} more… use search'],
+prem:['بريميوم','Premium'],premTitle:['افتح كل شيء مع Playo بريميوم','Unlock everything with Playo Premium'],
+premF1:['بدون إعلانات','No ads'],premF2:['كل ألعاب الذاكرة الست','All six memory games'],premF3:['كل فئات الأسئلة والخداع وكل أطوال الجولات','Every quiz and deception category and round length'],premF4:['كل صعوبات السودوكو','Every Sudoku difficulty'],premF5:['أنشئ غرفاً واختر اللعبة لأصدقائك','Create rooms and pick the game for your friends'],premF6:['سجل مباريات كامل وصور مميزة','Full match history and special avatars'],
+plMonthly:['شهري','Monthly'],plYearly:['سنوي','Yearly'],perMonth:['شهرياً','per month'],perYear:['سنوياً','per year'],trial7:['أول 7 أيام مجاناً','First 7 days free'],save2:['وفّر شهرين','Save 2 months'],
+subscribe:['اشترك الآن','Subscribe'],startTrial:['ابدأ التجربة المجانية','Start free trial'],restore:['استعادة المشتريات','Restore purchases'],
+premTerms:['يتجدد الاشتراك تلقائياً، ويمكنك إلغاؤه في أي وقت من إعدادات المتجر قبل نهاية الفترة بـ24 ساعة على الأقل. بعد التجربة المجانية يُخصم سعر الاشتراك السنوي.','Renews automatically. Cancel anytime in your store settings at least 24 hours before the period ends. After the free trial, the yearly price is charged.'],
+premActive:['أنت مشترك في بريميوم','You are a Premium member'],premUntil:['حتى {0}','Until {0}'],premLocked:['هذه الميزة في بريميوم','This is a Premium feature'],premGet:['بريميوم','Premium'],
+premTest:['وضع التجربة','Test mode'],premTestD:['الدفع غير مربوط بعد لأنه يحتاج حسابات المتاجر. فعّل اشتراكاً تجريبياً لترى الميزات المفتوحة.','Payments are not connected yet; they need the store accounts. Turn on a test subscription to see the unlocked features.'],
+premTestOn:['فعّل اشتراكاً تجريبياً','Turn on test subscription'],premTestOff:['أوقف الاشتراك التجريبي','Turn off test subscription'],premDone:['مرحباً بك في بريميوم!','Welcome to Premium!'],premRestored:['تمت استعادة اشتراكك','Your subscription was restored'],premNone:['لم نجد اشتراكاً سابقاً','No previous subscription found'],premFail:['لم تكتمل عملية الشراء','The purchase did not complete'],
+premSignFirst:['سجّل دخولك أولاً حتى يبقى اشتراكك معك على أي جهاز','Sign in first so your subscription follows you to any device'],premWeb:['تُفتح صفحة دفع آمنة. بعد الدفع ارجع هنا واضغط «استعادة المشتريات».','A secure payment page opens. After paying, come back and tap “Restore purchases”.'],
+account:['الحساب','Account'],accLocal:['حسابك محفوظ على هذا الجهاز فقط','Your account is saved on this device only'],accSignIn:['سجّل الدخول لحفظ تقدمك واشتراكك','Sign in to save your progress and subscription'],accEmail:['بريدك الإلكتروني','Your email'],accSend:['أرسل الرمز','Send code'],
+accCodeSent:['أرسلنا رمزاً إلى {0}','We sent a code to {0}'],accCode:['الرمز','Code'],accVerify:['تأكيد','Verify'],accBadCode:['الرمز غير صحيح أو انتهت صلاحيته','The code is wrong or expired'],accSignedIn:['مسجّل باسم {0}','Signed in as {0}'],accSignOut:['تسجيل الخروج','Sign out'],
+accNoServer:['تسجيل الدخول يعمل بعد ربط الخادم. حتى ذلك الحين يُحفظ تقدمك على هذا الجهاز.','Sign-in works once the server is connected. Until then your progress is saved on this device.'],accSendFail:['تعذّر إرسال الرمز، حاول بعد قليل','Could not send the code; try again shortly'],accWelcome:['تم تسجيل الدخول','Signed in'],
+historyMore:['مع بريميوم ترى سجل مبارياتك كاملاً','Premium shows your full match history'],premBadge:['بريميوم','Premium'],
 };
 function t(k,...a){const v=STR[k];let s=v?(v[L()]??v[0]):k;if(typeof s==='string')a.forEach((x,i)=>{s=s.split('{'+i+'}').join(x)});return s}
 
@@ -763,7 +794,7 @@ function ago(ts){const m=Math.floor((Date.now()-ts)/60000);if(m<1)return t('ago_
 let current='home',params={};
 const AD_SCREENS=new Set(['home','games','setup','profile','leaderboard','friends','settings','notifs','results','lobby','match']);
 function go(s,p){current=s;params=p||{};if(M&&s!=='game'){M.alive=false}
-  document.body.classList.toggle('has-ad',AD_SCREENS.has(s));$('#ad').hidden=!AD_SCREENS.has(s);$('#ad-txt').textContent=t('adTxt');
+  const showAd=AD_SCREENS.has(s)&&!isPrem();document.body.classList.toggle('has-ad',showAd);$('#ad').hidden=!showAd;$('#ad-txt').textContent=t('adTxt');
   (SCREENS[s]||SCREENS.home)(params);window.scrollTo(0,0)}
 function applyLang(){document.documentElement.lang=L()?'en':'ar';document.documentElement.dir=L()?'ltr':'rtl'}
 const head=(title,backTo='home',extra='')=>`<div class="screen-head"><button class="icon-btn" data-go="${backTo}" aria-label="${t('back')}">${ic('back','flip')}</button><h2>${title}</h2>${extra}</div>`;
@@ -887,8 +918,106 @@ function installModal(){modal(`<h3 style="margin-bottom:10px">${t('getApp')}</h3
   <div class="copyline"><code>${ART_URL}</code><button class="btn sm" data-cp>${ic('copy')}</button></div></div><button class="btn block" style="margin-top:14px" data-ok>${t('ok')}</button>`,(m,close)=>{$('[data-ok]',m).onclick=close;$('[data-cp]',m).onclick=()=>copyText(ART_URL)})}
 async function nativeShare(text,url){const S=PLUG('Share');if(S){try{await S.share({title:t('app'),text,url,dialogTitle:t('shareRoom')});return}catch(e){return}}copyText(url)}
 
+/* ========= Premium: what free players get vs subscribers =========
+   Free: banner ads, 3 memory games, short quiz/deception rounds with mixed categories, easy Sudoku,
+   join any friend's room, play online. Premium: everything, no ads, create rooms. */
+const PREM_AVATARS=['👑','🐉','🦅','🦈','🐺','🦩','🦋','🌟'];
+let ENT=store.get('ent',{until:0,plan:null,src:null});
+const isPrem=()=>ENT.until>Date.now();
+const FREE={memory:['stones','numbers','pairs'],diff:{quiz:['n5'],deceit:['r5'],sudoku:['easy']}};
+const gameLocked=g=>!isPrem()&&g.ready&&g.sec==='memory'&&!FREE.memory.includes(g.id);
+const diffLocked=(g,d)=>!isPrem()&&!!FREE.diff[g.id]&&!FREE.diff[g.id].includes(d.k);
+const catLocked=c=>!isPrem()&&c!=='all';
+const modeLocked=m=>!isPrem()&&m==='friends';
+const CROWN='<svg class="ic" viewBox="0 0 24 24" style="width:14px;height:14px;fill:currentColor;stroke:none" aria-hidden="true"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg>';
+const lockTag=()=>`<span class="ptag">${CROWN}</span>`;
+function setEnt(e){ENT=e;store.set('ent',ENT);const ad=$('#ad');if(ad&&isPrem()){ad.hidden=true;document.body.classList.remove('has-ad')}}
+function needPrem(){sfx('tap');toast(t('premLocked'));go('premium',{back:current})}
+
+/* ----- purchases: RevenueCat in the app, payment link on the web, test mode elsewhere ----- */
+const PAY={mode:'test',P:null,offer:null,
+  async init(){const P=PLUG('Purchases');const keys=ZKC.rcKeys||{};const key=NATIVE&&CAP.getPlatform?keys[CAP.getPlatform()]:null;
+    if(P&&key&&key.indexOf('__')!==0){try{await P.configure({apiKey:key});PAY.P=P;PAY.mode='store';
+        try{const o=await P.getOfferings();PAY.offer=o&&o.current}catch(e){}
+        P.addCustomerInfoUpdateListener(ci=>PAY.apply(ci)).catch(()=>{});await PAY.refresh()}catch(e){}}
+    else if(!NATIVE&&ZKC.payLinks&&ZKC.payLinks.monthly&&ZKC.payLinks.monthly.indexOf('__')!==0)PAY.mode='web'},
+  apply(ci){const e=ci&&ci.entitlements&&ci.entitlements.active&&ci.entitlements.active[ZKC.entitlement||'premium'];
+    if(e)setEnt({until:e.expirationDate?Date.parse(e.expirationDate):Date.now()+400*864e5,plan:e.productIdentifier||null,src:'store'});
+    else if(ENT.src==='store')setEnt({until:0,plan:null,src:null})},
+  async refresh(){try{if(PAY.mode==='store'){const r=await PAY.P.getCustomerInfo();PAY.apply(r.customerInfo)}else if(ACC.user)await ACC.pullEnt()}catch(e){}},
+  pkg(id){return PAY.offer&&(PAY.offer.availablePackages||[]).find(p=>p.packageType===(id==='monthly'?'MONTHLY':'ANNUAL'))},
+  plans(){const def=ZKC.prices||{monthly:'2.99$',yearly:'19.99$'};const pr=id=>{const p=PAY.pkg(id);return p&&p.product?p.product.priceString:def[id]};
+    return[{id:'yearly',price:pr('yearly'),per:'perYear',trial:true,save:true},{id:'monthly',price:pr('monthly'),per:'perMonth'}]},
+  async buy(id){
+    if(PAY.mode==='store'){const p=PAY.pkg(id);if(!p){toast(t('premFail'));return false}
+      try{const r=await PAY.P.purchasePackage({aPackage:p});PAY.apply(r.customerInfo);return isPrem()}catch(e){if(!(e&&e.userCancelled))toast(t('premFail'));return false}}
+    if(PAY.mode==='web'){if(!ACC.user){toast(t('premSignFirst'));accountModal();return false}
+      toast(t('premWeb'));window.open(ZKC.payLinks[id]+'?client_reference_id='+encodeURIComponent(ACC.user.id)+'&prefilled_email='+encodeURIComponent(ACC.user.email||''),'_blank');return false}
+    return null},
+  async restore(){if(PAY.mode==='store'){try{const r=await PAY.P.restorePurchases();PAY.apply(r.customerInfo)}catch(e){}}else await PAY.refresh();return isPrem()}};
+
+/* ----- accounts: email code sign-in through Supabase, progress synced to the server ----- */
+const ACC={sb:null,user:null,_t:0,
+  client(){if(!SB_ON()||!window.supabase)return null;if(!ACC.sb)ACC.sb=window.supabase.createClient(ZKC.supabaseUrl,ZKC.supabaseKey,{auth:{persistSession:true,storageKey:'playo_auth',detectSessionInUrl:false}});return ACC.sb},
+  async init(){const sb=ACC.client();if(!sb)return;
+    try{const {data}=await sb.auth.getSession();ACC.user=data&&data.session?data.session.user:null}catch(e){}
+    sb.auth.onAuthStateChange((ev,ses)=>{ACC.user=ses?ses.user:null});
+    if(ACC.user){ACC.linkStore();ACC.sync()}},
+  linkStore(){if(PAY.P&&ACC.user)PAY.P.logIn({appUserID:ACC.user.id}).then(r=>r&&PAY.apply(r.customerInfo)).catch(()=>{})},
+  async send(email){try{const {error}=await ACC.client().auth.signInWithOtp({email,options:{shouldCreateUser:true}});return !error}catch(e){return false}},
+  async verify(email,code){try{const {data,error}=await ACC.client().auth.verifyOtp({email,token:code,type:'email'});if(error||!data.user)return false;ACC.user=data.user;ACC.linkStore();await ACC.sync();return true}catch(e){return false}},
+  async pullEnt(){const sb=ACC.client();if(!sb||!ACC.user)return null;const {data}=await sb.from('profiles').select('premium_until,premium_plan').eq('id',ACC.user.id).maybeSingle();
+    if(data&&data.premium_until){const u=Date.parse(data.premium_until);if(u>Date.now())setEnt({until:u,plan:data.premium_plan,src:'server'});else if(ENT.src==='server')setEnt({until:0,plan:null,src:null})}
+    else if(ENT.src==='server')setEnt({until:0,plan:null,src:null});return data},
+  async sync(){const sb=ACC.client();if(!sb||!ACC.user||!profile)return;
+    try{const {data}=await sb.from('profiles').select('*').eq('id',ACC.user.id).maybeSingle();
+      if(data){['xp','points','matches','wins'].forEach(k=>{profile[k]=Math.max(profile[k]||0,data[k]||0)});saveAll();await ACC.pullEnt()}
+      await sb.from('profiles').upsert({id:ACC.user.id,username:profile.name,avatar:profile.avatar,country:profile.country,xp:profile.xp,points:profile.points,matches:profile.matches,wins:profile.wins})}catch(e){}},
+  later(){clearTimeout(ACC._t);ACC._t=setTimeout(()=>ACC.sync(),1500)},
+  async signOut(){try{await ACC.client().auth.signOut()}catch(e){}ACC.user=null;if(PAY.P)PAY.P.logOut().catch(()=>{});if(ENT.src==='server')setEnt({until:0,plan:null,src:null})}};
+
+function accountModal(){
+  if(!ACC.client()){modal(`<h3 style="margin-bottom:10px">${t('account')}</h3><p class="muted">${t('accNoServer')}</p><button class="btn block" style="margin-top:14px" data-ok>${t('ok')}</button>`,(m,c)=>{$('[data-ok]',m).onclick=c});return}
+  let email='';
+  modal(`<div id="accm"></div>`,(m,close)=>{const box=$('#accm',m);
+    const step1=()=>{box.innerHTML=`<form class="stack" id="acc1"><h3>${t('accSignIn')}</h3><input type="email" id="acc-e" placeholder="${t('accEmail')}" autocomplete="email" dir="ltr" value="${esc(email)}"><p class="small" id="acc-x" style="color:var(--bad);min-height:18px"></p><div class="row" style="justify-content:flex-end"><button type="button" class="btn ghost" data-c>${t('cancel')}</button><button class="btn primary" type="submit">${t('accSend')}</button></div></form>`;
+      $('[data-c]',box).onclick=close;$('#acc-e',box).focus();
+      $('#acc1',box).onsubmit=async e=>{e.preventDefault();email=$('#acc-e',box).value.trim();if(!/^\S+@\S+\.\S+$/.test(email))return;const b=$('button[type=submit]',box);b.disabled=true;
+        if(await ACC.send(email))step2();else{b.disabled=false;$('#acc-x',box).textContent=t('accSendFail')}}};
+    const step2=()=>{box.innerHTML=`<form class="stack" id="acc2"><h3>${t('accCodeSent',esc(email))}</h3><input type="text" id="acc-c" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="${t('accCode')}" dir="ltr" style="font-family:var(--f-display);font-size:26px;letter-spacing:.3em;text-align:center"><p class="small" id="acc-x" style="color:var(--bad);min-height:18px"></p><div class="row" style="justify-content:space-between"><button type="button" class="btn ghost sm" data-b>${t('back')}</button><button class="btn primary" type="submit">${t('accVerify')}</button></div></form>`;
+      $('[data-b]',box).onclick=step1;$('#acc-c',box).focus();
+      $('#acc2',box).onsubmit=async e=>{e.preventDefault();const b=$('button[type=submit]',box);b.disabled=true;
+        if(await ACC.verify(email,$('#acc-c',box).value.trim())){close();toast(t('accWelcome'));if(current==='settings'||current==='premium')go(current,params)}else{b.disabled=false;$('#acc-x',box).textContent=t('accBadCode')}}};
+    step1()})}
+
+/* ----- subscription screen ----- */
+function screenPremium(p){
+  let sel='yearly';const back=(p&&p.back&&p.back!=='premium')?p.back:'home';
+  const render=()=>{const plans=PAY.plans(),cur=plans.find(x=>x.id===sel);
+    app.innerHTML=head(t('prem'),back)+`<div class="stack">
+    <div class="prem-hero"><div class="prem-crown">${CROWN}</div><h2>${isPrem()?t('premActive'):t('premTitle')}</h2>${isPrem()?`<p class="muted small">${t('premUntil',new Date(ENT.until).toLocaleDateString(L()?'en':'ar'))}</p>`:''}</div>
+    <div class="panel"><ul class="prem-list">${['premF1','premF2','premF3','premF4','premF5','premF6'].map(k=>`<li>${ic('check')}<span>${t(k)}</span></li>`).join('')}</ul></div>
+    ${isPrem()&&ENT.src!=='test'?'':`<div class="plans">${plans.map(x=>`<button class="plan ${sel===x.id?'on':''}" data-plan="${x.id}">${x.save?`<span class="plan-badge">${t('save2')}</span>`:''}<b>${t(x.id==='yearly'?'plYearly':'plMonthly')}</b><span class="plan-price tnum">${esc(x.price)}</span><span class="small muted">${t(x.per)}</span>${x.trial?`<span class="small" style="color:var(--teal);font-weight:700">${t('trial7')}</span>`:''}</button>`).join('')}</div>
+      <button class="btn primary block" id="buy" style="font-size:18px;padding:14px">${cur.trial?t('startTrial'):t('subscribe')}</button>`}
+    <div class="row" style="justify-content:center;flex-wrap:wrap"><button class="btn ghost sm" id="restore">${t('restore')}</button>${ACC.client()&&!ACC.user?`<button class="btn ghost sm" id="acc">${t('accSignIn')}</button>`:''}</div>
+    <p class="small muted" style="text-align:center">${t('premTerms')}</p>
+    <div class="row" style="justify-content:center"><button class="btn ghost sm" id="pp">${t('privacy')}</button><button class="btn ghost sm" id="tm">${t('terms')}</button></div>
+    ${PAY.mode==='test'?`<div class="note stack" style="gap:8px"><b>${t('premTest')}</b><span>${t('premTestD')}</span><button class="btn sm" id="ptest">${ENT.src==='test'&&isPrem()?t('premTestOff'):t('premTestOn')}</button></div>`:''}</div>`;
+    $$('[data-plan]').forEach(b=>b.onclick=()=>{sfx('tap');sel=b.dataset.plan;render()});
+    const bb=$('#buy');if(bb)bb.onclick=async()=>{bb.disabled=true;const r=await PAY.buy(sel);bb.disabled=false;
+      if(r===null){$('#ptest')&&$('#ptest').scrollIntoView({behavior:'smooth',block:'center'});toast(t('premTestD'));return}
+      if(r){sfx('win');confetti();toast(t('premDone'));ACC.later();render()}};
+    $('#restore').onclick=async()=>{toast((await PAY.restore())?t('premRestored'):t('premNone'));render()};
+    const ac=$('#acc');if(ac)ac.onclick=accountModal;
+    const info=(h,b)=>modal(`<h3 style="margin-bottom:10px">${h}</h3><p class="muted">${b}</p><button class="btn block" style="margin-top:14px" data-ok>${t('ok')}</button>`,(m,c)=>{$('[data-ok]',m).onclick=c});
+    $('#pp').onclick=()=>info(t('privacy'),t('privacyTxt'));$('#tm').onclick=()=>info(t('terms'),t('termsTxt'));
+    const pt=$('#ptest');if(pt)pt.onclick=()=>{if(ENT.src==='test'&&isPrem())setEnt({until:0,plan:null,src:null});else{setEnt({until:Date.now()+30*864e5,plan:'test',src:'test'});sfx('win');confetti();toast(t('premDone'))}render()};
+  };render();
+};
+
 /* ========= SCREENS ========= */
 const SCREENS={};
+SCREENS.premium=screenPremium;
 
 SCREENS.onboard=function(){
   let av=AVATARS[0];
@@ -914,14 +1043,15 @@ SCREENS.onboard=function(){
     saveAll();sfx('good');if(NET.api)NET.api.presence(me0()).catch(()=>{});go('home')};
 };
 
-function dailyCfg(){const ready=GAMES.filter(g=>g.ready);const g=ready[hash(today())%ready.length];return{game:g.id,diffIdx:g.def,mode:'solo',opts:{},daily:true}}
+function dailyCfg(){const ready=GAMES.filter(g=>g.ready&&(g.sec!=='memory'||FREE.memory.includes(g.id)));const g=ready[hash(today())%ready.length];
+  let di=g.def;if(FREE.diff[g.id])di=g.diffs.findIndex(d=>FREE.diff[g.id].includes(d.k));return{game:g.id,diffIdx:di,mode:'solo',opts:{},daily:true}}
 
 SCREENS.home=function(){
   const lv=levelOf(profile.xp),unread=notifs.filter(n=>!n.read).length,dc=dailyCfg(),done=profile.daily[today()];
   app.innerHTML=`<div class="topbar"><div class="brand">${LOGO}<div><b>${t('app')}</b><small>${t('tagline')}</small></div></div>
-    <div class="row"><button class="icon-btn" data-go="notifs" aria-label="${t('notifications')}">${ic('bell')}${unread?`<span class="badge">${unread}</span>`:''}</button><button class="icon-btn" data-go="settings" aria-label="${t('settings')}">${ic('gear')}</button></div></div>
+    <div class="row">${isPrem()?'':`<button class="prem-btn" data-go="premium">${CROWN} ${t('premGet')}</button>`}<button class="icon-btn" data-go="notifs" aria-label="${t('notifications')}">${ic('bell')}${unread?`<span class="badge">${unread}</span>`:''}</button><button class="icon-btn" data-go="settings" aria-label="${t('settings')}">${ic('gear')}</button></div></div>
   <div class="panel player-card"><div class="avatar">${profile.avatar}</div>
-    <div style="min-width:0"><div class="row" style="gap:6px"><b style="font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(profile.name)}</b><span>${flag(profile.country)}</span></div>
+    <div style="min-width:0"><div class="row" style="gap:6px"><b style="font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(profile.name)}</b><span>${flag(profile.country)}</span>${isPrem()?`<span class="ptag on" title="${t('premBadge')}">${CROWN}</span>`:''}</div>
       <div class="row" style="gap:8px"><span class="lvl">${t('level',lv)}</span>${profile.dayStreak>1?`<span class="small muted">${t('streak',profile.dayStreak)}</span>`:''}</div>
       <div class="xpbar"><i style="width:${Math.round(lvlProgress(profile.xp)*100)}%"></i></div></div>
     <div class="pts"><b class="tnum">${profile.points.toLocaleString()}</b><span>${t('pointsL')}</span></div></div>
@@ -941,8 +1071,8 @@ SCREENS.home=function(){
   bindGameCards();
   if(pendingJoin)setTimeout(tryPendingJoin,300);
 };
-function gameCard(g,mode){return `<button class="gcard ${g.ready?'':'locked'}" style="--tint:${TINT[g.id]}" data-game="${g.id}" ${g.ready?'':'aria-disabled="true"'}><div class="art">${ART[g.id]}</div>${g.ready?'':`<span class="lock-tag">${ic('lock')}${t('soon')}</span>`}<b>${t('g_'+g.id)}</b><span>${t('g_'+g.id+'D')}</span></button>`}
-function bindGameCards(mode){$$('[data-game]').forEach(b=>b.onclick=()=>{const g=GAME(b.dataset.game);if(!g.ready){toast(t('soon'));return}sfx('tap');go('setup',{game:g.id,mode:mode||params.mode||'solo',invite:params.invite||null})})}
+function gameCard(g,mode){return `<button class="gcard ${g.ready?'':'locked'}" style="--tint:${TINT[g.id]}" data-game="${g.id}" ${g.ready?'':'aria-disabled="true"'}><div class="art">${ART[g.id]}</div>${g.ready?'':`<span class="lock-tag">${ic('lock')}${t('soon')}</span>`}${gameLocked(g)?`<span class="lock-tag prem">${CROWN}${t('premBadge')}</span>`:''}<b>${t('g_'+g.id)}</b><span>${t('g_'+g.id+'D')}</span></button>`}
+function bindGameCards(mode){$$('[data-game]').forEach(b=>b.onclick=()=>{const g=GAME(b.dataset.game);if(!g.ready){toast(t('soon'));return}if(gameLocked(g)){needPrem();return}sfx('tap');go('setup',{game:g.id,mode:mode||params.mode||'solo',invite:params.invite||null})})}
 
 SCREENS.games=function(p){
   const sub=p.mode==='friends'?t('playFriends'):p.mode==='online'?t('playOnline'):'';
@@ -954,29 +1084,30 @@ SCREENS.games=function(p){
 SCREENS.setup=function(p){
   const g=GAME(p.game);
   const MODES=g.modes||['solo','local','friends','online'];
-  const st={mode:MODES.includes(p.mode)?p.mode:'solo',diff:g.def,count:2,names:['','',''],set:'animals',size:2,cat:'all',invite:p.invite||null};
+  if(gameLocked(g)){go('premium',{back:'games'});return}
+  const st={mode:MODES.includes(p.mode)&&!modeLocked(p.mode)?p.mode:'solo',diff:diffLocked(g,g.diffs[g.def])?Math.max(0,g.diffs.findIndex(d=>!diffLocked(g,d))):g.def,count:2,names:['','',''],set:'animals',size:2,cat:'all',invite:p.invite||null};
   const render=()=>{
     app.innerHTML=head(t('g_'+g.id),g.sec==='memory'?'games':'home')+`<div class="stack">
     <div class="setup-art" style="--tint:${TINT[g.id]}">${ART[g.id]}</div>
     <div class="panel"><h3 style="margin-bottom:8px">${t('howTo')}</h3><ul class="rules">${t('r_'+g.id).map(r=>`<li>${r}</li>`).join('')}</ul></div>
-    <div class="panel stack"><div><h3 style="margin-bottom:8px">${t('mode')}</h3><div class="modes">${MODES.map(m=>`<button class="mode ${st.mode===m?'on':''}" data-mode="${m}"><b>${t('m_'+m)}</b><span>${t('m_'+m+'D')}</span></button>`).join('')}</div></div>
-      <div><h3 style="margin-bottom:8px">${t('difficulty')}</h3><div class="chips">${g.diffs.map((d,i)=>`<button class="chip ${st.diff===i?'on':''}" data-diff="${i}">${dlabel(d)}</button>`).join('')}</div></div>
+    <div class="panel stack"><div><h3 style="margin-bottom:8px">${t('mode')}</h3><div class="modes">${MODES.map(m=>`<button class="mode ${st.mode===m?'on':''}" data-mode="${m}"><b>${t('m_'+m)}${modeLocked(m)?lockTag():''}</b><span>${t('m_'+m+'D')}</span></button>`).join('')}</div></div>
+      <div><h3 style="margin-bottom:8px">${t('difficulty')}</h3><div class="chips">${g.diffs.map((d,i)=>`<button class="chip ${st.diff===i?'on':''}" data-diff="${i}">${dlabel(d)}${diffLocked(g,d)?lockTag():''}</button>`).join('')}</div></div>
       ${g.id==='pairs'?`<div><h3 style="margin-bottom:8px">${t('imageSet')}</h3><div class="chips">${Object.keys(PAIR_SETS).map(s=>`<button class="chip ${st.set===s?'on':''}" data-set="${s}">${splitEmoji(PAIR_SETS[s])[0]} ${t('set_'+s)}</button>`).join('')}</div>
         <div class="toggle" style="border:0;padding-bottom:0"><span>${t('extraTurn')}</span><button class="sw ${settings.extraTurn?'on':''}" id="xt" aria-pressed="${settings.extraTurn}" aria-label="${t('extraTurn')}"></button></div></div>`:''}
-      ${(g.id==='quiz'||g.id==='deceit')?`<div><h3 style="margin-bottom:8px">${t('category')}</h3><div class="chips"><button class="chip ${st.cat==='all'?'on':''}" data-cat="all">${t('allCats')}</button>${bankCats(g.id).map(c=>`<button class="chip ${st.cat===c?'on':''}" data-cat="${esc(c)}">${esc(c)}</button>`).join('')}</div></div>`:''}
+      ${(g.id==='quiz'||g.id==='deceit')?`<div><h3 style="margin-bottom:8px">${t('category')}</h3><div class="chips"><button class="chip ${st.cat==='all'?'on':''}" data-cat="all">${t('allCats')}</button>${bankCats(g.id).map(c=>`<button class="chip ${st.cat===c?'on':''}" data-cat="${esc(c)}">${esc(c)}${catLocked(c)?lockTag():''}</button>`).join('')}</div></div>`:''}
       ${st.mode==='local'?`<div><h3 style="margin-bottom:8px">${t('players')}</h3><div class="seg" style="margin-bottom:10px">${[2,3,4].map(n=>`<button data-count="${n}" class="${st.count===n?'on':''}">${t('nPlayers',n)}</button>`).join('')}</div>
         <div class="stack" style="gap:8px"><input type="text" value="${esc(profile.name)}" disabled aria-label="${t('playerN',1)}">${[...Array(st.count-1)].map((_,i)=>`<input type="text" id="pn${i}" maxlength="14" placeholder="${t('playerN',i+2)}" value="${esc(st.names[i])}" data-ni="${i}">`).join('')}</div></div>`:''}
       ${st.mode==='online'?`<div><h3 style="margin-bottom:8px">${t('matchSize')}</h3><div class="seg">${[2,3,4].map(n=>`<button data-size="${n}" class="${st.size===n?'on':''}">${t('nPlayers',n)}</button>`).join('')}</div></div>`:''}
       <button class="btn primary block" id="go">${ic('play')} ${t('startMatch')}</button></div></div>`;
-    $$('[data-mode]').forEach(b=>b.onclick=()=>{sfx('tap');st.mode=b.dataset.mode;render()});
-    $$('[data-diff]').forEach(b=>b.onclick=()=>{sfx('tap');st.diff=+b.dataset.diff;render()});
+    $$('[data-mode]').forEach(b=>b.onclick=()=>{if(modeLocked(b.dataset.mode)){needPrem();return}sfx('tap');st.mode=b.dataset.mode;render()});
+    $$('[data-diff]').forEach(b=>b.onclick=()=>{if(diffLocked(g,g.diffs[+b.dataset.diff])){needPrem();return}sfx('tap');st.diff=+b.dataset.diff;render()});
     $$('[data-set]').forEach(b=>b.onclick=()=>{sfx('tap');st.set=b.dataset.set;render()});
-    $$('[data-cat]').forEach(b=>b.onclick=()=>{sfx('tap');st.cat=b.dataset.cat;render()});
+    $$('[data-cat]').forEach(b=>b.onclick=()=>{if(catLocked(b.dataset.cat)){needPrem();return}sfx('tap');st.cat=b.dataset.cat;render()});
     $$('[data-count]').forEach(b=>b.onclick=()=>{st.count=+b.dataset.count;render()});
     $$('[data-size]').forEach(b=>b.onclick=()=>{st.size=+b.dataset.size;render()});
     $$('[data-ni]').forEach(i=>i.oninput=()=>{st.names[+i.dataset.ni]=i.value});
     const xt=$('#xt');if(xt)xt.onclick=()=>{settings.extraTurn=!settings.extraTurn;store.set('settings',settings);render()};
-    $('#go').onclick=async()=>{sfx('tap');const cfg={game:g.id,diffIdx:st.diff,mode:st.mode,opts:{set:st.set,cat:st.cat,names:st.names.slice(0,st.count-1),size:st.size}};
+    $('#go').onclick=async()=>{if(modeLocked(st.mode)||diffLocked(g,g.diffs[st.diff])||catLocked(st.cat)){needPrem();return}sfx('tap');const cfg={game:g.id,diffIdx:st.diff,mode:st.mode,opts:{set:st.set,cat:st.cat,names:st.names.slice(0,st.count-1),size:st.size}};
       if(st.mode==='friends'){$('#go').disabled=true;const ok=await NET.readyP;
         if(ok&&NET.ok&&await NET.join(newCode(),true,{game:g.id,diffIdx:st.diff,opts:{set:st.set,cat:st.cat}})){go('lobby',{});return}
         go('lobby',{cfg,demo:true,invite:st.invite})}
@@ -1006,8 +1137,8 @@ SCREENS.lobby=function(p){
       const lbl=s.host?`<span class="st host">${t('host')}</span>`:s.rdy?`<span class="st ready">${t('readyS')}</span>`:`<span class="st wait">${t('notReady')}</span>`;
       return`<div class="slot"><div class="avatar sm">${esc(s.av||'🙂')}</div><div class="grow"><b>${esc(s.nm||'?')} ${s.cc?flag(s.cc):''}${s.pid===NET.pid?` <span class="small muted">(${t('youTag')})</span>`:''}</b>${lbl}</div>${NET.isHost&&s.pid!==NET.pid?`<button class="kick" data-kick="${esc(s.pid)}" aria-label="×">${ic('x')}</button>`:''}</div>`}).join('')}</div></div>
   <div class="panel stack" style="gap:10px"><div class="row between"><h3>${t('g_'+g.id)}</h3><span class="small muted">${dlabel(g.diffs[cfg.diffIdx]||g.diffs[g.def])}</span></div>
-    ${NET.isHost?`<div class="chips">${GAMES.filter(x=>x.ready).map(x=>`<button class="chip ${x.id===g.id?'on':''}" data-lg="${x.id}">${t('g_'+x.id)}</button>`).join('')}</div>
-      <div class="chips">${g.diffs.map((d,i)=>`<button class="chip ${cfg.diffIdx===i?'on':''}" data-ld="${i}">${dlabel(d)}</button>`).join('')}</div>`:`<p class="small muted">${t('hostPicks')}</p>`}</div>
+    ${NET.isHost?`<div class="chips">${GAMES.filter(x=>x.ready).map(x=>`<button class="chip ${x.id===g.id?'on':''}" data-lg="${x.id}">${t('g_'+x.id)}${gameLocked(x)?lockTag():''}</button>`).join('')}</div>
+      <div class="chips">${g.diffs.map((d,i)=>`<button class="chip ${cfg.diffIdx===i?'on':''}" data-ld="${i}">${dlabel(d)}${diffLocked(g,d)?lockTag():''}</button>`).join('')}</div>`:`<p class="small muted">${t('hostPicks')}</p>`}</div>
   ${inProg?`<p class="note">${t('inProgress')}</p>`:''}
   ${NET.isHost?`<button class="btn primary block" id="start" ${canStart?'':'disabled'}>${ic('play')} ${t('startMatch')}</button>${canStart?'':`<p class="small muted" style="text-align:center">${t('startNeed')}</p>`}`
    :`<button class="btn ${meX.rdy?'':'primary'} block" id="rdy">${meX.rdy?t('notReady'):t('imReady')}</button><p class="small muted" style="text-align:center">${t('waitHost')}</p>`}
@@ -1017,8 +1148,8 @@ SCREENS.lobby=function(p){
   const ns=$('#nshare');if(ns)ns.onclick=()=>nativeShare(`${t('app')} · ${t('g_'+g.id)} — ${t('roomCode')}: ${code}`,link);
   $('#leave').onclick=()=>{NET.leave();go('home')};
   $$('[data-kick]').forEach(b=>b.onclick=()=>{const host0=NET.players().find(x=>x.pid===NET.pid)||{};const k=(host0.kick||[]).concat(b.dataset.kick).slice(-12);NET.set({kick:k})});
-  $$('[data-lg]').forEach(b=>b.onclick=()=>{const ng=GAME(b.dataset.lg);NET.lobbyCfg={game:ng.id,diffIdx:ng.def,opts:{}};NET.set({lobby:NET.lobbyCfg});SCREENS.lobby({})});
-  $$('[data-ld]').forEach(b=>b.onclick=()=>{NET.lobbyCfg={...cfg,diffIdx:+b.dataset.ld};NET.set({lobby:NET.lobbyCfg});SCREENS.lobby({})});
+  $$('[data-lg]').forEach(b=>b.onclick=()=>{const ng=GAME(b.dataset.lg);if(gameLocked(ng)){needPrem();return}NET.lobbyCfg={game:ng.id,diffIdx:diffLocked(ng,ng.diffs[ng.def])?Math.max(0,ng.diffs.findIndex(d=>!diffLocked(ng,d))):ng.def,opts:{}};NET.set({lobby:NET.lobbyCfg});SCREENS.lobby({})});
+  $$('[data-ld]').forEach(b=>b.onclick=()=>{if(diffLocked(g,g.diffs[+b.dataset.ld])){needPrem();return}NET.lobbyCfg={...cfg,diffIdx:+b.dataset.ld};NET.set({lobby:NET.lobbyCfg});SCREENS.lobby({})});
   const st=$('#start');if(st)st.onclick=()=>{sfx('tap');NET.hostStart()};
   const rd=$('#rdy');if(rd)rd.onclick=()=>{sfx('tick');NET.set({rdy:!meX.rdy})};
 };
@@ -1622,7 +1753,7 @@ function finish(o){
   const newAch=[];ACH.forEach(([k,f])=>{if(!profile.ach.includes(k)&&f(profile)){profile.ach.push(k);newAch.push(k);pushNotif('ach',t('n_ach',t('a_'+k)))}});
   const lvAfter=levelOf(profile.xp);if(lvAfter>lvBefore)pushNotif('lvl',t('n_lvl',lvAfter));
   const rankAfter=myRank('local');if(ranked&&rankAfter<rankBefore)pushNotif('rank',t('n_rank',rankAfter));
-  saveAll();
+  saveAll();ACC.later();
   const res={o,order,myPlace,win,tie,pts,xp,ranked,decay,dailyBonus,lvUp:lvAfter>lvBefore?lvAfter:0,newAch,newBest,cfg:M.cfg,g,diff:M.diff,solo:M.solo,net:M.net};
   M.result=res;
   if(win||(M.solo&&o.perf>=.75)){sfx('win');setTimeout(confetti,150)}else sfx(M.solo?'good':'turn');
@@ -1723,11 +1854,11 @@ SCREENS.profile=function(){
   ${fav.length?`<div class="panel"><h3 style="margin-bottom:8px">${t('favGames')}</h3><div class="chips">${fav.map(([g,c])=>`<span class="chip on">${t('g_'+g)} · ${c}</span>`).join('')}</div></div>`:''}
   ${bests.length?`<div class="panel"><h3 style="margin-bottom:6px">${t('bestScores')}</h3><div class="list">${bests.map(([k,v])=>{const[g,d]=k.split('_');if(!GAME(g))return'';const gd=GAME(g).diffs.find(x=>x.k===d);return`<div class="li"><div class="grow"><b>${t('g_'+g)}</b><span class="small muted">${gd?dlabel(gd):''}</span></div><b class="tnum" style="font-family:var(--f-display);font-size:18px;color:var(--teal)">${fmtBest(g,v)}</b></div>`}).join('')}</div></div>`:''}
   <div class="panel"><h3 style="margin-bottom:10px">${t('achievements')} <span class="muted small">${profile.ach.length}/${ACH.length}</span></h3><div class="ach-grid">${ACH.map(([k])=>`<div class="ach ${profile.ach.includes(k)?'on':''}"><span class="medal">★</span><div style="min-width:0"><b>${t('a_'+k)}</b><span>${t('a_'+k+'D')}</span></div></div>`).join('')}</div></div>
-  <div class="panel"><h3 style="margin-bottom:6px">${t('history')}</h3><div class="list">${profile.history.slice(0,15).map(h=>`<div class="li"><div class="grow"><b>${t('g_'+h.g)}</b><span class="small muted">${t('m_'+h.mode)} · ${h.place==null?esc(h.line||''):t('place',h.place+1)+' / '+h.n} · ${ago(h.at)}</span></div><span class="small tnum" style="color:var(--accent);font-weight:700">+${h.pts}</span></div>`).join('')||`<p class="muted">${t('noHistory')}</p>`}</div></div></div>`;
+  <div class="panel"><h3 style="margin-bottom:6px">${t('history')}</h3><div class="list">${profile.history.slice(0,isPrem()?40:5).map(h=>`<div class="li"><div class="grow"><b>${t('g_'+h.g)}</b><span class="small muted">${t('m_'+h.mode)} · ${h.place==null?esc(h.line||''):t('place',h.place+1)+' / '+h.n} · ${ago(h.at)}</span></div><span class="small tnum" style="color:var(--accent);font-weight:700">+${h.pts}</span></div>`).join('')||`<p class="muted">${t('noHistory')}</p>`}</div>${!isPrem()&&profile.history.length>5?`<button class="btn ghost sm" style="margin-top:8px" data-go="premium">${CROWN} ${t('historyMore')}</button>`:''}</div></div>`;
   $('#ed').onclick=editProfile;
 };
-function editProfile(){let av=profile.avatar;modal(`<h3 style="margin-bottom:12px">${t('editProfile')}</h3><div class="stack"><label class="field">${t('username')}<input type="text" id="ep-n" maxlength="16" dir="ltr" value="${esc(profile.name)}"></label><div class="av-pick">${AVATARS.map(a=>`<button type="button" data-av="${a}" class="${a===av?'on':''}">${a}</button>`).join('')}</div><label class="field">${t('country')}<select id="ep-c">${COUNTRIES.map(c=>`<option value="${c[0]}" ${c[0]===profile.country?'selected':''}>${c[1]} ${L()?c[3]:c[2]}</option>`).join('')}</select></label><p class="small" id="ep-e" style="color:var(--bad)"></p><div class="row" style="justify-content:flex-end"><button class="btn ghost" id="ep-x">${t('cancel')}</button><button class="btn primary" id="ep-s">${t('save')}</button></div></div>`,(m,close)=>{
-  $$('[data-av]',m).forEach(b=>b.onclick=()=>{av=b.dataset.av;$$('[data-av]',m).forEach(x=>x.classList.toggle('on',x===b))});
+function editProfile(){let av=profile.avatar;modal(`<h3 style="margin-bottom:12px">${t('editProfile')}</h3><div class="stack"><label class="field">${t('username')}<input type="text" id="ep-n" maxlength="16" dir="ltr" value="${esc(profile.name)}"></label><div class="av-pick">${AVATARS.concat(PREM_AVATARS).map(a=>`<button type="button" data-av="${a}" class="${a===av?'on':''}" ${PREM_AVATARS.includes(a)&&!isPrem()?'data-pl="1" style="opacity:.45"':''}>${a}</button>`).join('')}</div><label class="field">${t('country')}<select id="ep-c">${COUNTRIES.map(c=>`<option value="${c[0]}" ${c[0]===profile.country?'selected':''}>${c[1]} ${L()?c[3]:c[2]}</option>`).join('')}</select></label><p class="small" id="ep-e" style="color:var(--bad)"></p><div class="row" style="justify-content:flex-end"><button class="btn ghost" id="ep-x">${t('cancel')}</button><button class="btn primary" id="ep-s">${t('save')}</button></div></div>`,(m,close)=>{
+  $$('[data-av]',m).forEach(b=>b.onclick=()=>{if(b.dataset.pl){close();needPrem();return}av=b.dataset.av;$$('[data-av]',m).forEach(x=>x.classList.toggle('on',x===b))});
   $('#ep-x',m).onclick=close;$('#ep-s',m).onclick=()=>{const n=$('#ep-n',m).value.trim();if(!/^[\p{L}\p{N}_]{3,16}$/u.test(n)){$('#ep-e',m).textContent=t('errName');return}profile.name=n;profile.avatar=av;profile.country=$('#ep-c',m).value;saveAll();if(NET.api)NET.api.presence(me0()).catch(()=>{});close();SCREENS.profile()}})}
 
 /* ----- question manager (open with #admin) ----- */
@@ -1817,12 +1948,17 @@ function admForm(kind,q,done){
 SCREENS.settings=function(){
   const sw=(id,on,lbl)=>`<div class="toggle"><span>${lbl}</span><button class="sw ${on?'on':''}" id="${id}" aria-pressed="${on}" aria-label="${lbl}"></button></div>`;
   app.innerHTML=head(t('settings'))+`<div class="stack">
+  <div class="panel stack" style="gap:10px"><h3>${t('account')}</h3>
+    ${ACC.user?`<div class="row between wrap"><span class="small">${t('accSignedIn',esc(ACC.user.email||''))}</span><button class="btn ghost sm" id="acc-out">${t('accSignOut')}</button></div>`
+      :`<p class="small muted">${t('accLocal')}</p><button class="btn sm" id="acc-in">${t('accSignIn')}</button>`}
+    <button class="btn ${isPrem()?'ghost':'primary'} sm" data-go="premium">${CROWN} ${isPrem()?t('premActive'):t('premGet')}</button></div>
   <div class="panel"><h3 style="margin-bottom:10px">${t('lang')}</h3><div class="seg"><button data-l="ar" class="${!L()?'on':''}">العربية</button><button data-l="en" class="${L()?'on':''}">English</button></div></div>
   <div class="panel">${sw('s-sound',settings.sound,t('sound'))}${sw('s-music',settings.music,t('music'))}</div>
   <div class="panel"><h3 style="margin-bottom:4px">${t('gameplay')}</h3>${sw('s-xt',settings.extraTurn,t('extraTurn'))}</div>
   <div class="panel"><h3 style="margin-bottom:4px">${t('notifSet')}</h3>${['friend','invite','rank','ach','online'].map(k=>sw('n-'+k,settings.notif[k],t('nf_'+k))).join('')}</div>
   ${store.get('isAdmin',false)?`<button class="btn block" data-go="admin">${t('admin')}</button>`:''}<div class="panel stack" style="gap:8px"><button class="btn ghost block" id="pp">${t('privacy')}</button><button class="btn ghost block" id="tm">${t('terms')}</button><button class="btn ghost block" id="rs" style="color:var(--bad)">${t('reset')}</button></div></div>`;
   $$('[data-l]').forEach(b=>b.onclick=()=>{settings.lang=b.dataset.l;store.set('settings',settings);applyLang();SCREENS.settings()});
+  const ai=$('#acc-in');if(ai)ai.onclick=accountModal;const ao=$('#acc-out');if(ao)ao.onclick=async()=>{await ACC.signOut();SCREENS.settings()};
   const bind=(id,fn)=>{$('#'+id).onclick=()=>{fn();store.set('settings',settings);SCREENS.settings()}};
   bind('s-sound',()=>{settings.sound=!settings.sound;if(settings.sound)sfx('good')});bind('s-music',()=>{settings.music=!settings.music;ac();musicSync()});bind('s-xt',()=>settings.extraTurn=!settings.extraTurn);
   ['friend','invite','rank','ach','online'].forEach(k=>bind('n-'+k,()=>settings.notif[k]=!settings.notif[k]));
@@ -1847,5 +1983,6 @@ if(!profile){SCREENS.onboard()}else{if(!social){social=seedSocial();store.set('s
   const on=social.friends.find(f=>f.online);if(on&&rnd()<.5)pushNotif('online',t('n_online',on.u));
   if(location.hash==='#admin')go('admin');else go('home')}
 addEventListener('hashchange',()=>{if(location.hash==='#admin'&&profile)go('admin')});
+PAY.init().then(()=>ACC.init()).then(()=>{if(current==='home'||current==='settings')go(current,params)}).catch(()=>{});
 })();
 </script>
