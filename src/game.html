@@ -1085,7 +1085,7 @@ function joinModal(){modal(`<form id="jf" class="stack"><h3>${t('joinRoom')}</h3
   $('[data-x]',m).onclick=close;$('#jc',m).focus();
   $('#jf',m).onsubmit=async e=>{e.preventDefault();const c=$('#jc',m).value.trim().toUpperCase();if(!/^[A-Z0-9]{6}$/.test(c)){$('#je',m).textContent=t('badCode');return}
     close();const ok=await NET.readyP;if(!ok||!NET.ok){noLiveModal();return}toast(t('joining',c));if(await NET.join(c,false,null,false))go('lobby',{})}})}
-const APK_URL=ZKC.apkUrl||'https://github.com/BassemT10/playo-app/releases/latest/download/playo.apk';
+const APK_URL=ZKC.apkUrl||'https://github.com/BassemT10/Playo/releases/latest/download/playo.apk';
 function installModal(){modal(`<h3 style="margin-bottom:10px">${t('getApp')}</h3><div class="stack" style="gap:10px">
   <a class="btn primary block" style="text-decoration:none" href="${APK_URL}" target="_blank" rel="noopener">${ic('play')} ${t('dlAndroid')}</a>
   <p class="small muted">${t('apkHint')}</p><p class="small">${t('iosSoon')}</p>

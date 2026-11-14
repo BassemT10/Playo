@@ -2,7 +2,7 @@
 window.ZK_CONFIG = {
   supabaseUrl: '__SUPABASE_URL__',
   supabaseKey: '__SUPABASE_ANON_KEY__',
-  linkBase: 'https://bassemt10.github.io/playo-app/',
+  linkBase: 'https://bassemt10.github.io/Playo/',
   xlsxUrl: 'xlsx.js',
   qrUrl: 'qrcode.js',
   // Subscriptions (RevenueCat public SDK keys, one per store) and the entitlement that unlocks Premium
@@ -12,5 +12,5 @@ window.ZK_CONFIG = {
   prices: { monthly: '2.99$', yearly: '19.99$' },
   // Web version: payment links (e.g. Stripe Payment Links) for monthly / yearly
   payLinks: { monthly: '__PAY_LINK_MONTHLY__', yearly: '__PAY_LINK_YEARLY__' },
-  apkUrl: 'https://github.com/BassemT10/playo-app/releases/latest/download/playo.apk'
+  apkUrl: 'https://github.com/BassemT10/Playo/releases/latest/download/playo.apk'
 };
