@@ -567,6 +567,13 @@ input[type=number],input[type=email],input[type=password]{font:inherit;font-weig
 .qt-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .tv-qt{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;font-size:clamp(18px,2.6vw,32px);font-weight:800}.tv-qt span{background:var(--surface);border-radius:16px;padding:12px 22px}
 .tv-qt.ans span{background:var(--good);color:#fff}
+.wr-svg{width:min(100%,460px);display:block;margin:6px auto;touch-action:manipulation;direction:ltr}
+.wr-c{fill:var(--surface)}.wr-c.gm{fill:color-mix(in srgb,var(--accent) 28%,var(--surface))}.wr-c.gc{fill:color-mix(in srgb,var(--accent) 45%,var(--surface))}
+.wr-mv{fill:var(--accent);opacity:.75}
+.wr-w{fill:#F4E6C8;stroke:#7A5B2E;stroke-width:.3}.wr-w.pv{fill:var(--good);opacity:.85}.wr-w.pv.bad{fill:var(--bad)}
+.wr-p{stroke:#fff;stroke-width:.6}.wr-p.on{stroke:var(--accent);stroke-width:1}
+.wr-bar{display:flex;align-items:center;gap:8px;justify-content:space-between}.wr-bar .seg{flex:1;max-width:260px}.wr-bar b{font-size:20px;min-width:30px;text-align:center}.wr-bar b.low{color:var(--bad)}
+.wr-legend{display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:center;font-weight:800;font-size:13px}.wr-legend span{opacity:.7}.wr-legend span.on{opacity:1;text-decoration:underline}
 
 </style>
 
@@ -854,6 +861,11 @@ hf_5:['لوحة 5×5','5×5 board'],hf_4:['لوحة 4×4 (أسرع)','4×4 board
 hf_cpu:['الكمبيوتر','Computer'],hf_turn:['دور: {0}','Turn: {0}'],hf_pickNow:['اختر خلية','Pick a cell'],hf_waitPick:['{0} يختار خلية…','{0} is picking a cell…'],hf_cell:['حرف «{0}»','Letter “{0}”'],
 hf_type:['جواب يبدأ بحرف {0}…','An answer starting with {0}…'],hf_took:['{0} أخذ خلية «{1}»','{0} took “{1}”'],hf_youTook:['أخذتَ خلية «{0}»! +1','You took “{0}”! +1'],hf_won:['🏆 فاز {0}!','🏆 {0} wins!'],hf_winTag:['فاز · {0}','won · {0}'],hf_youAre:['أنت مع {0}','You are {0}'],
 qt_title:['نوع الأسئلة','Question types'],qt_mc:['اختيار من متعدد','Multiple choice'],qt_tf:['صح أو خطأ','True or false'],qt_order:['رتّب','Put in order'],qt_type:['اكتب الجواب','Write the answer'],qt_typeHint:['اكتب جوابك…','Type your answer…'],qt_orderHint:['اضغط العناصر بالترتيب الصحيح','Tap the items in the right order'],qt_undo:['تراجع','Undo'],qt_orderAdm:['العناصر بالترتيب الصحيح (3 على الأقل)','Items in the right order (at least 3)'],qt_needOrder:['اكتب السؤال و3 عناصر على الأقل بالترتيب','Write the question and at least 3 items in order'],qt_tvOrder:['رتّبها على هاتفك','Put them in order on your phone'],qt_tvType:['اكتب الجواب على هاتفك','Write the answer on your phone'],
+sec_wall:['Wall Rush','Wall Rush'],sec_wallD:['سباق وحوائط، من يصل أولاً؟','Race and walls: who gets there first?'],g_wall:['Wall Rush','Wall Rush'],g_wallD:['تحرّك أو ضع حائطاً أمام خصمك','Move, or drop a wall in your rival\'s way'],
+r_wall:[['في كل دور: تحرّك خطوة واحدة، أو ضع حائطاً طوله خانتان.','لا يُسمح بحائط يغلق الطريق تماماً على أي لاعب.','مواجهة: كل لاعب يصل إلى جهة خصمه. سباق: تبدآن من نفس الجهة وتتسابقان للجهة الأخرى.','أربعة لاعبين (للمشتركين): الكل يبدأ من منتصف ضلع، ومن يصل للمربع الأوسط أولاً يفوز.','إذا كان خصمك أمامك مباشرة تقفز فوقه. لكل دور 30 ثانية.'],['Each turn: move one step, or place a wall two cells long.','A wall may never completely block any player.','Facing: each player heads for the other side. Race: you both start on the same side and race to the far side.','Four players (subscribers): everyone starts at the middle of a side; first to the centre square wins.','If a rival is right in front of you, jump over them. 30 seconds per turn.']],
+wr_face10:['مواجهة · 10 حوائط','Facing · 10 walls'],wr_face15:['مواجهة · 15 حائطاً','Facing · 15 walls'],wr_race:['سباق جنباً إلى جنب','Side-by-side race'],wr_four:['4 لاعبين نحو المنتصف','4 players to the centre'],
+wr_move:['تحرّك','Move'],wr_wall:['حائط','Wall'],wr_rotate:['تدوير','Rotate'],wr_place:['ضع الحائط','Place wall'],wr_noWall:['لا يمكن وضعه هنا','Can\'t place it here'],wr_tapMove:['اضغط على نقطة لتتحرك','Tap a dot to move'],wr_tapWall:['اضغط بين الخانات لاختيار مكان الحائط','Tap between cells to choose where the wall goes'],
+wr_yourTurn:['دورك','Your turn'],wr_turnOf:['دور {0}','{0}\'s turn'],wr_won:['🏆 وصل {0} أولاً!','🏆 {0} got there first!'],wr_steps:['{0}','{0}'],wr_winTag:['وصل أولاً','Reached first'],wr_youCol:['لونك مميز بحد أبيض','Your pawn has a white ring'],wr_watch:['تشاهد المباراة','Watching'],
 us_hint:['تُحفظ على جهازك وعلى حسابك','Saved on your device and your account'],qzFewQ:['متوفر {0} سؤالاً فقط في الفئات المختارة','Only {0} questions in the chosen categories'],
 tvJoin:['ادخل من هاتفك','Join from your phone'],tvJoinHow:['امسح الرمز بكاميرا الهاتف، أو افتح الرابط وأدخل الكود. لا حاجة لتحميل التطبيق.','Scan the code with your phone camera, or open the link and enter the code. No download needed.'],
 tvWaitP:['بانتظار انضمام اللاعبين…','Waiting for players to join…'],tvFull:['ملء الشاشة','Full screen'],tvEnd:['إنهاء الجولة','End round'],tvEndQ:['إنهاء الجولة للجميع؟','End the round for everyone?'],
@@ -928,8 +940,9 @@ ART.rx_target=`<svg viewBox="0 0 120 80"><circle cx="60" cy="40" r="28" fill="no
 ART.rx_color=`<svg viewBox="0 0 120 80" font-family="Baloo Bhaijaan 2,sans-serif" font-weight="800" text-anchor="middle"><text x="60" y="36" font-size="22" fill="#3E7BFA">أحمر</text><text x="60" y="64" font-size="22" fill="#E5484D">أحمر</text></svg>`;
 ART.rx_pair=`<svg viewBox="0 0 120 80"><rect x="22" y="16" width="34" height="48" rx="8" fill="#1F2E4D"/><rect x="64" y="16" width="34" height="48" rx="8" fill="#1F2E4D"/><circle cx="39" cy="40" r="10" fill="#FFB547"/><circle cx="81" cy="40" r="10" fill="#FFB547"/></svg>`;
 ART.speed=ART.rx_green;
+ART.wall=`<svg viewBox="0 0 120 80">${[0,1,2,3,4].flatMap(r=>[0,1,2,3,4].map(c=>`<rect x="${33+c*11}" y="${12+r*11}" width="9" height="9" rx="2" fill="#1F2E4D"/>`)).join('')}<rect x="43" y="32" width="20" height="2.6" rx="1.3" fill="#F4E6C8"/><rect x="75" y="23" width="2.6" height="20" rx="1.3" fill="#F4E6C8"/><circle cx="59.5" cy="16.5" r="3.8" fill="#3E7BFA"/><circle cx="59.5" cy="60.5" r="3.8" fill="#FF8A3D"/></svg>`;
 ART.huroof=`<svg viewBox="0 0 120 80" font-family="Baloo Bhaijaan 2,sans-serif" font-weight="800" font-size="15" text-anchor="middle">${[[34,22,'#FF8A3D','ح'],[60,22,'#2A3A5C','ر'],[86,22,'#22B573','ف'],[47,44,'#22B573','و'],[73,44,'#FF8A3D','ق'],[60,66,'#2A3A5C','م']].map(([x,y,c,l])=>`<path d="M${x} ${y-13}l11 6.5v13L${x} ${y+13}l-11-6.5v-13z" fill="${c}"/><text x="${x}" y="${y+5}" fill="#fff">${l}</text>`).join('')}</svg>`;
-const TINT={huroof:'var(--c-yellow)',speed:'var(--c-yellow)',pic:'var(--c-blue)',rx_green:'var(--c-green)',rx_target:'var(--c-red)',rx_color:'var(--c-violet)',rx_pair:'var(--teal)',quiz:'var(--c-blue)',sudoku:'var(--teal)',deceit:'var(--c-violet)',memory:'var(--c-red)',stones:'var(--c-violet)',numbers:'var(--teal)',pairs:'var(--c-red)',drawing:'var(--c-yellow)',sequence:'var(--c-green)',locations:'var(--c-blue)',vanish:'var(--c-red)',shapes:'var(--c-green)',words:'var(--c-violet)'};
+const TINT={wall:'var(--c-red)',huroof:'var(--c-yellow)',speed:'var(--c-yellow)',pic:'var(--c-blue)',rx_green:'var(--c-green)',rx_target:'var(--c-red)',rx_color:'var(--c-violet)',rx_pair:'var(--teal)',quiz:'var(--c-blue)',sudoku:'var(--teal)',deceit:'var(--c-violet)',memory:'var(--c-red)',stones:'var(--c-violet)',numbers:'var(--teal)',pairs:'var(--c-red)',drawing:'var(--c-yellow)',sequence:'var(--c-green)',locations:'var(--c-blue)',vanish:'var(--c-red)',shapes:'var(--c-green)',words:'var(--c-violet)'};
 
 /* drawing shapes (100x100) */
 function starPath(){let s='';for(let i=0;i<10;i++){const r=i%2?16:38,a=-Math.PI/2+i*Math.PI/5;s+=(i?'L':'M')+(50+r*Math.cos(a)).toFixed(1)+' '+(53+r*Math.sin(a)).toFixed(1)}return s+'Z'}
@@ -951,10 +964,11 @@ GAMES.push(
 {id:'quiz',sec:'quiz',ready:true,def:0,modes:['solo','friends','tv','online'],diffs:[{k:'r30',lbl:['qzRound',30],n:30,mult:1.3},{k:'r40',lbl:['qzRound',40],n:40,mult:1.5}],run:()=>gQuiz()},
 {id:'sudoku',sec:'sudoku',ready:true,def:0,modes:SOLO_MODES,lower:true,diffs:[{k:'easy',lbl:'d_easy',holes:36,target:300,mult:1},{k:'normal',lbl:'d_normal',holes:46,target:480,mult:1.4},{k:'hard',lbl:'d_hard',holes:54,target:720,mult:1.8}],run:()=>gSudoku()},
 {id:'huroof',sec:'huroof',ready:true,def:0,modes:SOLO_MODES,diffs:[{k:'b5',lbl:'hf_5',n:5,mult:1.5},{k:'b4',lbl:'hf_4',n:4,mult:1.2}],run:()=>gHuroof()},
+{id:'wall',sec:'wall',ready:true,def:0,modes:SOLO_MODES,diffs:[{k:'face10',lbl:'wr_face10',mode:'face',walls:10,mult:1.3},{k:'face15',lbl:'wr_face15',mode:'face',walls:15,mult:1.4},{k:'race10',lbl:'wr_race',mode:'race',walls:10,mult:1.3},{k:'four',lbl:'wr_four',mode:'four',walls:6,mult:1.6}],run:()=>gWall()},
 {id:'pic',sec:'speed',ready:true,def:0,modes:SOLO_MODES,diffs:[{k:'full',lbl:'pc_full',n:15,mult:1.2,reveal:false},{k:'reveal',lbl:'pc_reveal',n:15,mult:1.4,reveal:true}],run:()=>gPic()},
 ...['rx_green','rx_target','rx_color','rx_pair'].map(id=>({id,sec:'speed',ready:true,def:0,modes:SOLO_MODES,diffs:[{k:'easy',lbl:'d_easy',mult:1},{k:'normal',lbl:'d_normal',mult:1.3},{k:'hard',lbl:'d_hard',mult:1.6}],run:()=>gReact()})),
 {id:'deceit',sec:'deceit',ready:true,def:1,modes:SOLO_MODES,diffs:[{k:'r5',lbl:['nRounds',5],n:5,mult:1},{k:'r10',lbl:['nRounds',10],n:10,mult:1.3},{k:'r20',lbl:['nRoundsM',20],n:20,mult:1.6},{k:'r40',lbl:['nRoundsM',40],n:40,mult:2}],run:()=>gDeceit()});
-const SECTIONS=['memory','quiz','huroof','speed','sudoku','deceit'];
+const SECTIONS=['memory','quiz','huroof','speed','wall','sudoku','deceit'];
 const GAME=id=>GAMES.find(g=>g.id===id);
 const fmtTime=s=>{s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
 const PCT_GAMES=['drawing','stones','numbers','pairs'];
@@ -1270,7 +1284,7 @@ const MAX_CATS=10,SET_QS=30;
 function LIM(){const l={...LIMITS[tierOf()]};if(hasPass('room20')){l.quizCap=Math.max(l.quizCap,20);l.dcCap=Math.max(l.dcCap,20)}if(hasPass('editor'))l.sets=Math.max(l.sets,10);return l}
 const canSets=()=>LIM().sets>0;
 const FREE={memory:['stones','numbers','pairs']};
-const DIFF_TIER={quiz:{r40:'premium'},deceit:{r20:'plus',r40:'premium'}};   // round lengths that need a plan
+const DIFF_TIER={quiz:{r40:'premium'},deceit:{r20:'plus',r40:'premium'},wall:{four:'plus'}};   // round lengths that need a plan
 /* extras the admin gives one player (server: profiles.games / discount / banned) */
 let PERKS=store.get('perks',{games:[],discount:0,banned:false});
 const setPerks=p=>{PERKS={games:p.games||[],discount:p.discount||0,banned:!!p.banned};store.set('perks',PERKS)};
@@ -1983,7 +1997,7 @@ const QZ={N:30,T:20,BASE:10,X2N:3,CAP_FREE:10,CAP_PREM:30};
 const qzLeft=ms=>Math.max(0,Math.min(QZ.T-1,Math.floor(QZ.T-ms/1000)));
 const qzGain=(ms,x2)=>(QZ.BASE+qzLeft(ms))*(x2?2:1);
 const qzBonus=n=>(n>0&&n%6===0?3:0)+(n===10?5:0)+(n===20?10:0);
-const roomCap=gid=>gid==='quiz'||gid==='pic'||gid==='huroof'||/^rx_/.test(gid)?LIM().quizCap:gid==='deceit'?LIM().dcCap:4;
+const roomCap=gid=>gid==='wall'?4:gid==='quiz'||gid==='pic'||gid==='huroof'||/^rx_/.test(gid)?LIM().quizCap:gid==='deceit'?LIM().dcCap:4;
 const TRUE_RE=/^(صح|صحيح|true|yes|نعم)$/i;
 /* option order depends only on the match seed and the question number, so every screen shows the same colours */
 function qzOpts(seed,i,q){const o=q.a.map((txt,k)=>({txt,ok:k===0}));
@@ -2347,6 +2361,110 @@ function qzAskOther(box,q,seed,i,id,showQ,onAnswer){return new Promise(res=>{con
     if(bar)bar.style.width=Math.max(0,100-el/QZ.T*100)+'%';if(sec)sec.textContent=Math.max(0,Math.ceil(QZ.T-el));
     if(el>=QZ.T)return fin(null);raf=requestAnimationFrame(tick)};raf=requestAnimationFrame(tick)})}
 const qzAnsTxt=(q,opts,c)=>q.qt==='order'?orderTxt(q):q.qt==='type'?q.a[0]:opts[c].txt;
+
+/* ========= WALL RUSH =========
+   9×9 board. On your turn: move one step, or place a 2-cell wall. A wall may never shut anyone off from their goal.
+   face: two players race to the opposite side · race: both start on the same side and race to the far side
+   four: four players start at the middle of each side and race to the centre square (paid plans).
+   Live rooms: the host's device checks every move and keeps the board; phones send their move. */
+const WR={N:9,TURN:30};
+function wrInit(mode,walls,np){const N=WR.N,m=N>>1;let pos,goal;
+  if(mode==='four'){pos=[[m,N-1],[m,0],[0,m],[N-1,m]].slice(0,np);goal=pos.map(()=>({c:[m,m]}))}
+  else if(mode==='race'){pos=[[2,N-1],[N-3,N-1]];goal=[{y:0},{y:0}]}
+  else{pos=[[m,N-1],[m,0]];goal=[{y:0},{y:N-1}]}
+  return{N,mode,pos,goal,walls:[],left:pos.map(()=>walls),turn:0,k:0,win:-1,last:null}}
+const wrAt=(s,x,y)=>s.pos.findIndex(p=>p[0]===x&&p[1]===y);
+const wrIsGoal=(s,i,x,y)=>{const g=s.goal[i];return g.c?g.c[0]===x&&g.c[1]===y:y===g.y};
+function wrBlocked(s,x,y,nx,ny){const W=s.walls;
+  if(nx<0||ny<0||nx>=s.N||ny>=s.N)return true;
+  if(ny!==y){const Y=Math.max(y,ny);return W.some(w=>w[2]==='h'&&w[1]===Y&&(w[0]===x||w[0]===x+1))}
+  const X=Math.max(x,nx);return W.some(w=>w[2]==='v'&&w[0]===X&&(w[1]===y||w[1]===y+1))}
+const WR_D=[[0,-1],[0,1],[-1,0],[1,0]];
+function wrMoves(s,i){const [x,y]=s.pos[i],out=[];
+  WR_D.forEach(([dx,dy])=>{const nx=x+dx,ny=y+dy;if(wrBlocked(s,x,y,nx,ny))return;
+    if(wrAt(s,nx,ny)<0){out.push([nx,ny]);return}
+    /* jump over a pawn; if something is behind it, step diagonally */
+    const jx=nx+dx,jy=ny+dy;if(!wrBlocked(s,nx,ny,jx,jy)&&wrAt(s,jx,jy)<0){out.push([jx,jy]);return}
+    (dx?[[0,-1],[0,1]]:[[-1,0],[1,0]]).forEach(([ex,ey])=>{const qx=nx+ex,qy=ny+ey;if(!wrBlocked(s,nx,ny,qx,qy)&&wrAt(s,qx,qy)<0)out.push([qx,qy])})});
+  return out}
+function wrDist(s,i){const [sx,sy]=s.pos[i],seen=new Set([sx+','+sy]),q=[[sx,sy,0]];
+  while(q.length){const [x,y,d]=q.shift();if(wrIsGoal(s,i,x,y))return d;
+    for(const [dx,dy] of WR_D){const nx=x+dx,ny=y+dy,k=nx+','+ny;if(!seen.has(k)&&!wrBlocked(s,x,y,nx,ny)){seen.add(k);q.push([nx,ny,d+1])}}}return Infinity}
+function wrWallOk(s,w){const [x,y,o]=w;if(x<1||y<1||x>=s.N||y>=s.N)return false;
+  if(s.walls.some(v=>(v[0]===x&&v[1]===y)||(o==='h'&&v[2]==='h'&&v[1]===y&&Math.abs(v[0]-x)===1)||(o==='v'&&v[2]==='v'&&v[0]===x&&Math.abs(v[1]-y)===1)))return false;
+  const t2={...s,walls:s.walls.concat([w])};return s.pos.every((p,i)=>wrDist(t2,i)<Infinity)}
+/* returns the next state, or null when the move is not allowed */
+function wrApply(s,i,mv){if(s.win>=0||i!==s.turn||!mv)return null;let n;
+  if(mv.t==='m'){if(!wrMoves(s,i).some(([x,y])=>x===mv.x&&y===mv.y))return null;n={...s,pos:s.pos.map((p,j)=>j===i?[mv.x,mv.y]:p)};if(wrIsGoal(n,i,mv.x,mv.y))n.win=i}
+  else if(mv.t==='w'){const w=[mv.x,mv.y,mv.o==='v'?'v':'h'];if(s.left[i]<=0||!wrWallOk(s,w))return null;n={...s,walls:s.walls.concat([w]),left:s.left.map((l,j)=>j===i?l-1:l)}}
+  else return null;
+  n.last={i,...mv};n.k=s.k+1;if(n.win<0)n.turn=(s.turn+1)%s.pos.length;return n}
+/* computer player: walk the shortest path, or wall off whoever is closest to winning */
+function wrBot(s,i,skill){const step=()=>{let best=null,bd=Infinity;wrMoves(s,i).forEach(([x,y])=>{const d=wrDist({...s,pos:s.pos.map((p,j)=>j===i?[x,y]:p)},i);if(d<bd){bd=d;best=[x,y]}});return best?{t:'m',x:best[0],y:best[1]}:null};
+  const me=wrDist(s,i),opp=s.pos.map((p,j)=>j).filter(j=>j!==i).sort((a,b)=>wrDist(s,a)-wrDist(s,b))[0],od=wrDist(s,opp);
+  if(s.left[i]>0&&od<=me&&Math.random()<(skill||.6)){let best=null,gain=0;const [ox,oy]=s.pos[opp];
+    for(let x=Math.max(1,ox-2);x<=Math.min(s.N-1,ox+2);x++)for(let y=Math.max(1,oy-2);y<=Math.min(s.N-1,oy+2);y++)for(const o of ['h','v']){const w=[x,y,o];if(!wrWallOk(s,w))continue;
+      const t2={...s,walls:s.walls.concat([w])},g=wrDist(t2,opp)-od-(wrDist(t2,i)-me);if(g>gain){gain=g;best=w}}
+    if(best&&gain>=1)return{t:'w',x:best[0],y:best[1],o:best[2]}}
+  return step()}
+const WR_COL=['#FF8A3D','#3E7BFA','#22B573','#E5484D'];
+function wrSvg(s,me,ui){const N=s.N,C=10,moves=ui&&ui.moves||[],pv=ui&&ui.preview;
+  const cells=[];for(let y=0;y<N;y++)for(let x=0;x<N;x++){const gi=s.goal.findIndex((g,i)=>wrIsGoal(s,i,x,y));const goalMe=me>=0&&wrIsGoal(s,me,x,y);
+    cells.push(`<rect x="${x*C+.6}" y="${y*C+.6}" width="${C-1.2}" height="${C-1.2}" rx="1.6" class="wr-c${goalMe?' gm':gi>=0&&s.mode==='four'?' gc':''}"/>`)}
+  const mv=moves.map(([x,y])=>`<circle cx="${x*C+5}" cy="${y*C+5}" r="1.8" class="wr-mv"/>`).join('');
+  const wall=(w,cls)=>w[2]==='h'?`<rect x="${(w[0]-1)*C+.4}" y="${w[1]*C-.9}" width="${2*C-.8}" height="1.8" rx=".9" class="${cls}"/>`:`<rect x="${w[0]*C-.9}" y="${(w[1]-1)*C+.4}" width="1.8" height="${2*C-.8}" rx=".9" class="${cls}"/>`;
+  const pawns=s.pos.map((p,i)=>`<circle cx="${p[0]*C+5}" cy="${p[1]*C+5}" r="3.4" fill="${WR_COL[i]}" class="wr-p${i===s.turn&&s.win<0?' on':''}${i===me?' me':''}"/>`).join('');
+  return`<svg class="wr-svg" viewBox="-1 -1 ${N*C+2} ${N*C+2}" id="wrsvg">${cells.join('')}${mv}${s.walls.map(w=>wall(w,'wr-w')).join('')}${pv?wall(pv,'wr-w pv'+(pv.ok?'':' bad')):''}${pawns}</svg>`}
+const wrStatus=(s,names,me)=>s.win>=0?t('wr_won',names[s.win]):s.turn===me?t('wr_yourTurn'):t('wr_turnOf',names[s.turn]);
+/* one turn on this phone; resolves a move (or null on time-out) */
+function wrTurn(box,s,me,id,onTick){return new Promise(res=>{let mode='m',o='h',pv=null,done=false;const t0=Date.now();
+  const fin=m=>{if(done)return;done=true;clearInterval(iv);res(m)};
+  const draw=()=>{const moves=mode==='m'?wrMoves(s,me):[];
+    box.innerHTML=`<div class="wr-bar"><div class="seg"><button data-wm="m" class="${mode==='m'?'on':''}">${t('wr_move')}</button><button data-wm="w" class="${mode==='w'?'on':''}" ${s.left[me]>0?'':'disabled'}>${t('wr_wall')} · ${s.left[me]}</button></div>${mode==='w'?`<button class="btn sm" id="wro">${o==='h'?'⟷':'↕'} ${t('wr_rotate')}</button>`:''}<b class="tnum" id="wrt">${WR.TURN}</b></div>
+      ${wrSvg(s,me,{moves,preview:pv})}<p class="small muted" style="text-align:center;margin:4px 0">${mode==='m'?t('wr_tapMove'):t('wr_tapWall')}</p>${mode==='w'&&pv?`<button class="btn primary block" id="wrok" ${pv.ok?'':'disabled'}>${pv.ok?t('wr_place'):t('wr_noWall')}</button>`:''}`;
+    $$('[data-wm]',box).forEach(b=>b.onclick=()=>{mode=b.dataset.wm;pv=null;draw()});
+    const ob=$('#wro',box);if(ob)ob.onclick=()=>{o=o==='h'?'v':'h';if(pv){pv=[pv[0],pv[1],o];pv.ok=wrWallOk(s,pv)}draw()};
+    const ok=$('#wrok',box);if(ok)ok.onclick=()=>{if(pv&&pv.ok){sfx('tap');fin({t:'w',x:pv[0],y:pv[1],o:pv[2]})}};
+    const svg=$('#wrsvg',box);svg.onclick=e=>{const r=svg.getBoundingClientRect(),vb=svg.viewBox.baseVal,px=(e.clientX-r.left)/r.width*vb.width+vb.x,py=(e.clientY-r.top)/r.height*vb.height+vb.y;
+      if(mode==='m'){const x=Math.floor(px/10),y=Math.floor(py/10);if(moves.some(m=>m[0]===x&&m[1]===y)){sfx('tap');fin({t:'m',x,y})}}
+      else{const x=Math.min(s.N-1,Math.max(1,Math.round(px/10))),y=Math.min(s.N-1,Math.max(1,Math.round(py/10)));pv=[x,y,o];pv.ok=wrWallOk(s,pv)&&s.left[me]>0;draw()}}};
+  draw();
+  const iv=setInterval(()=>{if(!alive(id))return fin(null);const left=Math.max(0,WR.TURN-Math.floor((Date.now()-t0)/1000)),e=$('#wrt',box);if(e){e.textContent=left;e.classList.toggle('low',left<=5)}if(onTick&&onTick())return fin(null);if(left<=0)fin(null)},500)})}
+
+async function gWall(){
+  if(M.net)return gWallLive();
+  const id=M.id,d=M.diff,np=d.mode==='four'?4:2;
+  while(M.players.length<np)M.players.push({id:'bot'+M.players.length,name:t('hf_cpu')+(np>2?' '+M.players.length:''),avatar:'🤖',col:PCOL[M.players.length%4],isBot:true,skill:.6,score:0});
+  M.players=M.players.slice(0,np);M.solo=false;M.showTurn=false;
+  let s=wrInit(d.mode,d.walls,np);const names=M.players.map(p=>p.isMe?t('youTag'):p.name),me=M.players.findIndex(p=>p.isMe);
+  gameShell();M.players.forEach((p,i)=>{p.col=WR_COL[i];p.scoreText=t('wr_steps',arN(wrDist(s,i),'خطوات','خطوة','steps'))});renderPlayers();const board=$('#gboard'),foot=$('#gfoot');
+  while(s.win<0){status(wrStatus(s,names,me));foot.innerHTML='';
+    let mv;if(s.turn===me){mv=await wrTurn(board,s,me,id);if(!alive(id))return;if(!mv)mv=wrBot(s,me,0)}
+    else{board.innerHTML=wrSvg(s,me);await sleep(650);if(!alive(id))return;mv=wrBot(s,s.turn,M.players[s.turn].skill)}
+    const n=wrApply(s,s.turn,mv)||wrApply(s,s.turn,wrBot(s,s.turn,0));if(!n)break;s=n;if(mv.t==='w')sfx('tap');
+    M.players.forEach((p,i)=>p.scoreText=t('wr_steps',arN(wrDist(s,i),'خطوات','خطوة','steps')));renderPlayers()}
+  board.innerHTML=wrSvg(s,me);status(wrStatus(s,names,me));if(s.win===me&&typeof confetti==='function')confetti();await sleep(1600);
+  finish({order:M.players.map((p,i)=>({p,val:i===s.win?100:-wrDist(s,i),txt:i===s.win?t('wr_winTag'):t('wr_steps',arN(wrDist(s,i),'خطوات','خطوة','steps'))}))})}
+
+async function wrDirect(g){
+  const run=++BZD.run,{live,pub,here}=bzHelpers(g,run),d=GAME('wall').diffs[g.cfg.diffIdx],np=d.mode==='four'?4:2,ids=g.order.slice(0,np).map(x=>x.pid);
+  let s=wrInit(d.mode,d.walls,Math.min(np,ids.length));const mvOf=pid=>{const a=pid===NET.pid?BZL.my:(NET.pres[pid]||{}).ba;return a&&a.gid===g.gid&&a.mv&&a.mv.k===s.k?a.mv.m:null};
+  BZD.st=null;await sleep(1200);
+  while(live()&&s.win<0){pub({ph:'t',i:s.k,s,ids});const pid=ids[s.turn];let mv=null;
+    await until(()=>{if(!live())return true;mv=mvOf(pid);return !!mv||!here(pid)},(WR.TURN+3)*1000);
+    if(!live())return;let n=mv&&wrApply(s,s.turn,mv);if(!n)n=wrApply(s,s.turn,wrBot(s,s.turn,0));if(!n)break;s=n}
+  if(!live())return;pub({ph:'t',i:s.k,s,ids});await sleep(1800);
+  pub({ph:'e',i:s.k+1,s,ids,lb:g.order.map(x=>{const j=ids.indexOf(x.pid);return[x.pid,j===s.win?100:j>=0?Math.max(0,50-wrDist(s,j)):0,0,0,0]}).sort((a,b)=>b[1]-a[1])})}
+async function gWallLive(){
+  const g=NET.game,id=M.id,who={};g.order.forEach(x=>who[x.pid]=x);
+  if(NET.isHost)setTimeout(()=>wrDirect(g),0);
+  return bzLive(g,t('g_wall'),async(st,v)=>{const s=st.s,me=st.ids.indexOf(NET.pid),names=st.ids.map(p=>p===NET.pid?t('youTag'):(who[p]||{}).nm||'?');
+    const e=$('#qzn');if(e)e.textContent=me>=0?'· '+t('wr_youCol'):'· '+t('wr_watch');
+    const legend=`<div class="wr-legend">${st.ids.map((p,i)=>`<span style="color:${WR_COL[i]}" class="${i===s.turn&&s.win<0?'on':''}">● ${esc(names[i])} · ${t('wr_steps',arN(wrDist(s,i),'خطوات','خطوة','steps'))} · 🧱${s.left[i]}</span>`).join('')}</div>`;
+    if(s.win<0&&s.turn===me){v.innerHTML=legend+`<p class="pic-ans">${t('wr_yourTurn')}</p><div id="wrb"></div>`;
+      const mv=await wrTurn($('#wrb',v),s,me,id,()=>{const c=bzState()||{};return c.i!==st.i});
+      if(mv&&(bzState()||{}).i===st.i){BZL.my.mv={k:s.k,m:mv};NET.set({ba:{gid:g.gid,a:{},mv:BZL.my.mv}});if(NET.isHost)bzNotify();v.innerHTML=legend+wrSvg(wrApply(s,me,mv)||s,me)}}
+    else{v.innerHTML=legend+`<p class="pic-ans">${wrStatus(s,names,me)}</p>`+wrSvg(s,me);if(s.win>=0){sfx(s.win===me?'win':'tap');if(s.win===me&&typeof confetti==='function')confetti()}}})}
 
 /* ----- solo / online-with-bots quiz ----- */
 async function gQuiz(){
