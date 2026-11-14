@@ -546,6 +546,20 @@ input[type=number],input[type=email],input[type=password]{font:inherit;font-weig
 .rx-res{text-align:center;padding:30px 10px;display:flex;flex-direction:column;gap:6px}.rx-res b{font-size:40px;font-family:var(--f-display)}.rx-res.ok b{color:var(--good)}.rx-res.no b{color:var(--bad)}
 .rx-stagecard{text-align:center;padding:50px 10px;display:flex;flex-direction:column;gap:8px}.rx-stagecard b{font-size:30px;font-family:var(--f-display)}
 .rx-times{display:flex;flex-direction:column;gap:4px;margin:8px 0}.rx-times div{display:flex;justify-content:space-between;background:var(--surface);border-radius:12px;padding:8px 12px}.rx-times div.me{outline:2px solid var(--accent)}
+:root{--hf1:#FF8A3D;--hf2:#22B573}
+.hx-wrap{--w:min(17vw,66px);position:relative;margin:6px auto;padding:10px 14px;border-radius:18px;background:var(--surface);direction:ltr;width:max-content;max-width:100%;
+  border-top:6px solid var(--hf1);border-bottom:6px solid var(--hf1);border-left:6px solid var(--hf2);border-right:6px solid var(--hf2)}
+.hx-wrap.n4{--w:min(20vw,74px)}
+.hx-board{display:flex;flex-direction:column;align-items:flex-start}
+.hx-row{display:flex;gap:3px;margin-top:calc(var(--w)*-.27)}.hx-row:first-child{margin-top:0}.hx-row.odd{margin-left:calc(var(--w)/2 + 1.5px)}
+.hx{width:var(--w);height:calc(var(--w)*1.12);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);border:0;background:var(--bg2);color:var(--text);font:800 calc(var(--w)*.42) var(--f-display);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s,background .2s}
+.hx:not([disabled]):hover{transform:scale(1.06);background:var(--accent);color:#111}
+.hx[disabled]{cursor:default}.hx.o1{background:var(--hf1);color:#fff}.hx.o2{background:var(--hf2);color:#fff}
+.hx.cur{animation:hxpulse 1s infinite}.hx.picked{background:var(--accent);color:#111}
+@keyframes hxpulse{50%{filter:brightness(1.35)}}
+.hf-letter{display:block;text-align:center;font:900 54px var(--f-display);color:var(--accent);line-height:1.1}
+.hf-teams{display:flex;justify-content:space-between;gap:8px;font-weight:800;font-size:14px;margin-bottom:4px}
+.hf-teams span{padding:6px 10px;border-radius:12px;opacity:.6}.hf-teams span.on{opacity:1;background:var(--surface)}.hf-teams .t1{color:var(--hf1)}.hf-teams .t2{color:var(--hf2)}.hf-teams i{font-style:normal;color:var(--muted);font-weight:600;font-size:12px}
 
 </style>
 
@@ -827,6 +841,11 @@ pc_q:['ما هذا؟','What is this?'],pc_full:['صورة كاملة','Full pict
 pc_was:['الجواب: {0}','Answer: {0}'],pc_first:['الأسرع: {0}','Fastest: {0}'],pc_youFirst:['أنت الأسرع! +1','You were first! +1'],pc_none:['لم يعرفها أحد','Nobody got it'],pc_sent:['صحيح! بانتظار النتيجة…','Correct! Waiting…'],pc_sec:['ثانية','s'],
 rx_stage:['المرحلة {0} من {1}','Stage {0} of {1}'],rx_faster:['أسرع من قبل!','Faster now!'],rx_early:['مبكر!','Too early!'],rx_miss:['فاتك','Missed'],rx_youFirst:['أنت الأسرع! +1','You were fastest! +1'],rx_nobody:['لم يضغط أحد في الوقت الصحيح','Nobody tapped in time'],rx_avg:['متوسط سرعتك {0} ملي ثانية','Average {0} ms'],ms:['م.ث','ms'],
 rxg_goal:['اضغط عندما تصبح خضراء','Tap when it turns green'],rxg_wait:['انتظر…','Wait…'],rxg_now:['اضغط!','TAP!'],rxt_goal:['اضغط عند ظهور {0}','Tap when {0} appears'],rxc_goal:['اضغط عندما يطابق اللون الكلمة','Tap when the colour matches the word'],rxp_goal:['اضغط عندما تتطابق الصورتان','Tap when both pictures match'],
+sec_huroof:['حروف','Letters'],sec_huroofD:['خلية بخلية، أوصل طرفي اللوحة','Cell by cell, link the two sides'],g_huroof:['حروف','Letters'],g_huroofD:['جواب يبدأ بالحرف يكسب الخلية','An answer starting with the letter wins the cell'],
+r_huroof:[['لوحة من خلايا سداسية، في كل خلية حرف.','الفريق البرتقالي يحاول الوصل بين الأعلى والأسفل، والأخضر بين اليمين واليسار.','يختار الفريق صاحب الدور خلية، فيظهر سؤال جوابه يبدأ بذلك الحرف.','أول من يكتب الجواب الصحيح يأخذ الخلية لفريقه ويختار الخلية التالية.','وحدك تلعب ضد الكمبيوتر، وفي الغرفة يُقسم اللاعبون فريقين تلقائياً.'],['A board of hexagon cells, each holding a letter.','Orange tries to link top and bottom; green links left and right.','The side whose turn it is picks a cell, and a question appears whose answer starts with that letter.','The first player to type the right answer takes the cell for their side and picks the next one.','Alone you play the computer; in a room players are split into two sides automatically.']],
+hf_5:['لوحة 5×5','5×5 board'],hf_4:['لوحة 4×4 (أسرع)','4×4 board (quicker)'],hf_side1:['البرتقالي','Orange'],hf_side2:['الأخضر','Green'],hf_dir1:['↕ أعلى-أسفل','↕ top-bottom'],hf_dir2:['↔ يمين-يسار','↔ left-right'],
+hf_cpu:['الكمبيوتر','Computer'],hf_turn:['دور: {0}','Turn: {0}'],hf_pickNow:['اختر خلية','Pick a cell'],hf_waitPick:['{0} يختار خلية…','{0} is picking a cell…'],hf_cell:['حرف «{0}»','Letter “{0}”'],
+hf_type:['جواب يبدأ بحرف {0}…','An answer starting with {0}…'],hf_took:['{0} أخذ خلية «{1}»','{0} took “{1}”'],hf_youTook:['أخذتَ خلية «{0}»! +1','You took “{0}”! +1'],hf_won:['🏆 فاز {0}!','🏆 {0} wins!'],hf_winTag:['فاز · {0}','won · {0}'],hf_youAre:['أنت مع {0}','You are {0}'],
 us_hint:['تُحفظ على جهازك وعلى حسابك','Saved on your device and your account'],qzFewQ:['متوفر {0} سؤالاً فقط في الفئات المختارة','Only {0} questions in the chosen categories'],
 tvJoin:['ادخل من هاتفك','Join from your phone'],tvJoinHow:['امسح الرمز بكاميرا الهاتف، أو افتح الرابط وأدخل الكود. لا حاجة لتحميل التطبيق.','Scan the code with your phone camera, or open the link and enter the code. No download needed.'],
 tvWaitP:['بانتظار انضمام اللاعبين…','Waiting for players to join…'],tvFull:['ملء الشاشة','Full screen'],tvEnd:['إنهاء الجولة','End round'],tvEndQ:['إنهاء الجولة للجميع؟','End the round for everyone?'],
@@ -901,7 +920,8 @@ ART.rx_target=`<svg viewBox="0 0 120 80"><circle cx="60" cy="40" r="28" fill="no
 ART.rx_color=`<svg viewBox="0 0 120 80" font-family="Baloo Bhaijaan 2,sans-serif" font-weight="800" text-anchor="middle"><text x="60" y="36" font-size="22" fill="#3E7BFA">أحمر</text><text x="60" y="64" font-size="22" fill="#E5484D">أحمر</text></svg>`;
 ART.rx_pair=`<svg viewBox="0 0 120 80"><rect x="22" y="16" width="34" height="48" rx="8" fill="#1F2E4D"/><rect x="64" y="16" width="34" height="48" rx="8" fill="#1F2E4D"/><circle cx="39" cy="40" r="10" fill="#FFB547"/><circle cx="81" cy="40" r="10" fill="#FFB547"/></svg>`;
 ART.speed=ART.rx_green;
-const TINT={speed:'var(--c-yellow)',pic:'var(--c-blue)',rx_green:'var(--c-green)',rx_target:'var(--c-red)',rx_color:'var(--c-violet)',rx_pair:'var(--teal)',quiz:'var(--c-blue)',sudoku:'var(--teal)',deceit:'var(--c-violet)',memory:'var(--c-red)',stones:'var(--c-violet)',numbers:'var(--teal)',pairs:'var(--c-red)',drawing:'var(--c-yellow)',sequence:'var(--c-green)',locations:'var(--c-blue)',vanish:'var(--c-red)',shapes:'var(--c-green)',words:'var(--c-violet)'};
+ART.huroof=`<svg viewBox="0 0 120 80" font-family="Baloo Bhaijaan 2,sans-serif" font-weight="800" font-size="15" text-anchor="middle">${[[34,22,'#FF8A3D','ح'],[60,22,'#2A3A5C','ر'],[86,22,'#22B573','ف'],[47,44,'#22B573','و'],[73,44,'#FF8A3D','ق'],[60,66,'#2A3A5C','م']].map(([x,y,c,l])=>`<path d="M${x} ${y-13}l11 6.5v13L${x} ${y+13}l-11-6.5v-13z" fill="${c}"/><text x="${x}" y="${y+5}" fill="#fff">${l}</text>`).join('')}</svg>`;
+const TINT={huroof:'var(--c-yellow)',speed:'var(--c-yellow)',pic:'var(--c-blue)',rx_green:'var(--c-green)',rx_target:'var(--c-red)',rx_color:'var(--c-violet)',rx_pair:'var(--teal)',quiz:'var(--c-blue)',sudoku:'var(--teal)',deceit:'var(--c-violet)',memory:'var(--c-red)',stones:'var(--c-violet)',numbers:'var(--teal)',pairs:'var(--c-red)',drawing:'var(--c-yellow)',sequence:'var(--c-green)',locations:'var(--c-blue)',vanish:'var(--c-red)',shapes:'var(--c-green)',words:'var(--c-violet)'};
 
 /* drawing shapes (100x100) */
 function starPath(){let s='';for(let i=0;i<10;i++){const r=i%2?16:38,a=-Math.PI/2+i*Math.PI/5;s+=(i?'L':'M')+(50+r*Math.cos(a)).toFixed(1)+' '+(53+r*Math.sin(a)).toFixed(1)}return s+'Z'}
@@ -922,10 +942,11 @@ const SOLO_MODES=['solo','friends','online'];
 GAMES.push(
 {id:'quiz',sec:'quiz',ready:true,def:0,modes:['solo','friends','tv','online'],diffs:[{k:'r30',lbl:['qzRound',30],n:30,mult:1.3},{k:'r40',lbl:['qzRound',40],n:40,mult:1.5}],run:()=>gQuiz()},
 {id:'sudoku',sec:'sudoku',ready:true,def:0,modes:SOLO_MODES,lower:true,diffs:[{k:'easy',lbl:'d_easy',holes:36,target:300,mult:1},{k:'normal',lbl:'d_normal',holes:46,target:480,mult:1.4},{k:'hard',lbl:'d_hard',holes:54,target:720,mult:1.8}],run:()=>gSudoku()},
+{id:'huroof',sec:'huroof',ready:true,def:0,modes:SOLO_MODES,diffs:[{k:'b5',lbl:'hf_5',n:5,mult:1.5},{k:'b4',lbl:'hf_4',n:4,mult:1.2}],run:()=>gHuroof()},
 {id:'pic',sec:'speed',ready:true,def:0,modes:SOLO_MODES,diffs:[{k:'full',lbl:'pc_full',n:15,mult:1.2,reveal:false},{k:'reveal',lbl:'pc_reveal',n:15,mult:1.4,reveal:true}],run:()=>gPic()},
 ...['rx_green','rx_target','rx_color','rx_pair'].map(id=>({id,sec:'speed',ready:true,def:0,modes:SOLO_MODES,diffs:[{k:'easy',lbl:'d_easy',mult:1},{k:'normal',lbl:'d_normal',mult:1.3},{k:'hard',lbl:'d_hard',mult:1.6}],run:()=>gReact()})),
 {id:'deceit',sec:'deceit',ready:true,def:1,modes:SOLO_MODES,diffs:[{k:'r5',lbl:['nRounds',5],n:5,mult:1},{k:'r10',lbl:['nRounds',10],n:10,mult:1.3},{k:'r20',lbl:['nRoundsM',20],n:20,mult:1.6},{k:'r40',lbl:['nRoundsM',40],n:40,mult:2}],run:()=>gDeceit()});
-const SECTIONS=['memory','quiz','speed','sudoku','deceit'];
+const SECTIONS=['memory','quiz','huroof','speed','sudoku','deceit'];
 const GAME=id=>GAMES.find(g=>g.id===id);
 const fmtTime=s=>{s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
 const PCT_GAMES=['drawing','stones','numbers','pairs'];
@@ -971,10 +992,41 @@ const BUILTIN_PIC=[
 ['أعلام','🇱🇧','لبنان'],['أعلام','🇸🇦','السعودية'],['أعلام','🇰🇼','الكويت'],['أعلام','🇪🇬','مصر'],['أعلام','🇯🇵','اليابان'],['أعلام','🇧🇷','البرازيل'],['أعلام','🇹🇷','تركيا'],['أعلام','🇫🇷','فرنسا'],['أعلام','🇦🇪','الإمارات','الامارات'],['أعلام','🇨🇦','كندا'],
 ['أشياء','⏰','منبه','ساعة منبه'],['أشياء','🔑','مفتاح'],['أشياء','☂️','مظلة','شمسية'],['أشياء','🎸','جيتار','غيتار'],['أشياء','🚲','دراجة','بسكليت'],['أشياء','✈️','طائرة','طياره'],['أشياء','🚀','صاروخ'],['أشياء','⚽','كرة قدم','كرة','طابة']];
 const picQ=(r,i)=>mkQuiz('bp'+(i+1),r[0],t('pc_q'),[r[2]],20,'b',{emo:r[1],alt:r.slice(3)});
+/* Huroof starter questions: [question, answer, other accepted answers…]; the letter is the answer's first letter */
+const BUILTIN_HUROOF=[
+['ما أكبر قارة في العالم؟','آسيا'],['ما الحيوان الملقب بملك الغابة؟','أسد'],['ما اسم الكوكب الذي نعيش عليه؟','الأرض','أرض'],
+['ما عاصمة لبنان؟','بيروت'],['ما عاصمة ألمانيا؟','برلين'],['ما الحيوان الذي يعطينا الحليب ويقول مووو؟','بقرة','بقره'],
+['ما عاصمة تونس؟','تونس'],['ما الفاكهة التي يُقال إنها سقطت على رأس نيوتن؟','تفاحة','تفاح'],['ما الزاحف الضخم الذي يعيش في الأنهار وله فكان قويان؟','تمساح'],
+['ما الحيوان المعروف بالمكر في القصص؟','ثعلب'],['ما الجهاز المنزلي الذي يحفظ الطعام بارداً؟','ثلاجة','براد'],['كم عدد أضلاع المثلث (بالكلمات)؟','ثلاثة','ثلاث'],
+['ما الحيوان الملقب بسفينة الصحراء؟','جمل'],['ما عاصمة إندونيسيا؟','جاكرتا'],['ما أكبر عضو في جسم الإنسان؟','جلد'],
+['ما الطائر الذي يرمز للسلام؟','حمامة','حمام'],['ما الحيوان الذي يُضرب به المثل في الصبر وحمل الأثقال؟','حمار'],['ما الشراب الأبيض الذي نحصل عليه من البقرة؟','حليب'],
+['ما الحيوان الذي نحصل منه على الصوف؟','خروف'],['ما الخضار الأخضر الطويل الذي يُقطّع في السلطة؟','خيار'],['ما المادة التي نصنع منها الأبواب من الأشجار؟','خشب'],
+['ما الطائر الذي يصيح عند الفجر؟','ديك'],['ما عاصمة سوريا؟','دمشق'],['ما الحيوان البحري الذكي الذي يقفز فوق الماء؟','دلفين','دولفين'],
+['ما المعدن الأصفر الثمين؟','ذهب'],['ما الحشرة الصغيرة المزعجة التي تحوم حول الطعام؟','ذبابة','ذباب'],['ما الحيوان البري الذي يعوي في الليل؟','ذئب','ذيب'],
+['ما عاصمة إيطاليا؟','روما'],['ما عاصمة السعودية؟','الرياض','رياض'],['ما الفاكهة الحمراء المليئة بالحبوب؟','رمان'],
+['ما الحيوان الأطول رقبة؟','زرافة','زرافه'],['ما الشجرة التي نستخرج من ثمارها زيتاً شهيراً؟','زيتون'],['ما الحيوان الذي يرسم الخطوط على جسمه بالأبيض والأسود (بالإنجليزية)؟','زيبرا'],
+['ما الحيوان الذي يعيش في الماء ويتنفس بالخياشيم؟','سمكة','سمك'],['ما الزاحف البطيء الذي يحمل بيته على ظهره؟','سلحفاة','سلحفاه'],['ما وسيلة النقل ذات الأربع عجلات التي نقودها؟','سيارة','سياره'],
+['ما النجم الذي يضيء النهار؟','شمس'],['ما الشهر الهجري الذي يسبق رمضان؟','شعبان'],['ما المشروب الساخن الذي يُقدَّم مع النعناع؟','شاي'],
+['ما عاصمة اليمن؟','صنعاء'],['ما الطائر الجارح الذي تشتهر به رياضة الخليج التراثية؟','صقر'],['ما الدولة التي يوجد فيها السور العظيم؟','الصين','صين'],
+['ما الحيوان البرمائي الذي ينق؟','ضفدع'],['ما الحيوان المفترس الذي يُعرف بصوت يشبه الضحك؟','ضبع'],['ما عكس الظلام؟','ضوء','نور'],
+['ما الخضار الحمراء التي يُصنع منها الكاتشب؟','طماطم','بندورة'],['ما وسيلة النقل التي تطير في السماء؟','طائرة','طياره'],['ما عاصمة ليبيا؟','طرابلس'],
+['ما الحيوان الرشيق ذو القرون الذي يعيش في الصحراء؟','ظبي'],['ما عكس النور؟','ظلام'],['ما الذي يتبعك على الأرض تحت الشمس؟','ظل'],
+['ما الفاكهة التي يُصنع منها الزبيب؟','عنب'],['ما عاصمة الأردن؟','عمان'],['ما العضو الذي نرى به؟','عين'],
+['ما الطائر الأسود الذي يُعرف بنعيقه؟','غراب'],['ما أكبر أنواع القرود؟','غوريلا','غوريللا'],['ما الذي يحمل المطر في السماء؟','غيمة','غيم','غيوم'],
+['ما أكبر حيوان على اليابسة؟','فيل'],['ما الدولة التي عاصمتها باريس؟','فرنسا'],['ما الحشرة الملونة التي تطير بين الأزهار؟','فراشة','فراشه'],
+['ما الحيوان الأليف الذي يموء؟','قطة','قط','قطه','بسة'],['ما عاصمة مصر؟','القاهرة','قاهرة'],['ما الذي يضيء السماء ليلاً ويتغير شكله كل شهر؟','قمر'],
+['ما الحيوان الوفي الذي ينبح؟','كلب'],['ما الرياضة الأكثر شعبية في العالم؟','كرة القدم','كرة','كورة'],['ما الدولة التي عاصمتها مدينة تحمل اسمها نفسه في الخليج؟','الكويت','كويت'],
+['ما عاصمة بريطانيا؟','لندن'],['ما الفاكهة الصفراء الحامضة؟','ليمون','ليمونة'],['ما الشراب الأبيض الحامض الذي يُصنع من الحليب؟','لبن'],
+['ما الفاكهة الصفراء الطويلة التي يحبها القرد؟','موز','موزة'],['ما السائل الذي لا حياة بدونه؟','ماء','مي','مويه'],['ما المدينة التي فيها الكعبة؟','مكة','مكه'],
+['ما الحيوان المفترس المخطط من فصيلة القطط؟','نمر'],['ما أطول نهر في العالم؟','النيل','نيل'],['ما الحشرة التي تصنع العسل؟','نحلة','نحل'],
+['ما الدولة التي عاصمتها نيودلهي؟','الهند','هند'],['ما الجهاز الذي نتصل به ونحمله في الجيب؟','هاتف','موبايل','جوال'],['ما الشكل الذي يظهر به القمر أول الشهر؟','هلال'],
+['ما الزهرة التي ترمز للحب؟','وردة','ورد'],['ما عاصمة الولايات المتحدة؟','واشنطن'],['ما الجزء من الرأس الذي فيه العينان والأنف والفم؟','وجه'],
+['ما الدولة التي عاصمتها طوكيو؟','اليابان','يابان'],['ما العضو الذي نمسك به الأشياء؟','يد'],['ما الدولة التي عاصمتها صنعاء؟','اليمن','يمن']];
+const hfQ=(r,i)=>mkQuiz('bh'+(i+1),'حروف',r[0],[r[1]],20,'b',{alt:r.slice(2)});
 const BANK={quiz:[],deceit:[]};
 function loadBank(){
   const loc=store.get('bank_local',{quiz:[],deceit:[]}),rem=store.get('bank_remote',{quiz:[],deceit:[]});
-  BANK.quiz=[...BUILTIN_QUIZ.map((r,i)=>mkQuiz('bq'+(i+1),r[0],r[1],r.slice(2),20,'b')),...BUILTIN_PIC.map(picQ),...(rem.quiz||[]).map(x=>({...x,src:'r'})),...(loc.quiz||[]).map(x=>({...x,src:'l'}))];
+  BANK.quiz=[...BUILTIN_QUIZ.map((r,i)=>mkQuiz('bq'+(i+1),r[0],r[1],r.slice(2),20,'b')),...BUILTIN_PIC.map(picQ),...BUILTIN_HUROOF.map(hfQ),...(rem.quiz||[]).map(x=>({...x,src:'r'})),...(loc.quiz||[]).map(x=>({...x,src:'l'}))];
   BANK.deceit=[...BUILTIN_DECEIT.map((r,i)=>mkDeceit('bd'+(i+1),r[0],r[1],r[2],r[3].split('|'),r[4]?r[4].split('|'):[],'b')),...(rem.deceit||[]).map(x=>({...x,src:'r'})),...(loc.deceit||[]).map(x=>({...x,src:'l'}))];
 }
 loadBank();
@@ -1439,7 +1491,7 @@ SCREENS.setup=function(p){
     <div class="setup-art" style="--tint:${TINT[g.id]}">${ART[g.id]}</div>
     <div class="panel"><h3 style="margin-bottom:8px">${t('howTo')}</h3><ul class="rules">${t('r_'+g.id).map(r=>`<li>${r}</li>`).join('')}</ul></div>
     <div class="panel stack"><div><h3 style="margin-bottom:8px">${t('mode')}</h3><div class="modes">${MODES.map(m=>`<button class="mode ${st.mode===m?'on':''}" data-mode="${m}"><b>${t('m_'+m)}${modeLocked(m,g)?lockTag():''}</b><span>${t('m_'+m+'D')}</span></button>`).join('')}</div></div>
-      ${(g.id==='quiz'||g.id==='deceit'||g.sec==='speed')&&(st.mode==='friends'||st.mode==='tv')?`<p class="note">${t('qzCapNote',arN(roomCap(g.id),'لاعبين','لاعباً','players'))}${tierOf()==='premium'?'':' · '+t('capUp')}</p>`:''}
+      ${(g.id==='quiz'||g.id==='deceit'||g.sec==='speed'||g.id==='huroof')&&(st.mode==='friends'||st.mode==='tv')?`<p class="note">${t('qzCapNote',arN(roomCap(g.id),'لاعبين','لاعباً','players'))}${tierOf()==='premium'?'':' · '+t('capUp')}</p>`:''}
       ${g.diffs.length<2?'':`<div><h3 style="margin-bottom:8px">${t('difficulty')}</h3><div class="chips">${g.diffs.map((d,i)=>`<button class="chip ${st.diff===i?'on':''}" data-diff="${i}">${dlabel(d)}${diffLocked(g,d)?lockTag():''}</button>`).join('')}</div></div>`}
       ${g.id==='pairs'?`<div><h3 style="margin-bottom:8px">${t('imageSet')}</h3><div class="chips">${Object.keys(PAIR_SETS).map(s=>`<button class="chip ${st.set===s?'on':''}" data-set="${s}">${splitEmoji(PAIR_SETS[s])[0]} ${t('set_'+s)}</button>`).join('')}</div>
         <div class="toggle" style="border:0;padding-bottom:0"><span>${t('extraTurn')}</span><button class="sw ${settings.extraTurn?'on':''}" id="xt" aria-pressed="${settings.extraTurn}" aria-label="${t('extraTurn')}"></button></div></div>`:''}
@@ -1910,7 +1962,7 @@ const QZ={N:30,T:20,BASE:10,X2N:3,CAP_FREE:10,CAP_PREM:30};
 const qzLeft=ms=>Math.max(0,Math.min(QZ.T-1,Math.floor(QZ.T-ms/1000)));
 const qzGain=(ms,x2)=>(QZ.BASE+qzLeft(ms))*(x2?2:1);
 const qzBonus=n=>(n>0&&n%6===0?3:0)+(n===10?5:0)+(n===20?10:0);
-const roomCap=gid=>gid==='quiz'||gid==='pic'||/^rx_/.test(gid)?LIM().quizCap:gid==='deceit'?LIM().dcCap:4;
+const roomCap=gid=>gid==='quiz'||gid==='pic'||gid==='huroof'||/^rx_/.test(gid)?LIM().quizCap:gid==='deceit'?LIM().dcCap:4;
 const TRUE_RE=/^(صح|صحيح|true|yes|نعم)$/i;
 /* option order depends only on the match seed and the question number, so every screen shows the same colours */
 function qzOpts(seed,i,q){const o=q.a.map((txt,k)=>({txt,ok:k===0}));
@@ -2141,6 +2193,109 @@ async function gReactLive(){
       v.innerHTML=`<div class="qz-fb ${mine?'ok':w?'no':'na'}"><b>${mine?t('rx_youFirst'):w?t('pc_first',esc(w.nm||'?')):t('rx_nobody')}</b></div>
         <div class="rx-times">${(st.tm||[]).slice(0,10).map(([pid,ms])=>`<div class="${pid===NET.pid?'me':''}"><span>${esc((who[pid]||{}).av||'🙂')} ${esc((who[pid]||{}).nm||'?')}</span><b class="tnum">${rxMsTxt(ms)}</b></div>`).join('')}</div>
         <h3>${t('qzBoard')}</h3>${qzBoardHtml(lb,who,NET.pid,8)}`;sfx(mine?'good':'tap')}})}
+
+/* ========= HUROOF (letters) =========
+   A board of hexagon cells, each holding a letter. A question appears whose answer starts with that letter;
+   the first player to TYPE the right answer takes the cell for their side, then their side picks the next cell.
+   Orange connects TOP↔BOTTOM, green connects LEFT↔RIGHT (there is always a winner).
+   Questions: built-in starters + every question in the bank whose correct answer starts with that letter. */
+const HF={T:20,PICK:15,GRACE:600,LETTERS:'ابتثجحخدذرزسشصضطظعغفقكلمنهوي'.split('')};
+const hfLetter=a=>{const n=normA(a);return HF.LETTERS.includes(n[0])?n[0]:null};
+const hfUsable=(q,share)=>q.a&&q.a[0]&&!q.emo&&!q.img&&hfLetter(q.a[0])&&(!share||q.src!=='l');
+function hfPool(share){const by={};BANK.quiz.forEach(q=>{if(!hfUsable(q,share))return;const l=hfLetter(q.a[0]);(by[l]=by[l]||[]).push(q)});return by}
+function hfBoardLetters(n,R,share){const by=hfPool(share),have=HF.LETTERS.filter(l=>by[l]&&by[l].length),out=[];
+  const bag=()=>have.slice().sort(()=>R()-.5);let b=bag();while(out.length<n*n){if(!b.length)b=bag();out.push(b.pop())}return out}
+const hfNb=(n,i)=>{const r=Math.floor(i/n),c=i%n,o=r%2?[[0,-1],[0,1],[-1,0],[-1,1],[1,0],[1,1]]:[[0,-1],[0,1],[-1,-1],[-1,0],[1,-1],[1,0]];
+  return o.map(([dr,dc])=>[r+dr,c+dc]).filter(([a,b])=>a>=0&&b>=0&&a<n&&b<n).map(([a,b])=>a*n+b)};
+/* side 1 = orange (top→bottom), side 2 = green (left→right) */
+function hfWins(own,n,side){const start=[...Array(n).keys()].map(k=>side===1?k:k*n).filter(i=>own[i]===side),seen=new Set(start),q=start.slice();
+  while(q.length){const i=q.shift();if(side===1?Math.floor(i/n)===n-1:i%n===n-1)return true;hfNb(n,i).forEach(j=>{if(own[j]===side&&!seen.has(j)){seen.add(j);q.push(j)}})}return false}
+const HF_COL={1:'var(--hf1)',2:'var(--hf2)'};
+function hfBoardHtml(L,own,n,pickable){const rows=[];for(let r=0;r<n;r++){rows.push(`<div class="hx-row${r%2?' odd':''}">${[...Array(n).keys()].map(c=>{const i=r*n+c,o=own[i];
+    return`<button class="hx${o?' o'+o:''}" data-hx="${i}" ${pickable&&!o?'':'disabled'} aria-label="${L[i]}">${L[i]}</button>`}).join('')}</div>`)}
+  return`<div class="hx-wrap n${n}"><div class="hx-board">${rows.join('')}</div></div>`}
+const hfSideName=(s,names)=>names&&names[s]?names[s]:t('hf_side'+s);
+/* asks one letter question on this phone; resolves {ms} on a right answer, {ms:null} on time-out / round closed */
+function hfAsk(box,q,letter,id,isStopped){return new Promise(res=>{const t0=performance.now();let done=false,raf=0;
+  box.innerHTML=`<div class="qcard"><div class="qtimer"><i id="qbar"></i></div><b class="qsec tnum" id="qsec">${HF.T}</b><span class="hf-letter">${letter}</span><p class="qtext">${esc(q.q)}</p></div>
+    <form class="pic-form" id="pcf" autocomplete="off"><input type="text" id="pci" maxlength="40" placeholder="${t('hf_type',letter)}" dir="auto" enterkeyhint="send"><button class="btn primary" type="submit">${t('pc_send')}</button></form><p class="small" id="pce" style="min-height:18px;text-align:center"></p>`;
+  const inp=$('#pci',box);setTimeout(()=>{try{inp.focus()}catch(e){}},50);
+  const fin=v=>{if(done)return;done=true;cancelAnimationFrame(raf);inp.disabled=true;res(v)};
+  $('#pcf',box).onsubmit=e=>{e.preventDefault();if(done)return;const v=inp.value;if(!v.trim())return;
+    if(picOk(q,v))fin({ms:Math.round(performance.now()-t0)});else{sfx('bad');inp.value='';$('#pce',box).textContent=t('pc_wrong');inp.classList.remove('shake');void inp.offsetWidth;inp.classList.add('shake')}};
+  const tick=()=>{if(done)return;if(!alive(id))return fin({ms:null});const el=performance.now()-t0,bar=$('#qbar',box),sec=$('#qsec',box);
+    if(bar)bar.style.width=Math.max(0,100-el/HF.T/10)+'%';if(sec)sec.textContent=Math.max(0,Math.ceil(HF.T-el/1000));
+    if(el>=HF.T*1000||(isStopped&&isStopped()))return fin({ms:null});raf=requestAnimationFrame(tick)};raf=requestAnimationFrame(tick)})}
+const hfPickQ=(by,l,used,R)=>{const L1=(by[l]||[]).filter(q=>!used.has(q.id));const L2=L1.length?L1:(by[l]||[]);return L2[Math.floor(R()*L2.length)]};
+
+/* ----- solo (vs the computer) and vs bots ----- */
+async function gHuroof(){
+  if(M.net)return gHuroofLive();
+  const id=M.id,n=M.diff.n,R=Math.random,by=hfPool(false),L=hfBoardLetters(n,R,false),own=Array(n*n).fill(0),used=new Set();
+  if(!M.players.some(p=>p.isBot))M.players.push({id:'bot',name:t('hf_cpu'),avatar:'🤖',col:PCOL[1],isBot:true,skill:.55,score:0});
+  M.solo=false;M.players.forEach((p,i)=>{p.side=i%2?2:1;p.score=0;p.scoreText='0'});M.showTurn=false;
+  const me=M.players.find(p=>p.isMe),names={1:me.side===1?t('youTag'):t('hf_side1'),2:me.side===2?t('youTag'):t('hf_side2')};
+  gameShell();renderPlayers();const board=$('#gboard'),foot=$('#gfoot');let turn=1;
+  const draw=pick=>{board.innerHTML=hfBoardHtml(L,own,n,pick)};
+  while(true){
+    status(t('hf_turn',hfSideName(turn,names)));draw(turn===me.side);foot.innerHTML=turn===me.side?`<p class="pic-ans">${t('hf_pickNow')}</p>`:'';
+    const free=own.map((o,i)=>o?-1:i).filter(i=>i>=0);
+    let cell;
+    if(turn===me.side)cell=await new Promise(res=>{$$('[data-hx]:not([disabled])',board).forEach(b=>b.onclick=()=>{sfx('tap');res(+b.dataset.hx)})});
+    else{await sleep(900);const mine=free.filter(i=>hfNb(n,i).some(j=>own[j]===turn));cell=(mine.length&&R()<.7?mine:free)[Math.floor(R()*(mine.length&&R()<.7?mine:free).length)]}
+    if(!alive(id))return;
+    const q=hfPickQ(by,L[cell],used,R);used.add(q.id);
+    const bots=M.players.filter(p=>p.isBot).map(p=>({p,at:R()<p.skill?2500+R()*(1.1-p.skill)*15000:1e9})),bAt=Math.min(...bots.map(b=>b.at));
+    status(t('hf_cell',L[cell]));
+    const r=await hfAsk(foot,q,L[cell],id,()=>false);if(!alive(id))return;
+    let win=null;
+    if(r.ms!=null&&r.ms<=bAt)win=me;else{const b=bots.sort((a,c)=>a.at-c.at)[0];if(b&&b.at<HF.T*1000)win=b.p}
+    if(win){own[cell]=win.side;win.score++;turn=win.side;sfx(win===me?'good':'bad')}else{turn=turn===1?2:1;sfx('bad')}
+    M.players.forEach(p=>p.scoreText=p.score);renderPlayers();draw(false);
+    foot.innerHTML=`<p class="pic-ans">${t('pc_was',esc(q.a[0]))} · ${win?(win.isMe?t('hf_youTook',L[cell]):t('hf_took',esc(win.name),L[cell])):t('pc_none')}</p>`;
+    await sleep(2000);if(!alive(id))return;
+    const ws=[1,2].find(s=>hfWins(own,n,s));
+    if(ws){status(t('hf_won',hfSideName(ws,names)));confetti&&ws===me.side&&confetti();await sleep(1800);
+      finish({order:M.players.map(p=>({p,val:(p.side===ws?100:0)+p.score,txt:p.side===ws?t('hf_winTag',arN(p.score,'خلايا','خلية','cells')):String(p.score)}))});return}}}
+
+/* ----- live room: the host's phone runs the board ----- */
+async function hfDirect(g){
+  const run=++BZD.run,{live,pub,ans,here}=bzHelpers(g,run),n=GAME('huroof').diffs[g.cfg.diffIdx].n,R=mulberry(g.seed),by=hfPool(true),L=hfBoardLetters(n,R,true),own=Array(n*n).fill(0),used=new Set();
+  const sides={};g.order.forEach((x,i)=>sides[x.pid]=i%2?2:1);
+  const ps=g.order.map(x=>({pid:x.pid,score:0,gain:0}));const pk=(pid,k)=>{const a=pid===NET.pid?BZL.my:(NET.pres[pid]||{}).ba;return a&&a.gid===g.gid&&a.p&&a.p[0]===k?a.p[1]:undefined};
+  BZD.st=null;await sleep(1500);let turn=1,k=0;
+  while(live()){
+    k++;pub({ph:'pick',i:k,L,own,turn,sides,n,lb:bzBoard(ps)});
+    let cell;await until(()=>{if(!live())return true;for(const p of ps){if(sides[p.pid]!==turn)continue;const c=pk(p.pid,k);if(typeof c==='number'&&!own[c]){cell=c;return true}}return false},HF.PICK*1000);
+    if(!live())return;if(cell===undefined){const free=own.map((o,i)=>o?-1:i).filter(i=>i>=0);cell=free[Math.floor(R()*free.length)]}
+    const q=hfPickQ(by,L[cell],used,R);used.add(q.id);
+    pub({ph:'q',i:k,L,own,turn,sides,n,c:cell,q:q.id,lb:bzBoard(ps)});let firstAt=0;
+    await until(()=>{if(!live())return true;const got=ps.some(p=>typeof ans(p.pid,k)==='number'&&ans(p.pid,k)>=0);if(got&&!firstAt)firstAt=Date.now();
+      return (firstAt&&Date.now()-firstAt>=HF.GRACE)||ps.every(p=>!here(p.pid)||ans(p.pid,k)!==undefined)},HF.T*1000+1500);
+    if(!live())return;
+    ps.forEach(p=>p.gain=0);const right=ps.map(p=>({p,ms:ans(p.pid,k)})).filter(x=>typeof x.ms==='number'&&x.ms>=0).sort((a,b)=>a.ms-b.ms);
+    const w=right[0];if(w){w.p.gain=1;w.p.score++;own[cell]=sides[w.p.pid];turn=sides[w.p.pid]}else turn=turn===1?2:1;
+    const ws=[1,2].find(s=>hfWins(own,n,s));
+    pub({ph:'r',i:k,L,own,turn,sides,n,c:cell,q:q.id,w:w?w.p.pid:null,ws:ws||0,lb:bzBoard(ps)});
+    await until(()=>!live()||BZD.skip,ws?3500:3000);
+    if(ws){pub({ph:'e',i:k+1,L,own,sides,n,ws,lb:ps.map(p=>[p.pid,(sides[p.pid]===ws?100:0)+p.score,0,0,0]).sort((a,b)=>b[1]-a[1])});return}}}
+async function gHuroofLive(){
+  const g=NET.game,id=M.id,who={};g.order.forEach(x=>who[x.pid]=x);
+  if(NET.isHost)setTimeout(()=>hfDirect(g),0);
+  const teamTxt=(st,s)=>{const m=Object.keys(st.sides).filter(p=>st.sides[p]===s);return m.length===1?esc((who[m[0]]||{}).nm||'?'):t('hf_side'+s)};
+  const head=st=>`<div class="hf-teams"><span class="t1 ${st.turn===1?'on':''}">● ${teamTxt(st,1)} <i>${t('hf_dir1')}</i></span><span class="t2 ${st.turn===2?'on':''}">● ${teamTxt(st,2)} <i>${t('hf_dir2')}</i></span></div>`;
+  return bzLive(g,t('g_huroof'),async(st,v)=>{const mySide=st.sides[NET.pid],sc=$('#qzme');const lb=st.lb||[],mi=lb.findIndex(r=>r[0]===NET.pid);if(sc&&mi>=0)sc.textContent=lb[mi][1];
+    const e=$('#qzn');if(e)e.textContent='· '+t('hf_youAre',t('hf_side'+mySide));
+    if(st.ph==='pick'){const mine=st.turn===mySide;v.innerHTML=head(st)+hfBoardHtml(st.L,st.own,st.n,mine)+`<p class="pic-ans">${mine?t('hf_pickNow'):t('hf_waitPick',teamTxt(st,st.turn))}</p>`;
+      if(mine)$$('[data-hx]:not([disabled])',v).forEach(b=>b.onclick=()=>{sfx('tap');BZL.my.p=[st.i,+b.dataset.hx];NET.set({ba:{gid:g.gid,a:{...BZL.my.a},p:BZL.my.p}});if(NET.isHost)bzNotify();$$('[data-hx]',v).forEach(x=>x.disabled=true);b.classList.add('picked')})}
+    else if(st.ph==='q'){const q=bankById(st.q);if(!q){v.innerHTML=`<p class="qz-wait">${t('missingQ')}</p>`;return}
+      v.innerHTML=head(st)+hfBoardHtml(st.L,st.own,st.n,false)+`<div id="hfq"></div>`;const cellEl=$(`[data-hx="${st.c}"]`,v);if(cellEl)cellEl.classList.add('cur');
+      const r=await hfAsk($('#hfq',v),q,st.L[st.c],id,()=>{const s=bzState()||{};return s.i!==st.i||s.ph!=='q'});
+      if((bzState()||{}).i===st.i&&(bzState()||{}).ph==='q'){BZL.my.a[st.i]=r.ms==null?-2:r.ms;NET.set({ba:{gid:g.gid,a:{...BZL.my.a},p:BZL.my.p}});if(NET.isHost)bzNotify();
+        if(r.ms!=null){const m=$('#pce',v);if(m){m.textContent=t('pc_sent');m.style.color='var(--good)'}}}}
+    else if(st.ph==='r'){const q=bankById(st.q),w=st.w?who[st.w]:null,mine=st.w===NET.pid;
+      v.innerHTML=head(st)+hfBoardHtml(st.L,st.own,st.n,false)+`<div class="qz-fb ${mine?'ok':w?(st.sides[st.w]===mySide?'ok':'no'):'na'}"><b>${mine?t('hf_youTook',st.L[st.c]):w?t('hf_took',esc(w.nm||'?'),st.L[st.c]):t('pc_none')}</b></div><p class="pic-ans">${q?t('pc_was',esc(q.a[0])):''}</p>${st.ws?`<h2 style="text-align:center">${t('hf_won',teamTxt(st,st.ws))}</h2>`:''}`;
+      const cellEl=$(`[data-hx="${st.c}"]`,v);if(cellEl)cellEl.classList.add('cur');sfx(w&&st.sides[st.w]===mySide?'good':'tap');if(st.ws===mySide&&typeof confetti==='function')confetti()}})}
 
 /* ----- solo / online-with-bots quiz ----- */
 async function gQuiz(){
