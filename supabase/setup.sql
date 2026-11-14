@@ -293,3 +293,112 @@ revoke execute on function public.admin_stats() from public, anon;
 revoke execute on function public.redeem_code(text) from public, anon;
 revoke execute on function public.is_admin() from public, anon;
 revoke execute on function public.count_match() from public, anon, authenticated;
+
+------------------------------------------------------------------ plans (plus / premium), 24h passes, revenue, direct ads
+-- (same as the migration "playo_tiers_ads_revenue" applied on the server)
+alter table public.profiles add column if not exists tier text;
+alter table public.profiles add column if not exists passes jsonb not null default '{}';
+alter table public.categories add column if not exists free boolean not null default false;
+alter table public.promo_codes add column if not exists tier text not null default 'plus';
+create table if not exists public.payments (
+  id bigserial primary key, user_id uuid references auth.users(id) on delete set null, product text not null, tier text,
+  kind text not null default 'sub', amount numeric(10,2) not null default 0, currency text not null default 'USD',
+  store text, event_id text unique, created_at timestamptz not null default now());
+create index if not exists payments_created on public.payments (created_at desc);
+alter table public.payments enable row level security;
+drop policy if exists "owner reads payments" on public.payments;
+create policy "owner reads payments" on public.payments for select to authenticated using (public.is_admin());
+create table if not exists public.ads (
+  id bigserial primary key, title text not null default '', img text not null, url text not null default '',
+  active boolean not null default true, starts timestamptz, ends timestamptz, weight integer not null default 1,
+  impressions bigint not null default 0, clicks bigint not null default 0, created_at timestamptz not null default now());
+alter table public.ads enable row level security;
+drop policy if exists "everyone sees live ads" on public.ads;
+create policy "everyone sees live ads" on public.ads for select using (active = true or public.is_admin());
+drop policy if exists "owner manages ads" on public.ads;
+create policy "owner manages ads" on public.ads for all to authenticated using (public.is_admin()) with check (public.is_admin());
+create or replace function public.ad_event(p_id bigint, p_click boolean default false) returns void
+language sql security definer set search_path = public as $$
+  update public.ads set impressions = impressions + case when p_click then 0 else 1 end, clicks = clicks + case when p_click then 1 else 0 end
+   where id = p_id and active; $$;
+grant execute on function public.ad_event(bigint, boolean) to anon, authenticated;
+
+create or replace function public.redeem_code(p_code text) returns jsonb
+language plpgsql security definer set search_path = public as $$
+declare c public.promo_codes; uid uuid := auth.uid();
+begin
+  if uid is null then return jsonb_build_object('ok', false, 'err', 'login'); end if;
+  select * into c from public.promo_codes where code = upper(trim(p_code)) for update;
+  if not found then return jsonb_build_object('ok', false, 'err', 'bad'); end if;
+  if c.expires_at is not null and c.expires_at < now() then return jsonb_build_object('ok', false, 'err', 'expired'); end if;
+  if c.uses >= c.max_uses then return jsonb_build_object('ok', false, 'err', 'used'); end if;
+  if exists (select 1 from public.redemptions where code = c.code and user_id = uid) then return jsonb_build_object('ok', false, 'err', 'again'); end if;
+  insert into public.redemptions (code, user_id) values (c.code, uid);
+  update public.promo_codes set uses = uses + 1 where code = c.code;
+  if c.kind = 'days' then
+    update public.profiles set
+      tier = case when premium_until > now() and coalesce(tier, 'premium') = 'premium' then 'premium' else coalesce(c.tier, 'plus') end,
+      premium_until = greatest(coalesce(premium_until, now()), now()) + make_interval(days => c.days),
+      premium_plan = coalesce(nullif(premium_plan, ''), 'gift') where id = uid;
+  elsif c.kind = 'games' then
+    update public.profiles set games = (select array(select distinct unnest(games || c.games))) where id = uid;
+  else
+    update public.profiles set discount = greatest(discount, c.percent) where id = uid;
+  end if;
+  return jsonb_build_object('ok', true, 'kind', c.kind, 'tier', c.tier, 'days', c.days, 'games', to_jsonb(c.games), 'percent', c.percent);
+end $$;
+revoke execute on function public.redeem_code(text) from public, anon;
+grant execute on function public.redeem_code(text) to authenticated;
+
+create or replace function public.admin_player2(p_id uuid, p_days integer default null, p_tier text default null, p_clear boolean default false,
+  p_games text[] default null, p_discount integer default null, p_banned boolean default null) returns void
+language plpgsql security definer set search_path = public as $$
+begin
+  if not public.is_admin() then raise exception 'not allowed'; end if;
+  if p_clear then update public.profiles set premium_until = null, premium_plan = null, tier = null where id = p_id; end if;
+  if p_days is not null and p_days > 0 then
+    update public.profiles set premium_until = greatest(coalesce(premium_until, now()), now()) + make_interval(days => p_days),
+           premium_plan = coalesce(nullif(premium_plan, ''), 'gift'),
+           tier = case when p_tier in ('plus', 'premium') then p_tier else coalesce(tier, 'plus') end where id = p_id;
+  end if;
+  if p_games is not null then update public.profiles set games = p_games where id = p_id; end if;
+  if p_discount is not null then update public.profiles set discount = greatest(0, least(100, p_discount)) where id = p_id; end if;
+  if p_banned is not null then update public.profiles set banned = p_banned where id = p_id; end if;
+end $$;
+revoke execute on function public.admin_player2(uuid, integer, text, boolean, text[], integer, boolean) from public, anon;
+grant execute on function public.admin_player2(uuid, integer, text, boolean, text[], integer, boolean) to authenticated;
+
+create or replace function public.admin_stats() returns jsonb
+language plpgsql stable security definer set search_path = public as $$
+declare r jsonb;
+begin
+  if not public.is_admin() then raise exception 'not allowed'; end if;
+  select jsonb_build_object(
+    'players',      (select count(*) from profiles),
+    'new7',         (select count(*) from profiles where created_at > now() - interval '7 days'),
+    'active1',      (select count(*) from profiles where last_seen > now() - interval '1 day'),
+    'active7',      (select count(*) from profiles where last_seen > now() - interval '7 days'),
+    'premium',      (select count(*) from profiles where premium_until > now()),
+    'tiers',        jsonb_build_object(
+                      'plus',    (select count(*) from profiles where premium_until > now() and tier = 'plus'),
+                      'premium', (select count(*) from profiles where premium_until > now() and coalesce(tier, 'premium') = 'premium')),
+    'passes_active',(select count(*) from profiles p where exists (select 1 from jsonb_each_text(p.passes) e where e.value::timestamptz > now())),
+    'plans',        (select coalesce(jsonb_object_agg(pl, n), '{}') from (select coalesce(premium_plan, '?') pl, count(*) n from profiles where premium_until > now() group by 1) x),
+    'matches1',     (select count(*) from matches where created_at > now() - interval '1 day'),
+    'matches7',     (select count(*) from matches where created_at > now() - interval '7 days'),
+    'games30',      (select coalesce(jsonb_object_agg(game, n), '{}') from (select game, count(*) n from matches where created_at > now() - interval '30 days' group by game) x),
+    'days14',       (select coalesce(jsonb_agg(jsonb_build_object('d', d, 'n', n) order by d), '[]') from
+                      (select date_trunc('day', created_at)::date d, count(*) n from matches where created_at > now() - interval '14 days' group by 1) x),
+    'rev_today',    (select coalesce(sum(amount), 0) from payments where created_at >= date_trunc('day', now())),
+    'rev_month',    (select coalesce(sum(amount), 0) from payments where created_at >= date_trunc('month', now())),
+    'rev_days30',   (select coalesce(jsonb_agg(jsonb_build_object('d', d, 'v', v) order by d), '[]') from
+                      (select date_trunc('day', created_at)::date d, sum(amount) v from payments where created_at > now() - interval '30 days' group by 1) x),
+    'rev_months12', (select coalesce(jsonb_agg(jsonb_build_object('m', m, 'v', v) order by m), '[]') from
+                      (select to_char(date_trunc('month', created_at), 'YYYY-MM') m, sum(amount) v from payments where created_at > now() - interval '12 months' group by 1) x),
+    'products30',   (select coalesce(jsonb_object_agg(product, jsonb_build_object('n', n, 'v', v)), '{}') from
+                      (select product, count(*) n, sum(amount) v from payments where created_at > now() - interval '30 days' group by product) x)
+  ) into r;
+  return r;
+end $$;
+revoke execute on function public.admin_stats() from public, anon;
+grant execute on function public.admin_stats() to authenticated;
