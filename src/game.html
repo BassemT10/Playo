@@ -560,6 +560,13 @@ input[type=number],input[type=email],input[type=password]{font:inherit;font-weig
 .hf-letter{display:block;text-align:center;font:900 54px var(--f-display);color:var(--accent);line-height:1.1}
 .hf-teams{display:flex;justify-content:space-between;gap:8px;font-weight:800;font-size:14px;margin-bottom:4px}
 .hf-teams span{padding:6px 10px;border-radius:12px;opacity:.6}.hf-teams span.on{opacity:1;background:var(--surface)}.hf-teams .t1{color:var(--hf1)}.hf-teams .t2{color:var(--hf2)}.hf-teams i{font-style:normal;color:var(--muted);font-weight:600;font-size:12px}
+.qt-tag{display:inline-block;margin:4px auto 0;font-size:12px;font-weight:800;color:var(--accent);background:var(--bg2);border-radius:999px;padding:2px 10px}
+.qcard .qt-tag{display:table}
+.qt-picked{display:flex;flex-wrap:wrap;gap:6px;min-height:44px;align-items:center;justify-content:center;margin:10px 0;padding:8px;border:2px dashed var(--line);border-radius:14px}
+.qt-picked span{background:var(--surface);border-radius:10px;padding:6px 10px;font-weight:700}.qt-picked i{font-style:normal;color:var(--accent);margin-inline-end:6px}
+.qt-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.tv-qt{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;font-size:clamp(18px,2.6vw,32px);font-weight:800}.tv-qt span{background:var(--surface);border-radius:16px;padding:12px 22px}
+.tv-qt.ans span{background:var(--good);color:#fff}
 
 </style>
 
@@ -846,6 +853,7 @@ r_huroof:[['لوحة من خلايا سداسية، في كل خلية حرف.',
 hf_5:['لوحة 5×5','5×5 board'],hf_4:['لوحة 4×4 (أسرع)','4×4 board (quicker)'],hf_side1:['البرتقالي','Orange'],hf_side2:['الأخضر','Green'],hf_dir1:['↕ أعلى-أسفل','↕ top-bottom'],hf_dir2:['↔ يمين-يسار','↔ left-right'],
 hf_cpu:['الكمبيوتر','Computer'],hf_turn:['دور: {0}','Turn: {0}'],hf_pickNow:['اختر خلية','Pick a cell'],hf_waitPick:['{0} يختار خلية…','{0} is picking a cell…'],hf_cell:['حرف «{0}»','Letter “{0}”'],
 hf_type:['جواب يبدأ بحرف {0}…','An answer starting with {0}…'],hf_took:['{0} أخذ خلية «{1}»','{0} took “{1}”'],hf_youTook:['أخذتَ خلية «{0}»! +1','You took “{0}”! +1'],hf_won:['🏆 فاز {0}!','🏆 {0} wins!'],hf_winTag:['فاز · {0}','won · {0}'],hf_youAre:['أنت مع {0}','You are {0}'],
+qt_title:['نوع الأسئلة','Question types'],qt_mc:['اختيار من متعدد','Multiple choice'],qt_tf:['صح أو خطأ','True or false'],qt_order:['رتّب','Put in order'],qt_type:['اكتب الجواب','Write the answer'],qt_typeHint:['اكتب جوابك…','Type your answer…'],qt_orderHint:['اضغط العناصر بالترتيب الصحيح','Tap the items in the right order'],qt_undo:['تراجع','Undo'],qt_orderAdm:['العناصر بالترتيب الصحيح (3 على الأقل)','Items in the right order (at least 3)'],qt_needOrder:['اكتب السؤال و3 عناصر على الأقل بالترتيب','Write the question and at least 3 items in order'],qt_tvOrder:['رتّبها على هاتفك','Put them in order on your phone'],qt_tvType:['اكتب الجواب على هاتفك','Write the answer on your phone'],
 us_hint:['تُحفظ على جهازك وعلى حسابك','Saved on your device and your account'],qzFewQ:['متوفر {0} سؤالاً فقط في الفئات المختارة','Only {0} questions in the chosen categories'],
 tvJoin:['ادخل من هاتفك','Join from your phone'],tvJoinHow:['امسح الرمز بكاميرا الهاتف، أو افتح الرابط وأدخل الكود. لا حاجة لتحميل التطبيق.','Scan the code with your phone camera, or open the link and enter the code. No download needed.'],
 tvWaitP:['بانتظار انضمام اللاعبين…','Waiting for players to join…'],tvFull:['ملء الشاشة','Full screen'],tvEnd:['إنهاء الجولة','End round'],tvEndQ:['إنهاء الجولة للجميع؟','End the round for everyone?'],
@@ -984,7 +992,7 @@ const BUILTIN_DECEIT=[
 ['طعام','سُمّي الهامبرغر نسبة إلى مدينة ____.','هامبورغ','فرانكفورت|ميونخ|برلين|كولونيا','هامبورج'],['علوم','عدد الأسنان الدائمة عند الإنسان البالغ ____.','32','28|30|36|24','اثنان وثلاثون'],
 ['جغرافيا','أكبر محيط في العالم هو المحيط ____.','الهادئ','الأطلسي|الهندي|المتجمد الشمالي|الجنوبي','الهادي|الباسيفيكي']];
 const qn=s=>String(s==null?'':s).trim();
-function mkQuiz(id,cat,q,opts,tm,src,ex){ex=ex||{};return{id,kind:'quiz',cat:qn(cat)||'عام',q:qn(q),a:(opts||[]).map(qn).filter(Boolean),t:20,img:/^https?:\/\//i.test(qn(ex.img))?qn(ex.img):'',aimg:/^https?:\/\//i.test(qn(ex.aimg))?qn(ex.aimg):'',x2:!!ex.x2,emo:qn(ex.emo).slice(0,16),alt:(ex.alt||[]).map(qn).filter(Boolean),src}}
+function mkQuiz(id,cat,q,opts,tm,src,ex){ex=ex||{};return{id,kind:'quiz',cat:qn(cat)||'عام',q:qn(q),a:(opts||[]).map(qn).filter(Boolean),t:20,img:/^https?:\/\//i.test(qn(ex.img))?qn(ex.img):'',aimg:/^https?:\/\//i.test(qn(ex.aimg))?qn(ex.aimg):'',x2:!!ex.x2,emo:qn(ex.emo).slice(0,16),alt:(ex.alt||[]).map(qn).filter(Boolean),qt:ex.qt==='order'||ex.qt==='type'?ex.qt:'',src}}
 function mkDeceit(id,cat,q,a,fakes,alt,src,ex){const img=qn(ex&&ex.img);return{id,kind:'deceit',cat:qn(cat)||'عام',q:qn(q),a:qn(a),f:(fakes||[]).map(qn).filter(Boolean),alt:(alt||[]).map(qn).filter(Boolean),img:/^https:\/\//i.test(img)?img:'',aimg:/^https:\/\//i.test(qn(ex&&ex.aimg))?qn(ex.aimg):'',src}}
 const BUILTIN_PIC=[
 ['حيوانات','🦒','زرافة'],['حيوانات','🐘','فيل'],['حيوانات','🦁','أسد'],['حيوانات','🐪','جمل','بعير'],['حيوانات','🐧','بطريق'],['حيوانات','🦓','حمار وحشي','حمار الوحش'],['حيوانات','🐢','سلحفاة','سلحفاه'],['حيوانات','🦉','بومة','بومه'],['حيوانات','🐬','دلفين','دولفين'],['حيوانات','🦋','فراشة','فراشه'],
@@ -1022,11 +1030,22 @@ const BUILTIN_HUROOF=[
 ['ما الدولة التي عاصمتها نيودلهي؟','الهند','هند'],['ما الجهاز الذي نتصل به ونحمله في الجيب؟','هاتف','موبايل','جوال'],['ما الشكل الذي يظهر به القمر أول الشهر؟','هلال'],
 ['ما الزهرة التي ترمز للحب؟','وردة','ورد'],['ما عاصمة الولايات المتحدة؟','واشنطن'],['ما الجزء من الرأس الذي فيه العينان والأنف والفم؟','وجه'],
 ['ما الدولة التي عاصمتها طوكيو؟','اليابان','يابان'],['ما العضو الذي نمسك به الأشياء؟','يد'],['ما الدولة التي عاصمتها صنعاء؟','اليمن','يمن']];
-const hfQ=(r,i)=>mkQuiz('bh'+(i+1),'حروف',r[0],[r[1]],20,'b',{alt:r.slice(2)});
+const hfQ=(r,i)=>mkQuiz('bh'+(i+1),'حروف',r[0],[r[1]],20,'b',{alt:r.slice(2),qt:'type'});
+/* starter "put in order" questions: answers listed in the right order */
+const BUILTIN_ORDER=[
+['علوم','رتّب الكواكب من الأقرب إلى الشمس','عطارد','الزهرة','الأرض','المريخ'],
+['جغرافيا','رتّب القارات من الأكبر مساحة','آسيا','أفريقيا','أمريكا الشمالية','أمريكا الجنوبية'],
+['عام','رتّب الأشهر الهجرية من أول السنة','محرم','صفر','ربيع الأول','ربيع الآخر'],
+['تاريخ','رتّب الاختراعات من الأقدم','الطباعة','الهاتف','الطائرة','الإنترنت'],
+['علوم','رتّب الحيوانات من الأصغر إلى الأكبر','نملة','قطة','حصان','فيل'],
+['عام','رتّب ألوان قوس قزح من الأعلى','أحمر','برتقالي','أصفر','أخضر'],
+['عام','رتّب أيام الأسبوع بدءاً من السبت','السبت','الأحد','الاثنين','الثلاثاء'],
+['جغرافيا','رتّب المحيطات من الأكبر','الهادئ','الأطلسي','الهندي','المتجمد الشمالي']];
+const ordQ=(r,i)=>mkQuiz('bo'+(i+1),r[0],r[1],r.slice(2),20,'b',{qt:'order'});
 const BANK={quiz:[],deceit:[]};
 function loadBank(){
   const loc=store.get('bank_local',{quiz:[],deceit:[]}),rem=store.get('bank_remote',{quiz:[],deceit:[]});
-  BANK.quiz=[...BUILTIN_QUIZ.map((r,i)=>mkQuiz('bq'+(i+1),r[0],r[1],r.slice(2),20,'b')),...BUILTIN_PIC.map(picQ),...BUILTIN_HUROOF.map(hfQ),...(rem.quiz||[]).map(x=>({...x,src:'r'})),...(loc.quiz||[]).map(x=>({...x,src:'l'}))];
+  BANK.quiz=[...BUILTIN_QUIZ.map((r,i)=>mkQuiz('bq'+(i+1),r[0],r[1],r.slice(2),20,'b')),...BUILTIN_PIC.map(picQ),...BUILTIN_HUROOF.map(hfQ),...BUILTIN_ORDER.map(ordQ),...(rem.quiz||[]).map(x=>({...x,src:'r'})),...(loc.quiz||[]).map(x=>({...x,src:'l'}))];
   BANK.deceit=[...BUILTIN_DECEIT.map((r,i)=>mkDeceit('bd'+(i+1),r[0],r[1],r[2],r[3].split('|'),r[4]?r[4].split('|'):[],'b')),...(rem.deceit||[]).map(x=>({...x,src:'r'})),...(loc.deceit||[]).map(x=>({...x,src:'l'}))];
 }
 loadBank();
@@ -1040,10 +1059,10 @@ fetchRemoteBank();
 const bankCats=kind=>[...new Set(BANK[kind].map(q=>q.cat))];
 const playCats=kind=>[...new Set(BANK[kind].filter(q=>usableQ(kind,q)).map(q=>q.cat))];
 const bankById=id=>BANK.quiz.find(q=>q.id===id)||BANK.deceit.find(q=>q.id===id);
-const usableQ=(kind,q)=>kind==='quiz'?q.q&&q.a.length>=2:q.q&&q.a&&q.f.length>=1;
-function pickQuestions(kind,n,cat,shareable){
+const usableQ=(kind,q)=>kind==='quiz'?q.q&&(q.qt==='type'?!!q.a[0]:q.qt==='order'?q.a.length>=3:q.a.length>=2):q.q&&q.a&&q.f.length>=1;
+function pickQuestions(kind,n,cat,shareable,qts){
   const cats=(Array.isArray(cat)?cat:(cat&&cat!=='all'?[cat]:[])).filter(c=>!catLocked(c));
-  const pool=BANK[kind].filter(q=>usableQ(kind,q)&&!catLocked(q.cat)&&(!cats.length||cats.includes(q.cat))&&(!shareable||q.src!=='l'));
+  const pool=BANK[kind].filter(q=>usableQ(kind,q)&&!catLocked(q.cat)&&(!cats.length||cats.includes(q.cat))&&(!shareable||q.src!=='l')&&(kind!=='quiz'||qtAllowed(q,qts)));
   const seen=new Set(store.get('seen_'+kind,[]));
   const order=a=>shuffle(a.filter(q=>!seen.has(q.id))).concat(shuffle(a.filter(q=>seen.has(q.id))));
   let out;
@@ -1057,11 +1076,11 @@ const roomQs=o=>o.uqs&&o.uqs.length?o.uqs.map(mkU):(o.qids||[]).map(bankById).fi
 function getQs(kind,n){const uq=M.cfg.opts&&M.cfg.opts.uqs;if(uq&&uq.length)return uq.map(mkU);
   const ids=M.cfg.opts&&M.cfg.opts.qids;
   if(ids){const qs=ids.map(bankById).filter(Boolean);if(qs.length<ids.length){toast(t('missingQ'));M.alive=false;if(M.net)NET.leave();go('home');return null}return qs}
-  const o=M.cfg.opts||{},qs=pickQuestions(kind,n||QZ.N,o.cats||o.cat,false);if(!qs.length){toast(t('noQ'));M.alive=false;go('home');return null}return qs}
+  const o=M.cfg.opts||{},qs=pickQuestions(kind,n||QZ.N,o.cats||o.cat,false,o.qts);if(!qs.length){toast(t('noQ'));M.alive=false;go('home');return null}return qs}
 function hostOpts(cfg,extra){const o={...(cfg.opts||{}),extraTurn:extra};delete o.qids;
   if(o.uqs&&o.uqs.length){if(cfg.game==='quiz')o.x2=qzDoubles(o.uqs,Math.floor(Math.random()*2**31));return o}
   if(cfg.game==='pic'){o.qids=picPick(GAME('pic').diffs[cfg.diffIdx].n,o.cats,true).map(q=>q.id);return o}
-  if(cfg.game==='quiz'||cfg.game==='deceit'){const n=GAME(cfg.game).diffs[cfg.diffIdx].n;const qs=pickQuestions(cfg.game,n,o.cats||o.cat,true);o.qids=qs.map(q=>q.id);if(cfg.game==='quiz')o.x2=qzDoubles(qs,Math.floor(Math.random()*2**31))}return o}
+  if(cfg.game==='quiz'||cfg.game==='deceit'){const n=GAME(cfg.game).diffs[cfg.diffIdx].n;const qs=pickQuestions(cfg.game,n,o.cats||o.cat,true,o.qts);o.qids=qs.map(q=>q.id);if(cfg.game==='quiz')o.x2=qzDoubles(qs,Math.floor(Math.random()*2**31))}return o}
 const normA=s=>String(s||'').trim().toLowerCase().replace(/[ً-ْـ]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/^ال/,'').replace(/[.,!؟?،]/g,'').replace(/\s+/g,' ');
 const isTruth=(q,txt)=>{const n=normA(txt);return !!n&&[q.a,...(q.alt||[])].some(x=>normA(x)===n)};
 
@@ -1485,7 +1504,7 @@ SCREENS.setup=function(p){
   const g=GAME(p.game);
   const MODES=g.modes||['solo','local','friends','online'];
   if(gameLocked(g)){go('premium',{back:'games'});return}
-  const st={cats:[],uset:p.uset||null,mode:MODES.includes(p.mode)&&!modeLocked(p.mode,g)?p.mode:'solo',diff:diffLocked(g,g.diffs[g.def])?Math.max(0,g.diffs.findIndex(d=>!diffLocked(g,d))):g.def,count:2,names:['','',''],set:'animals',size:2,cat:'all',invite:p.invite||null};
+  const st={cats:[],qts:qtDefault(),uset:p.uset||null,mode:MODES.includes(p.mode)&&!modeLocked(p.mode,g)?p.mode:'solo',diff:diffLocked(g,g.diffs[g.def])?Math.max(0,g.diffs.findIndex(d=>!diffLocked(g,d))):g.def,count:2,names:['','',''],set:'animals',size:2,cat:'all',invite:p.invite||null};
   const render=()=>{
     app.innerHTML=head(t('g_'+g.id),GAMES.filter(x=>x.sec===g.sec).length>1?'games':'home')+`<div class="stack">
     <div class="setup-art" style="--tint:${TINT[g.id]}">${ART[g.id]}</div>
@@ -1495,6 +1514,7 @@ SCREENS.setup=function(p){
       ${g.diffs.length<2?'':`<div><h3 style="margin-bottom:8px">${t('difficulty')}</h3><div class="chips">${g.diffs.map((d,i)=>`<button class="chip ${st.diff===i?'on':''}" data-diff="${i}">${dlabel(d)}${diffLocked(g,d)?lockTag():''}</button>`).join('')}</div></div>`}
       ${g.id==='pairs'?`<div><h3 style="margin-bottom:8px">${t('imageSet')}</h3><div class="chips">${Object.keys(PAIR_SETS).map(s=>`<button class="chip ${st.set===s?'on':''}" data-set="${s}">${splitEmoji(PAIR_SETS[s])[0]} ${t('set_'+s)}</button>`).join('')}</div>
         <div class="toggle" style="border:0;padding-bottom:0"><span>${t('extraTurn')}</span><button class="sw ${settings.extraTurn?'on':''}" id="xt" aria-pressed="${settings.extraTurn}" aria-label="${t('extraTurn')}"></button></div></div>`:''}
+      ${g.id==='quiz'?`<div><h3 style="margin-bottom:8px">${t('qt_title')}</h3><div class="chips">${QTYPES.map(k=>`<button class="chip ${st.qts.includes(k)?'on':''}" data-qt="${k}">${t('qt_'+k)}${qtLocked(k)?lockTag():''}</button>`).join('')}</div></div>`:''}
       ${(g.id==='quiz'||g.id==='deceit'||g.id==='pic')?`<div><h3 style="margin-bottom:2px">${t('category')}</h3><p class="small muted" style="margin:0 0 8px">${t('catsPick')}</p><div class="chips"><button class="chip ${!st.cats.length&&!st.uset?'on':''}" data-cat="all">${t('allCats')}</button>${(g.id==='pic'?picCats():playCats(g.id)).map(c=>`<button class="chip ${st.cats.includes(c)?'on':''}" data-cat="${esc(c)}">${esc(c)}${catLocked(c)?lockTag():''}</button>`).join('')}</div></div>
       ${g.id==='pic'?'':`<div><div class="row between" style="margin-bottom:8px"><h3>${t('us_mine')}</h3><button class="btn ghost sm" data-go="sets" data-p='{"kind":"${g.id}"}'>${t('us_manage')}</button></div>${usets(g.id).length?`<div class="chips">${usets(g.id).map(x=>`<button class="chip ${st.uset===x.id?'on':''}" data-uset="${x.id}">⭐ ${esc(x.name)} · ${x.qs.length}${canSets()?'':lockTag()}</button>`).join('')}</div>`:`<p class="small muted">${t('us_none')}</p>`}</div>`}`:''}
       ${st.mode==='local'?`<div><h3 style="margin-bottom:8px">${t('players')}</h3><div class="seg" style="margin-bottom:10px">${[2,3,4].map(n=>`<button data-count="${n}" class="${st.count===n?'on':''}">${t('nPlayers',n)}</button>`).join('')}</div>
@@ -1506,15 +1526,16 @@ SCREENS.setup=function(p){
     $$('[data-set]').forEach(b=>b.onclick=()=>{sfx('tap');st.set=b.dataset.set;render()});
     $$('[data-cat]').forEach(b=>b.onclick=()=>{const c=b.dataset.cat;if(c!=='all'&&catLocked(c)){needPrem();return}if(c!=='all'&&!st.cats.includes(c)&&st.cats.length>=MAX_CATS){toast(t('catMax',MAX_CATS));return}sfx('tap');st.uset=null;if(c==='all')st.cats=[];else st.cats=st.cats.includes(c)?st.cats.filter(x=>x!==c):st.cats.concat(c);render()});
     $$('[data-uset]').forEach(b=>b.onclick=()=>{if(!canSets()){needPrem();return}sfx('tap');st.uset=st.uset===b.dataset.uset?null:b.dataset.uset;st.cats=[];render()});
+    $$('[data-qt]').forEach(b=>b.onclick=()=>{const k=b.dataset.qt;if(qtLocked(k)){needPrem();return}sfx('tap');st.qts=st.qts.includes(k)?(st.qts.length>1?st.qts.filter(x=>x!==k):st.qts):st.qts.concat(k);render()});
     $$('[data-count]').forEach(b=>b.onclick=()=>{st.count=+b.dataset.count;render()});
     $$('[data-size]').forEach(b=>b.onclick=()=>{st.size=+b.dataset.size;render()});
     $$('[data-ni]').forEach(i=>i.oninput=()=>{st.names[+i.dataset.ni]=i.value});
     const xt=$('#xt');if(xt)xt.onclick=()=>{settings.extraTurn=!settings.extraTurn;store.set('settings',settings);render()};
     $('#go').onclick=async()=>{if(modeLocked(st.mode,g)||diffLocked(g,g.diffs[st.diff])||st.cats.some(catLocked)){needPrem();return}sfx('tap');const uqs=st.uset?usetQs(st.uset,g.diffs[st.diff].n||QZ.N):null;if(st.uset&&(!canSets()||!uqs||!uqs.length)){if(!canSets())needPrem();else toast(t('us_empty'));return}
-      const cfg={game:g.id,diffIdx:st.diff,mode:st.mode,opts:{set:st.set,cats:st.cats,names:st.names.slice(0,st.count-1),size:st.size,uqs}};
-      if(st.mode==='tv'){$('#go').disabled=true;const ok=await NET.readyP;if(ok&&NET.ok&&await NET.join(newCode(),true,{game:g.id,diffIdx:st.diff,opts:{cats:st.cats,uqs},tv:true,cap:roomCap(g.id)})){go('lobby',{});return}$('#go').disabled=false;noLiveModal();return}
+      const cfg={game:g.id,diffIdx:st.diff,mode:st.mode,opts:{set:st.set,cats:st.cats,qts:st.qts,names:st.names.slice(0,st.count-1),size:st.size,uqs}};
+      if(st.mode==='tv'){$('#go').disabled=true;const ok=await NET.readyP;if(ok&&NET.ok&&await NET.join(newCode(),true,{game:g.id,diffIdx:st.diff,opts:{cats:st.cats,qts:st.qts,uqs},tv:true,cap:roomCap(g.id)})){go('lobby',{});return}$('#go').disabled=false;noLiveModal();return}
       if(st.mode==='friends'){$('#go').disabled=true;const ok=await NET.readyP;
-        if(ok&&NET.ok&&await NET.join(newCode(),true,{game:g.id,diffIdx:st.diff,opts:{set:st.set,cats:st.cats,uqs},cap:roomCap(g.id)})){go('lobby',{});return}
+        if(ok&&NET.ok&&await NET.join(newCode(),true,{game:g.id,diffIdx:st.diff,opts:{set:st.set,cats:st.cats,qts:st.qts,uqs},cap:roomCap(g.id)})){go('lobby',{});return}
         go('lobby',{cfg,demo:true,invite:st.invite})}
       else if(st.mode==='online'){cfg.opts.uqs=null;go('match',{cfg})}else startMatch(cfg)};
   };render();
@@ -2201,7 +2222,7 @@ async function gReactLive(){
    Questions: built-in starters + every question in the bank whose correct answer starts with that letter. */
 const HF={T:20,PICK:15,GRACE:600,LETTERS:'ابتثجحخدذرزسشصضطظعغفقكلمنهوي'.split('')};
 const hfLetter=a=>{const n=normA(a);return HF.LETTERS.includes(n[0])?n[0]:null};
-const hfUsable=(q,share)=>q.a&&q.a[0]&&!q.emo&&!q.img&&hfLetter(q.a[0])&&(!share||q.src!=='l');
+const hfUsable=(q,share)=>q.a&&q.a[0]&&q.qt!=='order'&&!q.emo&&!q.img&&hfLetter(q.a[0])&&(!share||q.src!=='l');
 function hfPool(share){const by={};BANK.quiz.forEach(q=>{if(!hfUsable(q,share))return;const l=hfLetter(q.a[0]);(by[l]=by[l]||[]).push(q)});return by}
 function hfBoardLetters(n,R,share){const by=hfPool(share),have=HF.LETTERS.filter(l=>by[l]&&by[l].length),out=[];
   const bag=()=>have.slice().sort(()=>R()-.5);let b=bag();while(out.length<n*n){if(!b.length)b=bag();out.push(b.pop())}return out}
@@ -2297,6 +2318,36 @@ async function gHuroofLive(){
       v.innerHTML=head(st)+hfBoardHtml(st.L,st.own,st.n,false)+`<div class="qz-fb ${mine?'ok':w?(st.sides[st.w]===mySide?'ok':'no'):'na'}"><b>${mine?t('hf_youTook',st.L[st.c]):w?t('hf_took',esc(w.nm||'?'),st.L[st.c]):t('pc_none')}</b></div><p class="pic-ans">${q?t('pc_was',esc(q.a[0])):''}</p>${st.ws?`<h2 style="text-align:center">${t('hf_won',teamTxt(st,st.ws))}</h2>`:''}`;
       const cellEl=$(`[data-hx="${st.c}"]`,v);if(cellEl)cellEl.classList.add('cur');sfx(w&&st.sides[st.w]===mySide?'good':'tap');if(st.ws===mySide&&typeof confetti==='function')confetti()}})}
 
+/* ----- question types: mc (choices), tf (true/false), order (tap in the right order), type (write the answer) -----
+   Free players get mc + tf; subscribers can also play order + type. */
+const QTYPES=['mc','tf','order','type'];
+const qKind=q=>q.qt==='order'||q.qt==='type'?q.qt:(q.a.length===2&&q.a.some(x=>TRUE_RE.test(x))?'tf':'mc');
+const qtLocked=k=>(k==='order'||k==='type')&&!isPrem();
+const qtDefault=()=>QTYPES.filter(k=>!qtLocked(k));
+const qtAllowed=(q,qts)=>{const k=qKind(q);return !qtLocked(k)&&(!qts||!qts.length||qts.includes(k))};
+const orderTxt=q=>q.a.join(' ← ');
+/* order / type question on this phone; resolves {ok, ms} (ms null = no answer in time) */
+function qzAskOther(box,q,seed,i,id,showQ,onAnswer){return new Promise(res=>{const t0=performance.now();let done=false,raf=0;
+  const top=showQ?`<div class="qcard"><div class="qtimer"><i id="qbar"></i></div><b class="qsec tnum" id="qsec">${QZ.T}</b>${qzImg(q)}<span class="qt-tag">${t('qt_'+q.qt)}</span><p class="qtext">${esc(q.q)}</p></div>`
+    :`<div class="qtimer"><i id="qbar"></i></div><b class="qz-sec tnum" id="qsec">${QZ.T}</b><span class="qt-tag">${t('qt_'+q.qt)}</span>`;
+  const fin=ok=>{if(done)return;done=true;cancelAnimationFrame(raf);const ms=ok===null?null:Math.round(performance.now()-t0);$$('button,input',box).forEach(x=>x.disabled=true);if(onAnswer)onAnswer(ok,ms);res({ok:!!ok,ms})};
+  if(q.qt==='type'){
+    box.innerHTML=top+`<form class="pic-form" id="qtf" autocomplete="off"><input type="text" id="qti" maxlength="60" placeholder="${t('qt_typeHint')}" dir="auto" enterkeyhint="send"><button class="btn primary" type="submit">${t('pc_send')}</button></form><p class="qz-wait" id="qzmsg"></p>`;
+    const inp=$('#qti',box);setTimeout(()=>{try{inp.focus()}catch(e){}},50);
+    $('#qtf',box).onsubmit=e=>{e.preventDefault();if(!inp.value.trim())return;fin(picOk(q,inp.value))}}
+  else{const items=qzOpts(seed,i,q).map(x=>x.txt),picked=[];
+    const draw=()=>{const left=items.filter(x=>!picked.includes(x));
+      $('#qto',box).innerHTML=`<div class="qt-picked">${picked.map((x,k)=>`<span><i>${k+1}</i>${esc(x)}</span>`).join('')||`<span class="muted small">${t('qt_orderHint')}</span>`}</div>
+        <div class="qt-items">${left.map(x=>`<button class="qopt c${items.indexOf(x)%4}" data-it="${esc(x)}"><span>${esc(x)}</span></button>`).join('')}</div>
+        ${picked.length?`<button class="btn ghost sm" id="qtu">↶ ${t('qt_undo')}</button>`:''}`;
+      $$('[data-it]',box).forEach(b=>b.onclick=()=>{if(done)return;sfx('tap');picked.push(b.dataset.it);if(picked.length===items.length){draw();fin(picked.every((x,k)=>normA(x)===normA(q.a[k])))}else draw()});
+      const u=$('#qtu',box);if(u)u.onclick=()=>{if(done)return;picked.pop();draw()}};
+    box.innerHTML=top+`<div id="qto"></div><p class="qz-wait" id="qzmsg"></p>`;draw()}
+  const tick=()=>{if(done)return;if(!alive(id))return fin(null);const el=(performance.now()-t0)/1000,bar=$('#qbar',box),sec=$('#qsec',box);
+    if(bar)bar.style.width=Math.max(0,100-el/QZ.T*100)+'%';if(sec)sec.textContent=Math.max(0,Math.ceil(QZ.T-el));
+    if(el>=QZ.T)return fin(null);raf=requestAnimationFrame(tick)};raf=requestAnimationFrame(tick)})}
+const qzAnsTxt=(q,opts,c)=>q.qt==='order'?orderTxt(q):q.qt==='type'?q.a[0]:opts[c].txt;
+
 /* ----- solo / online-with-bots quiz ----- */
 async function gQuiz(){
   if(M.net)return gQuizLive();
@@ -2308,6 +2359,11 @@ async function gQuiz(){
   for(let i=0;i<qs.length;i++){
     const q=qs[i],opts=qzOpts(seed,i,q),isX=x2.has(i);
     status(t('qOf',i+1,qs.length));foot.innerHTML='';
+    if(q.qt){const r=await qzAskOther(board,q,seed,i,id,true);if(!alive(id))return;let gain=0,bonus=0;
+      if(r.ok&&r.ms!=null){me.cor++;gain=qzGain(r.ms,isX);bonus=qzBonus(me.cor)}me.score+=gain+bonus;me.scoreText=me.score;
+      M.players.filter(p=>p.isBot).forEach(p=>{if(rnd()<p.skill*.75){p.cor++;p.score+=qzGain(2500+rnd()*(1.1-p.skill)*QZ.T*1000,isX)+qzBonus(p.cor);p.scoreText=p.score}});renderPlayers();
+      sfx(r.ok?'good':'bad');status(r.ok?t('qzRight',gain,bonus?t('qzBonus',bonus):''):r.ms==null?t('qTimeout'):t('qWrong'));
+      foot.innerHTML=`<p class="qz-ans">${t('qzAnswer',esc(qzAnsTxt(q)))}</p>`;const ai=showAImg(board,q);await sleep(2300+(ai?1500:0));if(!alive(id))return;continue}
     board.innerHTML=`<div class="qcard ${isX?'x2':''}">${isX?`<span class="qz-x2">${t('qzX2')}</span>`:''}<div class="qtimer"><i id="qbar"></i></div><b class="qsec tnum" id="qsec">${QZ.T}</b>${qzImg(q)}<p class="qtext">${esc(q.q)}</p></div><div class="qopts">${opts.map((o,k)=>`<button class="qopt c${k%4}" data-k="${k}">${QSH[k%4]}<span>${esc(o.txt)}</span></button>`).join('')}</div>`;
     const t0=performance.now(),k=await timedPick(id,board,'.qopt',QZ.T,t0);if(!alive(id))return;
     const ms=performance.now()-t0,ok=k>=0&&opts[k].ok&&ms<QZ.T*1000;let gain=0,bonus=0;
@@ -2351,7 +2407,7 @@ async function qzDirect(g){
     const opts=qzOpts(g.seed,i,qs[i]),c=opts.findIndex(x=>x.ok),cnt=opts.map(()=>0);
     ps.forEach(p=>{const a=ans(p.pid,i);p.gain=0;p.bonus=0;p.ok=0;p.k=-1;if(!a)return;
       const k=+a[0],ms=Math.max(0,+a[1]||0);if(k>=0&&k<cnt.length){cnt[k]++;p.k=k}
-      if(k===c&&ms<QZ.T*1000){p.ok=1;p.cor++;p.gain=qzGain(ms,x2.has(i));p.bonus=qzBonus(p.cor);p.score+=p.gain+p.bonus}});
+      if((qs[i].qt?a[2]===1:k===c)&&ms<QZ.T*1000){p.ok=1;p.cor++;p.gain=qzGain(ms,x2.has(i));p.bonus=qzBonus(p.cor);p.score+=p.gain+p.bonus}});
     QZD.skip=false;pub({i,ph:'r',x2:x2.has(i),c,cnt,lb:board()});
     await until(()=>!live()||QZD.skip,i===n-1?5000:7500);
   }
@@ -2379,6 +2435,7 @@ async function gQuizLive(){
     v.innerHTML=tv?`<div class="qz-ready">${st.x2?`<span class="qz-x2">${t('qzX2')}</span>`:''}<span class="muted">${t('qOf',st.i+1,st.n)}</span><b class="big">${t('qzLook')}</b></div>`
       :`<div class="qcard ${st.x2?'x2':''}">${st.x2?`<span class="qz-x2">${t('qzX2')}</span>`:''}${qzImg(q)}<p class="qtext">${esc(q.q)}</p></div><p class="qz-wait">${t('qzReady')}</p>`};
   const showQ=st=>{const q=qs[st.i],opts=qzOpts(g.seed,st.i,q),t0=performance.now();picked=-1;head(st);
+    if(q.qt){qzAskOther(v,q,g.seed,st.i,id,!tv,(ok,ms)=>{if(ms==null||key!=='q:'+st.i)return;picked=1;QZL.my.a[st.i]=[-3,ms,ok?1:0];NET.set({qa:{gid:g.gid,a:{...QZL.my.a}}});const m=$('#qzmsg',v);if(m)m.textContent=t('qzSent')+' · '+t('qzWaitAll');if(NET.isHost)qzNotify()});return}
     v.innerHTML=(tv?`<div class="qtimer"><i id="qbar"></i></div><b class="qz-sec tnum" id="qsec">${QZ.T}</b><div class="qz-pads n${opts.length}">${opts.map((x,k)=>`<button class="qopt qzpad c${k%4}" data-k="${k}" aria-label="${k+1}">${QSH[k%4]}</button>`).join('')}</div>`
       :`<div class="qcard ${st.x2?'x2':''}">${st.x2?`<span class="qz-x2">${t('qzX2')}</span>`:''}<div class="qtimer"><i id="qbar"></i></div><b class="qsec tnum" id="qsec">${QZ.T}</b>${qzImg(q)}<p class="qtext">${esc(q.q)}</p></div><div class="qopts">${opts.map((x,k)=>`<button class="qopt c${k%4}" data-k="${k}">${QSH[k%4]}<span>${esc(x.txt)}</span></button>`).join('')}</div>`)+`<p class="qz-wait" id="qzmsg"></p>`;
     const tick=()=>{if(!alive(id)||key!=='q:'+st.i)return;const el=(performance.now()-t0)/1000,bar=$('#qbar'),sec=$('#qsec');
@@ -2393,7 +2450,7 @@ async function gQuizLive(){
     const fb=r[3]?`<div class="qz-fb ok"><span>${t('qzOk')}</span><b class="tnum">+${r[2]}</b>${r[4]?`<span>${t('qzBonus',r[4])}</span>`:''}</div>`
       :picked<0?`<div class="qz-fb na"><b>${t('qzNoAns')}</b></div>`:`<div class="qz-fb no"><b>${t('qWrong')}</b></div>`;
     const place=mi>=0?`<p class="qz-place">${t('qzRankOf',qzRank(lb,mi),lb.length)} · <b class="tnum">${r[1]}</b> ${t('pts')}</p>`:'';
-    v.innerHTML=fb+place+(tv?`<p class="qz-wait">${t('qzSeeTv')}</p>`:`${qzAImg(q)}<p class="qz-ans">${QSH[st.c%4].replace('qshape','qshape sm')} ${t('qzAnswer',esc(opts[st.c].txt))}</p><h3>${t('qzBoard')}</h3>${qzBoardHtml(lb,who,NET.pid,10)}`);
+    v.innerHTML=fb+place+(tv?`<p class="qz-wait">${t('qzSeeTv')}</p>`:`${qzAImg(q)}<p class="qz-ans">${q.qt?'':QSH[st.c%4].replace('qshape','qshape sm')} ${t('qzAnswer',esc(qzAnsTxt(q,opts,st.c)))}</p><h3>${t('qzBoard')}</h3>${qzBoardHtml(lb,who,NET.pid,10)}`);
     if(r[3])sfx('good');else sfx('bad')};
   return new Promise(done=>{
     const stop=()=>{QZL.subs.delete(onCh);clearInterval(wd);if(NET.onTick===onCh)NET.onTick=null};
@@ -2443,7 +2500,7 @@ SCREENS.tv=function(p){
   $('#tvx').onclick=async()=>{if(QZD.st&&QZD.st.ph==='e'){stop();go('lobby',{});return}
     if(await confirmBox(t('tvEndQ'),t('tvEnd'))){QZD.run++;NET.set({qz:{gid:g.gid,n:qs.length,i:qs.length,ph:'e',lb:lastLb||g.order.map(x=>[x.pid,0,0,0,0])}});stop();go('lobby',{})}};
   const answered=i=>g.order.filter(x=>{const a=(NET.pres[x.pid]||{}).qa;return a&&a.gid===g.gid&&a.a&&a.a[i]}).length;
-  const optsHtml=(q,i,cls)=>{const opts=qzOpts(g.seed,i,q);return`<div class="tv-opts n${opts.length}">${opts.map((x,k)=>`<div class="tv-opt c${k%4} ${cls?cls(x,k):''}">${QSH[k%4]}<span>${esc(x.txt)}</span><b class="tv-cnt tnum" data-c="${k}"></b></div>`).join('')}</div>`};
+  const optsHtml=(q,i,cls)=>{if(q.qt){const rev=!!cls;return q.qt==='order'?`<div class="tv-qt ${rev?'ans':''}">${(rev?q.a:qzOpts(g.seed,i,q).map(x=>x.txt)).map((x,k)=>`<span>${rev?(k+1)+'. ':''}${esc(x)}</span>`).join('')}</div>${rev?'':`<p class="tv-sub" style="text-align:center">${t('qt_tvOrder')}</p>`}`:rev?`<div class="tv-qt ans"><span>${esc(q.a[0])}</span></div>`:`<p class="tv-sub" style="text-align:center">${t('qt_tvType')}</p>`}const opts=qzOpts(g.seed,i,q);return`<div class="tv-opts n${opts.length}">${opts.map((x,k)=>`<div class="tv-opt c${k%4} ${cls?cls(x,k):''}">${QSH[k%4]}<span>${esc(x.txt)}</span><b class="tv-cnt tnum" data-c="${k}"></b></div>`).join('')}</div>`};
   const nextBtn=`<button class="btn tv-next" id="tvnext">${t('qzNext')} ›</button>`;
   const bindNext=()=>{const b=$('#tvnext');if(b)b.onclick=()=>{QZD.skip=true}};
   const onCh=()=>{if(current!=='tv'){stop();return}
@@ -2783,7 +2840,7 @@ async function uploadImg(file){const sb=ACC.client();if(!sb||!ACC.user){toast(t(
     const {error}=await sb.storage.from('qimg').upload(name,blob,{contentType:'image/jpeg',upsert:true});if(error)throw error;
     return sb.storage.from('qimg').getPublicUrl(name).data.publicUrl}catch(e){toast(t('adm_upFail'));return null}}
 const newQid=()=>'q'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
-const qData=q=>q.kind==='quiz'?{q:q.q,a:q.a,t:20,img:q.img||'',aimg:q.aimg||'',x2:!!q.x2}:{q:q.q,a:q.a,f:q.f,alt:q.alt,img:q.img||'',aimg:q.aimg||''};
+const qData=q=>q.kind==='quiz'?{q:q.q,a:q.a,t:20,img:q.img||'',aimg:q.aimg||'',x2:!!q.x2,qt:q.qt||'',alt:q.alt||[]}:{q:q.q,a:q.a,f:q.f,alt:q.alt,img:q.img||'',aimg:q.aimg||''};
 async function admSave(list){
   const sb=admClient();
   if(admLive()){const rows=list.map(q=>({id:q.id,kind:q.kind,cat:q.cat,data:qData(q),active:true}));
@@ -2804,7 +2861,7 @@ function parseWorkbook(X,wb){const out={quiz:[],deceit:[]};
     const body=/سؤال|السؤال|question/i.test(head)?rows.slice(1):rows;
     body.forEach(r=>{if(!r[1]||!r[2])return;
       if(isDeceit){const q=mkDeceit(newQid(),r[0],r[1],r[2],r.slice(4,9),r[3]?r[3].split(/[,،]/):[],'l',{img:r[9],aimg:r[10]});if(q.f.length>=1)out.deceit.push(q)}
-      else{const q=mkQuiz(newQid(),r[0],r[1],[r[2],r[3],r[4],r[5]],20,'l',{img:r[6],aimg:r[8],x2:/^(نعم|yes|y|x2|×2|2|✓|true)$/i.test(r[7]||'')});if(q.a.length>=2)out.quiz.push(q)}})});
+      else{const ty=/ترتيب|order/i.test(r[9]||'')?'order':/كتاب|type|write/i.test(r[9]||'')?'type':'',ex={img:r[6],aimg:r[8],x2:/^(نعم|yes|y|x2|×2|2|✓|true)$/i.test(r[7]||''),qt:ty};const q=ty==='type'?mkQuiz(newQid(),r[0],r[1],[r[2]],20,'l',{...ex,alt:[r[3],r[4],r[5]]}):mkQuiz(newQid(),r[0],r[1],[r[2],r[3],r[4],r[5]],20,'l',ex);if(usableQ('quiz',q))out.quiz.push(q)}})});
   return out}
 /* ========= ADMIN DASHBOARD (#admin): overview · players · questions · games · codes =========
    With the server connected it reads live data (admin_stats, profiles, promo_codes) and only an admin
@@ -3041,7 +3098,7 @@ const imgFields=(q,a)=>{const p=a?'a':'',v=(a?q.aimg:q.img)||'';return`<label cl
 SCREENS.admq=async function(p){const bind=await admEnter();if(current!=='admq')return;
   const st={tab:(p&&p.tab)||'quiz',q:'',cat:(p&&p.cat)||null};
   const nQ=(c,kind)=>BANK[kind].filter(q=>q.cat===c).length;
-  const qRow=q=>`<div class="adm-row"><div class="grow"><div class="row" style="gap:6px;margin-bottom:2px"><span class="src ${q.src}">${t('adm_src_'+q.src)}</span>${st.cat?'':`<span class="small muted">${esc(q.cat)}${freeCat(q.cat)?'':' 👑'}</span>`}${q.img?'<span class="small">🖼</span>':''}${q.aimg?'<span class="small" style="color:var(--good)">🖼✓</span>':''}${q.x2?'<span class="small" style="color:var(--accent);font-weight:800">×2</span>':''}</div><b>${esc(q.q)}</b><span class="small" style="color:var(--good)">✓ ${esc(Array.isArray(q.a)?q.a[0]:q.a)}</span> <span class="small muted">${esc(q.kind==='quiz'?q.a.slice(1).join(' · '):q.f.join(' · '))}</span></div>${q.src==='b'?'':`<button class="btn sm ghost" data-ed="${q.id}">${t('adm_edit')}</button>`}</div>`;
+  const qRow=q=>`<div class="adm-row"><div class="grow"><div class="row" style="gap:6px;margin-bottom:2px"><span class="src ${q.src}">${t('adm_src_'+q.src)}</span>${st.cat?'':`<span class="small muted">${esc(q.cat)}${freeCat(q.cat)?'':' 👑'}</span>`}${q.img?'<span class="small">🖼</span>':''}${q.aimg?'<span class="small" style="color:var(--good)">🖼✓</span>':''}${q.x2?'<span class="small" style="color:var(--accent);font-weight:800">×2</span>':''}${q.qt?`<span class="small" style="color:var(--teal);font-weight:800">${t('qt_'+q.qt)}</span>`:''}</div><b>${esc(q.q)}</b><span class="small" style="color:var(--good)">✓ ${esc(Array.isArray(q.a)?q.a[0]:q.a)}</span> <span class="small muted">${esc(q.kind==='quiz'?q.a.slice(1).join(' · '):q.f.join(' · '))}</span></div>${q.src==='b'?'':`<button class="btn sm ghost" data-ed="${q.id}">${t('adm_edit')}</button>`}</div>`;
   const nameModal=(title,val,cb)=>modal(`<form class="stack" id="cnf"><h3>${title}</h3><input type="text" id="cn-n" maxlength="30" placeholder="${t('cat_name')}" value="${esc(val||'')}"><div class="row" style="justify-content:flex-end"><button type="button" class="btn ghost" data-c>${t('cancel')}</button><button class="btn primary" type="submit">${t('save')}</button></div></form>`,(m,close)=>{
     $('[data-c]',m).onclick=close;const i=$('#cn-n',m);i.focus();$('#cnf',m).onsubmit=async e=>{e.preventDefault();if(!qn(i.value))return;const r=await cb(i.value);if(r!==false)close()}});
   const render=async()=>{if(current!=='admq')return;
@@ -3079,7 +3136,7 @@ SCREENS.admq=async function(p){const bind=await admEnter();if(current!=='admq')r
       catch(err){toast(t('adm_noRows'))}};
     const ex=$('#adm-exp');if(ex)ex.onclick=async()=>{if(NATIVE||!ZKC.linkBase){toast(t('adm_dlFail'));return}
       const X=await loadXLSX();const wb=X.utils.book_new();
-      X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال','الإجابة الصحيحة','خيار خاطئ 1','خيار خاطئ 2','خيار خاطئ 3','رابط الصورة','نقاط مضاعفة','صورة الإجابة'],...BANK.quiz.filter(q=>q.src!=='b').map(q=>[q.cat,q.q,q.a[0],q.a[1]||'',q.a[2]||'',q.a[3]||'',q.img||'',q.x2?'نعم':'',q.aimg||''])]),'أسئلة');
+      X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال','الإجابة الصحيحة','خيار خاطئ 1','خيار خاطئ 2','خيار خاطئ 3','رابط الصورة','نقاط مضاعفة','صورة الإجابة','النوع'],...BANK.quiz.filter(q=>q.src!=='b').map(q=>{const b=q.qt==='type'?[q.a[0],...(q.alt||[]).concat(['','','']).slice(0,3)]:[q.a[0],q.a[1]||'',q.a[2]||'',q.a[3]||''];return[q.cat,q.q,...b,q.img||'',q.x2?'نعم':'',q.aimg||'',q.qt==='order'?'ترتيب':q.qt==='type'?'كتابة':'']})]),'أسئلة');
       X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال (ضع ____ مكان الإجابة)','الإجابة الصحيحة','إجابات مقبولة أخرى','خداع 1','خداع 2','خداع 3','خداع 4','خداع 5','رابط الصورة','صورة الإجابة'],...BANK.deceit.filter(q=>q.src!=='b').map(q=>[q.cat,q.q,q.a,(q.alt||[]).join('، '),...[0,1,2,3,4].map(i=>q.f[i]||''),q.img||'',q.aimg||''])]),'خداع');
       X.writeFile(wb,'playo-questions.xlsx')};
   };render();
@@ -3087,9 +3144,13 @@ SCREENS.admq=async function(p){const bind=await admEnter();if(current!=='admq')r
 function admForm(kind,q,done,o){
   o=o||{};const isNew=!q;q=q||(kind==='quiz'?mkQuiz(newQid(),'عام','',[],20,'l'):mkDeceit(newQid(),'عام','','',[],[],'l'));
   const cats=bankCats(kind);
-  const body=kind==='quiz'?`<label class="field">${t('adm_q')}<textarea id="f-q" maxlength="200">${esc(q.q)}</textarea></label>
-    <label class="field">${t('adm_correct')}<input type="text" id="f-a0" maxlength="60" value="${esc(q.a[0]||'')}"></label>
-    ${[1,2,3].map(i=>`<label class="field">${t('adm_wrong',i)}<input type="text" id="f-a${i}" maxlength="60" value="${esc(q.a[i]||'')}"></label>`).join('')}
+  let qt=q.qt||'mc';
+  const body=kind==='quiz'?`<div class="seg" id="f-qt">${['mc','order','type'].map(k=>`<button type="button" data-fqt="${k}" class="${qt===k?'on':''}">${t('qt_'+k)}</button>`).join('')}</div>
+    <label class="field">${t('adm_q')}<textarea id="f-q" maxlength="200">${esc(q.q)}</textarea></label>
+    <div data-g="mc" ${qt==='mc'?'':'hidden'}><label class="field">${t('adm_correct')}<input type="text" id="f-a0" maxlength="60" value="${esc(q.qt?'':q.a[0]||'')}"></label>
+    ${[1,2,3].map(i=>`<label class="field">${t('adm_wrong',i)}<input type="text" id="f-a${i}" maxlength="60" value="${esc(q.qt?'':q.a[i]||'')}"></label>`).join('')}</div>
+    <div data-g="order" class="field" ${qt==='order'?'':'hidden'}>${t('qt_orderAdm')}${[0,1,2,3,4].map(i=>`<input type="text" id="f-o${i}" maxlength="40" placeholder="${i+1}${i>2?' · '+t('adm_opt'):''}" value="${esc(q.qt==='order'?q.a[i]||'':'')}">`).join('')}</div>
+    <div data-g="type" ${qt==='type'?'':'hidden'}><label class="field">${t('adm_correct')}<input type="text" id="f-t0" maxlength="60" value="${esc(q.qt==='type'?q.a[0]||'':'')}"></label><label class="field">${t('adm_alt')}<input type="text" id="f-talt" maxlength="200" value="${esc(q.qt==='type'?(q.alt||[]).join('، '):'')}"></label></div>
     ${imgFields(q)}${imgFields(q,1)}
     <label class="toggle" style="border:0;padding:0"><span>${t('adm_x2')}</span><input type="checkbox" id="f-x2" ${q.x2?'checked':''} style="width:22px;height:22px"></label>`
    :`<label class="field">${t('adm_q')}<textarea id="f-q" maxlength="200" placeholder="${t('adm_dqHint')}">${esc(q.q)}</textarea><span class="small muted" style="font-weight:500">${t('adm_dqHint')}</span></label>
@@ -3099,13 +3160,17 @@ function admForm(kind,q,done,o){
   modal(`<form class="stack" id="qf"><h3>${isNew?t('adm_add'):t('adm_edit')} · ${t('adm_'+kind)}</h3>
     ${o.cat?`<input type="hidden" id="f-cat" value="${esc(o.cat)}">`:`<label class="field">${t('category')}<input type="text" id="f-cat" list="f-cats" maxlength="30" value="${esc(q.cat)}"><datalist id="f-cats">${cats.map(c=>`<option value="${esc(c)}">`).join('')}</datalist></label>`}${body}
     <div class="row" style="justify-content:space-between;flex-wrap:wrap">${isNew?'<span></span>':`<button type="button" class="btn ghost sm" id="f-del" style="color:var(--bad)">${t('remove')}</button>`}<div class="row"><button type="button" class="btn ghost" id="f-x">${t('cancel')}</button><button class="btn primary" type="submit">${t('save')}</button></div></div></form>`,(m,close)=>{
+    $$('[data-fqt]',m).forEach(b=>b.onclick=()=>{qt=b.dataset.fqt;$$('[data-fqt]',m).forEach(x=>x.classList.toggle('on',x===b));$$('[data-g]',m).forEach(gx=>gx.hidden=gx.dataset.g!==qt)});
     $('#f-x',m).onclick=close;
     ['','a'].forEach(p=>{const up=$('#f-'+p+'up',m),fi=$('#f-'+p+'img',m),pv=$('#f-'+p+'prev',m);if(!fi)return;
       if(up)up.onchange=async e=>{const f=e.target.files[0];if(!f)return;const url=await uploadImg(f);if(url){fi.value=url;pv.src=url;pv.style.display=''}};
       fi.oninput=()=>{pv.src=fi.value;pv.style.display=fi.value?'':'none'}});
     const del=$('#f-del',m);if(del)del.onclick=async()=>{close();if(await confirmBox(t('adm_delQ'),t('remove'))&&await (o.del||admDelete)(q)){toast(t('adm_deleted'));done()}};
     $('#qf',m).onsubmit=async e=>{e.preventDefault();if(!o.save&&q.src==='r'&&!admLive()){toast(t('adm_needLogin'));return}const cat=$('#f-cat',m).value;let nq;
-      if(kind==='quiz'){nq=mkQuiz(q.id,cat,$('#f-q',m).value,[0,1,2,3].map(i=>$('#f-a'+i,m).value),20,q.src,{img:$('#f-img',m).value,aimg:$('#f-aimg',m).value,x2:$('#f-x2',m).checked});if(!nq.q||!qn($('#f-a0',m).value)||nq.a.length<2){toast(t('adm_needOpts'));return}}
+      if(kind==='quiz'){const ex={img:$('#f-img',m).value,aimg:$('#f-aimg',m).value,x2:$('#f-x2',m).checked};
+        if(qt==='order'){nq=mkQuiz(q.id,cat,$('#f-q',m).value,[0,1,2,3,4].map(i=>$('#f-o'+i,m).value),20,q.src,{...ex,qt:'order'});if(!nq.q||nq.a.length<3){toast(t('qt_needOrder'));return}}
+        else if(qt==='type'){nq=mkQuiz(q.id,cat,$('#f-q',m).value,[$('#f-t0',m).value],20,q.src,{...ex,qt:'type',alt:$('#f-talt',m).value.split(/[,،]/)});if(!nq.q||!nq.a[0]){toast(t('adm_needOpts'));return}}
+        else{nq=mkQuiz(q.id,cat,$('#f-q',m).value,[0,1,2,3].map(i=>$('#f-a'+i,m).value),20,q.src,ex);if(!nq.q||!qn($('#f-a0',m).value)||nq.a.length<2){toast(t('adm_needOpts'));return}}}
       else{nq=mkDeceit(q.id,cat,$('#f-q',m).value,$('#f-a',m).value,[0,1,2,3,4].map(i=>$('#f-f'+i,m).value),$('#f-alt',m).value.split(/[,،]/),q.src);if(!nq.q||!nq.a||nq.f.length<4){toast(t('adm_needFakes'));return}if(nq.f.some(f=>isTruth(nq,f))){toast(t('adm_fakeTrue'));return}['img','aimg'].forEach(k=>{nq[k]=qn($('#f-'+k,m).value);if(!/^https:\/\//i.test(nq[k]))nq[k]=''})}
       if(await (o.save||admSave)([nq])){close();toast(t('adm_saved'));done()}}})}
 
