@@ -510,6 +510,8 @@ input[type=number],input[type=email],input[type=password]{font:inherit;font-weig
 .ag-row:last-child{border-bottom:0}
 .ag-row label{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
 
+.cat-row{display:flex;align-items:center;gap:10px;padding:10px 6px;border-bottom:1px solid rgba(127,127,127,.16)}.cat-row:last-child{border-bottom:0}.cat-row .grow{display:flex;flex-direction:column;min-width:0;cursor:pointer;background:none;border:0;color:inherit;font:inherit;text-align:start;padding:0}
+.qimg.aimg{outline:3px solid var(--good);outline-offset:-3px}
 </style>
 
 <div class="app" id="app"></div>
@@ -703,17 +705,17 @@ r_deceit:[['يظهر سؤال بإجابة غريبة لكنها حقيقية.',
 nQ:['{0} أسئلة','{0} questions'],nRounds:['{0} جولات','{0} rounds'],category:['الفئة','Category'],allCats:['الكل','All'],
 qOf:['سؤال {0} من {1}','Question {0} of {1}'],qRight:['صحيح! +{0} {1}','Correct! +{0} {1}'],streakN:['سلسلة ×{0}','streak ×{0}'],qWrong:['خطأ','Wrong'],qTimeout:['انتهى الوقت','Time is up'],correctN:['{0} صحيحة','{0} correct'],
 sdkMist:['أخطاء {0}','Mistakes {0}'],erase:['مسح','Erase'],sdkGen:['نجهّز اللوحة…','Preparing the board…'],sdkLeft:['متبقٍ {0} خانة','{0} cells left'],
-dcWrite:['اكتب إجابة مخادعة تقنع بها الآخرين','Write a fake answer to fool the others'],dcWritePh:['إجابتك المخادعة','Your fake answer'],dcSend:['إرسال','Submit'],dcTooTrue:['هذه هي الإجابة الصحيحة تقريباً! اكتب كذبة أخرى','That is basically the real answer! Write another lie'],
+dcWrite:['اكتب إجابة مخادعة تقنع بها الآخرين','Write a fake answer to fool the others'],dcWritePh:['إجابتك المخادعة','Your fake answer'],dcSend:['إرسال','Submit'],dcTooTrue:['إجابة صحيحة! يرجى كتابة إجابة ثانية (خاطئة ومقنعة)','That is the correct answer! Please write a different (wrong) one'],
 dcPick:['أيّ إجابة هي الحقيقية؟','Which answer is the truth?'],dcYours:['إجابتك','Yours'],dcWaiting:['بانتظار: {0}','Waiting for: {0}'],dcTruth:['الحقيقة','The truth'],dcBy:['خداع {0}','{0}\'s lie'],
 dcFooled:['خدعت {0}! +{1}','You fooled {0}! +{1}'],dcGotTruth:['اكتشفت الحقيقة! +{0}','You found the truth! +{0}'],dcGotFooled:['خدعك {0}','{0} fooled you'],dcRound:['جولة {0} من {1}','Round {0} of {1}'],dcHostLeft:['انقطع المضيف، انتهت المباراة','The host disconnected; the match ended'],dcSoloPick:['اختر الإجابة الحقيقية','Pick the real answer'],dcBank:['خداع جاهز','Ready-made lie'],dcNoPick:['لم تختر','No pick'],
 missingQ:['أسئلة هذه المباراة غير موجودة على جهازك. حدّث التطبيق.','This match\'s questions are missing on your device. Update the app.'],noQ:['لا توجد أسئلة كافية في هذه الفئة','Not enough questions in this category'],
 admin:['لوحة الإدارة','Admin dashboard'],adm_quiz:['أسئلة','Quiz'],adm_deceit:['خداع','Deception'],adm_add:['إضافة','Add'],adm_import:['استيراد Excel','Import Excel'],adm_export:['تصدير Excel','Export Excel'],adm_search:['بحث في الأسئلة','Search questions'],
 adm_src_b:['مثال مدمج','Built-in sample'],adm_src_r:['الخادم','Server'],adm_src_l:['هذا الجهاز','This device'],adm_q:['السؤال','Question'],adm_correct:['الإجابة الصحيحة','Correct answer'],adm_wrong:['خيار خاطئ {0}','Wrong option {0}'],adm_time:['الوقت (ثانية)','Time (seconds)'],
-adm_alt:['إجابات صحيحة أخرى مقبولة (افصل بينها بفاصلة)','Other accepted answers (comma separated)'],adm_fakes:['إجابات خداع جاهزة (واحدة في كل سطر، 3 على الأقل)','Ready fake answers (one per line, at least 3)'],adm_dqHint:['ضع ____ مكان الإجابة داخل السؤال','Put ____ where the answer goes'],
+adm_alt:['إجابات صحيحة أخرى مقبولة (افصل بينها بفاصلة)','Other accepted answers (comma separated)'],adm_fakes:['إجابات خاطئة جاهزة (4 على الأقل): تظهر بدل من لم يكتب إجابة','Ready wrong answers (at least 4): shown in place of players who wrote nothing'],adm_opt:['اختياري','optional'],adm_aimg:['صورة الإجابة (تظهر بعد كشف الإجابة)','Answer image (shown after the answer is revealed)'],adm_fakeTrue:['إحدى الإجابات الخاطئة تطابق الإجابة الصحيحة','One of the wrong answers matches the correct answer'],adm_dqHint:['ضع ____ مكان الإجابة داخل السؤال','Put ____ where the answer goes'],
 adm_saved:['تم الحفظ','Saved'],adm_deleted:['تم الحذف','Deleted'],adm_delQ:['حذف هذا السؤال؟','Delete this question?'],adm_where_l:['ما تضيفه هنا يُحفظ على هذا الجهاز فقط ويظهر في لعبك الفردي. بعد ربط الخادم يصل لكل اللاعبين.','What you add here is saved on this device only and appears in your solo games. Once the server is connected it reaches all players.'],adm_where_r:['متصل بالخادم: ما تحفظه يصل لكل اللاعبين.','Connected to the server: what you save reaches every player.'],
 adm_login:['سجّل دخول المدير لنشر الأسئلة لكل اللاعبين','Sign in as admin to publish questions to all players'],adm_email:['البريد','Email'],adm_pass:['كلمة المرور','Password'],adm_signin:['دخول','Sign in'],adm_signout:['خروج','Sign out'],adm_badlogin:['تعذّر الدخول، تحقق من البريد وكلمة المرور','Sign-in failed; check email and password'],
 adm_imported:['تم استيراد {0} سؤالاً','{0} questions imported'],adm_preview:['وجدنا {0} سؤال أسئلة و{1} سؤال خداع. استيرادها؟','Found {0} quiz and {1} deception questions. Import them?'],adm_noRows:['لم نجد أسئلة في الملف. استخدم نموذج Excel.','No questions found. Use the Excel template.'],
-adm_needOpts:['أكمل السؤال والإجابة وخياراً خاطئاً واحداً على الأقل','Fill in the question, the answer and at least one wrong option'],adm_needFakes:['أكمل السؤال والإجابة و3 إجابات خداع','Fill in the question, the answer and 3 fake answers'],adm_readonly:['الأمثلة المدمجة للقراءة فقط','Built-in samples are read-only'],
+adm_needOpts:['أكمل السؤال والإجابة وخياراً خاطئاً واحداً على الأقل','Fill in the question, the answer and at least one wrong option'],adm_needFakes:['أكمل السؤال والإجابة الصحيحة و4 إجابات خاطئة على الأقل','Fill in the question, the correct answer and at least 4 wrong answers'],adm_readonly:['الأمثلة المدمجة للقراءة فقط','Built-in samples are read-only'],
 adm_saveFail:['تعذّر الحفظ على الخادم: {0}','Could not save to the server: {0}'],adm_edit:['تعديل','Edit'],adm_dlFail:['التصدير متاح في نسخة المتصفح على الكمبيوتر','Export works in the web version on a computer'],adm_loading:['جارٍ قراءة الملف…','Reading the file…'],adm_more:['و{0} أخرى… استخدم البحث','and {0} more… use search'],
 prem:['بريميوم','Premium'],premTitle:['افتح كل شيء مع Playo بريميوم','Unlock everything with Playo Premium'],
 premF1:['بدون إعلانات','No ads'],premF2:['كل ألعاب الذاكرة الست','All six memory games'],premF3:['كل فئات الأسئلة والخداع وكل أطوال الجولات','Every quiz and deception category and round length'],premF4:['كل صعوبات السودوكو','Every Sudoku difficulty'],premF5:['أنشئ غرفاً واختر اللعبة لأصدقائك','Create rooms and pick the game for your friends'],premF6:['سجل مباريات كامل وصور مميزة','Full match history and special avatars'],
@@ -759,12 +761,13 @@ us_title:['مجموعاتي','My question sets'],us_mine:['مجموعاتي','My
 us_about:['اكتب أسئلتك أنت (مع صور) في مجموعات خاصة، والعب بها وحدك أو في غرفة مع أصدقائك أو على التلفاز. أصدقاؤك يلعبونها دون اشتراك.','Write your own questions (with pictures) in private sets, and play them alone, in a room with friends or on a TV. Friends play them without a subscription.'],
 us_prem:['المجموعات الخاصة مع بريميوم','Own sets come with Premium'],us_newQ:['مجموعة أسئلة','Quiz set'],us_newD:['مجموعة خداع','Deception set'],us_name:['اسم المجموعة','Set name'],us_n:['{0}','{0}'],
 us_empty:['أضف سؤالاً واحداً على الأقل','Add at least one question'],us_full:['الحد {0} سؤال','Limit is {0} questions'],us_rename:['تغيير الاسم','Rename'],us_delete:['حذف المجموعة','Delete set'],us_delQ:['حذف المجموعة بكل أسئلتها؟','Delete the set and all its questions?'],us_play:['العب','Play'],
+ac_catNotEmpty:['الفئة فيها أسئلة: انقلها أو احذفها أولاً','This category has questions: move or delete them first'],cat_new:['فئة جديدة','New category'],cat_name:['اسم الفئة','Category name'],cat_all:['كل الفئات','All categories'],cat_n:['{0}','{0}'],cat_empty:['لا أسئلة بعد. اضغط «إضافة سؤال».','No questions yet. Tap “Add question”.'],cat_rename:['تغيير الاسم','Rename'],cat_del:['حذف الفئة','Delete category'],cat_delQ:['حذف هذه الفئة؟','Delete this category?'],cat_addQ:['إضافة سؤال','Add question'],cat_hint:['أنشئ فئة باسم تختاره، ثم افتحها وأضف أسئلتها. اضغط 👑 لتجعلها للمشتركين فقط. الفئة الفارغة لا تظهر للاعبين.','Create a category with any name, then open it and add its questions. Tap 👑 to make it Premium only. Empty categories are hidden from players.'],cat_free:['للجميع','Everyone'],cat_prem:['للمشتركين','Premium'],cat_search:['نتائج البحث','Search results'],
 us_hint:['تُحفظ على جهازك وعلى حسابك','Saved on your device and your account'],qzFewQ:['متوفر {0} سؤالاً فقط في الفئات المختارة','Only {0} questions in the chosen categories'],
 tvJoin:['ادخل من هاتفك','Join from your phone'],tvJoinHow:['امسح الرمز بكاميرا الهاتف، أو افتح الرابط وأدخل الكود. لا حاجة لتحميل التطبيق.','Scan the code with your phone camera, or open the link and enter the code. No download needed.'],
 tvWaitP:['بانتظار انضمام اللاعبين…','Waiting for players to join…'],tvFull:['ملء الشاشة','Full screen'],tvEnd:['إنهاء الجولة','End round'],tvEndQ:['إنهاء الجولة للجميع؟','End the round for everyone?'],
 tvGuest:['المقدّم يعرض الأسئلة على الشاشة، وأنت تجيب من هنا بالألوان.','The host shows the questions on the screen; you answer here by colour.'],
 catsPick:['اختر فئة أو أكثر','Pick one or more categories'],
-adm_x2:['سؤال بنقاط مضاعفة ×2','Double-points question ×2'],adm_img:['صورة السؤال (رابط)','Question image (link)'],adm_upload:['رفع صورة','Upload image'],adm_upFail:['تعذّر رفع الصورة','Upload failed'],adm_upLogin:['سجّل دخول المدير لرفع الصور، أو ضع رابط صورة','Sign in as admin to upload, or paste an image link'],
+adm_x2:['سؤال بنقاط مضاعفة ×2','Double-points question ×2'],adm_img:['صورة السؤال','Question image'],adm_upload:['رفع صورة','Upload image'],adm_upFail:['تعذّر رفع الصورة','Upload failed'],adm_upLogin:['سجّل دخول المدير لرفع الصور، أو ضع رابط صورة','Sign in as admin to upload, or paste an image link'],
 adm_cats:['فئات المشتركين','Premium categories'],adm_catsHint:['اضغط على الفئة لتصبح للمشتركين فقط (👑) أو لتعود مجانية.','Tap a category to make it Premium-only (👑) or free again.'],
 premActive:['أنت مشترك في بريميوم','You are a Premium member'],premUntil:['حتى {0}','Until {0}'],premLocked:['هذه الميزة في بريميوم','This is a Premium feature'],premGet:['بريميوم','Premium'],
 premTest:['وضع التجربة','Test mode'],premTestD:['الدفع غير مربوط بعد لأنه يحتاج حسابات المتاجر. فعّل اشتراكاً تجريبياً لترى الميزات المفتوحة.','Payments are not connected yet; they need the store accounts. Turn on a test subscription to see the unlocked features.'],
@@ -887,8 +890,8 @@ const BUILTIN_DECEIT=[
 ['طعام','سُمّي الهامبرغر نسبة إلى مدينة ____.','هامبورغ','فرانكفورت|ميونخ|برلين|كولونيا','هامبورج'],['علوم','عدد الأسنان الدائمة عند الإنسان البالغ ____.','32','28|30|36|24','اثنان وثلاثون'],
 ['جغرافيا','أكبر محيط في العالم هو المحيط ____.','الهادئ','الأطلسي|الهندي|المتجمد الشمالي|الجنوبي','الهادي|الباسيفيكي']];
 const qn=s=>String(s==null?'':s).trim();
-function mkQuiz(id,cat,q,opts,tm,src,ex){ex=ex||{};return{id,kind:'quiz',cat:qn(cat)||'عام',q:qn(q),a:(opts||[]).map(qn).filter(Boolean),t:20,img:/^https?:\/\//i.test(qn(ex.img))?qn(ex.img):'',x2:!!ex.x2,src}}
-function mkDeceit(id,cat,q,a,fakes,alt,src,ex){const img=qn(ex&&ex.img);return{id,kind:'deceit',cat:qn(cat)||'عام',q:qn(q),a:qn(a),f:(fakes||[]).map(qn).filter(Boolean),alt:(alt||[]).map(qn).filter(Boolean),img:/^https:\/\//i.test(img)?img:'',src}}
+function mkQuiz(id,cat,q,opts,tm,src,ex){ex=ex||{};return{id,kind:'quiz',cat:qn(cat)||'عام',q:qn(q),a:(opts||[]).map(qn).filter(Boolean),t:20,img:/^https?:\/\//i.test(qn(ex.img))?qn(ex.img):'',aimg:/^https?:\/\//i.test(qn(ex.aimg))?qn(ex.aimg):'',x2:!!ex.x2,src}}
+function mkDeceit(id,cat,q,a,fakes,alt,src,ex){const img=qn(ex&&ex.img);return{id,kind:'deceit',cat:qn(cat)||'عام',q:qn(q),a:qn(a),f:(fakes||[]).map(qn).filter(Boolean),alt:(alt||[]).map(qn).filter(Boolean),img:/^https:\/\//i.test(img)?img:'',aimg:/^https:\/\//i.test(qn(ex&&ex.aimg))?qn(ex.aimg):'',src}}
 const BANK={quiz:[],deceit:[]};
 function loadBank(){
   const loc=store.get('bank_local',{quiz:[],deceit:[]}),rem=store.get('bank_remote',{quiz:[],deceit:[]});
@@ -1763,18 +1766,35 @@ function qzOpts(seed,i,q){const o=q.a.map((txt,k)=>({txt,ok:k===0}));
 function qzDoubles(qs,seed){const marked=qs.map((q,i)=>q.x2?i:-1).filter(i=>i>=0);if(marked.length)return marked;
   const r=mulberry(seed|0),pool=[...Array(qs.length).keys()].filter(i=>i>=Math.min(4,qs.length-1)),want=Math.min(QZ.X2N,Math.max(qs.length>=6?1:0,Math.floor(qs.length/10)));const out=[];
   while(out.length<want&&pool.length)out.push(pool.splice(Math.floor(r()*pool.length),1)[0]);return out.sort((a,b)=>a-b)}
+/* after the answer is shown, the answer picture (if any) takes the question picture's place */
+const qzAImg=(q,cls)=>q&&q.aimg?`<img class="${cls||'qimg'} aimg" src="${esc(q.aimg)}" alt="" onerror="this.remove()">`:'';
+function showAImg(box,q){if(!q||!q.aimg)return false;const c=$('.qcard',box);if(!c)return false;const im=$('img.qimg',c);if(im){im.src=q.aimg;im.classList.add('aimg')}else{const p=$('.qtext,.dq',c);if(p)p.insertAdjacentHTML('beforebegin',qzAImg(q))}return true}
 const qzImg=(q,cls)=>q&&q.img?`<img class="${cls||'qimg'}" src="${esc(q.img)}" alt="" onerror="this.remove()">`:'';
 
 /* ----- premium-only categories (the owner picks them in the question manager) ----- */
 let PCATS=new Set(store.get('pcats',['تاريخ','فن']));
+let CATS_ALL=new Set(store.get('cats_all',[]));   // categories the owner created (some may still be empty)
 const premCat=c=>PCATS.has(c);
 async function fetchPremCats(){if(!SB_ON())return;
   try{const r=await fetch(ZKC.supabaseUrl+'/rest/v1/categories?select=name,premium',{headers:{apikey:ZKC.supabaseKey,Authorization:'Bearer '+ZKC.supabaseKey}});
-    if(!r.ok)return;const rows=await r.json();PCATS=new Set(rows.filter(x=>x.premium).map(x=>x.name));store.set('pcats',[...PCATS])}catch(e){}}
+    if(!r.ok)return;const rows=await r.json();PCATS=new Set(rows.filter(x=>x.premium).map(x=>x.name));store.set('pcats',[...PCATS]);CATS_ALL=new Set(rows.map(x=>x.name));store.set('cats_all',[...CATS_ALL])}catch(e){}}
 fetchPremCats();
 async function setPremCat(c,on){const sb=admClient();
-  if(sb&&ADM.session){const {error}=await sb.from('categories').upsert({name:c,premium:on});if(error){toast(t('adm_saveFail',error.message));return false}}
-  if(on)PCATS.add(c);else PCATS.delete(c);store.set('pcats',[...PCATS]);return true}
+  if(admLive()){const {error}=await sb.from('categories').upsert({name:c,premium:on});if(error){toast(t('adm_saveFail',error.message));return false}}
+  else if(ACC.client()){toast(t('adm_needLogin'));return false}
+  if(on)PCATS.add(c);else PCATS.delete(c);store.set('pcats',[...PCATS]);CATS_ALL.add(c);store.set('cats_all',[...CATS_ALL]);return true}
+const ownQs=c=>[...BANK.quiz,...BANK.deceit].filter(q=>q.cat===c&&q.src!=='b');
+async function addCat(name){name=qn(name).slice(0,30);if(!name)return false;
+  if(admLive()){const {error}=await admClient().from('categories').upsert({name,premium:premCat(name)});if(error){toast(t('adm_saveFail',error.message));return false}}
+  else if(ACC.client()){toast(t('adm_needLogin'));return false}
+  CATS_ALL.add(name);store.set('cats_all',[...CATS_ALL]);return name}
+async function renameCat(old,nw){nw=qn(nw).slice(0,30);if(!nw||nw===old)return false;const prem=premCat(old);
+  if(!(await addCat(nw)))return false;if(prem)await setPremCat(nw,true);
+  const list=ownQs(old).map(q=>({...q,cat:nw}));if(list.length&&!(await admSave(list)))return false;
+  await delCat(old,true);return nw}
+async function delCat(c,force){if(!force&&ownQs(c).length){toast(t('ac_catNotEmpty'));return false}
+  if(admLive())await admClient().from('categories').delete().eq('name',c);else if(ACC.client()&&!force){toast(t('adm_needLogin'));return false}
+  CATS_ALL.delete(c);PCATS.delete(c);store.set('cats_all',[...CATS_ALL]);store.set('pcats',[...PCATS]);return true}
 
 /* ----- solo / online-with-bots quiz ----- */
 async function gQuiz(){
@@ -1797,7 +1817,7 @@ async function gQuiz(){
     $$('.qopt',board).forEach((b,j)=>b.classList.add(opts[j].ok?'right':j===k?'wrong':'dim'));
     if(ok){sfx('good');burst(board.children[1].children[k],'#fff')}else sfx('bad');
     status(ok?t('qzRight',gain,bonus?t('qzBonus',bonus):''):k<0?t('qTimeout'):t('qWrong'));
-    await sleep(ok?1400:2100);if(!alive(id))return;
+    const ai=showAImg(board,q);await sleep((ok?1400:2100)+(ai?1500:0));if(!alive(id))return;
   }
   if(M.solo)finish({perf:me.cor/qs.length,metric:me.score,line:`${t('correctN',me.cor+'/'+qs.length)} · ${me.score} ${t('pts')}`});
   else finish({order:M.players.map(p=>({p,val:outVal(p,p.score),txt:p.score}))});
@@ -1872,7 +1892,7 @@ async function gQuizLive(){
     const fb=r[3]?`<div class="qz-fb ok"><span>${t('qzOk')}</span><b class="tnum">+${r[2]}</b>${r[4]?`<span>${t('qzBonus',r[4])}</span>`:''}</div>`
       :picked<0?`<div class="qz-fb na"><b>${t('qzNoAns')}</b></div>`:`<div class="qz-fb no"><b>${t('qWrong')}</b></div>`;
     const place=mi>=0?`<p class="qz-place">${t('qzRankOf',qzRank(lb,mi),lb.length)} · <b class="tnum">${r[1]}</b> ${t('pts')}</p>`:'';
-    v.innerHTML=fb+place+(tv?`<p class="qz-wait">${t('qzSeeTv')}</p>`:`<p class="qz-ans">${QSH[st.c%4].replace('qshape','qshape sm')} ${t('qzAnswer',esc(opts[st.c].txt))}</p><h3>${t('qzBoard')}</h3>${qzBoardHtml(lb,who,NET.pid,10)}`);
+    v.innerHTML=fb+place+(tv?`<p class="qz-wait">${t('qzSeeTv')}</p>`:`${qzAImg(q)}<p class="qz-ans">${QSH[st.c%4].replace('qshape','qshape sm')} ${t('qzAnswer',esc(opts[st.c].txt))}</p><h3>${t('qzBoard')}</h3>${qzBoardHtml(lb,who,NET.pid,10)}`);
     if(r[3])sfx('good');else sfx('bad')};
   return new Promise(done=>{
     const stop=()=>{QZL.subs.delete(onCh);clearInterval(wd);if(NET.onTick===onCh)NET.onTick=null};
@@ -1939,7 +1959,7 @@ SCREENS.tv=function(p){
         <div class="tv-mid"><b class="tv-clock tnum" id="tvclk">${QZ.T}</b>${qzImg(q,'tv-img')}<div class="tv-ansn"><b class="tnum" id="tvans">${t('qzAnswered',answered(st.i),g.order.length)}</b></div></div>${optsHtml(q,st.i)}${nextBtn}`;bindNext();
       const tick=()=>{if(key!==k||current!=='tv')return;const el=(performance.now()-t0)/1000,c=$('#tvclk');if(c){const s=Math.max(0,Math.ceil(QZ.T-el));c.textContent=s;c.classList.toggle('low',s<=5)}if(el<QZ.T)raf=requestAnimationFrame(tick)};raf=requestAnimationFrame(tick)}
     else if(st.ph==='r'){sfx('good');const tot=Math.max(1,(st.cnt||[]).reduce((a,b)=>a+b,0));
-      v.innerHTML=`<div class="tv-qrow"><h1 class="tv-q sm">${esc(q.q)}</h1></div>${optsHtml(q,st.i,(x,j)=>j===st.c?'right':'dim')}<div id="tvlbw"></div>${nextBtn}`;bindNext();
+      v.innerHTML=`<div class="tv-qrow">${qzAImg(q,'tv-img sm')}<h1 class="tv-q sm">${esc(q.q)}</h1></div>${optsHtml(q,st.i,(x,j)=>j===st.c?'right':'dim')}<div id="tvlbw"></div>${nextBtn}`;bindNext();
       $$('.tv-cnt',v).forEach(b=>{const n=(st.cnt||[])[+b.dataset.c]||0;b.textContent=n;b.style.setProperty('--w',Math.round(n/tot*100)+'%')});
       setTimeout(()=>{if(key!==k||current!=='tv')return;v.innerHTML=`<h2 class="tv-h">${t('qzBoard')}</h2>${qzBoardHtml(st.lb||[],who,null,30).replace('qz-lb','qz-lb tv'+((st.lb||[]).length<=8?' one':''))}${nextBtn}`;bindNext()},2600)}
     else if(st.ph==='e'){sfx('win');setTimeout(confetti,200);const lb=st.lb||[];
@@ -2014,7 +2034,7 @@ async function deceitSolo(id,qs){
     me.score+=gain;me.scoreText=me.score;renderPlayers();
     $$('.dopt',board).forEach((b,j)=>{b.disabled=true;if(opts[j].truth){b.classList.add('truth');b.insertAdjacentHTML('beforeend',`<span class="who"><span class="tag">${t('dcTruth')}</span></span>`)}else if(j===k)b.classList.add('picked');else b.style.opacity='.45'});
     sfx(ok?'good':'bad');status(ok?t('dcGotTruth',gain):k<0?t('qTimeout'):t('qWrong'));
-    await sleep(2300);if(!alive(id))return;
+    const ai=showAImg(board,q);await sleep(2300+(ai?1200:0));if(!alive(id))return;
   }
   finish({perf:correct/qs.length,metric:me.score,line:`${t('correctN',correct+'/'+qs.length)} · ${me.score} ${t('pts')}`});
 }
@@ -2030,7 +2050,7 @@ async function deceitMulti(id,qs){
     M.players.forEach(p=>{p.score=(S.sc&&S.sc[p.id])||0;p.scoreText=p.score});renderPlayers();
     const key=[S.q,S.stage,(S.done||[]).join(','),myFake[S.q]!=null,myPick[S.q]!=null].join('|');if(key===lastKey)return;lastKey=key;
     const waiting=M.players.filter(p=>!p.out&&!(S.done||[]).includes(p.id)).map(p=>esc(p.name)).join('، ');
-    const qh=`<div class="qcard">${S.stage==='reveal'?'':'<div class="qtimer"><i id="qbar"></i></div>'}${qzImg(q)}<p class="dq">${dqHtml(q)}</p></div>`;
+    const qh=`<div class="qcard">${S.stage==='reveal'?'':'<div class="qtimer"><i id="qbar"></i></div>'}${S.stage==='reveal'&&q.aimg?qzAImg(q):qzImg(q)}<p class="dq">${dqHtml(q)}</p></div>`;
     board.onclick=null;
     if(S.stage==='write'){status(t('dcRound',S.q+1,qs.length));
       if(myFake[S.q]==null){
@@ -2094,7 +2114,11 @@ async function deceitMulti(id,qs){
     const list=[{txt:q.a,by:null}];
     active().forEach(p=>{const f=I.fake[p.id];if(f==null||!f.trim()||isTruth(q,f))return;const ex=list.find(o=>normA(o.txt)===normA(f));if(ex){if(Array.isArray(ex.by))ex.by.push(p.id)}else list.push({txt:f.trim(),by:[p.id]})});
     const bank=shuffle(q.f.filter(f=>!list.some(o=>normA(o.txt)===normA(f))));
-    while(list.length<Math.max(4,active().length+2)&&bank.length)list.push({txt:bank.shift(),by:'bank'});
+    /* everyone wrote a lie → only the truth and their lies; each player who wrote nothing adds one ready-made wrong answer
+       (never one a player already wrote, since those were removed from the bank above) */
+    let missing=active().filter(p=>{const f=I.fake[p.id];return f==null||!String(f).trim()||isTruth(q,f)}).length;
+    while(missing>0&&bank.length){list.push({txt:bank.shift(),by:'bank'});missing--}
+    if(list.length<2&&bank.length)list.push({txt:bank.shift(),by:'bank'});
     const opts=shuffle(list);Object.assign(S,{stage:'pick',opts:opts.map(o=>o.txt),by:opts.map(o=>o.by)});
     botsPick(i);
     await waitFor(()=>active().every(p=>I.pick[p.id]!=null),30000,p=>I.pick[p.id]!=null);if(!alive(id))return;
@@ -2258,7 +2282,7 @@ async function uploadImg(file){const sb=ACC.client();if(!sb||!ACC.user){toast(t(
     const {error}=await sb.storage.from('qimg').upload(name,blob,{contentType:'image/jpeg',upsert:true});if(error)throw error;
     return sb.storage.from('qimg').getPublicUrl(name).data.publicUrl}catch(e){toast(t('adm_upFail'));return null}}
 const newQid=()=>'q'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
-const qData=q=>q.kind==='quiz'?{q:q.q,a:q.a,t:20,img:q.img||'',x2:!!q.x2}:{q:q.q,a:q.a,f:q.f,alt:q.alt,img:q.img||''};
+const qData=q=>q.kind==='quiz'?{q:q.q,a:q.a,t:20,img:q.img||'',aimg:q.aimg||'',x2:!!q.x2}:{q:q.q,a:q.a,f:q.f,alt:q.alt,img:q.img||'',aimg:q.aimg||''};
 async function admSave(list){
   const sb=admClient();
   if(admLive()){const rows=list.map(q=>({id:q.id,kind:q.kind,cat:q.cat,data:qData(q),active:true}));
@@ -2278,8 +2302,8 @@ function parseWorkbook(X,wb){const out={quiz:[],deceit:[]};
     const head=rows[0].join(' ');const isDeceit=/خداع|decept|deceit|bluff/i.test(name)||/خداع|lie|fake/i.test(head);
     const body=/سؤال|السؤال|question/i.test(head)?rows.slice(1):rows;
     body.forEach(r=>{if(!r[1]||!r[2])return;
-      if(isDeceit){const q=mkDeceit(newQid(),r[0],r[1],r[2],r.slice(4,9),r[3]?r[3].split(/[,،]/):[],'l',{img:r[9]});if(q.f.length>=1)out.deceit.push(q)}
-      else{const q=mkQuiz(newQid(),r[0],r[1],[r[2],r[3],r[4],r[5]],20,'l',{img:r[6],x2:/^(نعم|yes|y|x2|×2|2|✓|true)$/i.test(r[7]||'')});if(q.a.length>=2)out.quiz.push(q)}})});
+      if(isDeceit){const q=mkDeceit(newQid(),r[0],r[1],r[2],r.slice(4,9),r[3]?r[3].split(/[,،]/):[],'l',{img:r[9],aimg:r[10]});if(q.f.length>=1)out.deceit.push(q)}
+      else{const q=mkQuiz(newQid(),r[0],r[1],[r[2],r[3],r[4],r[5]],20,'l',{img:r[6],aimg:r[8],x2:/^(نعم|yes|y|x2|×2|2|✓|true)$/i.test(r[7]||'')});if(q.a.length>=2)out.quiz.push(q)}})});
   return out}
 /* ========= ADMIN DASHBOARD (#admin): overview · players · questions · games · codes =========
    With the server connected it reads live data (admin_stats, profiles, promo_codes) and only an admin
@@ -2455,36 +2479,51 @@ function redeemModal(done){modal(`<form class="stack" id="rdf"><h3>${t('rd_title
     close();sfx('win');confetti();toast(r.kind==='days'?t('rd_okDays',dN(r.days)):r.kind==='percent'?t('rd_okPct',r.percent):t('rd_okGames',(r.games||[]).map(g=>t('g_'+g)).join('، ')));done&&done()}})}
 
 /* ----- questions ----- */
-const imgFields=q=>`<label class="field">${t('adm_img')}<input type="url" id="f-img" dir="ltr" placeholder="https://…" value="${esc(q.img||'')}"></label>
-    <div class="row wrap" style="gap:8px">${ACC.client()?`<label class="btn sm" style="cursor:pointer">${t('adm_upload')}<input type="file" id="f-up" accept="image/*" hidden></label>`:''}<img id="f-prev" alt="" style="max-height:60px;border-radius:8px;${q.img?'':'display:none'}" src="${esc(q.img||'')}"></div>`;
+const imgFields=(q,a)=>{const p=a?'a':'',v=(a?q.aimg:q.img)||'';return`<label class="field">${t(a?'adm_aimg':'adm_img')}<input type="url" id="f-${p}img" dir="ltr" placeholder="https://… ${t('adm_opt')}" value="${esc(v)}"></label>
+    <div class="row wrap" style="gap:8px">${ACC.client()?`<label class="btn sm" style="cursor:pointer">${t('adm_upload')}<input type="file" id="f-${p}up" accept="image/*" hidden></label>`:''}<img id="f-${p}prev" alt="" style="max-height:60px;border-radius:8px;${v?'':'display:none'}" src="${esc(v)}"></div>`};
 SCREENS.admq=async function(p){const bind=await admEnter();if(current!=='admq')return;
-  const st={tab:(p&&p.tab)||'quiz',q:''};
+  const st={tab:(p&&p.tab)||'quiz',q:'',cat:(p&&p.cat)||null};
+  const nQ=(c,kind)=>BANK[kind].filter(q=>q.cat===c).length;
+  const qRow=q=>`<div class="adm-row"><div class="grow"><div class="row" style="gap:6px;margin-bottom:2px"><span class="src ${q.src}">${t('adm_src_'+q.src)}</span>${st.cat?'':`<span class="small muted">${esc(q.cat)}${premCat(q.cat)?' 👑':''}</span>`}${q.img?'<span class="small">🖼</span>':''}${q.aimg?'<span class="small" style="color:var(--good)">🖼✓</span>':''}${q.x2?'<span class="small" style="color:var(--accent);font-weight:800">×2</span>':''}</div><b>${esc(q.q)}</b><span class="small" style="color:var(--good)">✓ ${esc(Array.isArray(q.a)?q.a[0]:q.a)}</span> <span class="small muted">${esc(q.kind==='quiz'?q.a.slice(1).join(' · '):q.f.join(' · '))}</span></div>${q.src==='b'?'':`<button class="btn sm ghost" data-ed="${q.id}">${t('adm_edit')}</button>`}</div>`;
+  const nameModal=(title,val,cb)=>modal(`<form class="stack" id="cnf"><h3>${title}</h3><input type="text" id="cn-n" maxlength="30" placeholder="${t('cat_name')}" value="${esc(val||'')}"><div class="row" style="justify-content:flex-end"><button type="button" class="btn ghost" data-c>${t('cancel')}</button><button class="btn primary" type="submit">${t('save')}</button></div></form>`,(m,close)=>{
+    $('[data-c]',m).onclick=close;const i=$('#cn-n',m);i.focus();$('#cnf',m).onsubmit=async e=>{e.preventDefault();if(!qn(i.value))return;const r=await cb(i.value);if(r!==false)close()}});
   const render=async()=>{if(current!=='admq')return;
-    const list=BANK[st.tab].filter(q=>!st.q||(q.q+' '+q.cat+' '+(Array.isArray(q.a)?q.a.join(' '):q.a)).toLowerCase().includes(st.q.toLowerCase())).slice().reverse();
-    const shown=list.slice(0,150);
-    app.innerHTML=admHead('admq')+`<div class="stack">
-      <div class="tabs"><button data-tab="quiz" class="${st.tab==='quiz'?'on':''}">${t('adm_quiz')} ${BANK.quiz.length}</button><button data-tab="deceit" class="${st.tab==='deceit'?'on':''}">${t('adm_deceit')} ${BANK.deceit.length}</button></div>
-      <div class="row wrap"><button class="btn primary sm" id="adm-add">${ic('plus')} ${t('adm_add')}</button><label class="btn sm" style="cursor:pointer">${t('adm_import')}<input type="file" id="adm-file" accept=".xlsx,.xls,.csv" hidden></label><button class="btn ghost sm" id="adm-exp">${t('adm_export')}</button></div>
-      <p class="small muted">${admLive()?t('adm_where_r'):t('adm_where_l')}</p>
-      <div class="panel"><b>${t('adm_cats')}</b><p class="small muted" style="margin:2px 0 8px">${t('adm_catsHint')}</p><div class="chips">${[...new Set([...bankCats('quiz'),...bankCats('deceit')])].map(c=>`<button class="chip ${premCat(c)?'on':''}" data-pc="${esc(c)}">${premCat(c)?CROWN+' ':''}${esc(c)}</button>`).join('')}</div></div>
-      <input type="text" id="adm-q" placeholder="${t('adm_search')}" value="${esc(st.q)}">
-      <div class="panel">${shown.map(q=>`<div class="adm-row"><div class="grow"><div class="row" style="gap:6px;margin-bottom:2px"><span class="src ${q.src}">${t('adm_src_'+q.src)}</span><span class="small muted">${esc(q.cat)}${premCat(q.cat)?' 👑':''}</span>${q.img?'<span class="small">🖼</span>':''}${q.x2?'<span class="small" style="color:var(--accent);font-weight:800">×2</span>':''}</div><b>${esc(q.q)}</b><span class="small" style="color:var(--good)">✓ ${esc(Array.isArray(q.a)?q.a[0]:q.a)}</span> <span class="small muted">${esc(q.kind==='quiz'?q.a.slice(1).join(' · '):q.f.join(' · '))}</span></div>${q.src==='b'?'':`<button class="btn sm ghost" data-ed="${q.id}">${t('adm_edit')}</button>`}</div>`).join('')||`<p class="muted">—</p>`}
-      ${list.length>shown.length?`<p class="small muted">${t('adm_more',list.length-shown.length)}</p>`:''}</div></div>`;
+    const tabs=`<div class="tabs"><button data-tab="quiz" class="${st.tab==='quiz'?'on':''}">${t('adm_quiz')} ${BANK.quiz.length}</button><button data-tab="deceit" class="${st.tab==='deceit'?'on':''}">${t('adm_deceit')} ${BANK.deceit.length}</button></div>`;
+    let body;
+    if(st.cat){const list=BANK[st.tab].filter(q=>q.cat===st.cat).slice().reverse();
+      body=`<div class="row wrap" style="gap:8px"><button class="btn ghost sm" id="c-back">${ic('back','flip')} ${t('cat_all')}</button></div>
+      <div class="panel stack" style="gap:10px"><div class="row between wrap"><h2>${premCat(st.cat)?'👑 ':''}${esc(st.cat)}</h2><span class="small muted">${t('adm_'+st.tab)} · ${list.length}</span></div>
+        <div class="row wrap" style="gap:8px"><button class="btn primary sm" id="adm-add">${ic('plus')} ${t('cat_addQ')}</button><button class="btn sm" id="c-prem">${premCat(st.cat)?t('cat_free'):CROWN+' '+t('cat_prem')}</button><button class="btn ghost sm" id="c-ren">${t('cat_rename')}</button><button class="btn ghost sm" id="c-del" style="color:var(--bad)">${t('cat_del')}</button></div></div>
+      <div class="panel">${list.map(qRow).join('')||`<p class="muted">${t('cat_empty')}</p>`}</div>`}
+    else if(st.q){const list=BANK[st.tab].filter(q=>(q.q+' '+q.cat+' '+(Array.isArray(q.a)?q.a.join(' '):q.a)).toLowerCase().includes(st.q.toLowerCase())).slice().reverse(),shown=list.slice(0,150);
+      body=`<div class="panel"><h3 style="margin-bottom:6px">${t('cat_search')} · ${list.length}</h3>${shown.map(qRow).join('')||'<p class="muted">—</p>'}</div>`}
+    else{const cats=[...new Set([...bankCats(st.tab),...CATS_ALL])].sort((a,b)=>a.localeCompare(b,'ar'));
+      body=`<p class="small muted">${t('cat_hint')}</p><div class="panel" style="padding:4px 10px">${cats.map(c=>`<div class="cat-row"><button class="grow" data-open="${esc(c)}"><b>${esc(c)}</b><span class="small muted">${nQ(c,st.tab)} ${t('adm_'+st.tab)}${premCat(c)?' · '+t('cat_prem'):''}</span></button><button class="chip ${premCat(c)?'on':''}" data-pc="${esc(c)}" aria-label="${t('cat_prem')}">${premCat(c)?CROWN+' '+t('cat_prem'):t('cat_free')}</button></div>`).join('')}</div>`}
+    app.innerHTML=admHead('admq')+`<div class="stack">${tabs}
+      ${st.cat?'':`<div class="row wrap"><button class="btn primary sm" id="c-new">${ic('plus')} ${t('cat_new')}</button><label class="btn sm" style="cursor:pointer">${t('adm_import')}<input type="file" id="adm-file" accept=".xlsx,.xls,.csv" hidden></label><button class="btn ghost sm" id="adm-exp">${t('adm_export')}</button></div>
+      <input type="text" id="adm-q" placeholder="${t('adm_search')}" value="${esc(st.q)}">`}
+      <p class="small muted">${admLive()?t('adm_where_r'):t('adm_where_l')}</p>${body}</div>`;
     bind();
     $$('[data-tab]').forEach(b=>b.onclick=()=>{st.tab=b.dataset.tab;render()});
-    const qi=$('#adm-q');qi.oninput=()=>{st.q=qi.value;clearTimeout(qi._t);qi._t=setTimeout(()=>{render().then(()=>{const n=$('#adm-q');if(n){n.focus();n.setSelectionRange(n.value.length,n.value.length)}})},250)};
-    $('#adm-add').onclick=()=>admForm(st.tab,null,render);
+    $$('[data-open]').forEach(b=>b.onclick=()=>{st.cat=b.dataset.open;render();window.scrollTo(0,0)});
     $$('[data-pc]').forEach(b=>b.onclick=async()=>{const c=b.dataset.pc;if(await setPremCat(c,!premCat(c)))render()});
-    $$('[data-ed]').forEach(b=>b.onclick=()=>admForm(st.tab,bankById(b.dataset.ed),render));
-    $('#adm-file').onchange=async e=>{const f=e.target.files[0];if(!f)return;toast(t('adm_loading'));
+    $$('[data-ed]').forEach(b=>b.onclick=()=>admForm(st.tab,bankById(b.dataset.ed),render,st.cat?{cat:st.cat}:undefined));
+    const qi=$('#adm-q');if(qi)qi.oninput=()=>{st.q=qi.value;clearTimeout(qi._t);qi._t=setTimeout(()=>{render().then(()=>{const n=$('#adm-q');if(n){n.focus();n.setSelectionRange(n.value.length,n.value.length)}})},250)};
+    const cn=$('#c-new');if(cn)cn.onclick=()=>nameModal(t('cat_new'),'',async v=>{const n=await addCat(v);if(!n)return false;st.cat=n;render()});
+    const cb=$('#c-back');if(cb)cb.onclick=()=>{st.cat=null;render()};
+    const ad=$('#adm-add');if(ad)ad.onclick=()=>admForm(st.tab,null,render,{cat:st.cat});
+    const cp=$('#c-prem');if(cp)cp.onclick=async()=>{if(await setPremCat(st.cat,!premCat(st.cat)))render()};
+    const cr=$('#c-ren');if(cr)cr.onclick=()=>nameModal(t('cat_rename'),st.cat,async v=>{const n=await renameCat(st.cat,v);if(!n)return false;st.cat=n;toast(t('adm_saved'));render()});
+    const cd=$('#c-del');if(cd)cd.onclick=async()=>{if(ownQs(st.cat).length){toast(t('ac_catNotEmpty'));return}if(await confirmBox(t('cat_delQ'),t('cat_del'))&&await delCat(st.cat)){st.cat=null;render()}};
+    const af=$('#adm-file');if(af)af.onchange=async e=>{const f=e.target.files[0];if(!f)return;toast(t('adm_loading'));
       try{const X=await loadXLSX();const wb=X.read(await f.arrayBuffer(),{type:'array'});const got=parseWorkbook(X,wb);const n=got.quiz.length+got.deceit.length;
         if(!n){toast(t('adm_noRows'));return}
         if(await confirmBox(t('adm_preview',got.quiz.length,got.deceit.length),t('adm_import'))){if(await admSave([...got.quiz,...got.deceit]))toast(t('adm_imported',n));render()}}
       catch(err){toast(t('adm_noRows'))}};
-    $('#adm-exp').onclick=async()=>{if(NATIVE||!ZKC.linkBase){toast(t('adm_dlFail'));return}
+    const ex=$('#adm-exp');if(ex)ex.onclick=async()=>{if(NATIVE||!ZKC.linkBase){toast(t('adm_dlFail'));return}
       const X=await loadXLSX();const wb=X.utils.book_new();
-      X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال','الإجابة الصحيحة','خيار خاطئ 1','خيار خاطئ 2','خيار خاطئ 3','رابط الصورة','نقاط مضاعفة'],...BANK.quiz.filter(q=>q.src!=='b').map(q=>[q.cat,q.q,q.a[0],q.a[1]||'',q.a[2]||'',q.a[3]||'',q.img||'',q.x2?'نعم':''])]),'أسئلة');
-      X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال (ضع ____ مكان الإجابة)','الإجابة الصحيحة','إجابات مقبولة أخرى','خداع 1','خداع 2','خداع 3','خداع 4','خداع 5','رابط الصورة'],...BANK.deceit.filter(q=>q.src!=='b').map(q=>[q.cat,q.q,q.a,(q.alt||[]).join('، '),...[0,1,2,3,4].map(i=>q.f[i]||''),q.img||''])]),'خداع');
+      X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال','الإجابة الصحيحة','خيار خاطئ 1','خيار خاطئ 2','خيار خاطئ 3','رابط الصورة','نقاط مضاعفة','صورة الإجابة'],...BANK.quiz.filter(q=>q.src!=='b').map(q=>[q.cat,q.q,q.a[0],q.a[1]||'',q.a[2]||'',q.a[3]||'',q.img||'',q.x2?'نعم':'',q.aimg||''])]),'أسئلة');
+      X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال (ضع ____ مكان الإجابة)','الإجابة الصحيحة','إجابات مقبولة أخرى','خداع 1','خداع 2','خداع 3','خداع 4','خداع 5','رابط الصورة','صورة الإجابة'],...BANK.deceit.filter(q=>q.src!=='b').map(q=>[q.cat,q.q,q.a,(q.alt||[]).join('، '),...[0,1,2,3,4].map(i=>q.f[i]||''),q.img||'',q.aimg||''])]),'خداع');
       X.writeFile(wb,'playo-questions.xlsx')};
   };render();
 };
@@ -2494,22 +2533,23 @@ function admForm(kind,q,done,o){
   const body=kind==='quiz'?`<label class="field">${t('adm_q')}<textarea id="f-q" maxlength="200">${esc(q.q)}</textarea></label>
     <label class="field">${t('adm_correct')}<input type="text" id="f-a0" maxlength="60" value="${esc(q.a[0]||'')}"></label>
     ${[1,2,3].map(i=>`<label class="field">${t('adm_wrong',i)}<input type="text" id="f-a${i}" maxlength="60" value="${esc(q.a[i]||'')}"></label>`).join('')}
-    ${imgFields(q)}
+    ${imgFields(q)}${imgFields(q,1)}
     <label class="toggle" style="border:0;padding:0"><span>${t('adm_x2')}</span><input type="checkbox" id="f-x2" ${q.x2?'checked':''} style="width:22px;height:22px"></label>`
    :`<label class="field">${t('adm_q')}<textarea id="f-q" maxlength="200" placeholder="${t('adm_dqHint')}">${esc(q.q)}</textarea><span class="small muted" style="font-weight:500">${t('adm_dqHint')}</span></label>
     <label class="field">${t('adm_correct')}<input type="text" id="f-a" maxlength="40" value="${esc(q.a||'')}"></label>
     <label class="field">${t('adm_alt')}<input type="text" id="f-alt" maxlength="200" value="${esc((q.alt||[]).join('، '))}"></label>
-    <label class="field">${t('adm_fakes')}<textarea id="f-f">${esc((q.f||[]).join('\n'))}</textarea></label>${imgFields(q)}`;
+    <div class="field">${t('adm_fakes')}${[0,1,2,3,4].map(i=>`<input type="text" id="f-f${i}" maxlength="40" placeholder="${t('adm_wrong',i+1)}${i>3?' · '+t('adm_opt'):''}" value="${esc((q.f||[])[i]||'')}">`).join('')}</div>${imgFields(q)}${imgFields(q,1)}`;
   modal(`<form class="stack" id="qf"><h3>${isNew?t('adm_add'):t('adm_edit')} · ${t('adm_'+kind)}</h3>
     ${o.cat?`<input type="hidden" id="f-cat" value="${esc(o.cat)}">`:`<label class="field">${t('category')}<input type="text" id="f-cat" list="f-cats" maxlength="30" value="${esc(q.cat)}"><datalist id="f-cats">${cats.map(c=>`<option value="${esc(c)}">`).join('')}</datalist></label>`}${body}
     <div class="row" style="justify-content:space-between;flex-wrap:wrap">${isNew?'<span></span>':`<button type="button" class="btn ghost sm" id="f-del" style="color:var(--bad)">${t('remove')}</button>`}<div class="row"><button type="button" class="btn ghost" id="f-x">${t('cancel')}</button><button class="btn primary" type="submit">${t('save')}</button></div></div></form>`,(m,close)=>{
     $('#f-x',m).onclick=close;
-    const up=$('#f-up',m);if(up)up.onchange=async e=>{const f=e.target.files[0];if(!f)return;const url=await uploadImg(f);if(url){$('#f-img',m).value=url;const pv=$('#f-prev',m);pv.src=url;pv.style.display=''}};
-    const fi=$('#f-img',m);if(fi)fi.oninput=()=>{const pv=$('#f-prev',m);pv.src=fi.value;pv.style.display=fi.value?'':'none'};
+    ['','a'].forEach(p=>{const up=$('#f-'+p+'up',m),fi=$('#f-'+p+'img',m),pv=$('#f-'+p+'prev',m);if(!fi)return;
+      if(up)up.onchange=async e=>{const f=e.target.files[0];if(!f)return;const url=await uploadImg(f);if(url){fi.value=url;pv.src=url;pv.style.display=''}};
+      fi.oninput=()=>{pv.src=fi.value;pv.style.display=fi.value?'':'none'}});
     const del=$('#f-del',m);if(del)del.onclick=async()=>{close();if(await confirmBox(t('adm_delQ'),t('remove'))&&await (o.del||admDelete)(q)){toast(t('adm_deleted'));done()}};
     $('#qf',m).onsubmit=async e=>{e.preventDefault();if(!o.save&&q.src==='r'&&!admLive()){toast(t('adm_needLogin'));return}const cat=$('#f-cat',m).value;let nq;
-      if(kind==='quiz'){nq=mkQuiz(q.id,cat,$('#f-q',m).value,[0,1,2,3].map(i=>$('#f-a'+i,m).value),20,q.src,{img:$('#f-img',m).value,x2:$('#f-x2',m).checked});if(!nq.q||!qn($('#f-a0',m).value)||nq.a.length<2){toast(t('adm_needOpts'));return}}
-      else{nq=mkDeceit(q.id,cat,$('#f-q',m).value,$('#f-a',m).value,$('#f-f',m).value.split('\n'),$('#f-alt',m).value.split(/[,،]/),q.src);if(!nq.q||!nq.a||nq.f.length<(o.save?1:3)){toast(t('adm_needFakes'));return}nq.img=qn($('#f-img',m).value);if(!/^https:\/\//i.test(nq.img))nq.img=''}
+      if(kind==='quiz'){nq=mkQuiz(q.id,cat,$('#f-q',m).value,[0,1,2,3].map(i=>$('#f-a'+i,m).value),20,q.src,{img:$('#f-img',m).value,aimg:$('#f-aimg',m).value,x2:$('#f-x2',m).checked});if(!nq.q||!qn($('#f-a0',m).value)||nq.a.length<2){toast(t('adm_needOpts'));return}}
+      else{nq=mkDeceit(q.id,cat,$('#f-q',m).value,$('#f-a',m).value,[0,1,2,3,4].map(i=>$('#f-f'+i,m).value),$('#f-alt',m).value.split(/[,،]/),q.src);if(!nq.q||!nq.a||nq.f.length<4){toast(t('adm_needFakes'));return}if(nq.f.some(f=>isTruth(nq,f))){toast(t('adm_fakeTrue'));return}['img','aimg'].forEach(k=>{nq[k]=qn($('#f-'+k,m).value);if(!/^https:\/\//i.test(nq[k]))nq[k]=''})}
       if(await (o.save||admSave)([nq])){close();toast(t('adm_saved'));done()}}})}
 
 /* ----- my stats dashboard ----- */
