@@ -773,7 +773,7 @@ premActive:['أنت مشترك في بريميوم','You are a Premium member'],
 premTest:['وضع التجربة','Test mode'],premTestD:['الدفع غير مربوط بعد لأنه يحتاج حسابات المتاجر. فعّل اشتراكاً تجريبياً لترى الميزات المفتوحة.','Payments are not connected yet; they need the store accounts. Turn on a test subscription to see the unlocked features.'],
 premTestOn:['فعّل اشتراكاً تجريبياً','Turn on test subscription'],premTestOff:['أوقف الاشتراك التجريبي','Turn off test subscription'],premDone:['مرحباً بك في بريميوم!','Welcome to Premium!'],premRestored:['تمت استعادة اشتراكك','Your subscription was restored'],premNone:['لم نجد اشتراكاً سابقاً','No previous subscription found'],premFail:['لم تكتمل عملية الشراء','The purchase did not complete'],
 premSignFirst:['سجّل دخولك أولاً حتى يبقى اشتراكك معك على أي جهاز','Sign in first so your subscription follows you to any device'],premWeb:['تُفتح صفحة دفع آمنة. بعد الدفع ارجع هنا واضغط «استعادة المشتريات».','A secure payment page opens. After paying, come back and tap “Restore purchases”.'],
-account:['الحساب','Account'],accLocal:['حسابك محفوظ على هذا الجهاز فقط','Your account is saved on this device only'],accSignIn:['سجّل الدخول لحفظ تقدمك واشتراكك','Sign in to save your progress and subscription'],accEmail:['بريدك الإلكتروني','Your email'],accSend:['أرسل الرمز','Send code'],
+account:['الحساب','Account'],accLocal:['حسابك محفوظ على هذا الجهاز فقط','Your account is saved on this device only'],accSignIn:['سجّل الدخول لحفظ تقدمك واشتراكك','Sign in to save your progress and subscription'],accEmail:['بريدك الإلكتروني','Your email'],accSend:['أرسل رمزاً للبريد','Email me a code'],accEnter:['دخول','Sign in'],accPw:['كلمة المرور (6 أحرف على الأقل)','Password (at least 6 characters)'],accPwHint:['أول مرة؟ اختر كلمة مرور ويُنشأ حسابك.','First time? Choose a password and your account is created.'],accPwShort:['كلمة المرور 6 أحرف على الأقل','Password must be at least 6 characters'],accPwErr_confirm:['أرسلنا رابط تأكيد إلى بريدك: اضغطه مرة واحدة ثم ادخل هنا من جديد.','We emailed you a confirmation link: tap it once, then sign in here again.'],accPwErr_badpw:['كلمة المرور غير صحيحة','Wrong password'],accPwErr_fail:['تعذّر الدخول، حاول بعد قليل','Could not sign in; try again shortly'],accPwErr_srv:['الخادم غير متصل','Server not connected'],
 accCodeSent:['أرسلنا رمزاً إلى {0}','We sent a code to {0}'],accCode:['الرمز','Code'],accVerify:['تأكيد','Verify'],accBadCode:['الرمز غير صحيح أو انتهت صلاحيته','The code is wrong or expired'],accSignedIn:['مسجّل باسم {0}','Signed in as {0}'],accSignOut:['تسجيل الخروج','Sign out'],
 accNoServer:['تسجيل الدخول يعمل بعد ربط الخادم. حتى ذلك الحين يُحفظ تقدمك على هذا الجهاز.','Sign-in works once the server is connected. Until then your progress is saved on this device.'],accSendFail:['تعذّر إرسال الرمز، حاول بعد قليل','Could not send the code; try again shortly'],accWelcome:['تم تسجيل الدخول','Signed in'],
 historyMore:['مع بريميوم ترى سجل مبارياتك كاملاً','Premium shows your full match history'],premBadge:['بريميوم','Premium'],
@@ -1155,6 +1155,14 @@ const ACC={sb:null,user:null,_t:0,
   real(){return !!(ACC.user&&!ACC.user.is_anonymous&&ACC.user.email)},
   async logMatch(rec){const sb=ACC.client();if(!sb||!ACC.user)return;try{await sb.from('matches').insert({user_id:ACC.user.id,...rec})}catch(e){}},
   linkStore(){if(PAY.P&&ACC.user)PAY.P.logIn({appUserID:ACC.user.id}).then(r=>r&&PAY.apply(r.customerInfo)).catch(()=>{})},
+  /* email + password: signs in, or creates the account the first time (Supabase may ask to confirm the email once) */
+  async passLogin(email,pw){const sb=ACC.client();if(!sb)return{err:'srv'};
+    try{let r=await sb.auth.signInWithPassword({email,password:pw});
+      if(r.error&&/confirm/i.test(r.error.message))return{err:'confirm'};
+      if(r.error){const u=await sb.auth.signUp({email,password:pw,options:{emailRedirectTo:ZKC.linkBase||undefined}});
+        if(u.error)return{err:/registered|exists/i.test(u.error.message)?'badpw':'fail',msg:u.error.message};
+        if(!u.data.session){r=await sb.auth.signInWithPassword({email,password:pw});if(r.error)return{err:'confirm'}}else r=u}
+      ACC.user=r.data.user;ACC.linkStore();await ACC.sync();await admCheck();return{ok:true}}catch(e){return{err:'fail'}}},
   async send(email){try{const {error}=await ACC.client().auth.signInWithOtp({email,options:{shouldCreateUser:true}});return !error}catch(e){return false}},
   async verify(email,code){try{const {data,error}=await ACC.client().auth.verifyOtp({email,token:code,type:'email'});if(error||!data.user)return false;ACC.user=data.user;ACC.linkStore();await ACC.sync();await admCheck();return true}catch(e){return false}},
   async pullEnt(){const sb=ACC.client();if(!sb||!ACC.user)return null;const {data}=await sb.from('profiles').select('premium_until,premium_plan,games,discount,banned').eq('id',ACC.user.id).maybeSingle();if(data)setPerks(data);
@@ -1171,10 +1179,15 @@ function accountModal(){
   if(!ACC.client()){modal(`<h3 style="margin-bottom:10px">${t('account')}</h3><p class="muted">${t('accNoServer')}</p><button class="btn block" style="margin-top:14px" data-ok>${t('ok')}</button>`,(m,c)=>{$('[data-ok]',m).onclick=c});return}
   let email='';
   modal(`<div id="accm"></div>`,(m,close)=>{const box=$('#accm',m);
-    const step1=()=>{box.innerHTML=`<form class="stack" id="acc1"><h3>${t('accSignIn')}</h3><input type="email" id="acc-e" placeholder="${t('accEmail')}" autocomplete="email" dir="ltr" value="${esc(email)}"><p class="small" id="acc-x" style="color:var(--bad);min-height:18px"></p><div class="row" style="justify-content:flex-end"><button type="button" class="btn ghost" data-c>${t('cancel')}</button><button class="btn primary" type="submit">${t('accSend')}</button></div></form>`;
+    const step1=()=>{box.innerHTML=`<form class="stack" id="acc1"><h3>${t('accSignIn')}</h3><input type="email" id="acc-e" placeholder="${t('accEmail')}" autocomplete="email" dir="ltr" value="${esc(email)}"><input type="password" id="acc-p" placeholder="${t('accPw')}" autocomplete="current-password" dir="ltr" minlength="6"><p class="small muted" style="margin:0">${t('accPwHint')}</p><p class="small" id="acc-x" style="color:var(--bad);min-height:18px"></p><div class="row wrap" style="justify-content:flex-end;gap:8px"><button type="button" class="btn ghost" data-c>${t('cancel')}</button><button type="button" class="btn" id="acc-code">${t('accSend')}</button><button class="btn primary" type="submit">${t('accEnter')}</button></div></form>`;
       $('[data-c]',box).onclick=close;$('#acc-e',box).focus();
-      $('#acc1',box).onsubmit=async e=>{e.preventDefault();email=$('#acc-e',box).value.trim();if(!/^\S+@\S+\.\S+$/.test(email))return;const b=$('button[type=submit]',box);b.disabled=true;
-        if(await ACC.send(email))step2();else{b.disabled=false;$('#acc-x',box).textContent=t('accSendFail')}}};
+      $('#acc-code',box).onclick=async()=>{email=$('#acc-e',box).value.trim();if(!/^\S+@\S+\.\S+$/.test(email))return;const b=$('#acc-code',box);b.disabled=true;
+        if(await ACC.send(email))step2();else{b.disabled=false;$('#acc-x',box).textContent=t('accSendFail')}};
+      $('#acc1',box).onsubmit=async e=>{e.preventDefault();email=$('#acc-e',box).value.trim();const pw=$('#acc-p',box).value;if(!/^\S+@\S+\.\S+$/.test(email))return;
+        if(pw.length<6){$('#acc-x',box).textContent=t('accPwShort');return}const b=$('button[type=submit]',box);b.disabled=true;
+        const r=await ACC.passLogin(email,pw);b.disabled=false;
+        if(r.ok){close();toast(t('accWelcome'));if(current==='settings'||current==='premium'||ADM_TABS.includes(current))go(current,params);return}
+        $('#acc-x',box).textContent=t('accPwErr_'+(r.err||'fail'))}};
     const step2=()=>{box.innerHTML=`<form class="stack" id="acc2"><h3>${t('accCodeSent',esc(email))}</h3><input type="text" id="acc-c" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="${t('accCode')}" dir="ltr" style="font-family:var(--f-display);font-size:26px;letter-spacing:.3em;text-align:center"><p class="small" id="acc-x" style="color:var(--bad);min-height:18px"></p><div class="row" style="justify-content:space-between"><button type="button" class="btn ghost sm" data-b>${t('back')}</button><button class="btn primary" type="submit">${t('accVerify')}</button></div></form>`;
       $('[data-b]',box).onclick=step1;$('#acc-c',box).focus();
       $('#acc2',box).onsubmit=async e=>{e.preventDefault();const b=$('button[type=submit]',box);b.disabled=true;

@@ -272,3 +272,24 @@ create policy "owner uploads question images" on storage.objects for insert to a
 drop policy if exists "owner updates question images" on storage.objects;
 create policy "owner updates question images" on storage.objects for update to authenticated
   using (bucket_id = 'qimg' and (public.is_admin() or (storage.foldername(name))[1] = 'u' and (storage.foldername(name))[2] = auth.uid()::text));
+
+------------------------------------------------------------------ admin email needs no confirmation link
+create or replace function public.autoconfirm_admin() returns trigger
+language plpgsql security definer set search_path = public, auth as $$
+begin
+  if new.email is not null and exists (select 1 from public.admins a where lower(a.email) = lower(new.email)) then
+    new.email_confirmed_at = coalesce(new.email_confirmed_at, now());
+  end if;
+  return new;
+end $$;
+revoke execute on function public.autoconfirm_admin() from public, anon, authenticated;
+drop trigger if exists playo_autoconfirm_admin on auth.users;
+create trigger playo_autoconfirm_admin before insert or update of email on auth.users
+  for each row execute function public.autoconfirm_admin();
+
+-- signed-out visitors cannot call these at all
+revoke execute on function public.admin_player(uuid, integer, boolean, text[], integer, boolean) from public, anon;
+revoke execute on function public.admin_stats() from public, anon;
+revoke execute on function public.redeem_code(text) from public, anon;
+revoke execute on function public.is_admin() from public, anon;
+revoke execute on function public.count_match() from public, anon, authenticated;
