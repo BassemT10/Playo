@@ -62,15 +62,3 @@ jobs:
             -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist" -exportPath "$RUNNER_TEMP/export" \
             $AUTH 2>&1 | tee -a xcode.log | tail -40
 
-      - name: Report build result
-        if: always()
-        run: |
-          echo "ios run ${{ github.run_number }} status=${{ job.status }} signed=${{ steps.apple.outputs.signed }} sha=${{ github.sha }}" > /tmp/status.txt
-          (grep -E "error:|BUILD|ARCHIVE|EXPORT|Upload" xcode.log | tail -80; tail -60 xcode.log) > /tmp/ios.log 2>/dev/null || echo "no xcode log" > /tmp/ios.log
-          git config user.name "zakira-ci"; git config user.email "ci@users.noreply.github.com"
-          git checkout --orphan ci-report-ios
-          git rm -rf --cached . > /dev/null
-          cp /tmp/status.txt status.txt; cp /tmp/ios.log ios.log
-          git add status.txt ios.log
-          git commit -m "ios report ${{ github.run_number }}" > /dev/null
-          git push -f origin HEAD:ci-report-ios

@@ -51,15 +51,3 @@ jobs:
         with:
           name: playo-apk
           path: playo.apk
-      - name: Report build result
-        if: always()
-        run: |
-          echo "android run ${{ github.run_number }} status=${{ job.status }} sha=${{ github.sha }}" > /tmp/status.txt
-          (tail -250 gradle.log 2>/dev/null || echo "no gradle log") > /tmp/android.log
-          git config user.name "zakira-ci"; git config user.email "ci@users.noreply.github.com"
-          git checkout --orphan ci-report-android
-          git rm -rf --cached . > /dev/null
-          cp /tmp/status.txt status.txt; cp /tmp/android.log android.log
-          git add status.txt android.log
-          git commit -m "android report ${{ github.run_number }}" > /dev/null
-          git push -f origin HEAD:ci-report-android
