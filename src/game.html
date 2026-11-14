@@ -480,6 +480,35 @@ input[type=number],input[type=email],input[type=password]{font:inherit;font-weig
 .tvl-chip i{font-style:normal;font-size:1.3em}
 .slots.many{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
 @media (max-width:760px){.tvl-grid{grid-template-columns:1fr}.tv-mid{grid-template-columns:1fr 1fr}.tv-mid .tv-img{grid-column:1/-1;grid-row:1}.tv-clock{grid-column:1}.tv-ansn{grid-column:2}.tv-opts{grid-template-columns:1fr}}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.kpi{background:var(--surface);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.kpi b{font-family:var(--f-display);font-size:24px;line-height:1.15;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kpi span{font-size:13px;color:var(--muted);font-weight:600}
+.kpi i{font-style:normal;font-size:12px;color:var(--teal);font-weight:700}
+.vbars{display:flex;align-items:flex-end;gap:4px;height:120px}
+.vbars>div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;gap:4px;min-width:0}
+.vbars i{display:block;width:100%;min-height:3px;background:var(--accent);border-radius:5px 5px 2px 2px}
+.vbars span{font-size:10px;color:var(--muted)}
+.hbar{display:grid;grid-template-columns:minmax(84px,32%) 1fr auto;align-items:center;gap:8px;padding:4px 0;font-size:14px}
+.hbar>div{height:10px;background:rgba(127,127,127,.16);border-radius:6px;overflow:hidden}
+.hbar i{display:block;height:100%;background:var(--teal);border-radius:6px}
+.stackbar{display:flex;height:14px;border-radius:8px;overflow:hidden;gap:2px}
+.stackbar i{display:block;height:100%}
+.chip .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-inline-end:6px;vertical-align:middle}
+.gtable>div{display:grid;grid-template-columns:1.7fr .7fr .7fr .9fr;gap:6px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(127,127,127,.16);font-size:14px}
+.gtable>div:last-child{border-bottom:0}
+.gtable .gt-h{font-size:12px;color:var(--muted);font-weight:700;padding-top:0}
+.gtable span:first-child{display:flex;flex-direction:column;min-width:0}
+.gtable i{font-style:normal}
+.pl-row{display:flex;gap:10px;align-items:center;width:100%;text-align:start;background:none;border:0;color:inherit;padding:10px 8px;border-radius:12px;cursor:pointer;font:inherit}
+.pl-row:hover{background:var(--surface)}
+.pl-row .grow{display:flex;flex-direction:column;gap:2px;min-width:0}
+.tag.bad{background:var(--bad);color:#fff}
+.sub-grid{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:14px}
+.sub-grid span{color:var(--muted)}
+.ag-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(127,127,127,.16);flex-wrap:wrap}
+.ag-row:last-child{border-bottom:0}
+.ag-row label{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
 
 </style>
 
@@ -670,7 +699,7 @@ g_sudoku:['سودوكو الأسرع','Speed Sudoku'],g_sudokuD:['نفس الل�
 g_deceit:['خداع','Deception'],g_deceitD:['اكتب كذبة مقنعة واكتشف الحقيقة.','Write a convincing lie, find the truth.'],
 r_quiz:[['كل جولة 36 سؤالاً، ولكل سؤال 20 ثانية. اختر فئة أو أكثر.','الإجابة الصحيحة 10 نقاط + نقطة لكل ثانية متبقية (أجبت والعدّاد على 19 = 29 نقطة).','بعض الأسئلة بنقاط مضاعفة ×2.','مكافآت: كل 6 إجابات صحيحة +3، وعند الإجابة الصحيحة العاشرة +5، والعشرين +10.','في الغرفة أو على التلفاز: السؤال نفسه للجميع في الوقت نفسه، وبعد كل سؤال يظهر الترتيب.'],['36 questions per round, 20 seconds each. Pick one or more categories.','A correct answer is 10 points + 1 per second left (answer with 19 left = 29).','Some questions are worth double ×2.','Bonuses: every 6 correct answers +3, the 10th correct +5, the 20th +10.','In a room or on a TV: everyone gets the same question at the same time, with standings after each one.']],
 r_sudoku:[['املأ الشبكة بحيث يحتوي كل صف وعمود ومربع 3×3 على الأرقام من 1 إلى 9.','اختر خانة ثم رقماً.','كل خطأ يضيف 15 ثانية إلى وقتك.','مع الأصدقاء: نفس اللوحة للجميع، وأقل وقت يفوز.'],['Fill the grid so every row, column and 3×3 box holds 1 to 9.','Pick a cell, then a number.','Each mistake adds 15 seconds to your time.','With friends: same board for all; lowest time wins.']],
-r_deceit:[['يظهر سؤال بإجابة غريبة لكنها حقيقية.','مع الأصدقاء: يكتب كل لاعب إجابة مخادعة، ثم تظهر كل الإجابات مختلطة مع الحقيقة.','اختيار الحقيقة = 1000 نقطة، وكل لاعب تخدعه = 500 نقطة.','وحدك: اكتشف الحقيقة بين إجابات مخادعة جاهزة.'],['A question with a strange but true answer.','With friends: each player writes a fake answer, then all answers appear mixed with the truth.','Picking the truth = 1000 points; each player you fool = 500.','Solo: find the truth among ready-made fake answers.']],
+r_deceit:[['يظهر سؤال بإجابة غريبة لكنها حقيقية.','مع الأصدقاء: يكتب كل لاعب إجابة مخادعة، ثم تظهر كل الإجابات مختلطة مع الحقيقة.','اختيار الإجابة الصحيحة = 3 نقاط، واختيار كذبة = 0.','كل لاعب يختار كذبتك = نقطة لك.','وحدك: اكتشف الحقيقة بين إجابات مخادعة جاهزة.'],['A question with a strange but true answer.','With friends: each player writes a fake answer, then all answers appear mixed with the truth.','Picking the true answer = 3 points; picking a lie = 0.','Every player who picks your lie = 1 point for you.','Solo: find the truth among ready-made fake answers.']],
 nQ:['{0} أسئلة','{0} questions'],nRounds:['{0} جولات','{0} rounds'],category:['الفئة','Category'],allCats:['الكل','All'],
 qOf:['سؤال {0} من {1}','Question {0} of {1}'],qRight:['صحيح! +{0} {1}','Correct! +{0} {1}'],streakN:['سلسلة ×{0}','streak ×{0}'],qWrong:['خطأ','Wrong'],qTimeout:['انتهى الوقت','Time is up'],correctN:['{0} صحيحة','{0} correct'],
 sdkMist:['أخطاء {0}','Mistakes {0}'],erase:['مسح','Erase'],sdkGen:['نجهّز اللوحة…','Preparing the board…'],sdkLeft:['متبقٍ {0} خانة','{0} cells left'],
@@ -678,7 +707,7 @@ dcWrite:['اكتب إجابة مخادعة تقنع بها الآخرين','Writ
 dcPick:['أيّ إجابة هي الحقيقية؟','Which answer is the truth?'],dcYours:['إجابتك','Yours'],dcWaiting:['بانتظار: {0}','Waiting for: {0}'],dcTruth:['الحقيقة','The truth'],dcBy:['خداع {0}','{0}\'s lie'],
 dcFooled:['خدعت {0}! +{1}','You fooled {0}! +{1}'],dcGotTruth:['اكتشفت الحقيقة! +{0}','You found the truth! +{0}'],dcGotFooled:['خدعك {0}','{0} fooled you'],dcRound:['جولة {0} من {1}','Round {0} of {1}'],dcHostLeft:['انقطع المضيف، انتهت المباراة','The host disconnected; the match ended'],dcSoloPick:['اختر الإجابة الحقيقية','Pick the real answer'],dcBank:['خداع جاهز','Ready-made lie'],dcNoPick:['لم تختر','No pick'],
 missingQ:['أسئلة هذه المباراة غير موجودة على جهازك. حدّث التطبيق.','This match\'s questions are missing on your device. Update the app.'],noQ:['لا توجد أسئلة كافية في هذه الفئة','Not enough questions in this category'],
-admin:['إدارة الأسئلة','Question manager'],adm_quiz:['أسئلة','Quiz'],adm_deceit:['خداع','Deception'],adm_add:['إضافة','Add'],adm_import:['استيراد Excel','Import Excel'],adm_export:['تصدير Excel','Export Excel'],adm_search:['بحث في الأسئلة','Search questions'],
+admin:['لوحة الإدارة','Admin dashboard'],adm_quiz:['أسئلة','Quiz'],adm_deceit:['خداع','Deception'],adm_add:['إضافة','Add'],adm_import:['استيراد Excel','Import Excel'],adm_export:['تصدير Excel','Export Excel'],adm_search:['بحث في الأسئلة','Search questions'],
 adm_src_b:['مثال مدمج','Built-in sample'],adm_src_r:['الخادم','Server'],adm_src_l:['هذا الجهاز','This device'],adm_q:['السؤال','Question'],adm_correct:['الإجابة الصحيحة','Correct answer'],adm_wrong:['خيار خاطئ {0}','Wrong option {0}'],adm_time:['الوقت (ثانية)','Time (seconds)'],
 adm_alt:['إجابات صحيحة أخرى مقبولة (افصل بينها بفاصلة)','Other accepted answers (comma separated)'],adm_fakes:['إجابات خداع جاهزة (واحدة في كل سطر، 3 على الأقل)','Ready fake answers (one per line, at least 3)'],adm_dqHint:['ضع ____ مكان الإجابة داخل السؤال','Put ____ where the answer goes'],
 adm_saved:['تم الحفظ','Saved'],adm_deleted:['تم الحذف','Deleted'],adm_delQ:['حذف هذا السؤال؟','Delete this question?'],adm_where_l:['ما تضيفه هنا يُحفظ على هذا الجهاز فقط ويظهر في لعبك الفردي. بعد ربط الخادم يصل لكل اللاعبين.','What you add here is saved on this device only and appears in your solo games. Once the server is connected it reaches all players.'],adm_where_r:['متصل بالخادم: ما تحفظه يصل لكل اللاعبين.','Connected to the server: what you save reaches every player.'],
@@ -697,7 +726,40 @@ qzNoAns:['لم تُجب في الوقت','No answer in time'],qzReady:['استع
 qzSent:['تم إرسال إجابتك','Answer sent'],qzWaitAll:['بانتظار البقية…','waiting for the others…'],qzAnswer:['الإجابة الصحيحة: {0}','Correct answer: {0}'],
 qzRankOf:['المركز {0} من {1}','Place {0} of {1}'],qzBoard:['الترتيب','Standings'],qzAnswered:['أجاب {0} من {1}','{0} of {1} answered'],qzNext:['التالي','Next'],
 qzHostLost:['انقطع اتصال المقدّم، انتهت الجولة','The host disconnected; the round ended'],qzFinal:['النتيجة النهائية','Final results'],qzNewRound:['جولة جديدة','New round'],
-qzCapNote:['حتى {0} لاعبين','Up to {0} players'],qzCapPrem:['حتى 30 مع بريميوم','up to 30 with Premium'],qzFewQ:['متوفر {0} سؤالاً فقط في الفئات المختارة','Only {0} questions in the chosen categories'],
+qzCapNote:['حتى {0} لاعبين','Up to {0} players'],qzCapPrem:['حتى {0} مع بريميوم','up to {0} with Premium'],
+banned:['هذا الحساب موقوف','This account is suspended'],
+at_admin:['نظرة عامة','Overview'],at_admp:['اللاعبون','Players'],at_admq:['الأسئلة','Questions'],at_admg:['الألعاب','Games'],at_admc:['الأكواد والخصومات','Codes & discounts'],
+adm_demo:['بيانات تجريبية للعرض فقط. البيانات الحقيقية تظهر بعد ربط الخادم والدخول بحساب المدير.','Sample data for preview. Real data appears once the server is connected and you sign in with the admin account.'],
+adm_needLogin:['سجّل الدخول بحساب المدير','Sign in with the admin account'],adm_notAdmin:['الحساب {0} ليس حساب مدير.','{0} is not an admin account.'],
+ad_players:['اللاعبون','Players'],ad_7d:['هذا الأسبوع','this week'],ad_active1:['نشطون اليوم','Active today'],ad_active7:['نشطون 7 أيام','Active 7 days'],ad_premium:['مشتركون','Subscribers'],ad_matches1:['مباريات اليوم','Matches today'],ad_matches7:['مباريات 7 أيام','Matches 7 days'],
+ad_daily:['المباريات يومياً (14 يوماً)','Matches per day (14 days)'],ad_topGames:['أكثر الألعاب لعباً (30 يوماً)','Most played games (30 days)'],ad_plans:['الاشتراكات الفعالة','Active subscriptions'],ad_revNote:['الإيرادات بالتفصيل في لوحتي Google Play وApp Store وRevenueCat.','Revenue details are in Google Play, App Store and RevenueCat.'],
+pl_other:['أخرى','Other'],pl_gift:['هدية','Gift'],pl_test:['تجربة','Test'],
+ap_search:['ابحث باسم اللاعب','Search by player name'],ap_f_all:['الكل','All'],ap_f_prem:['مشتركون','Premium'],ap_f_free:['مجاني','Free'],ap_f_ban:['موقوفون','Suspended'],ap_sort:['الترتيب','Sort'],
+ap_s_seen:['آخر نشاط','Last active'],ap_s_matches:['الأكثر لعباً','Most matches'],ap_s_end:['اشتراك ينتهي قريباً','Subscription ending soon'],ap_s_new:['الأحدث تسجيلاً','Newest'],
+ap_count:['{0}','{0}'],ap_guest:['ضيف','Guest'],ap_banned:['موقوف','Suspended'],ap_free:['مجاني','Free'],ap_until:['حتى {0}','until {0}'],ap_sinceS:['منذ {0}','since {0}'],ap_days:['{0} يوماً','{0} days'],
+ap_top:['الأكثر: {0} ({1})','Top: {0} ({1})'],ap_matches:['{0}','{0}'],ap_joined:['انضم {0}','Joined {0}'],ap_seen:['آخر نشاط {0}','Last active {0}'],
+ap_sub:['الاشتراك','Subscription'],ap_plan:['الخطة','Plan'],ap_since:['بدأ','Started'],ap_end:['ينتهي','Ends'],ap_len:['المدة','Length'],ap_left:['المتبقي','Left'],ap_ended:['انتهى {0}','ended {0}'],
+ap_gift:['إهداء بريميوم','Gift Premium'],ap_stop:['إلغاء الاشتراك','Remove Premium'],ap_stopQ:['إلغاء بريميوم لهذا اللاعب؟','Remove Premium from this player?'],
+ap_games:['فتح ألعاب لهذا اللاعب','Unlock games for this player'],ap_gamesD:['تُفتح له اللعبة كاملة بكل صعوباتها وغرفها دون اشتراك.','The game opens fully for them, all levels and rooms, without a subscription.'],
+ap_disc:['خصم خاص','Personal discount'],ap_discD:['يظهر له في شاشة الاشتراك ويُطبَّق عند الدفع من الموقع.','Shown on their subscription screen and applied when paying on the website.'],
+ap_played:['عدد المباريات لكل لعبة','Matches per game'],ap_ban:['إيقاف الحساب','Suspend account'],ap_unban:['إلغاء الإيقاف','Lift suspension'],ap_banQ:['إيقاف هذا الحساب عن اللعب؟','Suspend this account from playing?'],
+ag_hint:['أخفِ أي لعبة أو اجعلها للمشتركين فقط. التغيير يصل لكل اللاعبين خلال دقائق.','Hide any game or make it Premium only. Changes reach every player within minutes.'],ag_on:['ظاهرة','Visible'],ag_prem:['للمشتركين','Premium'],
+ag_new:['المحتوى الجديد (أسئلة، فئات، صور) تضيفه من هنا في أي وقت. أما نوع لعبة جديد كلياً فيُضاف بتحديث للتطبيق: اطلبه وأبنيه ثم يظهر هنا لتتحكم به.','New content (questions, categories, pictures) is added here any time. A brand-new type of game comes with an app update: ask for it, I build it, and it appears here for you to control.'],
+ac_new:['كود جديد','New code'],ac_k_days:['أيام بريميوم','Premium days'],ac_k_games:['فتح ألعاب','Unlock games'],ac_k_percent:['خصم %','Discount %'],
+ac_days:['عدد الأيام','Days'],ac_pct:['نسبة الخصم','Discount'],ac_pctD:['للدفع من الموقع: أنشئ في Stripe كود ترويجي بنفس الاسم PLAYO+النسبة (مثل PLAYO20). في المتاجر استعمل أكواد العروض من Google Play وApp Store.','For web payments create a Stripe promotion code named PLAYO + percent (e.g. PLAYO20). In the stores use offer codes from Google Play and App Store.'],
+ac_code:['الكود','Code'],ac_max:['عدد مرات الاستخدام','Max uses'],ac_exp:['صالح لمدة (أيام، 0 = دائماً)','Valid for (days, 0 = forever)'],ac_note:['ملاحظة','Note'],ac_create:['إنشاء الكود','Create code'],ac_list:['الأكواد','Codes'],
+ac_used:['استُخدم {0}/{1}','used {0}/{1}'],ac_until:['حتى {0}','until {0}'],ac_copy:['نسخ','Copy'],ac_copied:['تم النسخ','Copied'],ac_delQ:['حذف هذا الكود؟','Delete this code?'],ac_dup:['هذا الكود موجود','That code already exists'],ac_short:['الكود قصير','Code is too short'],ac_pickG:['اختر لعبة واحدة على الأقل','Pick at least one game'],ac_made:['أُنشئ الكود {0}','Code {0} created'],
+ac_d_days:['بريميوم {0}','Premium {0}'],ac_d_pct:['خصم {0}%','{0}% off'],ac_d_games:['يفتح: {0}','Unlocks: {0}'],
+rd_have:['لديك كود؟','Have a code?'],rd_title:['أدخل الكود','Enter your code'],rd_use:['استخدام','Redeem'],rd_yourDisc:['🎁 خصم {0}% خاص لك','🎁 {0}% off, just for you'],
+rd_e_bad:['الكود غير صحيح','That code is not valid'],rd_e_expired:['انتهت صلاحية الكود','That code has expired'],rd_e_used:['الكود استُخدم بالكامل','That code has been used up'],rd_e_again:['استخدمت هذا الكود من قبل','You already used this code'],rd_e_login:['تعذّر الاتصال، حاول لاحقاً','Could not connect, try later'],
+rd_okDays:['🎉 حصلت على بريميوم لمدة {0}','🎉 You got Premium for {0}'],rd_okPct:['🎉 خصم {0}% على الاشتراك','🎉 {0}% off your subscription'],rd_okGames:['🎉 فُتحت لك: {0}','🎉 Unlocked: {0}'],
+st_title:['لوحة إحصائياتي','My stats'],st_xp:['المستوى','Level'],st_streak:['أيام متتالية','Day streak'],st_14:['نشاطي (14 يوماً)','My activity (14 days)'],st_week:['{0} هذا الأسبوع','{0} this week'],
+st_secs:['توزيع لعبي','What I play'],st_games:['كل لعبة','Per game'],st_wins:['فوز','Wins'],st_rooms:['في الغرف والأونلاين','In rooms and online'],st_mp:['مباريات','Matches'],st_first:['المركز الأول','1st place'],st_podium:['بين الثلاثة الأوائل','Top 3'],
+us_title:['مجموعاتي','My question sets'],us_mine:['مجموعاتي','My sets'],us_manage:['إدارة','Manage'],us_none:['لا توجد مجموعات بعد. أنشئ أسئلتك الخاصة والعب بها مع أصدقائك.','No sets yet. Write your own questions and play them with friends.'],
+us_about:['اكتب أسئلتك أنت (مع صور) في مجموعات خاصة، والعب بها وحدك أو في غرفة مع أصدقائك أو على التلفاز. أصدقاؤك يلعبونها دون اشتراك.','Write your own questions (with pictures) in private sets, and play them alone, in a room with friends or on a TV. Friends play them without a subscription.'],
+us_prem:['المجموعات الخاصة مع بريميوم','Own sets come with Premium'],us_newQ:['مجموعة أسئلة','Quiz set'],us_newD:['مجموعة خداع','Deception set'],us_name:['اسم المجموعة','Set name'],us_n:['{0}','{0}'],
+us_empty:['أضف سؤالاً واحداً على الأقل','Add at least one question'],us_full:['الحد {0} سؤال','Limit is {0} questions'],us_rename:['تغيير الاسم','Rename'],us_delete:['حذف المجموعة','Delete set'],us_delQ:['حذف المجموعة بكل أسئلتها؟','Delete the set and all its questions?'],us_play:['العب','Play'],
+us_hint:['تُحفظ على جهازك وعلى حسابك','Saved on your device and your account'],qzFewQ:['متوفر {0} سؤالاً فقط في الفئات المختارة','Only {0} questions in the chosen categories'],
 tvJoin:['ادخل من هاتفك','Join from your phone'],tvJoinHow:['امسح الرمز بكاميرا الهاتف، أو افتح الرابط وأدخل الكود. لا حاجة لتحميل التطبيق.','Scan the code with your phone camera, or open the link and enter the code. No download needed.'],
 tvWaitP:['بانتظار انضمام اللاعبين…','Waiting for players to join…'],tvFull:['ملء الشاشة','Full screen'],tvEnd:['إنهاء الجولة','End round'],tvEndQ:['إنهاء الجولة للجميع؟','End the round for everyone?'],
 tvGuest:['المقدّم يعرض الأسئلة على الشاشة، وأنت تجيب من هنا بالألوان.','The host shows the questions on the screen; you answer here by colour.'],
@@ -826,7 +888,7 @@ const BUILTIN_DECEIT=[
 ['جغرافيا','أكبر محيط في العالم هو المحيط ____.','الهادئ','الأطلسي|الهندي|المتجمد الشمالي|الجنوبي','الهادي|الباسيفيكي']];
 const qn=s=>String(s==null?'':s).trim();
 function mkQuiz(id,cat,q,opts,tm,src,ex){ex=ex||{};return{id,kind:'quiz',cat:qn(cat)||'عام',q:qn(q),a:(opts||[]).map(qn).filter(Boolean),t:20,img:/^https?:\/\//i.test(qn(ex.img))?qn(ex.img):'',x2:!!ex.x2,src}}
-function mkDeceit(id,cat,q,a,fakes,alt,src){return{id,kind:'deceit',cat:qn(cat)||'عام',q:qn(q),a:qn(a),f:(fakes||[]).map(qn).filter(Boolean),alt:(alt||[]).map(qn).filter(Boolean),src}}
+function mkDeceit(id,cat,q,a,fakes,alt,src,ex){const img=qn(ex&&ex.img);return{id,kind:'deceit',cat:qn(cat)||'عام',q:qn(q),a:qn(a),f:(fakes||[]).map(qn).filter(Boolean),alt:(alt||[]).map(qn).filter(Boolean),img:/^https:\/\//i.test(img)?img:'',src}}
 const BANK={quiz:[],deceit:[]};
 function loadBank(){
   const loc=store.get('bank_local',{quiz:[],deceit:[]}),rem=store.get('bank_remote',{quiz:[],deceit:[]});
@@ -838,7 +900,7 @@ const SB_ON=()=>!!(ZKC.supabaseUrl&&ZKC.supabaseUrl.indexOf('__')!==0);
 async function fetchRemoteBank(){if(!SB_ON())return false;
   try{const r=await fetch(ZKC.supabaseUrl+'/rest/v1/questions?select=id,kind,cat,data&active=eq.true&limit=10000',{headers:{apikey:ZKC.supabaseKey,Authorization:'Bearer '+ZKC.supabaseKey}});
     if(!r.ok)return false;const rows=await r.json();const out={quiz:[],deceit:[]};
-    rows.forEach(x=>{const d=x.data||{};if(x.kind==='quiz')out.quiz.push(mkQuiz(x.id,x.cat,d.q,d.a,d.t,'r',d));else if(x.kind==='deceit')out.deceit.push(mkDeceit(x.id,x.cat,d.q,d.a,d.f,d.alt,'r'))});
+    rows.forEach(x=>{const d=x.data||{};if(x.kind==='quiz')out.quiz.push(mkQuiz(x.id,x.cat,d.q,d.a,d.t,'r',d));else if(x.kind==='deceit')out.deceit.push(mkDeceit(x.id,x.cat,d.q,d.a,d.f,d.alt,'r',d))});
     store.set('bank_remote',out);loadBank();return true}catch(e){return false}}
 fetchRemoteBank();
 const bankCats=kind=>[...new Set(BANK[kind].map(q=>q.cat))];
@@ -850,10 +912,15 @@ function pickQuestions(kind,n,cat,shareable){
   const seen=new Set(store.get('seen_'+kind,[]));
   const out=shuffle(pool.filter(q=>!seen.has(q.id))).concat(shuffle(pool.filter(q=>seen.has(q.id)))).slice(0,n);
   store.set('seen_'+kind,[...seen,...out.map(q=>q.id)].slice(-400));return out}
-function getQs(kind,n){const ids=M.cfg.opts&&M.cfg.opts.qids;
+/* a player's own set travels inside the room settings (opts.uqs); bank questions travel as ids (opts.qids) */
+const mkU=x=>x.kind==='quiz'?mkQuiz(x.id,x.cat,x.q,x.a,20,'u',x):mkDeceit(x.id,x.cat,x.q,x.a,x.f,x.alt,'u',x);
+const roomQs=o=>o.uqs&&o.uqs.length?o.uqs.map(mkU):(o.qids||[]).map(bankById).filter(Boolean);
+function getQs(kind,n){const uq=M.cfg.opts&&M.cfg.opts.uqs;if(uq&&uq.length)return uq.map(mkU);
+  const ids=M.cfg.opts&&M.cfg.opts.qids;
   if(ids){const qs=ids.map(bankById).filter(Boolean);if(qs.length<ids.length){toast(t('missingQ'));M.alive=false;if(M.net)NET.leave();go('home');return null}return qs}
   const o=M.cfg.opts||{},qs=pickQuestions(kind,n||QZ.N,o.cats||o.cat,false);if(!qs.length){toast(t('noQ'));M.alive=false;go('home');return null}return qs}
 function hostOpts(cfg,extra){const o={...(cfg.opts||{}),extraTurn:extra};delete o.qids;
+  if(o.uqs&&o.uqs.length){if(cfg.game==='quiz')o.x2=qzDoubles(o.uqs,Math.floor(Math.random()*2**31));return o}
   if(cfg.game==='quiz'||cfg.game==='deceit'){const n=GAME(cfg.game).diffs[cfg.diffIdx].n;const qs=pickQuestions(cfg.game,n,o.cats||o.cat,true);o.qids=qs.map(q=>q.id);if(cfg.game==='quiz')o.x2=qzDoubles(qs,Math.floor(Math.random()*2**31))}return o}
 const normA=s=>String(s||'').trim().toLowerCase().replace(/[ً-ْـ]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/^ال/,'').replace(/[.,!؟?،]/g,'').replace(/\s+/g,' ');
 const isTruth=(q,txt)=>{const n=normA(txt);return !!n&&[q.a,...(q.alt||[])].some(x=>normA(x)===n)};
@@ -1030,10 +1097,22 @@ const PREM_AVATARS=['👑','🐉','🦅','🦈','🐺','🦩','🦋','🌟'];
 let ENT=store.get('ent',{until:0,plan:null,src:null});
 const isPrem=()=>ENT.until>Date.now();
 const FREE={memory:['stones','numbers','pairs'],diff:{deceit:['r5'],sudoku:['easy']}};
-const gameLocked=g=>!isPrem()&&g.ready&&g.sec==='memory'&&!FREE.memory.includes(g.id);
-const diffLocked=(g,d)=>!isPrem()&&!!FREE.diff[g.id]&&!FREE.diff[g.id].includes(d.k);
+/* extras the admin gives one player (server: profiles.games / discount / banned) */
+let PERKS=store.get('perks',{games:[],discount:0,banned:false});
+const setPerks=p=>{PERKS={games:p.games||[],discount:p.discount||0,banned:!!p.banned};store.set('perks',PERKS)};
+const gameOwned=id=>(PERKS.games||[]).includes(id);
+/* admin game settings (server: app_config "games"): {gameId:{off:true, prem:true|false}} */
+let GCFG=store.get('gcfg',{});
+const gameOn=g=>!(GCFG[g.id]&&GCFG[g.id].off);
+const gamePrem=g=>GCFG[g.id]&&typeof GCFG[g.id].prem==='boolean'?GCFG[g.id].prem:(g.sec==='memory'&&!FREE.memory.includes(g.id));
+async function fetchGameCfg(){if(!SB_ON())return;
+  try{const r=await fetch(ZKC.supabaseUrl+'/rest/v1/app_config?select=value&key=eq.games',{headers:{apikey:ZKC.supabaseKey,Authorization:'Bearer '+ZKC.supabaseKey}});
+    if(!r.ok)return;const rows=await r.json();GCFG=(rows[0]&&rows[0].value)||{};store.set('gcfg',GCFG);if(current==='home'||current==='games')go(current,params)}catch(e){}}
+fetchGameCfg();
+const gameLocked=g=>!isPrem()&&g.ready&&gamePrem(g)&&!gameOwned(g.id);
+const diffLocked=(g,d)=>!isPrem()&&!gameOwned(g.id)&&!!FREE.diff[g.id]&&!FREE.diff[g.id].includes(d.k);
 const catLocked=c=>!isPrem()&&premCat(c);
-const modeLocked=(m,g)=>!isPrem()&&m==='friends'&&!(g&&g.id==='quiz');
+const modeLocked=(m,g)=>!isPrem()&&m==='friends'&&!(g&&(g.id==='quiz'||g.id==='deceit'||gameOwned(g.id)));
 const CROWN='<svg class="ic" viewBox="0 0 24 24" style="width:14px;height:14px;fill:currentColor;stroke:none" aria-hidden="true"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg>';
 const lockTag=()=>`<span class="ptag">${CROWN}</span>`;
 function setEnt(e){ENT=e;store.set('ent',ENT);const ad=$('#ad');if(ad&&isPrem()){ad.hidden=true;document.body.classList.remove('has-ad')}}
@@ -1056,8 +1135,8 @@ const PAY={mode:'test',P:null,offer:null,
   async buy(id){
     if(PAY.mode==='store'){const p=PAY.pkg(id);if(!p){toast(t('premFail'));return false}
       try{const r=await PAY.P.purchasePackage({aPackage:p});PAY.apply(r.customerInfo);return isPrem()}catch(e){if(!(e&&e.userCancelled))toast(t('premFail'));return false}}
-    if(PAY.mode==='web'){if(!ACC.user){toast(t('premSignFirst'));accountModal();return false}
-      toast(t('premWeb'));window.open(ZKC.payLinks[id]+'?client_reference_id='+encodeURIComponent(ACC.user.id)+'&prefilled_email='+encodeURIComponent(ACC.user.email||''),'_blank');return false}
+    if(PAY.mode==='web'){if(!ACC.real()){toast(t('premSignFirst'));accountModal();return false}
+      toast(t('premWeb'));window.open(ZKC.payLinks[id]+'?client_reference_id='+encodeURIComponent(ACC.user.id)+'&prefilled_email='+encodeURIComponent(ACC.user.email||'')+(PERKS.discount?'&prefilled_promo_code=PLAYO'+PERKS.discount:''),'_blank');return false}
     return null},
   async restore(){if(PAY.mode==='store'){try{const r=await PAY.P.restorePurchases();PAY.apply(r.customerInfo)}catch(e){}}else await PAY.refresh();return isPrem()}};
 
@@ -1067,17 +1146,21 @@ const ACC={sb:null,user:null,_t:0,
   async init(){const sb=ACC.client();if(!sb)return;
     try{const {data}=await sb.auth.getSession();ACC.user=data&&data.session?data.session.user:null}catch(e){}
     sb.auth.onAuthStateChange((ev,ses)=>{ACC.user=ses?ses.user:null});
-    if(ACC.user){ACC.linkStore();ACC.sync()}},
+    /* every player gets a silent guest account so the admin dashboard counts everyone (needs "anonymous sign-ins" on) */
+    if(!ACC.user){try{const {data}=await sb.auth.signInAnonymously();if(data&&data.user)ACC.user=data.user}catch(e){}}
+    if(ACC.user){ACC.linkStore();ACC.sync();if(ACC.real())admCheck()}},
+  real(){return !!(ACC.user&&!ACC.user.is_anonymous&&ACC.user.email)},
+  async logMatch(rec){const sb=ACC.client();if(!sb||!ACC.user)return;try{await sb.from('matches').insert({user_id:ACC.user.id,...rec})}catch(e){}},
   linkStore(){if(PAY.P&&ACC.user)PAY.P.logIn({appUserID:ACC.user.id}).then(r=>r&&PAY.apply(r.customerInfo)).catch(()=>{})},
   async send(email){try{const {error}=await ACC.client().auth.signInWithOtp({email,options:{shouldCreateUser:true}});return !error}catch(e){return false}},
-  async verify(email,code){try{const {data,error}=await ACC.client().auth.verifyOtp({email,token:code,type:'email'});if(error||!data.user)return false;ACC.user=data.user;ACC.linkStore();await ACC.sync();return true}catch(e){return false}},
-  async pullEnt(){const sb=ACC.client();if(!sb||!ACC.user)return null;const {data}=await sb.from('profiles').select('premium_until,premium_plan').eq('id',ACC.user.id).maybeSingle();
+  async verify(email,code){try{const {data,error}=await ACC.client().auth.verifyOtp({email,token:code,type:'email'});if(error||!data.user)return false;ACC.user=data.user;ACC.linkStore();await ACC.sync();await admCheck();return true}catch(e){return false}},
+  async pullEnt(){const sb=ACC.client();if(!sb||!ACC.user)return null;const {data}=await sb.from('profiles').select('premium_until,premium_plan,games,discount,banned').eq('id',ACC.user.id).maybeSingle();if(data)setPerks(data);
     if(data&&data.premium_until){const u=Date.parse(data.premium_until);if(u>Date.now())setEnt({until:u,plan:data.premium_plan,src:'server'});else if(ENT.src==='server')setEnt({until:0,plan:null,src:null})}
     else if(ENT.src==='server')setEnt({until:0,plan:null,src:null});return data},
   async sync(){const sb=ACC.client();if(!sb||!ACC.user||!profile)return;
     try{const {data}=await sb.from('profiles').select('*').eq('id',ACC.user.id).maybeSingle();
       if(data){['xp','points','matches','wins'].forEach(k=>{profile[k]=Math.max(profile[k]||0,data[k]||0)});saveAll();await ACC.pullEnt()}
-      await sb.from('profiles').upsert({id:ACC.user.id,username:profile.name,avatar:profile.avatar,country:profile.country,xp:profile.xp,points:profile.points,matches:profile.matches,wins:profile.wins})}catch(e){}},
+      await sb.from('profiles').upsert({id:ACC.user.id,username:profile.name,avatar:profile.avatar,country:profile.country,xp:profile.xp,points:profile.points,matches:profile.matches,wins:profile.wins,last_seen:new Date().toISOString()})}catch(e){}},
   later(){clearTimeout(ACC._t);ACC._t=setTimeout(()=>ACC.sync(),1500)},
   async signOut(){try{await ACC.client().auth.signOut()}catch(e){}ACC.user=null;if(PAY.P)PAY.P.logOut().catch(()=>{});if(ENT.src==='server')setEnt({until:0,plan:null,src:null})}};
 
@@ -1092,7 +1175,7 @@ function accountModal(){
     const step2=()=>{box.innerHTML=`<form class="stack" id="acc2"><h3>${t('accCodeSent',esc(email))}</h3><input type="text" id="acc-c" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="${t('accCode')}" dir="ltr" style="font-family:var(--f-display);font-size:26px;letter-spacing:.3em;text-align:center"><p class="small" id="acc-x" style="color:var(--bad);min-height:18px"></p><div class="row" style="justify-content:space-between"><button type="button" class="btn ghost sm" data-b>${t('back')}</button><button class="btn primary" type="submit">${t('accVerify')}</button></div></form>`;
       $('[data-b]',box).onclick=step1;$('#acc-c',box).focus();
       $('#acc2',box).onsubmit=async e=>{e.preventDefault();const b=$('button[type=submit]',box);b.disabled=true;
-        if(await ACC.verify(email,$('#acc-c',box).value.trim())){close();toast(t('accWelcome'));if(current==='settings'||current==='premium')go(current,params)}else{b.disabled=false;$('#acc-x',box).textContent=t('accBadCode')}}};
+        if(await ACC.verify(email,$('#acc-c',box).value.trim())){close();toast(t('accWelcome'));if(current==='settings'||current==='premium'||ADM_TABS.includes(current))go(current,params)}else{b.disabled=false;$('#acc-x',box).textContent=t('accBadCode')}}};
     step1()})}
 
 /* ----- subscription screen ----- */
@@ -1101,10 +1184,11 @@ function screenPremium(p){
   const render=()=>{const plans=PAY.plans(),cur=plans.find(x=>x.id===sel);
     app.innerHTML=head(t('prem'),back)+`<div class="stack">
     <div class="prem-hero"><div class="prem-crown">${CROWN}</div><h2>${isPrem()?t('premActive'):t('premTitle')}</h2>${isPrem()?`<p class="muted small">${t('premUntil',new Date(ENT.until).toLocaleDateString(L()?'en':'ar'))}</p>`:''}</div>
+    ${PERKS.discount&&!isPrem()?`<div class="note" style="text-align:center;font-weight:800;color:var(--accent)">${t('rd_yourDisc',PERKS.discount)}</div>`:''}
     <div class="panel"><ul class="prem-list">${['premF1','premF2','premF3','premF4','premF5','premF6'].map(k=>`<li>${ic('check')}<span>${t(k)}</span></li>`).join('')}</ul></div>
     ${isPrem()&&ENT.src!=='test'?'':`<div class="plans">${plans.map(x=>`<button class="plan ${sel===x.id?'on':''}" data-plan="${x.id}">${x.save?`<span class="plan-badge">${t('save2')}</span>`:''}<b>${t(x.id==='yearly'?'plYearly':'plMonthly')}</b><span class="plan-price tnum">${esc(x.price)}</span><span class="small muted">${t(x.per)}</span>${x.trial?`<span class="small" style="color:var(--teal);font-weight:700">${t('trial7')}</span>`:''}</button>`).join('')}</div>
       <button class="btn primary block" id="buy" style="font-size:18px;padding:14px">${cur.trial?t('startTrial'):t('subscribe')}</button>`}
-    <div class="row" style="justify-content:center;flex-wrap:wrap"><button class="btn ghost sm" id="restore">${t('restore')}</button>${ACC.client()&&!ACC.user?`<button class="btn ghost sm" id="acc">${t('accSignIn')}</button>`:''}</div>
+    <div class="row" style="justify-content:center;flex-wrap:wrap"><button class="btn ghost sm" id="restore">${t('restore')}</button>${ACC.client()&&!ACC.real()?`<button class="btn ghost sm" id="acc">${t('accSignIn')}</button>`:''}<button class="btn ghost sm" id="redeem">${t('rd_have')}</button></div>
     <p class="small muted" style="text-align:center">${t('premTerms')}</p>
     <div class="row" style="justify-content:center"><button class="btn ghost sm" id="pp">${t('privacy')}</button><button class="btn ghost sm" id="tm">${t('terms')}</button></div>
     ${PAY.mode==='test'?`<div class="note stack" style="gap:8px"><b>${t('premTest')}</b><span>${t('premTestD')}</span><button class="btn sm" id="ptest">${ENT.src==='test'&&isPrem()?t('premTestOff'):t('premTestOn')}</button></div>`:''}</div>`;
@@ -1114,6 +1198,7 @@ function screenPremium(p){
       if(r){sfx('win');confetti();toast(t('premDone'));ACC.later();render()}};
     $('#restore').onclick=async()=>{toast((await PAY.restore())?t('premRestored'):t('premNone'));render()};
     const ac=$('#acc');if(ac)ac.onclick=accountModal;
+    $('#redeem').onclick=()=>redeemModal(render);
     const info=(h,b)=>modal(`<h3 style="margin-bottom:10px">${h}</h3><p class="muted">${b}</p><button class="btn block" style="margin-top:14px" data-ok>${t('ok')}</button>`,(m,c)=>{$('[data-ok]',m).onclick=c});
     $('#pp').onclick=()=>info(t('privacy'),t('privacyTxt'));$('#tm').onclick=()=>info(t('terms'),t('termsTxt'));
     const pt=$('#ptest');if(pt)pt.onclick=()=>{if(ENT.src==='test'&&isPrem())setEnt({until:0,plan:null,src:null});else{setEnt({until:Date.now()+30*864e5,plan:'test',src:'test'});sfx('win');confetti();toast(t('premDone'))}render()};
@@ -1148,7 +1233,7 @@ SCREENS.onboard=function(){
     saveAll();sfx('good');if(NET.api)NET.api.presence(me0()).catch(()=>{});go('home')};
 };
 
-function dailyCfg(){const ready=GAMES.filter(g=>g.ready&&(g.sec!=='memory'||FREE.memory.includes(g.id)));const g=ready[hash(today())%ready.length];
+function dailyCfg(){const ready=GAMES.filter(g=>g.ready&&gameOn(g)&&!gamePrem(g));const g=ready[hash(today())%ready.length];
   let di=g.def;if(FREE.diff[g.id])di=g.diffs.findIndex(d=>FREE.diff[g.id].includes(d.k));return{game:g.id,diffIdx:di,mode:'solo',opts:{},daily:true}}
 
 SCREENS.home=function(){
@@ -1167,7 +1252,7 @@ SCREENS.home=function(){
     ${NATIVE?'':`<button class="tile" id="inst-btn">${ic('home')}<b>${t('getApp')}</b><span>${t('getAppD')}</span></button>`}</div>
   <div class="daily">${ic('star')}<div><b>${t('daily')}</b><span class="small muted">${done?t('dailyDone'):t('dailyD',t('g_'+dc.game)+' · '+dlabel(GAME(dc.game).diffs[dc.diffIdx]))}</span></div>${done?ic('check'):`<button class="btn primary sm" id="daily-go">${t('start')}</button>`}</div>
   <div class="section-title"><h3>${t('sections')}</h3><button class="btn ghost sm" data-go="games">${t('allGames')}</button></div>
-  <div class="hub">${SECTIONS.map(x=>`<button class="hub-card" style="--tint:${TINT[x]}" data-sec="${x}"><div class="art">${ART[x]}</div><b>${t('sec_'+x)}</b><span>${t('sec_'+x+'D')}</span></button>`).join('')}</div>
+  <div class="hub">${SECTIONS.filter(x=>GAMES.some(g=>g.sec===x&&gameOn(g))).map(x=>`<button class="hub-card" style="--tint:${TINT[x]}" data-sec="${x}"><div class="art">${ART[x]}</div><b>${t('sec_'+x)}</b><span>${t('sec_'+x+'D')}</span></button>`).join('')}</div>
   <div class="nav4"><button data-go="leaderboard">${ic('trophy')}${t('leaderboard')}</button><button data-go="friends">${ic('users')}${t('friends')}</button><button data-go="profile">${ic('user')}${t('profile')}</button><button data-go="settings">${ic('gear')}${t('settings')}</button></div>`;
   const dg=$('#daily-go');if(dg)dg.onclick=()=>{sfx('tap');startMatch(dc)};
   $('#join-btn').onclick=()=>{sfx('tap');joinModal()};const ib=$('#inst-btn');if(ib)ib.onclick=()=>{sfx('tap');installModal()};
@@ -1182,7 +1267,7 @@ function bindGameCards(mode){$$('[data-game]').forEach(b=>b.onclick=()=>{const g
 SCREENS.games=function(p){
   const sub=p.mode==='friends'?t('playFriends'):p.mode==='online'?t('playOnline'):'';
   const secs=p.sec?[p.sec]:SECTIONS;
-  app.innerHTML=head((p.sec?t('sec_'+p.sec):t('games'))+(sub?` · ${sub}`:''))+secs.map(x=>`${secs.length>1?`<h3 class="sec-h">${t('sec_'+x)}</h3>`:''}<div class="games-grid wide">${GAMES.filter(g=>g.sec===x).map(gameCard).join('')}</div>`).join('');
+  app.innerHTML=head((p.sec?t('sec_'+p.sec):t('games'))+(sub?` · ${sub}`:''))+secs.map(x=>`${secs.length>1?`<h3 class="sec-h">${t('sec_'+x)}</h3>`:''}<div class="games-grid wide">${GAMES.filter(g=>g.sec===x&&gameOn(g)).map(gameCard).join('')}</div>`).join('');
   bindGameCards(p.mode);
 };
 
@@ -1190,17 +1275,18 @@ SCREENS.setup=function(p){
   const g=GAME(p.game);
   const MODES=g.modes||['solo','local','friends','online'];
   if(gameLocked(g)){go('premium',{back:'games'});return}
-  const st={cats:[],mode:MODES.includes(p.mode)&&!modeLocked(p.mode,g)?p.mode:'solo',diff:diffLocked(g,g.diffs[g.def])?Math.max(0,g.diffs.findIndex(d=>!diffLocked(g,d))):g.def,count:2,names:['','',''],set:'animals',size:2,cat:'all',invite:p.invite||null};
+  const st={cats:[],uset:p.uset||null,mode:MODES.includes(p.mode)&&!modeLocked(p.mode,g)?p.mode:'solo',diff:diffLocked(g,g.diffs[g.def])?Math.max(0,g.diffs.findIndex(d=>!diffLocked(g,d))):g.def,count:2,names:['','',''],set:'animals',size:2,cat:'all',invite:p.invite||null};
   const render=()=>{
     app.innerHTML=head(t('g_'+g.id),g.sec==='memory'?'games':'home')+`<div class="stack">
     <div class="setup-art" style="--tint:${TINT[g.id]}">${ART[g.id]}</div>
     <div class="panel"><h3 style="margin-bottom:8px">${t('howTo')}</h3><ul class="rules">${t('r_'+g.id).map(r=>`<li>${r}</li>`).join('')}</ul></div>
     <div class="panel stack"><div><h3 style="margin-bottom:8px">${t('mode')}</h3><div class="modes">${MODES.map(m=>`<button class="mode ${st.mode===m?'on':''}" data-mode="${m}"><b>${t('m_'+m)}${modeLocked(m,g)?lockTag():''}</b><span>${t('m_'+m+'D')}</span></button>`).join('')}</div></div>
-      ${g.id==='quiz'&&(st.mode==='friends'||st.mode==='tv')?`<p class="note">${t('qzCapNote',roomCap('quiz',isPrem()))}${isPrem()?'':' · '+t('qzCapPrem')}</p>`:''}
+      ${(g.id==='quiz'||g.id==='deceit')&&(st.mode==='friends'||st.mode==='tv')?`<p class="note">${t('qzCapNote',roomCap(g.id,isPrem()))}${isPrem()?'':' · '+t('qzCapPrem',roomCap(g.id,true))}</p>`:''}
       ${g.diffs.length<2?'':`<div><h3 style="margin-bottom:8px">${t('difficulty')}</h3><div class="chips">${g.diffs.map((d,i)=>`<button class="chip ${st.diff===i?'on':''}" data-diff="${i}">${dlabel(d)}${diffLocked(g,d)?lockTag():''}</button>`).join('')}</div></div>`}
       ${g.id==='pairs'?`<div><h3 style="margin-bottom:8px">${t('imageSet')}</h3><div class="chips">${Object.keys(PAIR_SETS).map(s=>`<button class="chip ${st.set===s?'on':''}" data-set="${s}">${splitEmoji(PAIR_SETS[s])[0]} ${t('set_'+s)}</button>`).join('')}</div>
         <div class="toggle" style="border:0;padding-bottom:0"><span>${t('extraTurn')}</span><button class="sw ${settings.extraTurn?'on':''}" id="xt" aria-pressed="${settings.extraTurn}" aria-label="${t('extraTurn')}"></button></div></div>`:''}
-      ${(g.id==='quiz'||g.id==='deceit')?`<div><h3 style="margin-bottom:2px">${t('category')}</h3><p class="small muted" style="margin:0 0 8px">${t('catsPick')}</p><div class="chips"><button class="chip ${!st.cats.length?'on':''}" data-cat="all">${t('allCats')}</button>${bankCats(g.id).map(c=>`<button class="chip ${st.cats.includes(c)?'on':''}" data-cat="${esc(c)}">${esc(c)}${catLocked(c)?lockTag():''}</button>`).join('')}</div></div>`:''}
+      ${(g.id==='quiz'||g.id==='deceit')?`<div><h3 style="margin-bottom:2px">${t('category')}</h3><p class="small muted" style="margin:0 0 8px">${t('catsPick')}</p><div class="chips"><button class="chip ${!st.cats.length&&!st.uset?'on':''}" data-cat="all">${t('allCats')}</button>${bankCats(g.id).map(c=>`<button class="chip ${st.cats.includes(c)?'on':''}" data-cat="${esc(c)}">${esc(c)}${catLocked(c)?lockTag():''}</button>`).join('')}</div></div>
+      <div><div class="row between" style="margin-bottom:8px"><h3>${t('us_mine')}</h3><button class="btn ghost sm" data-go="sets" data-p='{"kind":"${g.id}"}'>${t('us_manage')}</button></div>${usets(g.id).length?`<div class="chips">${usets(g.id).map(x=>`<button class="chip ${st.uset===x.id?'on':''}" data-uset="${x.id}">⭐ ${esc(x.name)} · ${x.qs.length}${isPrem()?'':lockTag()}</button>`).join('')}</div>`:`<p class="small muted">${t('us_none')}</p>`}</div>`:''}
       ${st.mode==='local'?`<div><h3 style="margin-bottom:8px">${t('players')}</h3><div class="seg" style="margin-bottom:10px">${[2,3,4].map(n=>`<button data-count="${n}" class="${st.count===n?'on':''}">${t('nPlayers',n)}</button>`).join('')}</div>
         <div class="stack" style="gap:8px"><input type="text" value="${esc(profile.name)}" disabled aria-label="${t('playerN',1)}">${[...Array(st.count-1)].map((_,i)=>`<input type="text" id="pn${i}" maxlength="14" placeholder="${t('playerN',i+2)}" value="${esc(st.names[i])}" data-ni="${i}">`).join('')}</div></div>`:''}
       ${st.mode==='online'?`<div><h3 style="margin-bottom:8px">${t('matchSize')}</h3><div class="seg">${[2,3,4].map(n=>`<button data-size="${n}" class="${st.size===n?'on':''}">${t('nPlayers',n)}</button>`).join('')}</div></div>`:''}
@@ -1208,17 +1294,19 @@ SCREENS.setup=function(p){
     $$('[data-mode]').forEach(b=>b.onclick=()=>{if(modeLocked(b.dataset.mode,g)){needPrem();return}sfx('tap');st.mode=b.dataset.mode;render()});
     $$('[data-diff]').forEach(b=>b.onclick=()=>{if(diffLocked(g,g.diffs[+b.dataset.diff])){needPrem();return}sfx('tap');st.diff=+b.dataset.diff;render()});
     $$('[data-set]').forEach(b=>b.onclick=()=>{sfx('tap');st.set=b.dataset.set;render()});
-    $$('[data-cat]').forEach(b=>b.onclick=()=>{const c=b.dataset.cat;if(c!=='all'&&catLocked(c)){needPrem();return}sfx('tap');if(c==='all')st.cats=[];else st.cats=st.cats.includes(c)?st.cats.filter(x=>x!==c):st.cats.concat(c);render()});
+    $$('[data-cat]').forEach(b=>b.onclick=()=>{const c=b.dataset.cat;if(c!=='all'&&catLocked(c)){needPrem();return}sfx('tap');st.uset=null;if(c==='all')st.cats=[];else st.cats=st.cats.includes(c)?st.cats.filter(x=>x!==c):st.cats.concat(c);render()});
+    $$('[data-uset]').forEach(b=>b.onclick=()=>{if(!isPrem()){needPrem();return}sfx('tap');st.uset=st.uset===b.dataset.uset?null:b.dataset.uset;st.cats=[];render()});
     $$('[data-count]').forEach(b=>b.onclick=()=>{st.count=+b.dataset.count;render()});
     $$('[data-size]').forEach(b=>b.onclick=()=>{st.size=+b.dataset.size;render()});
     $$('[data-ni]').forEach(i=>i.oninput=()=>{st.names[+i.dataset.ni]=i.value});
     const xt=$('#xt');if(xt)xt.onclick=()=>{settings.extraTurn=!settings.extraTurn;store.set('settings',settings);render()};
-    $('#go').onclick=async()=>{if(modeLocked(st.mode,g)||diffLocked(g,g.diffs[st.diff])||st.cats.some(catLocked)){needPrem();return}sfx('tap');const cfg={game:g.id,diffIdx:st.diff,mode:st.mode,opts:{set:st.set,cats:st.cats,names:st.names.slice(0,st.count-1),size:st.size}};
-      if(st.mode==='tv'){$('#go').disabled=true;const ok=await NET.readyP;if(ok&&NET.ok&&await NET.join(newCode(),true,{game:g.id,diffIdx:st.diff,opts:{cats:st.cats},tv:true,cap:roomCap(g.id,isPrem())})){go('lobby',{});return}$('#go').disabled=false;noLiveModal();return}
+    $('#go').onclick=async()=>{if(modeLocked(st.mode,g)||diffLocked(g,g.diffs[st.diff])||st.cats.some(catLocked)){needPrem();return}sfx('tap');const uqs=st.uset?usetQs(st.uset,g.diffs[st.diff].n||QZ.N):null;if(st.uset&&(!isPrem()||!uqs||!uqs.length)){if(!isPrem())needPrem();else toast(t('us_empty'));return}
+      const cfg={game:g.id,diffIdx:st.diff,mode:st.mode,opts:{set:st.set,cats:st.cats,names:st.names.slice(0,st.count-1),size:st.size,uqs}};
+      if(st.mode==='tv'){$('#go').disabled=true;const ok=await NET.readyP;if(ok&&NET.ok&&await NET.join(newCode(),true,{game:g.id,diffIdx:st.diff,opts:{cats:st.cats,uqs},tv:true,cap:roomCap(g.id,isPrem())})){go('lobby',{});return}$('#go').disabled=false;noLiveModal();return}
       if(st.mode==='friends'){$('#go').disabled=true;const ok=await NET.readyP;
-        if(ok&&NET.ok&&await NET.join(newCode(),true,{game:g.id,diffIdx:st.diff,opts:{set:st.set,cats:st.cats},cap:roomCap(g.id,isPrem())})){go('lobby',{});return}
+        if(ok&&NET.ok&&await NET.join(newCode(),true,{game:g.id,diffIdx:st.diff,opts:{set:st.set,cats:st.cats,uqs},cap:roomCap(g.id,isPrem())})){go('lobby',{});return}
         go('lobby',{cfg,demo:true,invite:st.invite})}
-      else if(st.mode==='online')go('match',{cfg});else startMatch(cfg)};
+      else if(st.mode==='online'){cfg.opts.uqs=null;go('match',{cfg})}else startMatch(cfg)};
   };render();
 };
 
@@ -1246,7 +1334,7 @@ SCREENS.lobby=function(p){
       const lbl=s.host?`<span class="st host">${t('host')}</span>`:s.rdy?`<span class="st ready">${t('readyS')}</span>`:`<span class="st wait">${t('notReady')}</span>`;
       return`<div class="slot"><div class="avatar sm">${esc(s.av||'🙂')}</div><div class="grow"><b>${esc(s.nm||'?')} ${s.cc?flag(s.cc):''}${s.pid===NET.pid?` <span class="small muted">(${t('youTag')})</span>`:''}</b>${lbl}</div>${NET.isHost&&s.pid!==NET.pid?`<button class="kick" data-kick="${esc(s.pid)}" aria-label="×">${ic('x')}</button>`:''}</div>`}).join('')}</div></div>
   <div class="panel stack" style="gap:10px"><div class="row between"><h3>${t('g_'+g.id)}</h3><span class="small muted">${dlabel(g.diffs[cfg.diffIdx]||g.diffs[g.def])}</span></div>
-    ${NET.isHost?`<div class="chips">${GAMES.filter(x=>x.ready).map(x=>`<button class="chip ${x.id===g.id?'on':''}" data-lg="${x.id}">${t('g_'+x.id)}${gameLocked(x)?lockTag():''}</button>`).join('')}</div>
+    ${NET.isHost?`<div class="chips">${GAMES.filter(x=>x.ready&&gameOn(x)).map(x=>`<button class="chip ${x.id===g.id?'on':''}" data-lg="${x.id}">${t('g_'+x.id)}${gameLocked(x)?lockTag():''}</button>`).join('')}</div>
       <div class="chips">${g.diffs.map((d,i)=>`<button class="chip ${cfg.diffIdx===i?'on':''}" data-ld="${i}">${dlabel(d)}${diffLocked(g,d)?lockTag():''}</button>`).join('')}</div>`:`<p class="small muted">${t('hostPicks')}</p>`}</div>
   ${hostTv?`<p class="note">${t('tvGuest')}</p>`:''}${inProg?`<p class="note">${t('inProgress')}</p>`:''}
   ${NET.isHost?`<button class="btn primary block" id="start" ${canStart?'':'disabled'}>${ic('play')} ${t('startMatch')}</button>${canStart?'':`<p class="small muted" style="text-align:center">${t('startNeed')}</p>`}`
@@ -1353,6 +1441,7 @@ SCREENS.match=function(p){
 /* ========= MATCH CORE ========= */
 let M=null;
 function startMatch(cfg){
+  if(PERKS.banned){toast(t('banned'));return}
   const g=GAME(cfg.game),d=g.diffs[cfg.diffIdx];
   const me={id:'me',name:profile.name,avatar:profile.avatar,col:PCOL[0],isMe:true,score:0};
   let players=[me];
@@ -1663,7 +1752,7 @@ const QZ={N:36,T:20,BASE:10,X2N:3,CAP_FREE:10,CAP_PREM:30};
 const qzLeft=ms=>Math.max(0,Math.min(QZ.T-1,Math.floor(QZ.T-ms/1000)));
 const qzGain=(ms,x2)=>(QZ.BASE+qzLeft(ms))*(x2?2:1);
 const qzBonus=n=>(n>0&&n%6===0?3:0)+(n===10?5:0)+(n===20?10:0);
-const roomCap=(gid,prem)=>gid==='quiz'?(prem?QZ.CAP_PREM:QZ.CAP_FREE):4;
+const roomCap=(gid,prem)=>gid==='quiz'?(prem?QZ.CAP_PREM:QZ.CAP_FREE):gid==='deceit'?(prem?DC.CAP_PREM:DC.CAP_FREE):4;
 const TRUE_RE=/^(صح|صحيح|true|yes|نعم)$/i;
 /* option order depends only on the match seed and the question number, so every screen shows the same colours */
 function qzOpts(seed,i,q){const o=q.a.map((txt,k)=>({txt,ok:k===0}));
@@ -1723,7 +1812,7 @@ const qzNotify=()=>QZL.subs.forEach(f=>{try{f()}catch(e){console.error(e)}});
 const qzState=()=>{if(NET.isHost)return QZD.st;const h=NET.host();return h&&h.qz};
 const until=(fn,ms)=>new Promise(res=>{const t0=Date.now();const tick=()=>{if(fn()||Date.now()-t0>=ms)res();else setTimeout(tick,120)};tick()});
 async function qzDirect(g){
-  const run=++QZD.run,o=g.cfg.opts,qs=(o.qids||[]).map(bankById).filter(Boolean),n=qs.length,x2=new Set(o.x2||[]);
+  const run=++QZD.run,o=g.cfg.opts,qs=roomQs(o),n=qs.length,x2=new Set(o.x2||[]);
   const ps=g.order.map(x=>({pid:x.pid,score:0,cor:0,gain:0,bonus:0,ok:0,k:-1}));
   const live=()=>QZD.run===run&&!!NET.nr&&!!NET.game&&NET.game.gid===g.gid;
   const pub=st=>{if(!live())return;QZD.st={gid:g.gid,n,...st};NET.set({qz:QZD.st});qzNotify()};
@@ -1825,7 +1914,7 @@ function tvLobby(cfg){
 SCREENS.tv=function(p){
   const g=(p&&p.g)||NET.game;if(!g||!NET.nr||!NET.isHost){go('home');return}
   document.body.classList.add('tvm');
-  const o=g.cfg.opts,qs=(o.qids||[]).map(bankById).filter(Boolean),who={};g.order.forEach(x=>who[x.pid]=x);
+  const o=g.cfg.opts,qs=roomQs(o),who={};g.order.forEach(x=>who[x.pid]=x);
   app.innerHTML=`<section class="tvs"><header class="tv-top"><button class="icon-btn" id="tvx" aria-label="${t('tvEnd')}">${ic('x')}</button><b class="tv-code" dir="ltr">${NET.code}</b><span class="tv-qn tnum" id="tvqn"></span><button class="icon-btn" id="tvfs" aria-label="${t('tvFull')}">${FS_IC}</button></header><div class="tv-v" id="tvv"></div></section>`;
   const v=$('#tvv');let key='',raf=0,lastLb=null;
   const stop=()=>{QZL.subs.delete(onCh);cancelAnimationFrame(raf);if(NET.onTick===onCh)NET.onTick=null};
@@ -1907,6 +1996,7 @@ async function gSudoku(){
 }
 
 /* ---------- Deception ---------- */
+const DC={TRUTH:3,FOOL:1,CAP_FREE:8,CAP_PREM:12};
 function dqHtml(q){const parts=esc(q.q).split(/_{3,}/);return parts.length>1?parts.join('<mark>?</mark>'):esc(q.q)}
 async function gDeceit(){
   const id=M.id,d=M.diff,qs=getQs('deceit',d.n);if(!qs)return;
@@ -1918,9 +2008,9 @@ async function deceitSolo(id,qs){
   for(let i=0;i<qs.length;i++){const q=qs[i];
     const opts=shuffle([{txt:q.a,truth:true},...shuffle(q.f.slice()).slice(0,4).map(txt=>({txt}))]);
     status(t('dcRound',i+1,qs.length));
-    board.innerHTML=`<div class="qcard"><div class="qtimer"><i id="qbar"></i></div><p class="dq">${dqHtml(q)}</p></div><p class="small muted" style="text-align:center;margin:12px 0 8px">${t('dcSoloPick')}</p><div class="dopts">${opts.map((o,k)=>`<button class="dopt" data-k="${k}"><span>${esc(o.txt)}</span></button>`).join('')}</div>`;
+    board.innerHTML=`<div class="qcard"><div class="qtimer"><i id="qbar"></i></div>${qzImg(q)}<p class="dq">${dqHtml(q)}</p></div><p class="small muted" style="text-align:center;margin:12px 0 8px">${t('dcSoloPick')}</p><div class="dopts">${opts.map((o,k)=>`<button class="dopt" data-k="${k}"><span>${esc(o.txt)}</span></button>`).join('')}</div>`;
     const limit=25,t0=performance.now(),k=await timedPick(id,board,'.dopt',limit,t0);if(!alive(id))return;
-    const el=(performance.now()-t0)/1000,ok=k>=0&&opts[k].truth,gain=ok?Math.round(1000*(1-el/limit/2)):0;if(ok)correct++;
+    const ok=k>=0&&opts[k].truth,gain=ok?DC.TRUTH:0;if(ok)correct++;
     me.score+=gain;me.scoreText=me.score;renderPlayers();
     $$('.dopt',board).forEach((b,j)=>{b.disabled=true;if(opts[j].truth){b.classList.add('truth');b.insertAdjacentHTML('beforeend',`<span class="who"><span class="tag">${t('dcTruth')}</span></span>`)}else if(j===k)b.classList.add('picked');else b.style.opacity='.45'});
     sfx(ok?'good':'bad');status(ok?t('dcGotTruth',gain):k<0?t('qTimeout'):t('qWrong'));
@@ -1940,7 +2030,7 @@ async function deceitMulti(id,qs){
     M.players.forEach(p=>{p.score=(S.sc&&S.sc[p.id])||0;p.scoreText=p.score});renderPlayers();
     const key=[S.q,S.stage,(S.done||[]).join(','),myFake[S.q]!=null,myPick[S.q]!=null].join('|');if(key===lastKey)return;lastKey=key;
     const waiting=M.players.filter(p=>!p.out&&!(S.done||[]).includes(p.id)).map(p=>esc(p.name)).join('، ');
-    const qh=`<div class="qcard">${S.stage==='reveal'?'':'<div class="qtimer"><i id="qbar"></i></div>'}<p class="dq">${dqHtml(q)}</p></div>`;
+    const qh=`<div class="qcard">${S.stage==='reveal'?'':'<div class="qtimer"><i id="qbar"></i></div>'}${qzImg(q)}<p class="dq">${dqHtml(q)}</p></div>`;
     board.onclick=null;
     if(S.stage==='write'){status(t('dcRound',S.q+1,qs.length));
       if(myFake[S.q]==null){
@@ -1959,9 +2049,9 @@ async function deceitMulti(id,qs){
         const tag=by===null?t('dcTruth'):by==='bank'?t('dcBank'):t('dcBy',by.map(nameOf).join('، '));
         const who=Object.keys(picks).filter(pid=>picks[pid]===k).map(pid=>{const p=M.players.find(x=>x.id===pid);return p?`<span>${esc(p.avatar)} ${esc(p.name)}</span>`:''}).join('');
         return`<div class="dopt ${by===null?'truth':''}"><span>${esc(o)}</span><span class="who"><span class="tag">${esc(tag)}</span>${who}</span></div>`}).join('')}</div>`;
-      const mp=picks[me.id];let line=mp==null?t('dcNoPick'):S.by[mp]===null?t('dcGotTruth',1000):Array.isArray(S.by[mp])?t('dcGotFooled',S.by[mp].map(nameOf).join('، ')):t('qWrong');
+      const mp=picks[me.id];let line=mp==null?t('dcNoPick'):S.by[mp]===null?t('dcGotTruth',DC.TRUTH):Array.isArray(S.by[mp])?t('dcGotFooled',S.by[mp].map(nameOf).join('، ')):t('qWrong');
       const fooled=Object.keys(picks).filter(pid=>pid!==me.id&&Array.isArray(S.by[picks[pid]])&&S.by[picks[pid]].includes(me.id)).map(nameOf);
-      if(fooled.length)line+=' · '+t('dcFooled',fooled.join('، '),fooled.length*500);
+      if(fooled.length)line+=' · '+t('dcFooled',fooled.join('، '),fooled.length*DC.FOOL);
       status(esc(line));sfx(((S.gain||{})[me.id]||0)>0?'good':'turn')}
   }
   function endGame(){if(!alive(id))return;NET.onTick=null;M.players.forEach(p=>{p.score=(S&&S.sc&&S.sc[p.id])||0;p.scoreText=p.score});
@@ -2010,7 +2100,7 @@ async function deceitMulti(id,qs){
     await waitFor(()=>active().every(p=>I.pick[p.id]!=null),30000,p=>I.pick[p.id]!=null);if(!alive(id))return;
     const gain={},picks={};M.players.forEach(p=>gain[p.id]=0);
     Object.keys(I.pick).forEach(pid=>{const k=I.pick[pid];if(!(k>=0&&k<S.opts.length))return;const by=S.by[k];if(Array.isArray(by)&&by.includes(pid))return;picks[pid]=k;
-      if(by===null)gain[pid]+=1000;else if(Array.isArray(by))by.forEach(a=>{if(a!==pid)gain[a]+=500})});
+      if(by===null)gain[pid]+=DC.TRUTH;else if(Array.isArray(by))by.forEach(a=>{if(a!==pid)gain[a]+=DC.FOOL})});
     Object.keys(gain).forEach(pid=>S.sc[pid]=(S.sc[pid]||0)+gain[pid]);
     Object.assign(S,{stage:'reveal',picks,gain,done:[]});deadline=Date.now()+7000;S.lim=7000;lastKey='';pub();
     await sleep(7000);
@@ -2035,6 +2125,9 @@ function finish(o){
   if(profile.lastDay!==day){const y=new Date(Date.now()-864e5).toISOString().slice(0,10);profile.dayStreak=profile.lastDay===y?profile.dayStreak+1:1;profile.lastDay=day}
   const lvBefore=levelOf(profile.xp),rankBefore=myRank('local');
   profile.xp+=xp;profile.points+=pts;profile.matches++;profile.played[g.id]=(profile.played[g.id]||0)+1;
+  const GS=profile.gstats||(profile.gstats={}),gs=GS[g.id]||(GS[g.id]={n:0,w:0,pts:0,last:0});gs.n++;if(win)gs.w++;gs.pts+=pts;gs.last=Date.now();
+  const DY=profile.days||(profile.days={});DY[day]=(DY[day]||0)+1;Object.keys(DY).sort().slice(0,-60).forEach(k=>delete DY[k]);
+  if(M.mode!=='local')ACC.logMatch({game:g.id,mode:M.mode,place:M.solo?null:myPlace,players:n,pts,win});
   if(!M.solo){if(win){profile.wins++;profile.winStreak++}else profile.winStreak=0}
   let newBest=false;if(M.solo&&o.metric!=null){const key=g.id+'_'+dk,prev=profile.best[key];if(prev==null||(g.lower?o.metric<prev:o.metric>prev)){newBest=prev!=null;profile.best[key]=o.metric}}
   profile.history.unshift({g:g.id,dk,mode:M.mode,place:M.solo?null:myPlace,n,pts,xp,win,at:Date.now(),line:M.solo?o.line:null});profile.history=profile.history.slice(0,40);
@@ -2136,6 +2229,7 @@ SCREENS.profile=function(){
   const fav=Object.entries(profile.played).sort((a,b)=>b[1]-a[1]).slice(0,3);
   const bests=Object.entries(profile.best);
   app.innerHTML=head(t('profile'),'home',`<button class="btn ghost sm" id="ed">${t('edit')}</button>`)+`<div class="stack">
+  <div class="row" style="gap:8px"><button class="btn primary grow" data-go="stats">${ic('play')} ${t('st_title')}</button><button class="btn grow" data-go="sets">⭐ ${t('us_title')}</button></div>
   <div class="panel row" style="gap:14px"><div class="avatar lg">${profile.avatar}</div><div style="flex:1;min-width:0"><h2 style="overflow:hidden;text-overflow:ellipsis">${esc(profile.name)}</h2><div class="muted small">${flag(profile.country)} ${ctyName(profile.country)}</div><div class="row" style="gap:8px;margin-top:4px"><span class="lvl">${t('level',lv)}</span><span class="small muted tnum">${profile.xp} XP</span></div><div class="xpbar"><i style="width:${Math.round(lvlProgress(profile.xp)*100)}%"></i></div></div></div>
   <div class="panel"><div class="stats"><div><b class="tnum">${profile.points}</b><span>${t('pointsL')}</span></div><div><b class="tnum">${profile.matches}</b><span>${t('matches')}</span></div><div><b class="tnum">${profile.wins}</b><span>${t('wins')}</span></div><div><b class="tnum">${wr}%</b><span>${t('winRate')}</span></div></div>
     <div class="stats" style="grid-template-columns:1fr 1fr;margin-top:8px"><div><b class="tnum">#${myRank('local')}</b><span>${t('rankLocal')} ${flag(profile.country)}</span></div><div><b class="tnum">#${myRank('global')}</b><span>${t('rankGlobal')}</span></div></div></div>
@@ -2150,63 +2244,238 @@ function editProfile(){let av=profile.avatar;modal(`<h3 style="margin-bottom:12p
   $('#ep-x',m).onclick=close;$('#ep-s',m).onclick=()=>{const n=$('#ep-n',m).value.trim();if(!/^[\p{L}\p{N}_]{3,16}$/u.test(n)){$('#ep-e',m).textContent=t('errName');return}profile.name=n;profile.avatar=av;profile.country=$('#ep-c',m).value;saveAll();if(NET.api)NET.api.presence(me0()).catch(()=>{});close();SCREENS.profile()}})}
 
 /* ----- question manager (open with #admin) ----- */
-const ADM={sb:null,session:null};
-function admClient(){if(!SB_ON()||!window.supabase)return null;if(!ADM.sb)ADM.sb=window.supabase.createClient(ZKC.supabaseUrl,ZKC.supabaseKey,{auth:{persistSession:true,storageKey:'playo_admin_auth'}});return ADM.sb}
+/* ----- admin access: only accounts listed in the server's "admins" table (supabase/owner.sql) ----- */
+const ADM={ok:false,checked:false};
+async function admCheck(){const sb=ACC.client();if(!sb||!ACC.real()){ADM.ok=false;return false}
+  try{const {data}=await sb.rpc('is_admin');ADM.ok=data===true}catch(e){ADM.ok=false}
+  ADM.checked=true;store.set('isAdmin',ADM.ok);return ADM.ok}
+const admClient=()=>ACC.client();
+const admLive=()=>!!(ACC.client()&&ADM.ok);
 /* images go to the public "qimg" bucket, shrunk to 1000 px so they load fast on phones */
-async function admUpload(file){const sb=admClient();if(!sb||!ADM.session){toast(t('adm_upLogin'));return null}
+async function uploadImg(file){const sb=ACC.client();if(!sb||!ACC.user){toast(t('adm_upLogin'));return null}
   try{const bmp=await createImageBitmap(file),k=Math.min(1,1000/Math.max(bmp.width,bmp.height)),c=document.createElement('canvas');c.width=Math.round(bmp.width*k);c.height=Math.round(bmp.height*k);c.getContext('2d').drawImage(bmp,0,0,c.width,c.height);
-    const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',.85)),name=newQid()+'.jpg';
+    const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',.85)),name=(ADM.ok?'':'u/'+ACC.user.id+'/')+newQid()+'.jpg';
     const {error}=await sb.storage.from('qimg').upload(name,blob,{contentType:'image/jpeg',upsert:true});if(error)throw error;
     return sb.storage.from('qimg').getPublicUrl(name).data.publicUrl}catch(e){toast(t('adm_upFail'));return null}}
 const newQid=()=>'q'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
-const qData=q=>q.kind==='quiz'?{q:q.q,a:q.a,t:20,img:q.img||'',x2:!!q.x2}:{q:q.q,a:q.a,f:q.f,alt:q.alt};
+const qData=q=>q.kind==='quiz'?{q:q.q,a:q.a,t:20,img:q.img||'',x2:!!q.x2}:{q:q.q,a:q.a,f:q.f,alt:q.alt,img:q.img||''};
 async function admSave(list){
   const sb=admClient();
-  if(sb&&ADM.session){const rows=list.map(q=>({id:q.id,kind:q.kind,cat:q.cat,data:qData(q),active:true}));
+  if(admLive()){const rows=list.map(q=>({id:q.id,kind:q.kind,cat:q.cat,data:qData(q),active:true}));
     for(let i=0;i<rows.length;i+=200){const {error}=await sb.from('questions').upsert(rows.slice(i,i+200));if(error){toast(t('adm_saveFail',error.message));return false}}
     await fetchRemoteBank();return true}
   const loc=store.get('bank_local',{quiz:[],deceit:[]});
   list.forEach(q=>{const arr=loc[q.kind]||(loc[q.kind]=[]);const clean={...q};delete clean.src;const i=arr.findIndex(x=>x.id===q.id);if(i>=0)arr[i]=clean;else arr.push(clean)});
   store.set('bank_local',loc);loadBank();return true}
 async function admDelete(q){
-  if(q.src==='r'){const sb=admClient();if(!sb||!ADM.session)return false;const {error}=await sb.from('questions').update({active:false}).eq('id',q.id);if(error){toast(t('adm_saveFail',error.message));return false}await fetchRemoteBank();return true}
+  if(q.src==='r'){const sb=admClient();if(!admLive())return false;const {error}=await sb.from('questions').update({active:false}).eq('id',q.id);if(error){toast(t('adm_saveFail',error.message));return false}await fetchRemoteBank();return true}
   const loc=store.get('bank_local',{quiz:[],deceit:[]});loc[q.kind]=(loc[q.kind]||[]).filter(x=>x.id!==q.id);store.set('bank_local',loc);loadBank();return true}
 function loadXLSX(){return new Promise((res,rej)=>{if(window.XLSX)return res(window.XLSX);const s=document.createElement('script');s.src=ZKC.xlsxUrl||'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';s.onload=()=>res(window.XLSX);s.onerror=rej;document.head.appendChild(s)})}
 /* Excel layout (see the template): sheet "أسئلة": category, question, correct, wrong 1..3, image link, double (نعم).
-   sheet "خداع": category, question with ____, answer, other accepted answers (comma separated), lie 1..5 */
+   sheet "خداع": category, question with ____, answer, other accepted answers (comma separated), lie 1..5, image link */
 function parseWorkbook(X,wb){const out={quiz:[],deceit:[]};
   wb.SheetNames.forEach(name=>{const rows=X.utils.sheet_to_json(wb.Sheets[name],{header:1,defval:''}).map(r=>r.map(c=>qn(c)));if(!rows.length)return;
     const head=rows[0].join(' ');const isDeceit=/خداع|decept|deceit|bluff/i.test(name)||/خداع|lie|fake/i.test(head);
     const body=/سؤال|السؤال|question/i.test(head)?rows.slice(1):rows;
     body.forEach(r=>{if(!r[1]||!r[2])return;
-      if(isDeceit){const q=mkDeceit(newQid(),r[0],r[1],r[2],r.slice(4,9),r[3]?r[3].split(/[,،]/):[],'l');if(q.f.length>=1)out.deceit.push(q)}
+      if(isDeceit){const q=mkDeceit(newQid(),r[0],r[1],r[2],r.slice(4,9),r[3]?r[3].split(/[,،]/):[],'l',{img:r[9]});if(q.f.length>=1)out.deceit.push(q)}
       else{const q=mkQuiz(newQid(),r[0],r[1],[r[2],r[3],r[4],r[5]],20,'l',{img:r[6],x2:/^(نعم|yes|y|x2|×2|2|✓|true)$/i.test(r[7]||'')});if(q.a.length>=2)out.quiz.push(q)}})});
   return out}
-SCREENS.admin=function(p){
-  try{store.set('isAdmin',true)}catch(e){}
-  const st={tab:(p&&p.tab)||'quiz',q:''};const sb=admClient();
-  const render=async()=>{
-    if(sb&&!ADM.session){try{const {data}=await sb.auth.getSession();ADM.session=data.session}catch(e){}}
+/* ========= ADMIN DASHBOARD (#admin): overview · players · questions · games · codes =========
+   With the server connected it reads live data (admin_stats, profiles, promo_codes) and only an admin
+   account gets anything back. Without a server (preview) it shows clearly marked sample players. */
+const ADM_TABS=['admin','admp','admq','admg','admc'];
+const arN=(n,few,many,en)=>L()?n+' '+en:n+' '+(n>=3&&n<=10?few:many);
+const dN=n=>arN(n,'أيام','يوماً',n===1?'day':'days');
+const kp=(v,l,sub)=>`<div class="kpi"><b class="tnum">${v}</b><span>${l}</span>${sub?`<i>${sub}</i>`:''}</div>`;
+const fmtD=ts=>ts?new Date(ts).toLocaleDateString(L()?'en-GB':'ar-u-nu-latn',{year:'numeric',month:'short',day:'numeric'}):'—';
+const dayN=ms=>Math.max(0,Math.round(ms/864e5));
+const planName=k=>!k||k==='?'?t('pl_other'):/year|annual/i.test(k)?t('plYearly'):/month/i.test(k)?t('plMonthly'):k==='gift'?t('pl_gift'):k==='test'?t('pl_test'):k;
+function admHead(cur){return head(t('admin'),'settings')+`<div class="tabs">${ADM_TABS.map(x=>`<button data-go="${x}" class="${cur===x?'on':''}">${t('at_'+x)}</button>`).join('')}</div>`+admBanner()}
+function admBanner(){
+  if(!ACC.client())return `<p class="note" style="margin-bottom:12px">${t('adm_demo')}</p>`;
+  if(!ACC.real())return `<div class="panel stack" style="gap:8px;margin-bottom:12px"><b>${t('adm_needLogin')}</b><button class="btn primary sm" id="adm-in">${t('accSignIn')}</button></div>`;
+  if(!ADM.ok)return `<p class="note" style="margin-bottom:12px">${t('adm_notAdmin',esc(ACC.user.email||''))}</p>`;
+  return ''}
+async function admEnter(){if(!ACC.client())store.set('isAdmin',true);if(ACC.real()&&!ADM.checked)await admCheck();return()=>{const x=$('#adm-in');if(x)x.onclick=accountModal}}
+
+/* sample data for the preview */
+let DEMO=null;
+function demo(){if(DEMO)return DEMO;const R=mulberry(11),now=Date.now(),gs=GAMES.filter(g=>g.ready).map(g=>g.id);
+  const players=[...Array(26)].map((_,i)=>{const prem=R()<.4,plan=prem?(R()<.55?'yearly':'monthly'):null,len=plan==='yearly'?365:30;
+    const since=prem?now-Math.floor(R()*len*.9)*864e5:null,gc={};gs.forEach(g=>{if(R()<.55)gc[g]=1+Math.floor(R()*R()*80)});const m=Object.values(gc).reduce((a,b)=>a+b,0);
+    return{id:'demo'+i,username:handleOf(i*5+2),avatar:AVATARS[i%AVATARS.length],country:COUNTRIES[(i*3)%COUNTRIES.length][0],matches:m,wins:Math.floor(m*(.2+R()*.4)),points:m*11+Math.floor(R()*90),
+      created_at:new Date(now-(20+Math.floor(R()*300))*864e5).toISOString(),last_seen:new Date(now-Math.floor(R()*R()*14*24)*36e5).toISOString(),
+      premium_since:since?new Date(since).toISOString():null,premium_until:since?new Date(since+len*864e5).toISOString():null,premium_plan:plan,games:[],discount:0,banned:false,game_counts:gc}});
+  const games30={};players.forEach(p=>Object.entries(p.game_counts).forEach(([g,n])=>games30[g]=(games30[g]||0)+n));
+  const days14=[...Array(14)].map((_,i)=>({d:new Date(now-(13-i)*864e5).toISOString().slice(0,10),n:20+Math.floor(R()*60)+i*3}));
+  DEMO={players,games30,days14};return DEMO}
+async function admStats(){
+  if(admLive()){try{const {data,error}=await admClient().rpc('admin_stats');if(!error&&data)return data}catch(e){}return null}
+  if(ACC.client())return null;
+  const D=demo(),now=Date.now(),P=D.players,within=(iso,d)=>now-Date.parse(iso)<d*864e5,prem=P.filter(p=>p.premium_until&&Date.parse(p.premium_until)>now),plans={};prem.forEach(p=>plans[p.premium_plan]=(plans[p.premium_plan]||0)+1);
+  return{players:P.length,new7:P.filter(p=>within(p.created_at,7)).length,active1:P.filter(p=>within(p.last_seen,1)).length,active7:P.filter(p=>within(p.last_seen,7)).length,premium:prem.length,plans,matches1:D.days14[13].n,matches7:D.days14.slice(7).reduce((a,x)=>a+x.n,0),games30:D.games30,days14:D.days14}}
+
+SCREENS.admin=async function(){const bind=await admEnter();if(current!=='admin')return;
+  app.innerHTML=admHead('admin')+`<p class="muted">${t('adm_loading')}</p>`;bind();
+  const S=await admStats();if(current!=='admin')return;
+  if(!S){app.innerHTML=admHead('admin');bind();return}
+  const days=S.days14||[],mx=Math.max(1,...days.map(x=>x.n)),gl=Object.entries(S.games30||{}).sort((a,b)=>b[1]-a[1]),gmx=Math.max(1,...gl.map(x=>x[1])),pct=S.players?Math.round(S.premium/S.players*100):0;
+  app.innerHTML=admHead('admin')+`<div class="stack">
+   <div class="kpis">${kp(S.players,t('ad_players'),'+'+S.new7+' '+t('ad_7d'))}${kp(S.active1,t('ad_active1'))}${kp(S.active7,t('ad_active7'))}${kp(S.premium,t('ad_premium'),pct+'%')}${kp(S.matches1,t('ad_matches1'))}${kp(S.matches7,t('ad_matches7'))}</div>
+   <div class="panel"><h3 style="margin-bottom:10px">${t('ad_daily')}</h3>${days.length?`<div class="vbars">${days.map(x=>`<div title="${x.d}: ${x.n}"><i style="height:${Math.round(x.n/mx*100)}%"></i><span>${String(x.d).slice(8,10)}</span></div>`).join('')}</div>`:'<p class="muted">—</p>'}</div>
+   <div class="panel"><h3 style="margin-bottom:10px">${t('ad_topGames')}</h3>${gl.map(([g,n])=>`<div class="hbar"><span>${GAME(g)?t('g_'+g):esc(g)}</span><div><i style="width:${Math.round(n/gmx*100)}%"></i></div><b class="tnum">${n}</b></div>`).join('')||'<p class="muted">—</p>'}</div>
+   <div class="panel"><h3 style="margin-bottom:8px">${t('ad_plans')}</h3><div class="chips">${Object.entries(S.plans||{}).map(([k,n])=>`<span class="chip on">${planName(k)} · ${n}</span>`).join('')||'<span class="muted small">—</span>'}</div><p class="small muted" style="margin-top:8px">${t('ad_revNote')}</p></div>
+   <button class="btn block" data-go="admp">${t('at_admp')} ←</button></div>`;bind()};
+
+/* ----- players ----- */
+const PL_COLS='id,username,avatar,country,matches,wins,points,created_at,last_seen,premium_since,premium_until,premium_plan,games,discount,banned,game_counts';
+async function admPlayers(st){
+  if(admLive()){const now=new Date().toISOString();let q=admClient().from('profiles').select(PL_COLS);
+    if(st.q)q=q.ilike('username','%'+st.q.replace(/[%_,()]/g,'')+'%');
+    if(st.f==='prem')q=q.gt('premium_until',now);else if(st.f==='free')q=q.or('premium_until.is.null,premium_until.lt.'+now);else if(st.f==='ban')q=q.eq('banned',true);
+    q=q.order({matches:'matches',end:'premium_until',new:'created_at'}[st.sort]||'last_seen',{ascending:st.sort==='end',nullsFirst:false}).limit(200);
+    const {data,error}=await q;if(error){toast(error.message);return[]}return data||[]}
+  if(ACC.client())return[];
+  let P=demo().players.slice();const nw=Date.now(),isP=p=>p.premium_until&&Date.parse(p.premium_until)>nw;
+  if(st.q)P=P.filter(p=>p.username.toLowerCase().includes(st.q.toLowerCase()));
+  if(st.f==='prem')P=P.filter(isP);else if(st.f==='free')P=P.filter(p=>!isP(p));else if(st.f==='ban')P=P.filter(p=>p.banned);
+  const key={matches:p=>-p.matches,end:p=>isP(p)?Date.parse(p.premium_until):9e15,new:p=>-Date.parse(p.created_at)}[st.sort]||(p=>-Date.parse(p.last_seen));
+  return P.sort((a,b)=>key(a)-key(b))}
+const topGame=p=>{const e=Object.entries(p.game_counts||{}).sort((a,b)=>b[1]-a[1])[0];return e?{g:e[0],n:e[1]}:null};
+function subInfo(p){const now=Date.now(),u=p.premium_until?Date.parse(p.premium_until):0,sn=p.premium_since?Date.parse(p.premium_since):0;
+  return{on:u>now,until:u,since:sn,len:sn&&u?dayN(u-sn):0,left:u>now?dayN(u-now):0,plan:planName(p.premium_plan)}}
+SCREENS.admp=async function(p){const bind=await admEnter();if(current!=='admp')return;
+  const st={q:'',f:'all',sort:'seen'};
+  const render=async()=>{const list=await admPlayers(st);if(current!=='admp')return;
+    app.innerHTML=admHead('admp')+`<div class="stack">
+     <input type="text" id="ap-q" placeholder="${t('ap_search')}" value="${esc(st.q)}" dir="auto">
+     <div class="row wrap" style="gap:8px"><div class="seg">${['all','prem','free','ban'].map(f=>`<button data-f="${f}" class="${st.f===f?'on':''}">${t('ap_f_'+f)}</button>`).join('')}</div>
+      <select id="ap-s" style="flex:1;min-width:140px" aria-label="${t('ap_sort')}">${['seen','matches','end','new'].map(k=>`<option value="${k}" ${st.sort===k?'selected':''}>${t('ap_s_'+k)}</option>`).join('')}</select></div>
+     <p class="small muted">${t('ap_count',arN(list.length,'لاعبين','لاعباً','players'))}</p>
+     <div class="panel" style="padding:6px">${list.map((x,i)=>{const s=subInfo(x),tg=topGame(x);return`<button class="pl-row" data-i="${i}"><span class="avatar">${esc(x.avatar||'🙂')}</span><div class="grow"><b>${esc(x.username||t('ap_guest'))} ${x.country?flag(x.country):''}${x.banned?` <span class="tag bad">${t('ap_banned')}</span>`:''}</b>
+       <span class="small ${s.on?'':'muted'}" style="${s.on?'color:var(--accent);font-weight:700':''}">${s.on?`${CROWN} ${s.plan} · ${t('ap_until',fmtD(s.until))}${s.since?' · '+t('ap_sinceS',fmtD(s.since)):''}`:t('ap_free')}</span>
+       <span class="small muted">${tg?t('ap_top',GAME(tg.g)?t('g_'+tg.g):tg.g,tg.n)+' · ':''}${t('ap_matches',arN(x.matches||0,'مباريات','مباراة','matches'))} · ${ago(Date.parse(x.last_seen||x.created_at))}</span></div></button>`}).join('')||`<p class="muted" style="padding:10px">—</p>`}</div></div>`;
+    bind();
+    const qi=$('#ap-q');qi.oninput=()=>{clearTimeout(qi._t);qi._t=setTimeout(()=>{st.q=qi.value.trim();render().then(()=>{const n=$('#ap-q');if(n){n.focus();n.setSelectionRange(n.value.length,n.value.length)}})},300)};
+    $$('[data-f]').forEach(b=>b.onclick=()=>{st.f=b.dataset.f;render()});
+    $('#ap-s').onchange=e=>{st.sort=e.target.value;render()};
+    $$('.pl-row').forEach(b=>b.onclick=()=>admPlayer(list[+b.dataset.i],render))};
+  app.innerHTML=admHead('admp')+`<p class="muted">${t('adm_loading')}</p>`;bind();render()};
+function admPlayer(x,done){
+  const uniq=[...new Set(GAMES.filter(g=>g.ready&&(gamePrem(g)||FREE.diff[g.id])).map(g=>g.id))];let games=(x.games||[]).slice();
+  const act=async patch=>{
+    if(admLive()){const {error}=await admClient().rpc('admin_player',{p_id:x.id,p_days:patch.days||null,p_clear:!!patch.clear,p_games:patch.games||null,p_discount:patch.discount==null?null:patch.discount,p_banned:patch.banned==null?null:patch.banned});
+      if(error){toast(error.message);return false}const {data}=await admClient().from('profiles').select(PL_COLS).eq('id',x.id).maybeSingle();if(data)Object.assign(x,data)}
+    else if(ACC.client()){toast(t('adm_needLogin'));return false}
+    else{const now=Date.now(),on=x.premium_until&&Date.parse(x.premium_until)>now;if(patch.clear){x.premium_until=null;x.premium_plan=null}
+      if(patch.days){if(!on)x.premium_since=new Date(now).toISOString();x.premium_until=new Date(Math.max(now,on?Date.parse(x.premium_until):0)+patch.days*864e5).toISOString();x.premium_plan=x.premium_plan||'gift'}
+      if(patch.games)x.games=patch.games;if(patch.discount!=null)x.discount=patch.discount;if(patch.banned!=null)x.banned=patch.banned}
+    toast(t('adm_saved'));return true};
+  modal(`<div id="apm"></div>`,(m,close)=>{const box=$('#apm',m);
+    const draw=()=>{const s=subInfo(x),gc=Object.entries(x.game_counts||{}).sort((a,b)=>b[1]-a[1]),gmx=Math.max(1,...gc.map(e=>e[1])),wr=x.matches?Math.round(x.wins/x.matches*100):0;
+      box.innerHTML=`<div class="row" style="gap:12px;margin-bottom:10px"><span class="avatar lg">${esc(x.avatar||'🙂')}</span><div class="grow" style="min-width:0"><h3>${esc(x.username||t('ap_guest'))} ${x.country?flag(x.country):''}</h3><span class="small muted">${t('ap_joined',fmtD(Date.parse(x.created_at)))} · ${t('ap_seen',ago(Date.parse(x.last_seen||x.created_at)))}</span></div><button class="icon-btn" data-x aria-label="${t('cancel')}">✕</button></div>
+      <div class="stats" style="margin-bottom:10px"><div><b class="tnum">${x.matches||0}</b><span>${t('matches')}</span></div><div><b class="tnum">${x.wins||0}</b><span>${t('wins')}</span></div><div><b class="tnum">${wr}%</b><span>${t('winRate')}</span></div><div><b class="tnum">${x.points||0}</b><span>${t('pointsL')}</span></div></div>
+      <div class="stack" style="gap:10px">
+      <div class="panel stack" style="gap:8px"><b>${t('ap_sub')}</b>
+        ${s.on?`<div class="sub-grid"><span>${t('ap_plan')}</span><b>${s.plan}</b><span>${t('ap_since')}</span><b>${fmtD(s.since)}</b><span>${t('ap_end')}</span><b>${fmtD(s.until)}</b><span>${t('ap_len')}</span><b>${s.len?dN(s.len):'—'}</b><span>${t('ap_left')}</span><b>${dN(s.left)}</b></div>`:`<span class="muted small">${t('ap_free')}${x.premium_until?' · '+t('ap_ended',fmtD(Date.parse(x.premium_until))):''}</span>`}
+        <span class="small muted">${t('ap_gift')}</span><div class="chips">${[7,30,90,365].map(d=>`<button class="chip" data-days="${d}">+${dN(d)}</button>`).join('')}${s.on?`<button class="chip" data-clear style="color:var(--bad)">${t('ap_stop')}</button>`:''}</div></div>
+      <div class="panel stack" style="gap:8px"><b>${t('ap_games')}</b><span class="small muted">${t('ap_gamesD')}</span><div class="chips">${uniq.map(id=>`<button class="chip ${games.includes(id)?'on':''}" data-g="${id}">${games.includes(id)?'✓ ':''}${t('g_'+id)}</button>`).join('')}</div><button class="btn sm" id="ap-gs">${t('save')}</button></div>
+      <div class="panel stack" style="gap:8px"><b>${t('ap_disc')}</b><span class="small muted">${t('ap_discD')}</span><div class="row" style="gap:8px"><input type="number" id="ap-d" min="0" max="100" step="5" value="${x.discount||0}" style="max-width:110px" dir="ltr"><span>%</span><button class="btn sm" id="ap-ds">${t('save')}</button></div></div>
+      <div class="panel stack" style="gap:6px"><b>${t('ap_played')}</b>${gc.map(([g,n])=>`<div class="hbar"><span>${GAME(g)?t('g_'+g):esc(g)}</span><div><i style="width:${Math.round(n/gmx*100)}%"></i></div><b class="tnum">${n}</b></div>`).join('')||'<span class="muted small">—</span>'}</div>
+      <button class="btn ghost block" id="ap-ban" style="color:var(--bad)">${x.banned?t('ap_unban'):t('ap_ban')}</button></div>`;
+      $('[data-x]',box).onclick=()=>{close();done&&done()};
+      $$('[data-days]',box).forEach(b=>b.onclick=async()=>{if(await act({days:+b.dataset.days}))draw()});
+      const cl=$('[data-clear]',box);if(cl)cl.onclick=async()=>{if(await confirmBox(t('ap_stopQ'),t('ap_stop'))&&await act({clear:true}))draw()};
+      $$('[data-g]',box).forEach(b=>b.onclick=()=>{const id=b.dataset.g;games=games.includes(id)?games.filter(g=>g!==id):games.concat(id);draw()});
+      $('#ap-gs',box).onclick=async()=>{if(await act({games}))draw()};
+      $('#ap-ds',box).onclick=async()=>{const v=Math.max(0,Math.min(100,parseInt($('#ap-d',box).value)||0));if(await act({discount:v}))draw()};
+      $('#ap-ban',box).onclick=async()=>{if(!x.banned&&!(await confirmBox(t('ap_banQ'),t('ap_ban'))))return;if(await act({banned:!x.banned}))draw()}};
+    draw()})}
+
+/* ----- games: show/hide and free/premium ----- */
+const defPrem=g=>g.sec==='memory'&&!FREE.memory.includes(g.id);
+SCREENS.admg=async function(){const bind=await admEnter();if(current!=='admg')return;
+  const cfg=JSON.parse(JSON.stringify(GCFG));
+  const render=()=>{app.innerHTML=admHead('admg')+`<div class="stack"><p class="small muted">${t('ag_hint')}</p>
+    ${SECTIONS.map(sec=>`<div class="panel"><h3 style="margin-bottom:4px">${t('sec_'+sec)}</h3>${GAMES.filter(g=>g.sec===sec&&g.ready).map(g=>{const c=cfg[g.id]||{},on=!c.off,pr=typeof c.prem==='boolean'?c.prem:defPrem(g);
+      return`<div class="ag-row"><b class="grow">${t('g_'+g.id)}</b><label>${t('ag_on')}<button class="sw ${on?'on':''}" data-on="${g.id}" aria-pressed="${on}" aria-label="${t('ag_on')}"></button></label><label>${CROWN} ${t('ag_prem')}<button class="sw ${pr?'on':''}" data-pr="${g.id}" aria-pressed="${pr}" aria-label="${t('ag_prem')}"></button></label></div>`}).join('')}</div>`).join('')}
+    <button class="btn primary block" id="ag-save">${t('save')}</button>
+    <div class="note">${t('ag_new')}</div></div>`;bind();
+    $$('[data-on]').forEach(b=>b.onclick=()=>{const id=b.dataset.on,c=cfg[id]||(cfg[id]={});c.off=!c.off;if(!c.off)delete c.off;render()});
+    $$('[data-pr]').forEach(b=>b.onclick=()=>{const g=GAME(b.dataset.pr),c=cfg[g.id]||(cfg[g.id]={}),cur=typeof c.prem==='boolean'?c.prem:defPrem(g);c.prem=!cur;render()});
+    $('#ag-save').onclick=async()=>{if(admLive()){const {error}=await admClient().from('app_config').upsert({key:'games',value:cfg});if(error){toast(error.message);return}}else if(ACC.client()){toast(t('adm_needLogin'));return}
+      GCFG=JSON.parse(JSON.stringify(cfg));store.set('gcfg',GCFG);toast(t('adm_saved'))}};
+  render()};
+
+/* ----- gift and discount codes ----- */
+const genCode=()=>'PLAYO-'+[...Array(5)].map(()=>'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[Math.floor(Math.random()*32)]).join('');
+const codeDesc=c=>c.kind==='days'?t('ac_d_days',dN(c.days)):c.kind==='percent'?t('ac_d_pct',c.percent):t('ac_d_games',(c.games||[]).map(g=>t('g_'+g)).join('، '));
+async function codesList(){if(admLive()){const {data}=await admClient().from('promo_codes').select('*').order('created_at',{ascending:false}).limit(200);return data||[]}return ACC.client()?[]:store.get('demo_codes',[])}
+async function codeAdd(c){if(admLive()){const {error}=await admClient().from('promo_codes').insert(c);if(error){toast(/duplicate/i.test(error.message)?t('ac_dup'):error.message);return false}return true}
+  if(ACC.client()){toast(t('adm_needLogin'));return false}
+  const Lc=store.get('demo_codes',[]);if(Lc.some(x=>x.code===c.code)){toast(t('ac_dup'));return false}Lc.unshift({...c,uses:0,created_at:new Date().toISOString()});store.set('demo_codes',Lc);return true}
+async function codeDel(code){if(admLive())await admClient().from('promo_codes').delete().eq('code',code);else store.set('demo_codes',store.get('demo_codes',[]).filter(x=>x.code!==code))}
+SCREENS.admc=async function(){const bind=await admEnter();if(current!=='admc')return;
+  const f={kind:'days',days:30,percent:20,games:[],max:1,exp:30,note:'',code:genCode()};
+  const render=async()=>{const list=await codesList();if(current!=='admc')return;
+    const lockG=[...new Set(GAMES.filter(g=>g.ready&&(gamePrem(g)||FREE.diff[g.id])).map(g=>g.id))];
+    app.innerHTML=admHead('admc')+`<div class="stack"><div class="panel stack" style="gap:10px"><h3>${t('ac_new')}</h3>
+      <div class="seg">${['days','games','percent'].map(k=>`<button data-k="${k}" class="${f.kind===k?'on':''}">${t('ac_k_'+k)}</button>`).join('')}</div>
+      ${f.kind==='days'?`<label class="field">${t('ac_days')}<input type="number" id="ac-days" min="1" max="3650" value="${f.days}" dir="ltr"></label>`:f.kind==='percent'?`<label class="field">${t('ac_pct')}<input type="number" id="ac-pct" min="5" max="100" step="5" value="${f.percent}" dir="ltr"></label><p class="small muted">${t('ac_pctD')}</p>`:`<div class="chips">${lockG.map(id=>`<button class="chip ${f.games.includes(id)?'on':''}" data-g="${id}">${f.games.includes(id)?'✓ ':''}${t('g_'+id)}</button>`).join('')}</div>`}
+      <div class="fgrid"><label class="field">${t('ac_code')}<input type="text" id="ac-code" value="${esc(f.code)}" dir="ltr" maxlength="24" style="text-transform:uppercase"></label><label class="field">${t('ac_max')}<input type="number" id="ac-max" min="1" value="${f.max}" dir="ltr"></label><label class="field">${t('ac_exp')}<input type="number" id="ac-exp" min="0" value="${f.exp}" dir="ltr"></label><label class="field">${t('ac_note')}<input type="text" id="ac-note" maxlength="60" value="${esc(f.note)}"></label></div>
+      <button class="btn primary" id="ac-add">${t('ac_create')}</button></div>
+      <div class="panel"><h3 style="margin-bottom:6px">${t('ac_list')}</h3><div class="list">${list.map(c=>`<div class="li"><div class="grow"><b dir="ltr" style="font-family:monospace;font-size:15px">${esc(c.code)}</b><span class="small muted">${codeDesc(c)} · ${t('ac_used',c.uses||0,c.max_uses)}${c.expires_at?' · '+t('ac_until',fmtD(Date.parse(c.expires_at))):''}${c.note?' · '+esc(c.note):''}</span></div><button class="btn ghost sm" data-cp="${esc(c.code)}">${t('ac_copy')}</button><button class="btn ghost sm" data-del="${esc(c.code)}" style="color:var(--bad)" aria-label="${t('remove')}">✕</button></div>`).join('')||'<p class="muted">—</p>'}</div></div></div>`;
+    bind();
+    const keep=()=>{const v=id=>{const e=$('#'+id);return e?e.value:null};if(v('ac-days')!=null)f.days=+v('ac-days')||30;if(v('ac-pct')!=null)f.percent=Math.min(100,+v('ac-pct')||20);f.code=(v('ac-code')||'').toUpperCase().replace(/[^A-Z0-9-]/g,'');f.max=Math.max(1,+v('ac-max')||1);f.exp=Math.max(0,+v('ac-exp')||0);f.note=v('ac-note')||''};
+    $$('[data-k]').forEach(b=>b.onclick=()=>{keep();f.kind=b.dataset.k;render()});
+    $$('[data-g]').forEach(b=>b.onclick=()=>{keep();const id=b.dataset.g;f.games=f.games.includes(id)?f.games.filter(x=>x!==id):f.games.concat(id);render()});
+    $('#ac-add').onclick=async()=>{keep();if(f.code.length<4){toast(t('ac_short'));return}if(f.kind==='games'&&!f.games.length){toast(t('ac_pickG'));return}
+      const c={code:f.code,kind:f.kind,days:f.kind==='days'?f.days:0,percent:f.kind==='percent'?f.percent:0,games:f.kind==='games'?f.games:[],max_uses:f.max,expires_at:f.exp?new Date(Date.now()+f.exp*864e5).toISOString():null,note:f.note};
+      if(await codeAdd(c)){toast(t('ac_made',c.code));f.code=genCode();f.note='';render()}};
+    $$('[data-cp]').forEach(b=>b.onclick=()=>{try{navigator.clipboard.writeText(b.dataset.cp).then(()=>toast(t('ac_copied')),()=>{})}catch(e){}});
+    $$('[data-del]').forEach(b=>b.onclick=async()=>{if(await confirmBox(t('ac_delQ'),t('remove'))){await codeDel(b.dataset.del);render()}})};
+  render()};
+
+/* a player types a code on the subscription screen */
+async function redeem(code){
+  const sb=ACC.client();
+  if(sb){if(!ACC.user)return{ok:false,err:'login'};try{const {data,error}=await sb.rpc('redeem_code',{p_code:code});if(error)return{ok:false,err:'bad'};if(data&&data.ok)await ACC.pullEnt();return data||{ok:false,err:'bad'}}catch(e){return{ok:false,err:'bad'}}}
+  const Lc=store.get('demo_codes',[]),c=Lc.find(x=>x.code===code);if(!c)return{ok:false,err:'bad'};      // preview: codes made on this device
+  if(c.expires_at&&Date.parse(c.expires_at)<Date.now())return{ok:false,err:'expired'};if((c.uses||0)>=c.max_uses)return{ok:false,err:'used'};
+  const used=store.get('demo_used',[]);if(used.includes(code))return{ok:false,err:'again'};used.push(code);store.set('demo_used',used);c.uses=(c.uses||0)+1;store.set('demo_codes',Lc);
+  if(c.kind==='days')setEnt({until:Math.max(Date.now(),ENT.until||0)+c.days*864e5,plan:'gift',src:'test'});
+  else if(c.kind==='games')setPerks({...PERKS,games:[...new Set([...(PERKS.games||[]),...c.games])]});
+  else setPerks({...PERKS,discount:Math.max(PERKS.discount||0,c.percent)});
+  return{ok:true,kind:c.kind,days:c.days,games:c.games,percent:c.percent}}
+function redeemModal(done){modal(`<form class="stack" id="rdf"><h3>${t('rd_title')}</h3><input type="text" id="rd-c" dir="ltr" maxlength="24" placeholder="PLAYO-XXXXX" autocomplete="off" style="text-transform:uppercase;font-family:monospace;font-size:20px;text-align:center"><p class="small" id="rd-x" style="color:var(--bad);min-height:18px"></p><div class="row" style="justify-content:flex-end"><button type="button" class="btn ghost" data-c>${t('cancel')}</button><button class="btn primary" type="submit">${t('rd_use')}</button></div></form>`,(m,close)=>{
+  $('[data-c]',m).onclick=close;$('#rd-c',m).focus();
+  $('#rdf',m).onsubmit=async e=>{e.preventDefault();const code=$('#rd-c',m).value.trim().toUpperCase();if(!code)return;const r=await redeem(code);
+    if(!r.ok){$('#rd-x',m).textContent=t('rd_e_'+(r.err||'bad'));sfx('bad');return}
+    close();sfx('win');confetti();toast(r.kind==='days'?t('rd_okDays',dN(r.days)):r.kind==='percent'?t('rd_okPct',r.percent):t('rd_okGames',(r.games||[]).map(g=>t('g_'+g)).join('، ')));done&&done()}})}
+
+/* ----- questions ----- */
+const imgFields=q=>`<label class="field">${t('adm_img')}<input type="url" id="f-img" dir="ltr" placeholder="https://…" value="${esc(q.img||'')}"></label>
+    <div class="row wrap" style="gap:8px">${ACC.client()?`<label class="btn sm" style="cursor:pointer">${t('adm_upload')}<input type="file" id="f-up" accept="image/*" hidden></label>`:''}<img id="f-prev" alt="" style="max-height:60px;border-radius:8px;${q.img?'':'display:none'}" src="${esc(q.img||'')}"></div>`;
+SCREENS.admq=async function(p){const bind=await admEnter();if(current!=='admq')return;
+  const st={tab:(p&&p.tab)||'quiz',q:''};
+  const render=async()=>{if(current!=='admq')return;
     const list=BANK[st.tab].filter(q=>!st.q||(q.q+' '+q.cat+' '+(Array.isArray(q.a)?q.a.join(' '):q.a)).toLowerCase().includes(st.q.toLowerCase())).slice().reverse();
     const shown=list.slice(0,150);
-    const conn=sb?(ADM.session?`<div class="row between wrap"><span class="small">${t('adm_where_r')}</span><button class="btn ghost sm" id="adm-out">${t('adm_signout')}</button></div>`
-      :`<form class="stack" id="adm-login" style="gap:8px"><b class="small">${t('adm_login')}</b><div class="fgrid"><input type="email" id="adm-e" placeholder="${t('adm_email')}" autocomplete="username" dir="ltr"><input type="password" id="adm-p" placeholder="${t('adm_pass')}" autocomplete="current-password" dir="ltr"></div><button class="btn sm" type="submit">${t('adm_signin')}</button><p class="small muted">${t('adm_where_l')}</p></form>`)
-      :`<p class="small muted">${t('adm_where_l')}</p>`;
-    app.innerHTML=head(t('admin'),'home')+`<div class="stack">
-      <div class="panel">${conn}</div>
+    app.innerHTML=admHead('admq')+`<div class="stack">
       <div class="tabs"><button data-tab="quiz" class="${st.tab==='quiz'?'on':''}">${t('adm_quiz')} ${BANK.quiz.length}</button><button data-tab="deceit" class="${st.tab==='deceit'?'on':''}">${t('adm_deceit')} ${BANK.deceit.length}</button></div>
       <div class="row wrap"><button class="btn primary sm" id="adm-add">${ic('plus')} ${t('adm_add')}</button><label class="btn sm" style="cursor:pointer">${t('adm_import')}<input type="file" id="adm-file" accept=".xlsx,.xls,.csv" hidden></label><button class="btn ghost sm" id="adm-exp">${t('adm_export')}</button></div>
+      <p class="small muted">${admLive()?t('adm_where_r'):t('adm_where_l')}</p>
       <div class="panel"><b>${t('adm_cats')}</b><p class="small muted" style="margin:2px 0 8px">${t('adm_catsHint')}</p><div class="chips">${[...new Set([...bankCats('quiz'),...bankCats('deceit')])].map(c=>`<button class="chip ${premCat(c)?'on':''}" data-pc="${esc(c)}">${premCat(c)?CROWN+' ':''}${esc(c)}</button>`).join('')}</div></div>
       <input type="text" id="adm-q" placeholder="${t('adm_search')}" value="${esc(st.q)}">
       <div class="panel">${shown.map(q=>`<div class="adm-row"><div class="grow"><div class="row" style="gap:6px;margin-bottom:2px"><span class="src ${q.src}">${t('adm_src_'+q.src)}</span><span class="small muted">${esc(q.cat)}${premCat(q.cat)?' 👑':''}</span>${q.img?'<span class="small">🖼</span>':''}${q.x2?'<span class="small" style="color:var(--accent);font-weight:800">×2</span>':''}</div><b>${esc(q.q)}</b><span class="small" style="color:var(--good)">✓ ${esc(Array.isArray(q.a)?q.a[0]:q.a)}</span> <span class="small muted">${esc(q.kind==='quiz'?q.a.slice(1).join(' · '):q.f.join(' · '))}</span></div>${q.src==='b'?'':`<button class="btn sm ghost" data-ed="${q.id}">${t('adm_edit')}</button>`}</div>`).join('')||`<p class="muted">—</p>`}
       ${list.length>shown.length?`<p class="small muted">${t('adm_more',list.length-shown.length)}</p>`:''}</div></div>`;
+    bind();
     $$('[data-tab]').forEach(b=>b.onclick=()=>{st.tab=b.dataset.tab;render()});
     const qi=$('#adm-q');qi.oninput=()=>{st.q=qi.value;clearTimeout(qi._t);qi._t=setTimeout(()=>{render().then(()=>{const n=$('#adm-q');if(n){n.focus();n.setSelectionRange(n.value.length,n.value.length)}})},250)};
     $('#adm-add').onclick=()=>admForm(st.tab,null,render);
     $$('[data-pc]').forEach(b=>b.onclick=async()=>{const c=b.dataset.pc;if(await setPremCat(c,!premCat(c)))render()});
     $$('[data-ed]').forEach(b=>b.onclick=()=>admForm(st.tab,bankById(b.dataset.ed),render));
-    const lf=$('#adm-login');if(lf)lf.onsubmit=async e=>{e.preventDefault();const {data,error}=await sb.auth.signInWithPassword({email:$('#adm-e').value.trim(),password:$('#adm-p').value});if(error){toast(t('adm_badlogin'));return}ADM.session=data.session;render()};
-    const lo=$('#adm-out');if(lo)lo.onclick=async()=>{await sb.auth.signOut();ADM.session=null;render()};
     $('#adm-file').onchange=async e=>{const f=e.target.files[0];if(!f)return;toast(t('adm_loading'));
       try{const X=await loadXLSX();const wb=X.read(await f.arrayBuffer(),{type:'array'});const got=parseWorkbook(X,wb);const n=got.quiz.length+got.deceit.length;
         if(!n){toast(t('adm_noRows'));return}
@@ -2215,48 +2484,114 @@ SCREENS.admin=function(p){
     $('#adm-exp').onclick=async()=>{if(NATIVE||!ZKC.linkBase){toast(t('adm_dlFail'));return}
       const X=await loadXLSX();const wb=X.utils.book_new();
       X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال','الإجابة الصحيحة','خيار خاطئ 1','خيار خاطئ 2','خيار خاطئ 3','رابط الصورة','نقاط مضاعفة'],...BANK.quiz.filter(q=>q.src!=='b').map(q=>[q.cat,q.q,q.a[0],q.a[1]||'',q.a[2]||'',q.a[3]||'',q.img||'',q.x2?'نعم':''])]),'أسئلة');
-      X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال (ضع ____ مكان الإجابة)','الإجابة الصحيحة','إجابات مقبولة أخرى','خداع 1','خداع 2','خداع 3','خداع 4','خداع 5'],...BANK.deceit.filter(q=>q.src!=='b').map(q=>[q.cat,q.q,q.a,(q.alt||[]).join('، '),...q.f.slice(0,5)])]),'خداع');
+      X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال (ضع ____ مكان الإجابة)','الإجابة الصحيحة','إجابات مقبولة أخرى','خداع 1','خداع 2','خداع 3','خداع 4','خداع 5','رابط الصورة'],...BANK.deceit.filter(q=>q.src!=='b').map(q=>[q.cat,q.q,q.a,(q.alt||[]).join('، '),...[0,1,2,3,4].map(i=>q.f[i]||''),q.img||''])]),'خداع');
       X.writeFile(wb,'playo-questions.xlsx')};
   };render();
 };
-function admForm(kind,q,done){
-  const isNew=!q;q=q||(kind==='quiz'?mkQuiz(newQid(),'عام','',[],20,'l'):mkDeceit(newQid(),'عام','','',[],[],'l'));
+function admForm(kind,q,done,o){
+  o=o||{};const isNew=!q;q=q||(kind==='quiz'?mkQuiz(newQid(),'عام','',[],20,'l'):mkDeceit(newQid(),'عام','','',[],[],'l'));
   const cats=bankCats(kind);
   const body=kind==='quiz'?`<label class="field">${t('adm_q')}<textarea id="f-q" maxlength="200">${esc(q.q)}</textarea></label>
     <label class="field">${t('adm_correct')}<input type="text" id="f-a0" maxlength="60" value="${esc(q.a[0]||'')}"></label>
     ${[1,2,3].map(i=>`<label class="field">${t('adm_wrong',i)}<input type="text" id="f-a${i}" maxlength="60" value="${esc(q.a[i]||'')}"></label>`).join('')}
-    <label class="field">${t('adm_img')}<input type="url" id="f-img" dir="ltr" placeholder="https://…" value="${esc(q.img||'')}"></label>
-    <div class="row wrap" style="gap:8px"><label class="btn sm" style="cursor:pointer">${t('adm_upload')}<input type="file" id="f-up" accept="image/*" hidden></label><img id="f-prev" alt="" style="max-height:60px;border-radius:8px;${q.img?'':'display:none'}" src="${esc(q.img||'')}"></div>
+    ${imgFields(q)}
     <label class="toggle" style="border:0;padding:0"><span>${t('adm_x2')}</span><input type="checkbox" id="f-x2" ${q.x2?'checked':''} style="width:22px;height:22px"></label>`
    :`<label class="field">${t('adm_q')}<textarea id="f-q" maxlength="200" placeholder="${t('adm_dqHint')}">${esc(q.q)}</textarea><span class="small muted" style="font-weight:500">${t('adm_dqHint')}</span></label>
     <label class="field">${t('adm_correct')}<input type="text" id="f-a" maxlength="40" value="${esc(q.a||'')}"></label>
     <label class="field">${t('adm_alt')}<input type="text" id="f-alt" maxlength="200" value="${esc((q.alt||[]).join('، '))}"></label>
-    <label class="field">${t('adm_fakes')}<textarea id="f-f">${esc((q.f||[]).join('\n'))}</textarea></label>`;
+    <label class="field">${t('adm_fakes')}<textarea id="f-f">${esc((q.f||[]).join('\n'))}</textarea></label>${imgFields(q)}`;
   modal(`<form class="stack" id="qf"><h3>${isNew?t('adm_add'):t('adm_edit')} · ${t('adm_'+kind)}</h3>
-    <label class="field">${t('category')}<input type="text" id="f-cat" list="f-cats" maxlength="30" value="${esc(q.cat)}"><datalist id="f-cats">${cats.map(c=>`<option value="${esc(c)}">`).join('')}</datalist></label>${body}
+    ${o.cat?`<input type="hidden" id="f-cat" value="${esc(o.cat)}">`:`<label class="field">${t('category')}<input type="text" id="f-cat" list="f-cats" maxlength="30" value="${esc(q.cat)}"><datalist id="f-cats">${cats.map(c=>`<option value="${esc(c)}">`).join('')}</datalist></label>`}${body}
     <div class="row" style="justify-content:space-between;flex-wrap:wrap">${isNew?'<span></span>':`<button type="button" class="btn ghost sm" id="f-del" style="color:var(--bad)">${t('remove')}</button>`}<div class="row"><button type="button" class="btn ghost" id="f-x">${t('cancel')}</button><button class="btn primary" type="submit">${t('save')}</button></div></div></form>`,(m,close)=>{
     $('#f-x',m).onclick=close;
-    const up=$('#f-up',m);if(up)up.onchange=async e=>{const f=e.target.files[0];if(!f)return;const url=await admUpload(f);if(url){$('#f-img',m).value=url;const pv=$('#f-prev',m);pv.src=url;pv.style.display=''}};
+    const up=$('#f-up',m);if(up)up.onchange=async e=>{const f=e.target.files[0];if(!f)return;const url=await uploadImg(f);if(url){$('#f-img',m).value=url;const pv=$('#f-prev',m);pv.src=url;pv.style.display=''}};
     const fi=$('#f-img',m);if(fi)fi.oninput=()=>{const pv=$('#f-prev',m);pv.src=fi.value;pv.style.display=fi.value?'':'none'};
-    const del=$('#f-del',m);if(del)del.onclick=async()=>{close();if(await confirmBox(t('adm_delQ'),t('remove'))&&await admDelete(q)){toast(t('adm_deleted'));done()}};
-    $('#qf',m).onsubmit=async e=>{e.preventDefault();if(q.src==='r'&&!ADM.session){toast(t('adm_login'));return}const cat=$('#f-cat',m).value;let nq;
+    const del=$('#f-del',m);if(del)del.onclick=async()=>{close();if(await confirmBox(t('adm_delQ'),t('remove'))&&await (o.del||admDelete)(q)){toast(t('adm_deleted'));done()}};
+    $('#qf',m).onsubmit=async e=>{e.preventDefault();if(!o.save&&q.src==='r'&&!admLive()){toast(t('adm_needLogin'));return}const cat=$('#f-cat',m).value;let nq;
       if(kind==='quiz'){nq=mkQuiz(q.id,cat,$('#f-q',m).value,[0,1,2,3].map(i=>$('#f-a'+i,m).value),20,q.src,{img:$('#f-img',m).value,x2:$('#f-x2',m).checked});if(!nq.q||!qn($('#f-a0',m).value)||nq.a.length<2){toast(t('adm_needOpts'));return}}
-      else{nq=mkDeceit(q.id,cat,$('#f-q',m).value,$('#f-a',m).value,$('#f-f',m).value.split('\n'),$('#f-alt',m).value.split(/[,،]/),q.src);if(!nq.q||!nq.a||nq.f.length<3){toast(t('adm_needFakes'));return}}
-      if(await admSave([nq])){close();toast(t('adm_saved'));done()}}})}
+      else{nq=mkDeceit(q.id,cat,$('#f-q',m).value,$('#f-a',m).value,$('#f-f',m).value.split('\n'),$('#f-alt',m).value.split(/[,،]/),q.src);if(!nq.q||!nq.a||nq.f.length<(o.save?1:3)){toast(t('adm_needFakes'));return}nq.img=qn($('#f-img',m).value);if(!/^https:\/\//i.test(nq.img))nq.img=''}
+      if(await (o.save||admSave)([nq])){close();toast(t('adm_saved'));done()}}})}
+
+/* ----- my stats dashboard ----- */
+SCREENS.stats=function(){
+  const P=profile,GS=P.gstats||{},H=P.history||[],now=Date.now(),DY=P.days||{};
+  Object.entries(P.played||{}).forEach(([g,n])=>{if(!GS[g])GS[g]={n,w:0,pts:0,last:0}});   // matches played before per-game stats existed
+  const days=[...Array(14)].map((_,i)=>{const d=new Date(now-(13-i)*864e5).toISOString().slice(0,10);return{d,n:DY[d]!=null?DY[d]:H.filter(h=>new Date(h.at).toISOString().slice(0,10)===d).length}});
+  const mx=Math.max(1,...days.map(x=>x.n)),week=days.slice(7).reduce((a,x)=>a+x.n,0),prevW=days.slice(0,7).reduce((a,x)=>a+x.n,0);
+  const rows=GAMES.filter(g=>g.ready&&GS[g.id]).map(g=>({g,s:GS[g.id]})).sort((a,b)=>b.s.n-a.s.n);
+  const secs=SECTIONS.map(x=>({x,n:rows.filter(r=>r.g.sec===x).reduce((a,r)=>a+r.s.n,0)})).filter(x=>x.n),tot=Math.max(1,secs.reduce((a,x)=>a+x.n,0));
+  const wr=P.matches?Math.round(P.wins/P.matches*100):0;
+  const best=g=>{const k=Object.keys(P.best||{}).filter(k=>k.startsWith(g.id+'_'));if(!k.length)return'—';const v=k.map(x=>P.best[x]);return fmtBest(g.id,g.lower?Math.min(...v):Math.max(...v))};
+  const mp=H.filter(h=>h.place!=null);
+  app.innerHTML=head(t('st_title'),'profile')+`<div class="stack">
+   <div class="kpis">${kp(P.matches,t('matches'))}${kp(P.wins,t('wins'))}${kp(wr+'%',t('winRate'))}${kp(P.points,t('pointsL'))}${kp(t('level',levelOf(P.xp)),t('st_xp'),P.xp+' XP')}${kp(P.dayStreak||0,t('st_streak'))}</div>
+   <div class="panel"><div class="row between wrap"><h3>${t('st_14')}</h3><span class="small" style="font-weight:700;color:${week>=prevW?'var(--good)':'var(--muted)'}">${t('st_week',arN(week,'مباريات','مباراة','matches'))}${prevW?' '+(week>=prevW?'▲':'▼')+Math.abs(Math.round((week-prevW)/prevW*100))+'%':''}</span></div><div class="vbars" style="margin-top:10px">${days.map(x=>`<div title="${x.d}: ${x.n}"><i style="height:${Math.round(x.n/mx*100)}%"></i><span>${x.d.slice(8,10)}</span></div>`).join('')}</div></div>
+   ${secs.length?`<div class="panel"><h3 style="margin-bottom:8px">${t('st_secs')}</h3><div class="stackbar">${secs.map(s=>`<i style="width:${s.n/tot*100}%;background:${TINT[s.x]}"></i>`).join('')}</div><div class="chips" style="margin-top:8px">${secs.map(s=>`<span class="chip"><span class="dot" style="background:${TINT[s.x]}"></span>${t('sec_'+s.x)} ${Math.round(s.n/tot*100)}%</span>`).join('')}</div></div>`:''}
+   <div class="panel"><h3 style="margin-bottom:6px">${t('st_games')}</h3>${rows.length?`<div class="gtable"><div class="gt-h"><span>${t('games')}</span><span>${t('matches')}</span><span>${t('st_wins')}</span><span>${t('best')}</span></div>${rows.map(({g,s})=>`<div><span><b>${t('g_'+g.id)}</b><i class="small muted">${s.last?ago(s.last):''}</i></span><span class="tnum">${s.n}</span><span class="tnum">${s.w||'—'}</span><span class="tnum">${best(g)}</span></div>`).join('')}</div>`:`<p class="muted">${t('noHistory')}</p>`}</div>
+   ${mp.length?`<div class="panel"><h3 style="margin-bottom:6px">${t('st_rooms')}</h3><div class="stats" style="grid-template-columns:repeat(3,minmax(0,1fr))"><div><b class="tnum">${mp.length}</b><span>${t('st_mp')}</span></div><div><b class="tnum">${mp.filter(h=>h.place===0).length}</b><span>${t('st_first')}</span></div><div><b class="tnum">${mp.filter(h=>h.place<3).length}</b><span>${t('st_podium')}</span></div></div></div>`:''}
+  </div>`};
+
+/* ----- own question sets (Premium): saved on the device and, with an account, on the server ----- */
+let USETS=store.get('usets',[]);
+const usets=kind=>USETS.filter(x=>x.kind===kind);
+const saveSets=()=>store.set('usets',USETS);
+const cleanQ=q=>{const c={...q};delete c.src;return c};
+function usetQs(id,n){const x=USETS.find(s=>s.id===id);if(!x)return null;return shuffle(x.qs.slice()).slice(0,n).map(cleanQ)}
+async function pushSet(x){const sb=ACC.client();if(!sb||!ACC.user)return;try{await sb.from('user_sets').upsert({id:x.id,owner:ACC.user.id,name:x.name,kind:x.kind,questions:x.qs.map(cleanQ)})}catch(e){}}
+async function pullSets(){const sb=ACC.client();if(!sb||!ACC.user)return false;
+  try{const {data}=await sb.from('user_sets').select('*').eq('owner',ACC.user.id);if(!data)return false;let ch=false;
+    data.forEach(r=>{const upd=Date.parse(r.updated_at)||0,loc=USETS.find(x=>x.id===r.id);if(!loc){USETS.push({id:r.id,name:r.name,kind:r.kind,qs:r.questions||[],upd});ch=true}else if(upd>(loc.upd||0)+5000){Object.assign(loc,{name:r.name,qs:r.questions||[],upd});ch=true}});
+    if(ch)saveSets();return ch}catch(e){return false}}
+async function delSet(id){USETS=USETS.filter(x=>x.id!==id);saveSets();const sb=ACC.client();if(sb&&ACC.user)try{await sb.from('user_sets').delete().eq('id',id)}catch(e){}}
+const US_MAX=200;
+SCREENS.sets=function(p){const from=p&&p.kind;
+  const render=()=>{
+    app.innerHTML=head(t('us_title'),from?'setup':'profile')+`<div class="stack">
+    <div class="panel"><p style="margin:0">${t('us_about')}</p></div>
+    ${isPrem()?'':`<button class="btn primary block" data-go="premium">${CROWN} ${t('us_prem')}</button>`}
+    <div class="row" style="gap:8px"><button class="btn grow" data-new="quiz">${ic('plus')} ${t('us_newQ')}</button><button class="btn grow" data-new="deceit">${ic('plus')} ${t('us_newD')}</button></div>
+    <div class="panel">${USETS.length?`<div class="list">${USETS.map(x=>`<div class="li"><div class="grow"><b>⭐ ${esc(x.name)}</b><span class="small muted">${t('sec_'+x.kind)} · ${t('us_n',arN(x.qs.length,'أسئلة','سؤالاً','questions'))}</span></div><button class="btn ghost sm" data-ed="${x.id}">${t('adm_edit')}</button><button class="btn primary sm" data-play="${x.id}" ${x.qs.length?'':'disabled'}>${ic('play')}</button></div>`).join('')}</div>`:`<p class="muted">${t('us_none')}</p>`}</div></div>`;
+    if(from){const b=$('.screen-head [data-go]');if(b)b.dataset.p=JSON.stringify({game:from})}
+    $$('[data-new]').forEach(b=>b.onclick=()=>{if(!isPrem()){needPrem();return}const kind=b.dataset.new;
+      modal(`<form class="stack" id="usf"><h3>${t(kind==='quiz'?'us_newQ':'us_newD')}</h3><input type="text" id="us-n" maxlength="30" placeholder="${t('us_name')}"><div class="row" style="justify-content:flex-end"><button type="button" class="btn ghost" data-c>${t('cancel')}</button><button class="btn primary" type="submit">${t('save')}</button></div></form>`,(m,close)=>{
+        $('[data-c]',m).onclick=close;$('#us-n',m).focus();
+        $('#usf',m).onsubmit=e=>{e.preventDefault();const name=qn($('#us-n',m).value);if(!name)return;const x={id:'s'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),name,kind,qs:[],upd:Date.now()};USETS.push(x);saveSets();pushSet(x);close();go('set',{id:x.id,from})}})});
+    $$('[data-ed]').forEach(b=>b.onclick=()=>{if(!isPrem()){needPrem();return}go('set',{id:b.dataset.ed,from})});
+    $$('[data-play]').forEach(b=>b.onclick=()=>{if(!isPrem()){needPrem();return}const x=USETS.find(s=>s.id===b.dataset.play);go('setup',{game:x.kind,uset:x.id})})};
+  render();pullSets().then(ch=>{if(ch&&current==='sets')render()})};
+SCREENS.set=function(p){const x=USETS.find(s=>s.id===(p&&p.id));if(!x){go('sets',{});return}
+  const touch=()=>{x.upd=Date.now();saveSets();pushSet(x)};
+  const opt={cat:x.name,
+    save:async([nq])=>{nq.src='u';nq.cat=x.name;const i=x.qs.findIndex(q=>q.id===nq.id);if(i>=0)x.qs[i]=cleanQ(nq);else{if(x.qs.length>=US_MAX){toast(t('us_full',US_MAX));return false}x.qs.push(cleanQ(nq))}touch();return true},
+    del:async q=>{x.qs=x.qs.filter(o=>o.id!==q.id);touch();return true}};
+  const render=()=>{
+    app.innerHTML=head('⭐ '+esc(x.name),'sets')+`<div class="stack">
+    <div class="row wrap" style="gap:8px"><button class="btn primary sm" id="us-add">${ic('plus')} ${t('adm_add')}</button><button class="btn sm" id="us-ren">${t('us_rename')}</button><button class="btn ghost sm" id="us-del" style="color:var(--bad)">${t('us_delete')}</button><span class="grow"></span><button class="btn sm" id="us-play" ${x.qs.length?'':'disabled'}>${ic('play')} ${t('us_play')}</button></div>
+    <p class="small muted">${t('sec_'+x.kind)} · ${t('us_n',arN(x.qs.length,'أسئلة','سؤالاً','questions'))} · ${t('us_hint')}</p>
+    <div class="panel">${x.qs.map(q=>`<div class="adm-row"><div class="grow">${q.img?'<span class="small">🖼 </span>':''}${q.x2?'<span class="small" style="color:var(--accent);font-weight:800">×2 </span>':''}<b>${esc(q.q)}</b><span class="small" style="color:var(--good)">✓ ${esc(Array.isArray(q.a)?q.a[0]:q.a)}</span> <span class="small muted">${esc(x.kind==='quiz'?q.a.slice(1).join(' · '):(q.f||[]).join(' · '))}</span></div><button class="btn sm ghost" data-q="${q.id}">${t('adm_edit')}</button></div>`).join('')||`<p class="muted">${t('us_empty')}</p>`}</div></div>`;
+    const back=$('.screen-head [data-go]');if(back&&p.from)back.dataset.p=JSON.stringify({kind:p.from});
+    const mk=q=>x.kind==='quiz'?mkQuiz(q.id,q.cat,q.q,q.a,20,'u',q):mkDeceit(q.id,q.cat,q.q,q.a,q.f,q.alt,'u',q);
+    $('#us-add').onclick=()=>admForm(x.kind,null,render,opt);
+    $$('[data-q]').forEach(b=>b.onclick=()=>admForm(x.kind,mk(x.qs.find(q=>q.id===b.dataset.q)),render,opt));
+    $('#us-play').onclick=()=>go('setup',{game:x.kind,uset:x.id});
+    $('#us-ren').onclick=()=>modal(`<form class="stack" id="urf"><input type="text" id="ur-n" maxlength="30" value="${esc(x.name)}"><div class="row" style="justify-content:flex-end"><button type="button" class="btn ghost" data-c>${t('cancel')}</button><button class="btn primary" type="submit">${t('save')}</button></div></form>`,(m,close)=>{
+      $('[data-c]',m).onclick=close;$('#urf',m).onsubmit=e=>{e.preventDefault();const n=qn($('#ur-n',m).value);if(!n)return;x.name=n;x.qs.forEach(q=>q.cat=n);opt.cat=n;touch();close();render()}});
+    $('#us-del').onclick=async()=>{if(await confirmBox(t('us_delQ'),t('us_delete'))){await delSet(x.id);go('sets',{})}}};
+  render()};
 
 /* ----- settings ----- */
 SCREENS.settings=function(){
   const sw=(id,on,lbl)=>`<div class="toggle"><span>${lbl}</span><button class="sw ${on?'on':''}" id="${id}" aria-pressed="${on}" aria-label="${lbl}"></button></div>`;
   app.innerHTML=head(t('settings'))+`<div class="stack">
   <div class="panel stack" style="gap:10px"><h3>${t('account')}</h3>
-    ${ACC.user?`<div class="row between wrap"><span class="small">${t('accSignedIn',esc(ACC.user.email||''))}</span><button class="btn ghost sm" id="acc-out">${t('accSignOut')}</button></div>`
+    ${ACC.real()?`<div class="row between wrap"><span class="small">${t('accSignedIn',esc(ACC.user.email||''))}</span><button class="btn ghost sm" id="acc-out">${t('accSignOut')}</button></div>`
       :`<p class="small muted">${t('accLocal')}</p><button class="btn sm" id="acc-in">${t('accSignIn')}</button>`}
     <button class="btn ${isPrem()?'ghost':'primary'} sm" data-go="premium">${CROWN} ${isPrem()?t('premActive'):t('premGet')}</button></div>
   <div class="panel"><h3 style="margin-bottom:10px">${t('lang')}</h3><div class="seg"><button data-l="ar" class="${!L()?'on':''}">العربية</button><button data-l="en" class="${L()?'on':''}">English</button></div></div>
   <div class="panel">${sw('s-sound',settings.sound,t('sound'))}${sw('s-music',settings.music,t('music'))}</div>
   <div class="panel"><h3 style="margin-bottom:4px">${t('gameplay')}</h3>${sw('s-xt',settings.extraTurn,t('extraTurn'))}</div>
   <div class="panel"><h3 style="margin-bottom:4px">${t('notifSet')}</h3>${['friend','invite','rank','ach','online'].map(k=>sw('n-'+k,settings.notif[k],t('nf_'+k))).join('')}</div>
-  ${store.get('isAdmin',false)?`<button class="btn block" data-go="admin">${t('admin')}</button>`:''}<div class="panel stack" style="gap:8px"><button class="btn ghost block" id="pp">${t('privacy')}</button><button class="btn ghost block" id="tm">${t('terms')}</button><button class="btn ghost block" id="rs" style="color:var(--bad)">${t('reset')}</button></div></div>`;
+  ${store.get('isAdmin',false)||ADM.ok?`<button class="btn block" data-go="admin">${t('admin')}</button>`:''}<div class="panel stack" style="gap:8px"><button class="btn ghost block" id="pp">${t('privacy')}</button><button class="btn ghost block" id="tm">${t('terms')}</button><button class="btn ghost block" id="rs" style="color:var(--bad)">${t('reset')}</button></div></div>`;
   $$('[data-l]').forEach(b=>b.onclick=()=>{settings.lang=b.dataset.l;store.set('settings',settings);applyLang();SCREENS.settings()});
   const ai=$('#acc-in');if(ai)ai.onclick=accountModal;const ao=$('#acc-out');if(ao)ao.onclick=async()=>{await ACC.signOut();SCREENS.settings()};
   const bind=(id,fn)=>{$('#'+id).onclick=()=>{fn();store.set('settings',settings);SCREENS.settings()}};
