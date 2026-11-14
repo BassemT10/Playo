@@ -2591,7 +2591,7 @@ SCREENS.settings=function(){
   <div class="panel">${sw('s-sound',settings.sound,t('sound'))}${sw('s-music',settings.music,t('music'))}</div>
   <div class="panel"><h3 style="margin-bottom:4px">${t('gameplay')}</h3>${sw('s-xt',settings.extraTurn,t('extraTurn'))}</div>
   <div class="panel"><h3 style="margin-bottom:4px">${t('notifSet')}</h3>${['friend','invite','rank','ach','online'].map(k=>sw('n-'+k,settings.notif[k],t('nf_'+k))).join('')}</div>
-  ${store.get('isAdmin',false)||ADM.ok?`<button class="btn block" data-go="admin">${t('admin')}</button>`:''}<div class="panel stack" style="gap:8px"><button class="btn ghost block" id="pp">${t('privacy')}</button><button class="btn ghost block" id="tm">${t('terms')}</button><button class="btn ghost block" id="rs" style="color:var(--bad)">${t('reset')}</button></div></div>`;
+  ${ADM.ok||!ACC.client()||store.get('isAdmin',false)?`<button class="btn block" data-go="admin">${t('admin')}</button>`:''}<div class="panel stack" style="gap:8px"><button class="btn ghost block" id="pp">${t('privacy')}</button><button class="btn ghost block" id="tm">${t('terms')}</button><button class="btn ghost block" id="rs" style="color:var(--bad)">${t('reset')}</button></div></div>`;
   $$('[data-l]').forEach(b=>b.onclick=()=>{settings.lang=b.dataset.l;store.set('settings',settings);applyLang();SCREENS.settings()});
   const ai=$('#acc-in');if(ai)ai.onclick=accountModal;const ao=$('#acc-out');if(ao)ao.onclick=async()=>{await ACC.signOut();SCREENS.settings()};
   const bind=(id,fn)=>{$('#'+id).onclick=()=>{fn();store.set('settings',settings);SCREENS.settings()}};
