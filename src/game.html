@@ -526,7 +526,27 @@ input[type=number],input[type=email],input[type=password]{font:inherit;font-weig
 
 .vbars.money i{background:var(--teal)}
 .ad-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(127,127,127,.16)}.ad-row:last-child{border-bottom:0}.ad-row img{width:96px;height:32px;object-fit:cover;border-radius:6px;background:var(--bg2)}.ad-row .grow{display:flex;flex-direction:column;min-width:0}
-.adm-tabs,.tabs{overflow-x:auto;scrollbar-width:none}
+.adm-tabs,.tabs{overflow-x:auto;scrollbar-width:none}.pic-frame{width:min(260px,70vw);aspect-ratio:1;margin:6px auto 4px;border-radius:22px;background:var(--surface);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pic-frame img{width:100%;height:100%;object-fit:cover}
+.pic-emo{font-size:min(150px,40vw);line-height:1}
+.pic-frame.reveal>*{filter:blur(26px);transform:scale(1.25)}
+.pic-frame.reveal.go>*{filter:blur(0);transform:scale(1);transition:filter var(--rv,16s) linear,transform var(--rv,16s) linear}
+.pic-form{display:flex;gap:8px;margin-top:8px}.pic-form input{flex:1;font-size:18px;min-width:0}
+.pic-ans{text-align:center;font-weight:800;margin:8px 0 0}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}.shake{animation:shake .35s}
+.rx-pad{min-height:min(420px,58vh);border-radius:24px;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.rx-pad.red{background:#C93A3F;color:#fff}.rx-pad.green{background:#1F9D55;color:#fff}
+.rx-pad.red .rx-goal,.rx-pad.green .rx-goal{color:#fff}
+.rx-goal{font-weight:800;color:var(--muted);text-align:center;margin:0}
+.rx-stage{min-height:140px;display:flex;align-items:center;justify-content:center}
+.rx-stage b{font-size:34px}
+.rx-emo{font-size:min(120px,32vw);line-height:1}
+.rx-word{font-size:min(64px,16vw);font-weight:900}
+.rx-pair{display:flex;gap:18px}.rx-pair i{font-style:normal;font-size:min(90px,22vw);background:var(--bg2);border-radius:18px;padding:8px 14px}
+.rx-res{text-align:center;padding:30px 10px;display:flex;flex-direction:column;gap:6px}.rx-res b{font-size:40px;font-family:var(--f-display)}.rx-res.ok b{color:var(--good)}.rx-res.no b{color:var(--bad)}
+.rx-stagecard{text-align:center;padding:50px 10px;display:flex;flex-direction:column;gap:8px}.rx-stagecard b{font-size:30px;font-family:var(--f-display)}
+.rx-times{display:flex;flex-direction:column;gap:4px;margin:8px 0}.rx-times div{display:flex;justify-content:space-between;background:var(--surface);border-radius:12px;padding:8px 12px}.rx-times div.me{outline:2px solid var(--accent)}
+
 </style>
 
 <div class="app" id="app"></div>
@@ -796,6 +816,17 @@ aa_new:['إعلان جديد','New ad'],aa_edit:['تعديل الإعلان','Ed
 aa_off:['متوقف','Paused'],aa_ended:['انتهى','Ended'],aa_soon:['لم يبدأ','Scheduled'],aa_live:['يُعرض الآن','Live'],aa_stats:['{0} مشاهدة · {1} ضغطة · {2}%','{0} views · {1} taps · {2}%'],aa_none:['لا إعلانات بعد.','No ads yet.'],aa_delQ:['حذف هذا الإعلان؟','Delete this ad?'],
 aa_hint:['إعلانات تبيعها مباشرة للمعلنين: تظهر في الشريط السفلي للاعبين المجانيين فقط، أولاً قبل Google AdMob، ولا تظهر أبداً أثناء اللعب.','Ads you sell directly: shown in the bottom strip to free players only, ahead of Google AdMob, and never during a match.'],
 aa_admob:['Google AdMob: يعمل في التطبيق بعد فتح حساب AdMob وإرسال رقم التطبيق ورقم البانر لي. حين لا يوجد إعلان مباشر يظهر إعلان AdMob.','Google AdMob: works in the app once you open an AdMob account and send me the app id and banner id. When no direct ad is live, AdMob fills the strip.'],
+sec_speed:['سرعة','Speed'],sec_speedD:['أول من يجيب أو يضغط يربح','First to answer or tap wins'],
+g_pic:['أسرع جواب بالصورة','Picture rush'],g_rx_green:['الضوء الأخضر','Green light'],g_rx_target:['اصطد الهدف','Catch the target'],g_rx_color:['الكلمة واللون','Word & colour'],g_rx_pair:['التوأم','Twins'],g_picD:['أول من يكتب اسم الصورة','First to type what it is'],g_rx_greenD:['اضغط لحظة الأخضر','Tap the moment it turns green'],g_rx_targetD:['اضغط عند ظهور الهدف','Tap when the target appears'],g_rx_colorD:['اللون يطابق الكلمة؟ اضغط','Colour matches the word? Tap'],g_rx_pairD:['صورتان متطابقتان؟ اضغط','Two matching pictures? Tap'],
+r_pic:[["تظهر صورة (أو سؤال)، اكتب الجواب بأسرع ما يمكن.", "أول لاعب يكتب الجواب الصحيح يأخذ النقطة، ويمكنك المحاولة أكثر من مرة.", "في مستوى «تتضح تدريجياً» تبدأ الصورة ضبابية وتتضح خلال 20 ثانية.", "الأخطاء الإملائية البسيطة مقبولة في الكلمات الطويلة."],["A picture (or question) appears: type the answer as fast as you can.", "The first player to type the right answer takes the point; you can try more than once.", "On “Slow reveal” the picture starts blurred and clears over 20 seconds.", "Small typos are accepted in long words."]],
+r_rx_green:[["الشاشة حمراء: انتظر.", "عندما تصبح خضراء اضغط فوراً. الأسرع يأخذ النقطة.", "الضغط قبل الأخضر يُحسب خطأ.", "3 مراحل، كل مرحلة أسرع من التي قبلها."],["The screen is red: wait.", "When it turns green, tap at once. The fastest takes the point.", "Tapping before green counts as a miss.", "3 stages, each faster than the last."]],
+r_rx_target:[["يظهر الهدف المطلوب في الأعلى، ثم تمر صور متتالية.", "اضغط لحظة ظهور الهدف. الأسرع يأخذ النقطة.", "الضغط على صورة أخرى يُحسب خطأ.", "3 مراحل، كل مرحلة أسرع."],["The target is shown at the top, then pictures flash by.", "Tap the moment the target appears. The fastest takes the point.", "Tapping any other picture counts as a miss.", "3 stages, each faster."]],
+r_rx_color:[["تمر كلمات ألوان بألوان مختلفة.", "اضغط فقط عندما يطابق لون الكلمة معناها (كلمة «أحمر» باللون الأحمر).", "الأسرع يأخذ النقطة، والضغط الخاطئ يُحسب خطأ.", "3 مراحل، كل مرحلة أسرع."],["Colour words flash by in different colours.", "Tap only when the colour matches the word (“Red” written in red).", "The fastest takes the point; a wrong tap counts as a miss.", "3 stages, each faster."]],
+r_rx_pair:[["تمر صورتان جنباً إلى جنب.", "اضغط عندما تتطابق الصورتان. الأسرع يأخذ النقطة.", "الضغط قبل التطابق يُحسب خطأ.", "3 مراحل، كل مرحلة أسرع."],["Two pictures flash side by side.", "Tap when both pictures match. The fastest takes the point.", "Tapping before they match counts as a miss.", "3 stages, each faster."]],
+pc_q:['ما هذا؟','What is this?'],pc_full:['صورة كاملة','Full picture'],pc_reveal:['تتضح تدريجياً','Slow reveal'],pc_type:['اكتب الجواب…','Type the answer…'],pc_send:['إرسال','Send'],pc_wrong:['خطأ، حاول مرة أخرى','Wrong, try again'],
+pc_was:['الجواب: {0}','Answer: {0}'],pc_first:['الأسرع: {0}','Fastest: {0}'],pc_youFirst:['أنت الأسرع! +1','You were first! +1'],pc_none:['لم يعرفها أحد','Nobody got it'],pc_sent:['صحيح! بانتظار النتيجة…','Correct! Waiting…'],pc_sec:['ثانية','s'],
+rx_stage:['المرحلة {0} من {1}','Stage {0} of {1}'],rx_faster:['أسرع من قبل!','Faster now!'],rx_early:['مبكر!','Too early!'],rx_miss:['فاتك','Missed'],rx_youFirst:['أنت الأسرع! +1','You were fastest! +1'],rx_nobody:['لم يضغط أحد في الوقت الصحيح','Nobody tapped in time'],rx_avg:['متوسط سرعتك {0} ملي ثانية','Average {0} ms'],ms:['م.ث','ms'],
+rxg_goal:['اضغط عندما تصبح خضراء','Tap when it turns green'],rxg_wait:['انتظر…','Wait…'],rxg_now:['اضغط!','TAP!'],rxt_goal:['اضغط عند ظهور {0}','Tap when {0} appears'],rxc_goal:['اضغط عندما يطابق اللون الكلمة','Tap when the colour matches the word'],rxp_goal:['اضغط عندما تتطابق الصورتان','Tap when both pictures match'],
 us_hint:['تُحفظ على جهازك وعلى حسابك','Saved on your device and your account'],qzFewQ:['متوفر {0} سؤالاً فقط في الفئات المختارة','Only {0} questions in the chosen categories'],
 tvJoin:['ادخل من هاتفك','Join from your phone'],tvJoinHow:['امسح الرمز بكاميرا الهاتف، أو افتح الرابط وأدخل الكود. لا حاجة لتحميل التطبيق.','Scan the code with your phone camera, or open the link and enter the code. No download needed.'],
 tvWaitP:['بانتظار انضمام اللاعبين…','Waiting for players to join…'],tvFull:['ملء الشاشة','Full screen'],tvEnd:['إنهاء الجولة','End round'],tvEndQ:['إنهاء الجولة للجميع؟','End the round for everyone?'],
@@ -864,7 +895,13 @@ ART.quiz=`<svg viewBox="0 0 120 80"><rect x="22" y="12" width="36" height="26" r
 ART.sudoku=`<svg viewBox="0 0 120 80" font-family="Baloo Bhaijaan 2,sans-serif" font-weight="800" font-size="11" text-anchor="middle"><rect x="31" y="7" width="58" height="66" rx="8" fill="#17223A"/>${[0,1,2].flatMap(r=>[0,1,2].map(c=>`<rect x="${35+c*17}" y="${11+r*20}" width="16" height="19" rx="3" fill="${(r+c)%2?'#1F2E4D':'#25365A'}"/>`)).join('')}${[[0,0,'5'],[1,1,'3'],[2,0,'8'],[0,2,'1'],[2,2,'9'],[1,0,'7']].map(([r,c,n])=>`<text x="${43+c*17}" y="${24+r*20}" fill="${n==='3'?'#FFB547':'#F4F1E8'}">${n}</text>`).join('')}<circle cx="96" cy="62" r="11" fill="#FFB547"/><path d="M96 56v6l4 3" stroke="#2B1900" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>`;
 ART.deceit=`<svg viewBox="0 0 120 80"><path d="M28 30c0-10 14-14 32-14s32 4 32 14c0 14-14 26-32 26S28 44 28 30z" fill="#B47CFF"/><path d="M38 30c3-4 9-4 12 0-3 3-9 3-12 0zM70 30c3-4 9-4 12 0-3 3-9 3-12 0z" fill="#0E1626"/><path d="M48 44c8 5 16 5 24 0" stroke="#0E1626" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="74" y="50" width="30" height="20" rx="6" fill="#FFB547"/><text x="89" y="65" font-size="14" text-anchor="middle" font-weight="800" fill="#2B1900">?</text></svg>`;
 ART.memory=ART.pairs;
-const TINT={quiz:'var(--c-blue)',sudoku:'var(--teal)',deceit:'var(--c-violet)',memory:'var(--c-red)',stones:'var(--c-violet)',numbers:'var(--teal)',pairs:'var(--c-red)',drawing:'var(--c-yellow)',sequence:'var(--c-green)',locations:'var(--c-blue)',vanish:'var(--c-red)',shapes:'var(--c-green)',words:'var(--c-violet)'};
+ART.pic=`<svg viewBox="0 0 120 80"><rect x="30" y="10" width="60" height="46" rx="8" fill="#1F2E4D"/><circle cx="48" cy="26" r="6" fill="#FFD23F"/><path d="M34 52l18-16 12 10 8-6 14 12z" fill="#35D07F"/><rect x="30" y="60" width="44" height="10" rx="5" fill="#F4F1E8"/><rect x="78" y="60" width="12" height="10" rx="5" fill="#FF8A3D"/></svg>`;
+ART.rx_green=`<svg viewBox="0 0 120 80"><rect x="40" y="6" width="40" height="68" rx="12" fill="#17223A"/><circle cx="60" cy="24" r="10" fill="#5A2224"/><circle cx="60" cy="52" r="12" fill="#35D07F"/><circle cx="60" cy="52" r="18" fill="#35D07F" opacity=".25"/></svg>`;
+ART.rx_target=`<svg viewBox="0 0 120 80"><circle cx="60" cy="40" r="28" fill="none" stroke="#FF5E5B" stroke-width="6"/><circle cx="60" cy="40" r="16" fill="none" stroke="#FF5E5B" stroke-width="6"/><circle cx="60" cy="40" r="5" fill="#FF5E5B"/><path d="M92 12L66 36" stroke="#F4F1E8" stroke-width="4" stroke-linecap="round"/></svg>`;
+ART.rx_color=`<svg viewBox="0 0 120 80" font-family="Baloo Bhaijaan 2,sans-serif" font-weight="800" text-anchor="middle"><text x="60" y="36" font-size="22" fill="#3E7BFA">أحمر</text><text x="60" y="64" font-size="22" fill="#E5484D">أحمر</text></svg>`;
+ART.rx_pair=`<svg viewBox="0 0 120 80"><rect x="22" y="16" width="34" height="48" rx="8" fill="#1F2E4D"/><rect x="64" y="16" width="34" height="48" rx="8" fill="#1F2E4D"/><circle cx="39" cy="40" r="10" fill="#FFB547"/><circle cx="81" cy="40" r="10" fill="#FFB547"/></svg>`;
+ART.speed=ART.rx_green;
+const TINT={speed:'var(--c-yellow)',pic:'var(--c-blue)',rx_green:'var(--c-green)',rx_target:'var(--c-red)',rx_color:'var(--c-violet)',rx_pair:'var(--teal)',quiz:'var(--c-blue)',sudoku:'var(--teal)',deceit:'var(--c-violet)',memory:'var(--c-red)',stones:'var(--c-violet)',numbers:'var(--teal)',pairs:'var(--c-red)',drawing:'var(--c-yellow)',sequence:'var(--c-green)',locations:'var(--c-blue)',vanish:'var(--c-red)',shapes:'var(--c-green)',words:'var(--c-violet)'};
 
 /* drawing shapes (100x100) */
 function starPath(){let s='';for(let i=0;i<10;i++){const r=i%2?16:38,a=-Math.PI/2+i*Math.PI/5;s+=(i?'L':'M')+(50+r*Math.cos(a)).toFixed(1)+' '+(53+r*Math.sin(a)).toFixed(1)}return s+'Z'}
@@ -885,8 +922,10 @@ const SOLO_MODES=['solo','friends','online'];
 GAMES.push(
 {id:'quiz',sec:'quiz',ready:true,def:0,modes:['solo','friends','tv','online'],diffs:[{k:'r30',lbl:['qzRound',30],n:30,mult:1.3},{k:'r40',lbl:['qzRound',40],n:40,mult:1.5}],run:()=>gQuiz()},
 {id:'sudoku',sec:'sudoku',ready:true,def:0,modes:SOLO_MODES,lower:true,diffs:[{k:'easy',lbl:'d_easy',holes:36,target:300,mult:1},{k:'normal',lbl:'d_normal',holes:46,target:480,mult:1.4},{k:'hard',lbl:'d_hard',holes:54,target:720,mult:1.8}],run:()=>gSudoku()},
+{id:'pic',sec:'speed',ready:true,def:0,modes:SOLO_MODES,diffs:[{k:'full',lbl:'pc_full',n:15,mult:1.2,reveal:false},{k:'reveal',lbl:'pc_reveal',n:15,mult:1.4,reveal:true}],run:()=>gPic()},
+...['rx_green','rx_target','rx_color','rx_pair'].map(id=>({id,sec:'speed',ready:true,def:0,modes:SOLO_MODES,diffs:[{k:'easy',lbl:'d_easy',mult:1},{k:'normal',lbl:'d_normal',mult:1.3},{k:'hard',lbl:'d_hard',mult:1.6}],run:()=>gReact()})),
 {id:'deceit',sec:'deceit',ready:true,def:1,modes:SOLO_MODES,diffs:[{k:'r5',lbl:['nRounds',5],n:5,mult:1},{k:'r10',lbl:['nRounds',10],n:10,mult:1.3},{k:'r20',lbl:['nRoundsM',20],n:20,mult:1.6},{k:'r40',lbl:['nRoundsM',40],n:40,mult:2}],run:()=>gDeceit()});
-const SECTIONS=['memory','quiz','sudoku','deceit'];
+const SECTIONS=['memory','quiz','speed','sudoku','deceit'];
 const GAME=id=>GAMES.find(g=>g.id===id);
 const fmtTime=s=>{s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
 const PCT_GAMES=['drawing','stones','numbers','pairs'];
@@ -924,12 +963,18 @@ const BUILTIN_DECEIT=[
 ['طعام','سُمّي الهامبرغر نسبة إلى مدينة ____.','هامبورغ','فرانكفورت|ميونخ|برلين|كولونيا','هامبورج'],['علوم','عدد الأسنان الدائمة عند الإنسان البالغ ____.','32','28|30|36|24','اثنان وثلاثون'],
 ['جغرافيا','أكبر محيط في العالم هو المحيط ____.','الهادئ','الأطلسي|الهندي|المتجمد الشمالي|الجنوبي','الهادي|الباسيفيكي']];
 const qn=s=>String(s==null?'':s).trim();
-function mkQuiz(id,cat,q,opts,tm,src,ex){ex=ex||{};return{id,kind:'quiz',cat:qn(cat)||'عام',q:qn(q),a:(opts||[]).map(qn).filter(Boolean),t:20,img:/^https?:\/\//i.test(qn(ex.img))?qn(ex.img):'',aimg:/^https?:\/\//i.test(qn(ex.aimg))?qn(ex.aimg):'',x2:!!ex.x2,src}}
+function mkQuiz(id,cat,q,opts,tm,src,ex){ex=ex||{};return{id,kind:'quiz',cat:qn(cat)||'عام',q:qn(q),a:(opts||[]).map(qn).filter(Boolean),t:20,img:/^https?:\/\//i.test(qn(ex.img))?qn(ex.img):'',aimg:/^https?:\/\//i.test(qn(ex.aimg))?qn(ex.aimg):'',x2:!!ex.x2,emo:qn(ex.emo).slice(0,16),alt:(ex.alt||[]).map(qn).filter(Boolean),src}}
 function mkDeceit(id,cat,q,a,fakes,alt,src,ex){const img=qn(ex&&ex.img);return{id,kind:'deceit',cat:qn(cat)||'عام',q:qn(q),a:qn(a),f:(fakes||[]).map(qn).filter(Boolean),alt:(alt||[]).map(qn).filter(Boolean),img:/^https:\/\//i.test(img)?img:'',aimg:/^https:\/\//i.test(qn(ex&&ex.aimg))?qn(ex.aimg):'',src}}
+const BUILTIN_PIC=[
+['حيوانات','🦒','زرافة'],['حيوانات','🐘','فيل'],['حيوانات','🦁','أسد'],['حيوانات','🐪','جمل','بعير'],['حيوانات','🐧','بطريق'],['حيوانات','🦓','حمار وحشي','حمار الوحش'],['حيوانات','🐢','سلحفاة','سلحفاه'],['حيوانات','🦉','بومة','بومه'],['حيوانات','🐬','دلفين','دولفين'],['حيوانات','🦋','فراشة','فراشه'],
+['فواكه وخضار','🍉','بطيخ','بطيخة'],['فواكه وخضار','🍍','أناناس'],['فواكه وخضار','🍇','عنب'],['فواكه وخضار','🥕','جزر'],['فواكه وخضار','🍋','ليمون','ليمونة'],['فواكه وخضار','🥑','أفوكادو','افوكادو'],['فواكه وخضار','🍓','فراولة','فريز'],['فواكه وخضار','🌽','ذرة','عرنوس'],
+['أعلام','🇱🇧','لبنان'],['أعلام','🇸🇦','السعودية'],['أعلام','🇰🇼','الكويت'],['أعلام','🇪🇬','مصر'],['أعلام','🇯🇵','اليابان'],['أعلام','🇧🇷','البرازيل'],['أعلام','🇹🇷','تركيا'],['أعلام','🇫🇷','فرنسا'],['أعلام','🇦🇪','الإمارات','الامارات'],['أعلام','🇨🇦','كندا'],
+['أشياء','⏰','منبه','ساعة منبه'],['أشياء','🔑','مفتاح'],['أشياء','☂️','مظلة','شمسية'],['أشياء','🎸','جيتار','غيتار'],['أشياء','🚲','دراجة','بسكليت'],['أشياء','✈️','طائرة','طياره'],['أشياء','🚀','صاروخ'],['أشياء','⚽','كرة قدم','كرة','طابة']];
+const picQ=(r,i)=>mkQuiz('bp'+(i+1),r[0],t('pc_q'),[r[2]],20,'b',{emo:r[1],alt:r.slice(3)});
 const BANK={quiz:[],deceit:[]};
 function loadBank(){
   const loc=store.get('bank_local',{quiz:[],deceit:[]}),rem=store.get('bank_remote',{quiz:[],deceit:[]});
-  BANK.quiz=[...BUILTIN_QUIZ.map((r,i)=>mkQuiz('bq'+(i+1),r[0],r[1],r.slice(2),20,'b')),...(rem.quiz||[]).map(x=>({...x,src:'r'})),...(loc.quiz||[]).map(x=>({...x,src:'l'}))];
+  BANK.quiz=[...BUILTIN_QUIZ.map((r,i)=>mkQuiz('bq'+(i+1),r[0],r[1],r.slice(2),20,'b')),...BUILTIN_PIC.map(picQ),...(rem.quiz||[]).map(x=>({...x,src:'r'})),...(loc.quiz||[]).map(x=>({...x,src:'l'}))];
   BANK.deceit=[...BUILTIN_DECEIT.map((r,i)=>mkDeceit('bd'+(i+1),r[0],r[1],r[2],r[3].split('|'),r[4]?r[4].split('|'):[],'b')),...(rem.deceit||[]).map(x=>({...x,src:'r'})),...(loc.deceit||[]).map(x=>({...x,src:'l'}))];
 }
 loadBank();
@@ -941,6 +986,7 @@ async function fetchRemoteBank(){if(!SB_ON())return false;
     store.set('bank_remote',out);loadBank();return true}catch(e){return false}}
 fetchRemoteBank();
 const bankCats=kind=>[...new Set(BANK[kind].map(q=>q.cat))];
+const playCats=kind=>[...new Set(BANK[kind].filter(q=>usableQ(kind,q)).map(q=>q.cat))];
 const bankById=id=>BANK.quiz.find(q=>q.id===id)||BANK.deceit.find(q=>q.id===id);
 const usableQ=(kind,q)=>kind==='quiz'?q.q&&q.a.length>=2:q.q&&q.a&&q.f.length>=1;
 function pickQuestions(kind,n,cat,shareable){
@@ -962,6 +1008,7 @@ function getQs(kind,n){const uq=M.cfg.opts&&M.cfg.opts.uqs;if(uq&&uq.length)retu
   const o=M.cfg.opts||{},qs=pickQuestions(kind,n||QZ.N,o.cats||o.cat,false);if(!qs.length){toast(t('noQ'));M.alive=false;go('home');return null}return qs}
 function hostOpts(cfg,extra){const o={...(cfg.opts||{}),extraTurn:extra};delete o.qids;
   if(o.uqs&&o.uqs.length){if(cfg.game==='quiz')o.x2=qzDoubles(o.uqs,Math.floor(Math.random()*2**31));return o}
+  if(cfg.game==='pic'){o.qids=picPick(GAME('pic').diffs[cfg.diffIdx].n,o.cats,true).map(q=>q.id);return o}
   if(cfg.game==='quiz'||cfg.game==='deceit'){const n=GAME(cfg.game).diffs[cfg.diffIdx].n;const qs=pickQuestions(cfg.game,n,o.cats||o.cat,true);o.qids=qs.map(q=>q.id);if(cfg.game==='quiz')o.x2=qzDoubles(qs,Math.floor(Math.random()*2**31))}return o}
 const normA=s=>String(s||'').trim().toLowerCase().replace(/[ً-ْـ]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/^ال/,'').replace(/[.,!؟?،]/g,'').replace(/\s+/g,' ');
 const isTruth=(q,txt)=>{const n=normA(txt);return !!n&&[q.a,...(q.alt||[])].some(x=>normA(x)===n)};
@@ -1368,7 +1415,7 @@ SCREENS.home=function(){
   const dg=$('#daily-go');if(dg)dg.onclick=()=>{sfx('tap');startMatch(dc)};
   $('#join-btn').onclick=()=>{sfx('tap');joinModal()};const ib=$('#inst-btn');if(ib)ib.onclick=()=>{sfx('tap');installModal()};
   if(NET.nr){NET.leave()}
-  $$('[data-sec]').forEach(b=>b.onclick=()=>{sfx('tap');const x=b.dataset.sec;if(x==='memory')go('games',{sec:'memory'});else go('setup',{game:x,mode:'solo'})});
+  $$('[data-sec]').forEach(b=>b.onclick=()=>{sfx('tap');const x=b.dataset.sec;if(GAMES.filter(g=>g.sec===x).length>1)go('games',{sec:x});else go('setup',{game:x,mode:'solo'})});
   bindGameCards();
   if(pendingJoin)setTimeout(tryPendingJoin,300);
 };
@@ -1388,16 +1435,16 @@ SCREENS.setup=function(p){
   if(gameLocked(g)){go('premium',{back:'games'});return}
   const st={cats:[],uset:p.uset||null,mode:MODES.includes(p.mode)&&!modeLocked(p.mode,g)?p.mode:'solo',diff:diffLocked(g,g.diffs[g.def])?Math.max(0,g.diffs.findIndex(d=>!diffLocked(g,d))):g.def,count:2,names:['','',''],set:'animals',size:2,cat:'all',invite:p.invite||null};
   const render=()=>{
-    app.innerHTML=head(t('g_'+g.id),g.sec==='memory'?'games':'home')+`<div class="stack">
+    app.innerHTML=head(t('g_'+g.id),GAMES.filter(x=>x.sec===g.sec).length>1?'games':'home')+`<div class="stack">
     <div class="setup-art" style="--tint:${TINT[g.id]}">${ART[g.id]}</div>
     <div class="panel"><h3 style="margin-bottom:8px">${t('howTo')}</h3><ul class="rules">${t('r_'+g.id).map(r=>`<li>${r}</li>`).join('')}</ul></div>
     <div class="panel stack"><div><h3 style="margin-bottom:8px">${t('mode')}</h3><div class="modes">${MODES.map(m=>`<button class="mode ${st.mode===m?'on':''}" data-mode="${m}"><b>${t('m_'+m)}${modeLocked(m,g)?lockTag():''}</b><span>${t('m_'+m+'D')}</span></button>`).join('')}</div></div>
-      ${(g.id==='quiz'||g.id==='deceit')&&(st.mode==='friends'||st.mode==='tv')?`<p class="note">${t('qzCapNote',arN(roomCap(g.id),'لاعبين','لاعباً','players'))}${tierOf()==='premium'?'':' · '+t('capUp')}</p>`:''}
+      ${(g.id==='quiz'||g.id==='deceit'||g.sec==='speed')&&(st.mode==='friends'||st.mode==='tv')?`<p class="note">${t('qzCapNote',arN(roomCap(g.id),'لاعبين','لاعباً','players'))}${tierOf()==='premium'?'':' · '+t('capUp')}</p>`:''}
       ${g.diffs.length<2?'':`<div><h3 style="margin-bottom:8px">${t('difficulty')}</h3><div class="chips">${g.diffs.map((d,i)=>`<button class="chip ${st.diff===i?'on':''}" data-diff="${i}">${dlabel(d)}${diffLocked(g,d)?lockTag():''}</button>`).join('')}</div></div>`}
       ${g.id==='pairs'?`<div><h3 style="margin-bottom:8px">${t('imageSet')}</h3><div class="chips">${Object.keys(PAIR_SETS).map(s=>`<button class="chip ${st.set===s?'on':''}" data-set="${s}">${splitEmoji(PAIR_SETS[s])[0]} ${t('set_'+s)}</button>`).join('')}</div>
         <div class="toggle" style="border:0;padding-bottom:0"><span>${t('extraTurn')}</span><button class="sw ${settings.extraTurn?'on':''}" id="xt" aria-pressed="${settings.extraTurn}" aria-label="${t('extraTurn')}"></button></div></div>`:''}
-      ${(g.id==='quiz'||g.id==='deceit')?`<div><h3 style="margin-bottom:2px">${t('category')}</h3><p class="small muted" style="margin:0 0 8px">${t('catsPick')}</p><div class="chips"><button class="chip ${!st.cats.length&&!st.uset?'on':''}" data-cat="all">${t('allCats')}</button>${bankCats(g.id).map(c=>`<button class="chip ${st.cats.includes(c)?'on':''}" data-cat="${esc(c)}">${esc(c)}${catLocked(c)?lockTag():''}</button>`).join('')}</div></div>
-      <div><div class="row between" style="margin-bottom:8px"><h3>${t('us_mine')}</h3><button class="btn ghost sm" data-go="sets" data-p='{"kind":"${g.id}"}'>${t('us_manage')}</button></div>${usets(g.id).length?`<div class="chips">${usets(g.id).map(x=>`<button class="chip ${st.uset===x.id?'on':''}" data-uset="${x.id}">⭐ ${esc(x.name)} · ${x.qs.length}${canSets()?'':lockTag()}</button>`).join('')}</div>`:`<p class="small muted">${t('us_none')}</p>`}</div>`:''}
+      ${(g.id==='quiz'||g.id==='deceit'||g.id==='pic')?`<div><h3 style="margin-bottom:2px">${t('category')}</h3><p class="small muted" style="margin:0 0 8px">${t('catsPick')}</p><div class="chips"><button class="chip ${!st.cats.length&&!st.uset?'on':''}" data-cat="all">${t('allCats')}</button>${(g.id==='pic'?picCats():playCats(g.id)).map(c=>`<button class="chip ${st.cats.includes(c)?'on':''}" data-cat="${esc(c)}">${esc(c)}${catLocked(c)?lockTag():''}</button>`).join('')}</div></div>
+      ${g.id==='pic'?'':`<div><div class="row between" style="margin-bottom:8px"><h3>${t('us_mine')}</h3><button class="btn ghost sm" data-go="sets" data-p='{"kind":"${g.id}"}'>${t('us_manage')}</button></div>${usets(g.id).length?`<div class="chips">${usets(g.id).map(x=>`<button class="chip ${st.uset===x.id?'on':''}" data-uset="${x.id}">⭐ ${esc(x.name)} · ${x.qs.length}${canSets()?'':lockTag()}</button>`).join('')}</div>`:`<p class="small muted">${t('us_none')}</p>`}</div>`}`:''}
       ${st.mode==='local'?`<div><h3 style="margin-bottom:8px">${t('players')}</h3><div class="seg" style="margin-bottom:10px">${[2,3,4].map(n=>`<button data-count="${n}" class="${st.count===n?'on':''}">${t('nPlayers',n)}</button>`).join('')}</div>
         <div class="stack" style="gap:8px"><input type="text" value="${esc(profile.name)}" disabled aria-label="${t('playerN',1)}">${[...Array(st.count-1)].map((_,i)=>`<input type="text" id="pn${i}" maxlength="14" placeholder="${t('playerN',i+2)}" value="${esc(st.names[i])}" data-ni="${i}">`).join('')}</div></div>`:''}
       ${st.mode==='online'?`<div><h3 style="margin-bottom:8px">${t('matchSize')}</h3><div class="seg">${[2,3,4].map(n=>`<button data-size="${n}" class="${st.size===n?'on':''}">${t('nPlayers',n)}</button>`).join('')}</div></div>`:''}
@@ -1863,7 +1910,7 @@ const QZ={N:30,T:20,BASE:10,X2N:3,CAP_FREE:10,CAP_PREM:30};
 const qzLeft=ms=>Math.max(0,Math.min(QZ.T-1,Math.floor(QZ.T-ms/1000)));
 const qzGain=(ms,x2)=>(QZ.BASE+qzLeft(ms))*(x2?2:1);
 const qzBonus=n=>(n>0&&n%6===0?3:0)+(n===10?5:0)+(n===20?10:0);
-const roomCap=gid=>gid==='quiz'?LIM().quizCap:gid==='deceit'?LIM().dcCap:4;
+const roomCap=gid=>gid==='quiz'||gid==='pic'||/^rx_/.test(gid)?LIM().quizCap:gid==='deceit'?LIM().dcCap:4;
 const TRUE_RE=/^(صح|صحيح|true|yes|نعم)$/i;
 /* option order depends only on the match seed and the question number, so every screen shows the same colours */
 function qzOpts(seed,i,q){const o=q.a.map((txt,k)=>({txt,ok:k===0}));
@@ -1910,6 +1957,190 @@ async function renameCat(old,nw){nw=qn(nw).slice(0,30);if(!nw||nw===old)return f
 async function delCat(c,force){if(!force&&ownQs(c).length){toast(t('ac_catNotEmpty'));return false}
   if(admLive())await admClient().from('categories').delete().eq('name',c);else if(ACC.client()&&!force){toast(t('adm_needLogin'));return false}
   CATS_ALL.delete(c);PCATS.delete(c);store.set('cats_all',[...CATS_ALL]);store.set('pcats',[...PCATS]);return true}
+
+/* ========= SPEED SECTION =========
+   pic  — a picture (or question) appears; the first player to TYPE the right answer takes the point.
+          "Reveal" level: the picture starts blurred and clears over 20 s.
+   rx_* — reaction games: the first player to tap at the right moment takes the point.
+          Every match has 3 stages × 4 rounds, each stage faster than the last.
+   Live rooms: the host's device runs the rounds (like the live quiz); each phone measures its own
+   reaction time from the moment the target appeared on that phone, so slow networks don't matter. */
+const PZ={T:20,GRACE:700};
+const RX={STAGES:3,PER:4,LVL:{easy:1,normal:.78,hard:.6}};
+const usablePic=q=>(q.img||q.emo)&&q.a&&q.a[0];
+const picCats=()=>[...new Set(BANK.quiz.filter(usablePic).map(q=>q.cat))];
+function picPick(n,cats,shareable){cats=Array.isArray(cats)?cats:[];
+  const pool=BANK.quiz.filter(q=>usablePic(q)&&(!cats.length||cats.includes(q.cat))&&(!shareable||q.src!=='l'));
+  const seen=new Set(store.get('seen_pic',[])),out=shuffle(pool.filter(q=>!seen.has(q.id))).concat(shuffle(pool.filter(q=>seen.has(q.id)))).slice(0,n);
+  store.set('seen_pic',[...seen,...out.map(q=>q.id)].slice(-300));return out}
+/* typed answers: same letters after normalising; one typo allowed in answers of 5+ letters */
+function lev(a,b){const m=a.length,n=b.length;if(Math.abs(m-n)>1)return 2;const d=[...Array(n+1).keys()];for(let i=1;i<=m;i++){let p=d[0];d[0]=i;for(let j=1;j<=n;j++){const t2=d[j];d[j]=Math.min(d[j]+1,d[j-1]+1,p+(a[i-1]===b[j-1]?0:1));p=t2}}return d[n]}
+const picOk=(q,txt)=>{const n=normA(txt);if(!n)return false;return [q.a[0],...(q.alt||[])].some(x=>{const k=normA(x);return k===n||(k.length>=5&&lev(k,n)<=1)})};
+const picArt=(q,reveal)=>`<div class="pic-frame${reveal?' reveal':''}">${q.img?`<img src="${esc(q.img)}" alt="" onerror="this.remove()">`:`<span class="pic-emo">${q.emo}</span>`}</div>`;
+
+/* ----- reaction rounds: one schedule per round, the same on every phone (seeded) ----- */
+const RX_ITEMS=['🍎','🍌','🍇','🐶','🐱','🐸','⚽','🏀','🎈','⭐','🌙','☀️','🚗','🚌','✈️','🚲','🎁','🔔','🍩','🌵','🐟','🦆','🍄','🎩'];
+const RX_COLORS=[['أحمر','Red','#E5484D'],['أزرق','Blue','#3E7BFA'],['أخضر','Green','#1F9D55'],['أصفر','Yellow','#E8B500'],['بنفسجي','Purple','#8E4EC6']];
+function rxPlan(kind,seed,i,lvl){
+  const R=mulberry((seed^Math.imul(i+1,2654435761))>>>0),stage=Math.floor(i/RX.PER),sp=RX.LVL[lvl]*Math.pow(.85,stage),pick=a=>a[Math.floor(R()*a.length)];
+  if(kind==='rx_green')return{kind,wait:Math.round(1400+R()*3600*Math.max(.6,sp)),stage};
+  const dur=Math.round(820*sp),at=3+Math.floor(R()*6),len=at+3,steps=[];
+  if(kind==='rx_target'){const tg=pick(RX_ITEMS),others=RX_ITEMS.filter(x=>x!==tg);for(let k=0;k<len;k++)steps.push(k===at?tg:pick(others));return{kind,target:tg,steps,dur,at,stage}}
+  if(kind==='rx_color'){for(let k=0;k<len;k++){const w=Math.floor(R()*5);let c=w;if(k!==at)while(c===w)c=Math.floor(R()*5);steps.push([w,c])}return{kind,steps,dur,at,stage}}
+  /* rx_pair: two cards; tap when both show the same picture */
+  for(let k=0;k<len;k++){const a=pick(RX_ITEMS);let b=a;if(k!==at)while(b===a)b=pick(RX_ITEMS);steps.push([a,b])}return{kind,steps,dur,at,stage}}
+function rxStepHtml(p,k){
+  if(p.kind==='rx_target')return`<span class="rx-emo">${p.steps[k]}</span>`;
+  if(p.kind==='rx_color'){const [w,c]=p.steps[k];return`<span class="rx-word" style="color:${RX_COLORS[c][2]}">${L()?RX_COLORS[w][1]:RX_COLORS[w][0]}</span>`}
+  const [a,b]=p.steps[k];return`<span class="rx-pair"><i>${a}</i><i>${b}</i></span>`}
+const rxGoal=p=>p.kind==='rx_green'?t('rxg_goal'):p.kind==='rx_target'?t('rxt_goal',p.target):p.kind==='rx_color'?t('rxc_goal'):t('rxp_goal');
+/* plays one round in box; resolves ms (reaction), -1 (tapped too early / wrong moment) or -2 (no tap) */
+function rxRound(box,p,id){return new Promise(res=>{let done=false,shownAt=0,timer=0,k=0;
+  const fin=v=>{if(done)return;done=true;clearTimeout(timer);box.onpointerdown=null;res(v)};
+  box.innerHTML=`<div class="rx-pad" id="rxpad"><p class="rx-goal">${rxGoal(p)}</p><div class="rx-stage" id="rxst"></div></div>`;
+  const pad=$('#rxpad',box),stg=$('#rxst',box);
+  pad.onpointerdown=e=>{e.preventDefault();if(done)return;if(shownAt){fin(Math.round(performance.now()-shownAt))}else fin(-1)};
+  if(p.kind==='rx_green'){pad.classList.add('red');stg.innerHTML=`<b>${t('rxg_wait')}</b>`;
+    timer=setTimeout(()=>{if(!alive(id))return fin(-2);pad.classList.remove('red');pad.classList.add('green');stg.innerHTML=`<b>${t('rxg_now')}</b>`;shownAt=performance.now();timer=setTimeout(()=>fin(-2),2500)},p.wait);return}
+  const step=()=>{if(done)return;if(!alive(id))return fin(-2);
+    if(k>=p.steps.length){fin(shownAt?-2:-2);return}
+    stg.innerHTML=rxStepHtml(p,k);
+    if(k===p.at)shownAt=performance.now();else if(k===p.at+1&&shownAt){/* the moment passed */shownAt=0;fin(-2);return}
+    k++;timer=setTimeout(step,p.dur)};
+  timer=setTimeout(step,700)})}
+const rxPts=ms=>ms>0?Math.max(1,Math.round((900-Math.min(ms,880))/9)):0;
+const rxMsTxt=v=>v>0?v+' '+t('ms'):v===-1?t('rx_early'):t('rx_miss');
+
+/* ----- shared live-room plumbing for the speed games (host state "bz", players "ba") ----- */
+const BZD={st:null,run:0,skip:false};const BZL={my:null,subs:new Set()};
+const bzNotify=()=>BZL.subs.forEach(f=>{try{f()}catch(e){console.error(e)}});
+const bzState=()=>{if(NET.isHost)return BZD.st;const h=NET.host();return h&&h.bz};
+function bzLive(g,title,onState){
+  const id=M.id;BZL.my={gid:g.gid,a:{}};NET.set({ba:{gid:g.gid,a:{}}});
+  app.innerHTML=`<section class="game qz-live"><header class="gtop"><button class="icon-btn" id="gquit" aria-label="${t('quit')}">${ic('x')}</button><div class="gtitle">${title} <span class="small muted" id="qzn"></span></div><div class="gtimer tnum" id="qzme">0</div></header><div class="qzv" id="qzv"><p class="qz-wait">${t('qzReady')}</p></div></section>`;
+  $('#gquit').onclick=async()=>{if(await confirmBox(t('quitQ'),t('quit'))){M.alive=false;if(NET.isHost)BZD.run++;NET.leave();go('home')}};
+  let key='',lastLb=null,lost=0;
+  const end=lb=>{if(!alive(id))return;lb=lb||lastLb||[];M.players.forEach(p=>{const r=lb.find(x=>x[0]===p.pid);p.score=r?r[1]:0;p.scoreText=p.score});finish({order:M.players.map(p=>({p,val:p.score,txt:String(p.score)}))})};
+  return new Promise(done=>{
+    const stop=()=>{BZL.subs.delete(onCh);clearInterval(wd);if(NET.onTick===onCh)NET.onTick=null};
+    const onCh=()=>{if(!alive(id)){stop();done();return}const st=bzState();if(!st||st.gid!==g.gid)return;if(st.lb)lastLb=st.lb;
+      const k=st.ph+':'+st.i;if(k===key)return;key=k;if(st.ph==='e'){stop();end(st.lb);done();return}onState(st,$('#qzv'))};
+    BZL.subs.add(onCh);NET.onTick=onCh;
+    const wd=setInterval(()=>{if(!alive(id)){stop();done();return}if(NET.isHost)return;if(NET.host())lost=0;else if(!lost)lost=Date.now();else if(Date.now()-lost>15000){toast(t('qzHostLost'));stop();end(lastLb);done()}},1000);
+    onCh()})}
+const bzSend=(g,i,v)=>{BZL.my.a[i]=v;NET.set({ba:{gid:g.gid,a:{...BZL.my.a}}});if(NET.isHost)bzNotify()};
+function bzHelpers(g,run){
+  const live=()=>BZD.run===run&&!!NET.nr&&!!NET.game&&NET.game.gid===g.gid;
+  const pub=st=>{if(!live())return;BZD.st={gid:g.gid,...st};NET.set({bz:BZD.st});bzNotify()};
+  const ans=(pid,i)=>{const a=pid===NET.pid?BZL.my:(NET.pres[pid]||{}).ba;return a&&a.gid===g.gid&&a.a?a.a[i]:undefined};
+  const here=pid=>pid===NET.pid||!!NET.pres[pid];
+  return{live,pub,ans,here}}
+const bzBoard=ps=>ps.slice().sort((a,b)=>b.score-a.score).map(p=>[p.pid,p.score,p.gain,0,0]);
+function bzHead(st,n){const e=$('#qzn');if(e)e.textContent='· '+t('qOf',Math.min(st.i+1,n),n)}
+
+/* ----- picture: first correct typed answer ----- */
+async function gPic(){
+  const g=M.g,d=M.diff,id=M.id;
+  if(M.net)return gPicLive();
+  const o=M.cfg.opts||{},qs=picPick(d.n,o.cats,false);if(!qs.length){toast(t('noQ'));M.alive=false;go('home');return}
+  M.players.forEach(p=>{p.score=0;p.scoreText='0'});M.showTurn=false;gameShell();renderPlayers();
+  const board=$('#gboard'),foot=$('#gfoot'),me=M.players.find(p=>p.isMe);let cor=0;
+  for(let i=0;i<qs.length;i++){const q=qs[i];status(t('qOf',i+1,qs.length));
+    const bots=M.players.filter(p=>p.isBot).map(p=>({p,at:rnd()<p.skill?2500+rnd()*(1.15-p.skill)*15000:1e9}));
+    const r=await picRound(board,foot,q,d.reveal,id,bots.length?Math.min(...bots.map(b=>b.at)):1e9);if(!alive(id))return;
+    let who=null;
+    if(r.ms!=null&&(!bots.length||r.ms<=Math.min(...bots.map(b=>b.at)))){who=me;cor++;const gain=M.solo?Math.max(1,10-Math.floor(r.ms/2000)):1;me.score+=gain;sfx('good')}
+    else{const b=bots.slice().sort((a,b2)=>a.at-b2.at)[0];if(b&&b.at<PZ.T*1000){who=b.p;b.p.score+=1}sfx(r.ms!=null?'good':'bad')}
+    M.players.forEach(p=>p.scoreText=p.score);renderPlayers();
+    foot.innerHTML=`<p class="pic-ans">${t('pc_was',esc(q.a[0]))}${who?' · '+t('pc_first',esc(who.isMe?t('youTag'):who.name)):''}</p>`;
+    $$('.pic-frame',board).forEach(f=>f.classList.remove('reveal'));
+    await sleep(2200);if(!alive(id))return}
+  if(M.solo)finish({perf:cor/qs.length,metric:me.score,line:`${t('correctN',cor+'/'+qs.length)} · ${me.score} ${t('pts')}`});
+  else finish({order:M.players.map(p=>({p,val:p.score,txt:p.score}))})}
+/* one picture on this phone; resolves {ms} when the player typed it right, {ms:null} on time-out / someone else first */
+function picRound(board,foot,q,reveal,id,stopAt,isStopped){return new Promise(res=>{const t0=performance.now();let done=false,raf=0,tries=0;
+  board.innerHTML=`<div class="qcard"><div class="qtimer"><i id="qbar"></i></div><b class="qsec tnum" id="qsec">${PZ.T}</b>${picArt(q,reveal)}<p class="qtext">${esc(q.q)}</p></div>`;
+  foot.innerHTML=`<form class="pic-form" id="pcf" autocomplete="off"><input type="text" id="pci" maxlength="40" placeholder="${t('pc_type')}" dir="auto" enterkeyhint="send"><button class="btn primary" type="submit">${t('pc_send')}</button></form><p class="small" id="pce" style="min-height:18px;text-align:center"></p>`;
+  const inp=$('#pci',foot);setTimeout(()=>{try{inp.focus()}catch(e){}},50);
+  if(reveal){const f=$('.pic-frame',board);f.style.setProperty('--rv',PZ.T*0.8+'s');requestAnimationFrame(()=>f.classList.add('go'))}
+  const fin=v=>{if(done)return;done=true;cancelAnimationFrame(raf);inp.disabled=true;res(v)};
+  $('#pcf',foot).onsubmit=e=>{e.preventDefault();if(done)return;const v=inp.value;if(!v.trim())return;
+    if(picOk(q,v)){fin({ms:Math.round(performance.now()-t0)})}else{tries++;sfx('bad');inp.value='';$('#pce',foot).textContent=t('pc_wrong');inp.classList.remove('shake');void inp.offsetWidth;inp.classList.add('shake')}};
+  const tick=()=>{if(done)return;if(!alive(id))return fin({ms:null});const el=performance.now()-t0,bar=$('#qbar'),sec=$('#qsec');
+    if(bar)bar.style.width=Math.max(0,100-el/PZ.T/10)+'%';if(sec)sec.textContent=Math.max(0,Math.ceil(PZ.T-el/1000));
+    if(el>=PZ.T*1000||el>=stopAt||(isStopped&&isStopped()))return fin({ms:null});raf=requestAnimationFrame(tick)};
+  raf=requestAnimationFrame(tick)})}
+async function pzDirect(g){
+  const run=++BZD.run,qs=roomQs(g.cfg.opts),n=qs.length,{live,pub,ans,here}=bzHelpers(g,run);
+  const ps=g.order.map(x=>({pid:x.pid,score:0,gain:0}));BZD.st=null;await sleep(1500);
+  for(let i=0;i<n;i++){if(!live())return;
+    BZD.skip=false;pub({i,n,ph:'q'});const t0=Date.now();let firstAt=0;
+    await until(()=>{if(!live()||BZD.skip)return true;const got=ps.some(p=>typeof ans(p.pid,i)==='number');if(got&&!firstAt)firstAt=Date.now();
+      return (firstAt&&Date.now()-firstAt>=PZ.GRACE)||ps.every(p=>!here(p.pid)||ans(p.pid,i)!==undefined)},PZ.T*1000+1500);
+    if(!live())return;
+    ps.forEach(p=>p.gain=0);const right=ps.map(p=>({p,ms:ans(p.pid,i)})).filter(x=>typeof x.ms==='number'&&x.ms>=0).sort((a,b)=>a.ms-b.ms);
+    const w=right[0];if(w){w.p.gain=1;w.p.score+=1}
+    pub({i,n,ph:'r',w:w?w.p.pid:null,ms:w?w.ms:null,cnt:right.length,lb:bzBoard(ps)});
+    await until(()=>!live()||BZD.skip,i===n-1?3500:4500)}
+  if(live())pub({i:n,n,ph:'e',lb:bzBoard(ps)})}
+async function gPicLive(){
+  const g=NET.game,d=M.diff,qs=roomQs(M.cfg.opts);if(!qs.length){toast(t('missingQ'));M.alive=false;NET.leave();go('home');return}
+  const who={};g.order.forEach(x=>who[x.pid]=x);const id=M.id;let curI=-1;
+  if(NET.isHost)setTimeout(()=>pzDirect(g),0);
+  return bzLive(g,t('g_pic'),async(st,v)=>{bzHead(st,qs.length);
+    if(st.ph==='q'){curI=st.i;const q=qs[st.i];v.innerHTML=`<div id="pcb"></div><div id="pcfoot"></div>`;
+      const r=await picRound($('#pcb',v),$('#pcfoot',v),q,d.reveal,id,1e12,()=>curI!==st.i||(bzState()||{}).ph!=='q');
+      if(curI===st.i)bzSend(g,st.i,r.ms==null?-2:r.ms);
+      if(r.ms!=null&&curI===st.i){const m=$('#pce',v);if(m){m.textContent=t('pc_sent');m.style.color='var(--good)'}}}
+    else if(st.ph==='r'){const q=qs[st.i],lb=st.lb||[],mi=lb.findIndex(r=>r[0]===NET.pid),sc=$('#qzme');if(sc&&mi>=0)sc.textContent=lb[mi][1];
+      const w=st.w?who[st.w]:null,mine=st.w===NET.pid;
+      v.innerHTML=`<div class="qz-fb ${mine?'ok':w?'no':'na'}"><b>${mine?t('pc_youFirst'):w?t('pc_first',esc(w.nm||'?')):t('pc_none')}</b>${w?`<span class="tnum">${(st.ms/1000).toFixed(1)} ${t('pc_sec')}</span>`:''}</div>
+        <div class="qcard">${picArt(q,false)}<p class="pic-ans">${t('pc_was',esc(q.a[0]))}</p></div><h3>${t('qzBoard')}</h3>${qzBoardHtml(lb,who,NET.pid,10)}`;
+      sfx(mine?'good':'tap')}})}
+
+/* ----- reaction games ----- */
+async function gReact(){
+  const g=M.g,d=M.diff,id=M.id;
+  if(M.net)return gReactLive();
+  const seed=Math.floor(Math.random()*2**31),n=RX.STAGES*RX.PER;
+  M.players.forEach(p=>{p.score=0;p.scoreText='0'});M.showTurn=false;gameShell();renderPlayers();
+  const board=$('#gboard'),foot=$('#gfoot'),me=M.players.find(p=>p.isMe),times=[];
+  for(let i=0;i<n;i++){const p=rxPlan(g.id,seed,i,d.k),stage=p.stage+1;
+    if(i%RX.PER===0){status(t('rx_stage',stage,RX.STAGES));board.innerHTML=`<div class="rx-stagecard"><b>${t('rx_stage',stage,RX.STAGES)}</b><span class="muted">${stage>1?t('rx_faster'):rxGoal(p)}</span></div>`;foot.innerHTML='';await sleep(1600);if(!alive(id))return}
+    status(t('qOf',i+1,n)+' · '+t('rx_stage',stage,RX.STAGES));
+    const ms=await rxRound(board,p,id);if(!alive(id))return;times.push(ms);
+    const bots=M.players.filter(x=>x.isBot).map(b=>({b,ms:rnd()<.08?-1:Math.round(230+(1-b.skill)*420+rnd()*180)}));
+    if(M.solo){me.score+=rxPts(ms)}else{const all=[{b:me,ms},...bots].filter(x=>x.ms>0).sort((a,b2)=>a.ms-b2.ms);if(all[0])all[0].b.score+=1}
+    M.players.forEach(x=>x.scoreText=x.score);renderPlayers();sfx(ms>0?'good':'bad');
+    board.innerHTML=`<div class="rx-res ${ms>0?'ok':'no'}"><b class="tnum">${rxMsTxt(ms)}</b>${M.solo?(ms>0?`<span>+${rxPts(ms)}</span>`:''):bots.map(x=>`<span class="small">${esc(x.b.name)}: ${rxMsTxt(x.ms)}</span>`).join('')}</div>`;
+    await sleep(1300);if(!alive(id))return}
+  const ok=times.filter(x=>x>0),avg=ok.length?Math.round(ok.reduce((a,b)=>a+b,0)/ok.length):0;
+  if(M.solo)finish({perf:me.score/(n*90),metric:me.score,line:`${t('rx_avg',avg)} · ${me.score} ${t('pts')}`});
+  else finish({order:M.players.map(p=>({p,val:p.score,txt:p.score}))})}
+async function rxDirect(g){
+  const run=++BZD.run,n=RX.STAGES*RX.PER,{live,pub,ans,here}=bzHelpers(g,run),lvl=g.cfg.diffIdx;
+  const ps=g.order.map(x=>({pid:x.pid,score:0,gain:0}));BZD.st=null;await sleep(1500);
+  for(let i=0;i<n;i++){if(!live())return;
+    const p=rxPlan(g.cfg.game,g.seed,i,GAME(g.cfg.game).diffs[lvl].k),len=p.kind==='rx_green'?p.wait+3000:700+p.steps.length*p.dur+1500;
+    if(i%RX.PER===0){pub({i,n,ph:'s',stage:p.stage});await until(()=>!live()||BZD.skip,1800)}
+    BZD.skip=false;pub({i,n,ph:'q'});
+    await until(()=>!live()||BZD.skip||ps.every(x=>!here(x.pid)||ans(x.pid,i)!==undefined),len+2500);
+    if(!live())return;
+    ps.forEach(x=>x.gain=0);const tm=ps.map(x=>[x.pid,ans(x.pid,i)===undefined?-2:ans(x.pid,i)]),ok=tm.filter(x=>x[1]>0).sort((a,b)=>a[1]-b[1]);
+    if(ok[0]){const w=ps.find(x=>x.pid===ok[0][0]);w.gain=1;w.score+=1}
+    pub({i,n,ph:'r',w:ok[0]?ok[0][0]:null,tm:tm.sort((a,b)=>(a[1]>0?a[1]:9e9)-(b[1]>0?b[1]:9e9)),lb:bzBoard(ps)});
+    await until(()=>!live()||BZD.skip,i===n-1?3000:3200)}
+  if(live())pub({i:n,n,ph:'e',lb:bzBoard(ps)})}
+async function gReactLive(){
+  const g=NET.game,d=M.diff,id=M.id,who={};g.order.forEach(x=>who[x.pid]=x);
+  if(NET.isHost)setTimeout(()=>rxDirect(g),0);
+  return bzLive(g,t('g_'+g.cfg.game),async(st,v)=>{bzHead(st,st.n);
+    if(st.ph==='s'){const p=rxPlan(g.cfg.game,g.seed,st.i,d.k);v.innerHTML=`<div class="rx-stagecard"><b>${t('rx_stage',p.stage+1,RX.STAGES)}</b><span class="muted">${p.stage?t('rx_faster'):rxGoal(p)}</span></div>`}
+    else if(st.ph==='q'){const p=rxPlan(g.cfg.game,g.seed,st.i,d.k);const ms=await rxRound(v,p,id);if(alive(id)&&(bzState()||{}).i===st.i){bzSend(g,st.i,ms);sfx(ms>0?'tap':'bad');v.innerHTML=`<div class="rx-res ${ms>0?'ok':'no'}"><b class="tnum">${rxMsTxt(ms)}</b><span class="muted">${t('qzWaitAll')}</span></div>`}}
+    else if(st.ph==='r'){const lb=st.lb||[],mi=lb.findIndex(r=>r[0]===NET.pid),sc=$('#qzme');if(sc&&mi>=0)sc.textContent=lb[mi][1];const mine=st.w===NET.pid,w=st.w?who[st.w]:null;
+      v.innerHTML=`<div class="qz-fb ${mine?'ok':w?'no':'na'}"><b>${mine?t('rx_youFirst'):w?t('pc_first',esc(w.nm||'?')):t('rx_nobody')}</b></div>
+        <div class="rx-times">${(st.tm||[]).slice(0,10).map(([pid,ms])=>`<div class="${pid===NET.pid?'me':''}"><span>${esc((who[pid]||{}).av||'🙂')} ${esc((who[pid]||{}).nm||'?')}</span><b class="tnum">${rxMsTxt(ms)}</b></div>`).join('')}</div>
+        <h3>${t('qzBoard')}</h3>${qzBoardHtml(lb,who,NET.pid,8)}`;sfx(mine?'good':'tap')}})}
 
 /* ----- solo / online-with-bots quiz ----- */
 async function gQuiz(){
