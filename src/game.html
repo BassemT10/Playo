@@ -575,6 +575,18 @@ input[type=number],input[type=email],input[type=password]{font:inherit;font-weig
 .wr-bar{display:flex;align-items:center;gap:8px;justify-content:space-between}.wr-bar .seg{flex:1;max-width:260px}.wr-bar b{font-size:20px;min-width:30px;text-align:center}.wr-bar b.low{color:var(--bad)}
 .wr-legend{display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:center;font-weight:800;font-size:13px}.wr-legend span{opacity:.7}.wr-legend span.on{opacity:1;text-decoration:underline}
 
+.tvm .qzv{max-width:1200px;margin:0 auto;font-size:1.25em}.tvm .game .gboard,.tvm .game .gfoot{max-width:1100px;margin-inline:auto}
+.tvm .pic-frame{width:min(44vh,520px)}.tvm .pic-emo{font-size:min(30vh,320px)}
+.tvm .hx-wrap{--w:min(9.5vh,96px)}.tvm .hx-wrap.n4{--w:min(11vh,110px)}
+.hf-tv{display:flex;flex-direction:column;align-items:center;gap:12px}.hf-tvrow{display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:center}.hf-teams.tv{font-size:22px;width:100%}
+.tvm .wr-svg{width:min(78vh,760px)}.wr-legend.tv{font-size:20px}
+.rx-times.tv{max-width:700px;margin:10px auto;font-size:20px}
+.tvm .dopt{font-size:1.2em}.tvm .dq{font-size:clamp(22px,3vw,40px)}
+.sd-riv{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:4px 0 6px;font-size:13px}.sd-riv span{background:var(--surface);border-radius:999px;padding:3px 10px}.sd-riv i{font-style:normal;margin-inline-end:4px}
+.sd-tv{display:flex;flex-direction:column;gap:10px;max-width:1000px;margin:0 auto}.sd-row{display:grid;grid-template-columns:40px minmax(120px,1.2fr) 3fr 150px 60px;align-items:center;gap:12px;background:var(--surface);border-radius:16px;padding:12px 16px;font-size:20px}
+.sd-bar{height:16px;background:var(--bg2);border-radius:8px;overflow:hidden}.sd-bar i{display:block;height:100%;background:var(--teal);border-radius:8px;transition:width .5s}
+.sd-row.fin .sd-bar i{background:var(--good)}.sd-row.out{opacity:.55}.sd-row.out .sd-bar i{background:var(--bad)}.sd-row .mx{color:var(--bad);font-weight:900}
+.tv-final{font-size:22px;text-align:center}
 </style>
 
 <div class="app" id="app"></div>
@@ -866,6 +878,7 @@ r_wall:[['في كل دور: تحرّك خطوة واحدة، أو ضع حائط�
 wr_face10:['مواجهة · 10 حوائط','Facing · 10 walls'],wr_face15:['مواجهة · 15 حائطاً','Facing · 15 walls'],wr_race:['سباق جنباً إلى جنب','Side-by-side race'],wr_four:['4 لاعبين نحو المنتصف','4 players to the centre'],
 wr_move:['تحرّك','Move'],wr_wall:['حائط','Wall'],wr_rotate:['تدوير','Rotate'],wr_place:['ضع الحائط','Place wall'],wr_noWall:['لا يمكن وضعه هنا','Can\'t place it here'],wr_tapMove:['اضغط على نقطة لتتحرك','Tap a dot to move'],wr_tapWall:['اضغط بين الخانات لاختيار مكان الحائط','Tap between cells to choose where the wall goes'],
 wr_yourTurn:['دورك','Your turn'],wr_turnOf:['دور {0}','{0}\'s turn'],wr_won:['🏆 وصل {0} أولاً!','🏆 {0} got there first!'],wr_steps:['{0}','{0}'],wr_winTag:['وصل أولاً','Reached first'],wr_youCol:['لونك مميز بحد أبيض','Your pawn has a white ring'],wr_watch:['تشاهد المباراة','Watching'],
+pc_tvType:['اكتبوا الجواب على هواتفكم','Type the answer on your phones'],rx_tvLook:['انظروا إلى هواتفكم!','Look at your phones!'],dc_tvWrite:['اكتبوا إجابة مخادعة على هواتفكم','Write a fake answer on your phones'],sd_strikes:['الأخطاء {0} من {1}','Mistakes {0} of {1}'],sd_out:['خرجت: {0} أخطاء','You\'re out: {0} mistakes'],sd_outS:['خرج','Out'],sd_tvLive:['السباق جارٍ','Race in progress'],
 us_hint:['تُحفظ على جهازك وعلى حسابك','Saved on your device and your account'],qzFewQ:['متوفر {0} سؤالاً فقط في الفئات المختارة','Only {0} questions in the chosen categories'],
 tvJoin:['ادخل من هاتفك','Join from your phone'],tvJoinHow:['امسح الرمز بكاميرا الهاتف، أو افتح الرابط وأدخل الكود. لا حاجة لتحميل التطبيق.','Scan the code with your phone camera, or open the link and enter the code. No download needed.'],
 tvWaitP:['بانتظار انضمام اللاعبين…','Waiting for players to join…'],tvFull:['ملء الشاشة','Full screen'],tvEnd:['إنهاء الجولة','End round'],tvEndQ:['إنهاء الجولة للجميع؟','End the round for everyone?'],
@@ -960,14 +973,15 @@ const GAMES=[
 {id:'locations',ready:true,def:1,diffs:[{k:'g3',lbl:['nGrid','3×3'],grid:3,mult:1},{k:'g4',lbl:['nGrid','4×4'],grid:4,mult:1.3},{k:'g5',lbl:['nGrid','5×5'],grid:5,mult:1.6}],run:()=>gSequence(true)},
 {id:'vanish',ready:false},{id:'shapes',ready:false},{id:'words',ready:false}].map(g=>({sec:'memory',...g}));
 const SOLO_MODES=['solo','friends','online'];
+const TV_MODES=['solo','friends','tv','online'];
 GAMES.push(
 {id:'quiz',sec:'quiz',ready:true,def:0,modes:['solo','friends','tv','online'],diffs:[{k:'r30',lbl:['qzRound',30],n:30,mult:1.3},{k:'r40',lbl:['qzRound',40],n:40,mult:1.5}],run:()=>gQuiz()},
-{id:'sudoku',sec:'sudoku',ready:true,def:0,modes:SOLO_MODES,lower:true,diffs:[{k:'easy',lbl:'d_easy',holes:36,target:300,mult:1},{k:'normal',lbl:'d_normal',holes:46,target:480,mult:1.4},{k:'hard',lbl:'d_hard',holes:54,target:720,mult:1.8}],run:()=>gSudoku()},
-{id:'huroof',sec:'huroof',ready:true,def:0,modes:SOLO_MODES,diffs:[{k:'b5',lbl:'hf_5',n:5,mult:1.5},{k:'b4',lbl:'hf_4',n:4,mult:1.2}],run:()=>gHuroof()},
-{id:'wall',sec:'wall',ready:true,def:0,modes:SOLO_MODES,diffs:[{k:'face10',lbl:'wr_face10',mode:'face',walls:10,mult:1.3},{k:'face15',lbl:'wr_face15',mode:'face',walls:15,mult:1.4},{k:'race10',lbl:'wr_race',mode:'race',walls:10,mult:1.3},{k:'four',lbl:'wr_four',mode:'four',walls:6,mult:1.6}],run:()=>gWall()},
-{id:'pic',sec:'speed',ready:true,def:0,modes:SOLO_MODES,diffs:[{k:'full',lbl:'pc_full',n:15,mult:1.2,reveal:false},{k:'reveal',lbl:'pc_reveal',n:15,mult:1.4,reveal:true}],run:()=>gPic()},
-...['rx_green','rx_target','rx_color','rx_pair'].map(id=>({id,sec:'speed',ready:true,def:0,modes:SOLO_MODES,diffs:[{k:'easy',lbl:'d_easy',mult:1},{k:'normal',lbl:'d_normal',mult:1.3},{k:'hard',lbl:'d_hard',mult:1.6}],run:()=>gReact()})),
-{id:'deceit',sec:'deceit',ready:true,def:1,modes:SOLO_MODES,diffs:[{k:'r5',lbl:['nRounds',5],n:5,mult:1},{k:'r10',lbl:['nRounds',10],n:10,mult:1.3},{k:'r20',lbl:['nRoundsM',20],n:20,mult:1.6},{k:'r40',lbl:['nRoundsM',40],n:40,mult:2}],run:()=>gDeceit()});
+{id:'sudoku',sec:'sudoku',ready:true,def:0,modes:TV_MODES,lower:true,diffs:[{k:'easy',lbl:'d_easy',holes:36,target:300,mult:1},{k:'normal',lbl:'d_normal',holes:46,target:480,mult:1.4},{k:'hard',lbl:'d_hard',holes:54,target:720,mult:1.8}],run:()=>gSudoku()},
+{id:'huroof',sec:'huroof',ready:true,def:0,modes:TV_MODES,diffs:[{k:'b5',lbl:'hf_5',n:5,mult:1.5},{k:'b4',lbl:'hf_4',n:4,mult:1.2}],run:()=>gHuroof()},
+{id:'wall',sec:'wall',ready:true,def:0,modes:TV_MODES,diffs:[{k:'face10',lbl:'wr_face10',mode:'face',walls:10,mult:1.3},{k:'face15',lbl:'wr_face15',mode:'face',walls:15,mult:1.4},{k:'race10',lbl:'wr_race',mode:'race',walls:10,mult:1.3},{k:'four',lbl:'wr_four',mode:'four',walls:6,mult:1.6}],run:()=>gWall()},
+{id:'pic',sec:'speed',ready:true,def:0,modes:TV_MODES,diffs:[{k:'full',lbl:'pc_full',n:15,mult:1.2,reveal:false},{k:'reveal',lbl:'pc_reveal',n:15,mult:1.4,reveal:true}],run:()=>gPic()},
+...['rx_green','rx_target','rx_color','rx_pair'].map(id=>({id,sec:'speed',ready:true,def:0,modes:TV_MODES,diffs:[{k:'easy',lbl:'d_easy',mult:1},{k:'normal',lbl:'d_normal',mult:1.3},{k:'hard',lbl:'d_hard',mult:1.6}],run:()=>gReact()})),
+{id:'deceit',sec:'deceit',ready:true,def:1,modes:TV_MODES,diffs:[{k:'r5',lbl:['nRounds',5],n:5,mult:1},{k:'r10',lbl:['nRounds',10],n:10,mult:1.3},{k:'r20',lbl:['nRoundsM',20],n:20,mult:1.6},{k:'r40',lbl:['nRoundsM',40],n:40,mult:2}],run:()=>gDeceit()});
 const SECTIONS=['memory','quiz','huroof','speed','wall','sudoku','deceit'];
 const GAME=id=>GAMES.find(g=>g.id===id);
 const fmtTime=s=>{s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
@@ -1226,7 +1240,7 @@ NET.hostStart=function(cfg){
   const extra=cfg.opts&&cfg.opts.extraTurn!=null?cfg.opts.extraTurn:settings.extraTurn;
   const g={gid:Date.now().toString(36)+Math.floor(Math.random()*1e4),seed:Math.floor(Math.random()*2**31),cfg:{game:cfg.game,diffIdx:cfg.diffIdx,opts:{...hostOpts(cfg,extra),tv}},order};
   NET.lastGid=g.gid;NET.set({game:g,lobby:{...cfg,cap,tv}});
-  if(tv){NET.game=g;NET.cache={};NET.used={};NET.res={};NET.gone={};NET.pending=null;go('tv',{g})}else NET.startLocal(g)};
+  if(tv&&g.cfg.game==='quiz'){NET.game=g;NET.cache={};NET.used={};NET.res={};NET.gone={};NET.pending=null;go('tv',{g})}else NET.startLocal(g)};
 NET.startLocal=function(g){
   NET.game=g;NET.cache={};NET.used={};NET.res={};NET.gone={};NET.myActs=[];NET.pending=null;
   NET.set({acts:{gid:g.gid,a:[]},res:null});
@@ -1694,7 +1708,8 @@ function startMatch(cfg){
   if(cfg.mode==='online'||cfg.mode==='friends')(cfg.others||[]).forEach((o,i)=>players.push({id:'b'+i,name:o.name,avatar:o.avatar,col:PCOL[i+1],isBot:true,skill:o.skill||.65,score:0}));
   if(cfg.net){players=cfg.net.order.map((o,i)=>({id:o.pid,pid:o.pid,name:o.nm||'?',avatar:o.av||'🙂',col:PCOL[i%4],isMe:o.pid===NET.pid,remote:o.pid!==NET.pid,score:0}));G=mulberry(cfg.net.seed)}
   else G=Math.random;
-  M={id:Math.random(),alive:true,cfg,g,diff:d,mode:cfg.mode,players,net:!!cfg.net,cur:cfg.net?0:players.length>1?Math.floor(rnd()*players.length):0,solo:players.length===1&&!cfg.net,daily:!!cfg.daily,t0:Date.now()};
+  const tvHost=!!(cfg.net&&cfg.net.cfg&&cfg.net.cfg.opts&&cfg.net.cfg.opts.tv&&NET.isHost);document.body.classList.toggle('tvm',tvHost);
+  M={id:Math.random(),alive:true,tvHost,cfg,g,diff:d,mode:cfg.mode,players,net:!!cfg.net,cur:cfg.net?0:players.length>1?Math.floor(rnd()*players.length):0,solo:players.length===1&&!cfg.net,daily:!!cfg.daily,t0:Date.now()};
   current='game';document.body.classList.remove('has-ad');$('#ad').hidden=true;window.scrollTo(0,0);
   g.run();
 }
@@ -1997,7 +2012,7 @@ const QZ={N:30,T:20,BASE:10,X2N:3,CAP_FREE:10,CAP_PREM:30};
 const qzLeft=ms=>Math.max(0,Math.min(QZ.T-1,Math.floor(QZ.T-ms/1000)));
 const qzGain=(ms,x2)=>(QZ.BASE+qzLeft(ms))*(x2?2:1);
 const qzBonus=n=>(n>0&&n%6===0?3:0)+(n===10?5:0)+(n===20?10:0);
-const roomCap=gid=>gid==='wall'?4:gid==='quiz'||gid==='pic'||gid==='huroof'||/^rx_/.test(gid)?LIM().quizCap:gid==='deceit'?LIM().dcCap:4;
+const roomCap=gid=>gid==='wall'?4:gid==='sudoku'?(isPrem()?4:2):gid==='quiz'||gid==='pic'||gid==='huroof'||/^rx_/.test(gid)?LIM().quizCap:gid==='deceit'?LIM().dcCap:4;
 const TRUE_RE=/^(صح|صحيح|true|yes|نعم)$/i;
 /* option order depends only on the match seed and the question number, so every screen shows the same colours */
 function qzOpts(seed,i,q){const o=q.a.map((txt,k)=>({txt,ok:k===0}));
@@ -2107,7 +2122,7 @@ function bzLive(g,title,onState){
   app.innerHTML=`<section class="game qz-live"><header class="gtop"><button class="icon-btn" id="gquit" aria-label="${t('quit')}">${ic('x')}</button><div class="gtitle">${title} <span class="small muted" id="qzn"></span></div><div class="gtimer tnum" id="qzme">0</div></header><div class="qzv" id="qzv"><p class="qz-wait">${t('qzReady')}</p></div></section>`;
   $('#gquit').onclick=async()=>{if(await confirmBox(t('quitQ'),t('quit'))){M.alive=false;if(NET.isHost)BZD.run++;NET.leave();go('home')}};
   let key='',lastLb=null,lost=0;
-  const end=lb=>{if(!alive(id))return;lb=lb||lastLb||[];M.players.forEach(p=>{const r=lb.find(x=>x[0]===p.pid);p.score=r?r[1]:0;p.scoreText=p.score});finish({order:M.players.map(p=>({p,val:p.score,txt:String(p.score)}))})};
+  const end=lb=>{if(!alive(id))return;lb=lb||lastLb||[];if(M.tvHost){tvFinal($('#qzv'),lb,tvWho(g));return}M.players.forEach(p=>{const r=lb.find(x=>x[0]===p.pid);p.score=r?r[1]:0;p.scoreText=p.score});finish({order:M.players.map(p=>({p,val:p.score,txt:String(p.score)}))})};
   return new Promise(done=>{
     const stop=()=>{BZL.subs.delete(onCh);clearInterval(wd);if(NET.onTick===onCh)NET.onTick=null};
     const onCh=()=>{if(!alive(id)){stop();done();return}const st=bzState();if(!st||st.gid!==g.gid)return;if(st.lb)lastLb=st.lb;
@@ -2174,6 +2189,7 @@ async function gPicLive(){
   const g=NET.game,d=M.diff,qs=roomQs(M.cfg.opts);if(!qs.length){toast(t('missingQ'));M.alive=false;NET.leave();go('home');return}
   const who={};g.order.forEach(x=>who[x.pid]=x);const id=M.id;let curI=-1;
   if(NET.isHost)setTimeout(()=>pzDirect(g),0);
+  if(M.tvHost)return bzLive(g,t('g_pic'),picTv(g,qs,d));
   return bzLive(g,t('g_pic'),async(st,v)=>{bzHead(st,qs.length);
     if(st.ph==='q'){curI=st.i;const q=qs[st.i];v.innerHTML=`<div id="pcb"></div><div id="pcfoot"></div>`;
       const r=await picRound($('#pcb',v),$('#pcfoot',v),q,d.reveal,id,1e12,()=>curI!==st.i||(bzState()||{}).ph!=='q');
@@ -2221,6 +2237,7 @@ async function rxDirect(g){
 async function gReactLive(){
   const g=NET.game,d=M.diff,id=M.id,who={};g.order.forEach(x=>who[x.pid]=x);
   if(NET.isHost)setTimeout(()=>rxDirect(g),0);
+  if(M.tvHost)return bzLive(g,t('g_'+g.cfg.game),rxTv(g,d));
   return bzLive(g,t('g_'+g.cfg.game),async(st,v)=>{bzHead(st,st.n);
     if(st.ph==='s'){const p=rxPlan(g.cfg.game,g.seed,st.i,d.k);v.innerHTML=`<div class="rx-stagecard"><b>${t('rx_stage',p.stage+1,RX.STAGES)}</b><span class="muted">${p.stage?t('rx_faster'):rxGoal(p)}</span></div>`}
     else if(st.ph==='q'){const p=rxPlan(g.cfg.game,g.seed,st.i,d.k);const ms=await rxRound(v,p,id);if(alive(id)&&(bzState()||{}).i===st.i){bzSend(g,st.i,ms);sfx(ms>0?'tap':'bad');v.innerHTML=`<div class="rx-res ${ms>0?'ok':'no'}"><b class="tnum">${rxMsTxt(ms)}</b><span class="muted">${t('qzWaitAll')}</span></div>`}}
@@ -2319,6 +2336,7 @@ async function gHuroofLive(){
   if(NET.isHost)setTimeout(()=>hfDirect(g),0);
   const teamTxt=(st,s)=>{const m=Object.keys(st.sides).filter(p=>st.sides[p]===s);return m.length===1?esc((who[m[0]]||{}).nm||'?'):t('hf_side'+s)};
   const head=st=>`<div class="hf-teams"><span class="t1 ${st.turn===1?'on':''}">● ${teamTxt(st,1)} <i>${t('hf_dir1')}</i></span><span class="t2 ${st.turn===2?'on':''}">● ${teamTxt(st,2)} <i>${t('hf_dir2')}</i></span></div>`;
+  if(M.tvHost)return bzLive(g,t('g_huroof'),hfTv(g));
   return bzLive(g,t('g_huroof'),async(st,v)=>{const mySide=st.sides[NET.pid],sc=$('#qzme');const lb=st.lb||[],mi=lb.findIndex(r=>r[0]===NET.pid);if(sc&&mi>=0)sc.textContent=lb[mi][1];
     const e=$('#qzn');if(e)e.textContent='· '+t('hf_youAre',t('hf_side'+mySide));
     if(st.ph==='pick'){const mine=st.turn===mySide;v.innerHTML=head(st)+hfBoardHtml(st.L,st.own,st.n,mine)+`<p class="pic-ans">${mine?t('hf_pickNow'):t('hf_waitPick',teamTxt(st,st.turn))}</p>`;
@@ -2458,6 +2476,7 @@ async function wrDirect(g){
 async function gWallLive(){
   const g=NET.game,id=M.id,who={};g.order.forEach(x=>who[x.pid]=x);
   if(NET.isHost)setTimeout(()=>wrDirect(g),0);
+  if(M.tvHost)return bzLive(g,t('g_wall'),wrTv(g));
   return bzLive(g,t('g_wall'),async(st,v)=>{const s=st.s,me=st.ids.indexOf(NET.pid),names=st.ids.map(p=>p===NET.pid?t('youTag'):(who[p]||{}).nm||'?');
     const e=$('#qzn');if(e)e.textContent=me>=0?'· '+t('wr_youCol'):'· '+t('wr_watch');
     const legend=`<div class="wr-legend">${st.ids.map((p,i)=>`<span style="color:${WR_COL[i]}" class="${i===s.turn&&s.win<0?'on':''}">● ${esc(names[i])} · ${t('wr_steps',arN(wrDist(s,i),'خطوات','خطوة','steps'))} · 🧱${s.left[i]}</span>`).join('')}</div>`;
@@ -2465,6 +2484,37 @@ async function gWallLive(){
       const mv=await wrTurn($('#wrb',v),s,me,id,()=>{const c=bzState()||{};return c.i!==st.i});
       if(mv&&(bzState()||{}).i===st.i){BZL.my.mv={k:s.k,m:mv};NET.set({ba:{gid:g.gid,a:{},mv:BZL.my.mv}});if(NET.isHost)bzNotify();v.innerHTML=legend+wrSvg(wrApply(s,me,mv)||s,me)}}
     else{v.innerHTML=legend+`<p class="pic-ans">${wrStatus(s,names,me)}</p>`+wrSvg(s,me);if(s.win>=0){sfx(s.win===me?'win':'tap');if(s.win===me&&typeof confetti==='function')confetti()}}})}
+
+/* ----- big-screen host for every live game: the laptop/TV runs the room and shows the play, phones play ----- */
+const tvLb=(lb,who)=>qzBoardHtml(lb||[],who,null,40).replace('qz-lb','qz-lb tv'+((lb||[]).length<=8?' one':''));
+function tvFinal(v,lb,who,txt){sfx('win');setTimeout(()=>typeof confetti==='function'&&confetti(),200);
+  v.innerHTML=`<h2 class="tv-h">${t('qzFinal')}</h2>${txt?`<div class="tv-final">${txt}</div>`:tvLb((lb||[]).map(r=>[r[0],r[1],0,0,0]),who)}<button class="btn primary tv-next" id="tvagain">${ic('redo')} ${t('qzNewRound')}</button>`;
+  $('#tvagain').onclick=()=>{M.alive=false;go('lobby',{})}}
+function tvClock(v,T,st){const t0=performance.now(),k=st.ph+':'+st.i;const tick=()=>{const c=$('#tvclk',v),s2=bzState()||{};if(!c||s2.ph+':'+s2.i!==k)return;const s=Math.max(0,Math.ceil(T-(performance.now()-t0)/1000));c.textContent=s;c.classList.toggle('low',s<=5);if(s>0)requestAnimationFrame(tick)};requestAnimationFrame(tick)}
+const tvWho=g=>{const w={};g.order.forEach(x=>w[x.pid]=x);return w};
+function picTv(g,qs,d){const who=tvWho(g);return(st,v)=>{bzHead(st,qs.length);const q=qs[st.i];
+  if(st.ph==='q'){v.innerHTML=`<div class="tv-center">${picArt(q,d.reveal)}<h1 class="tv-q sm">${esc(q.q)}</h1><p class="tv-sub">${t('pc_tvType')}</p><b class="tv-clock tnum" id="tvclk">${PZ.T}</b></div>`;
+    if(d.reveal){const f=$('.pic-frame',v);f.style.setProperty('--rv',PZ.T*0.8+'s');requestAnimationFrame(()=>f.classList.add('go'))}tvClock(v,PZ.T,st);sfx('turn')}
+  else if(st.ph==='r'){const w=st.w?who[st.w]:null;sfx('good');
+    v.innerHTML=`<div class="tv-center">${picArt(q,false)}<h1 class="tv-q sm">${t('pc_was',esc(q.a[0]))}</h1><b class="tv-big">${w?`${esc(w.av||'')} ${t('pc_first',esc(w.nm||'?'))} · ${(st.ms/1000).toFixed(1)} ${t('pc_sec')}`:t('pc_none')}</b></div><h2 class="tv-h">${t('qzBoard')}</h2>${tvLb(st.lb,who)}`}}}
+function rxTv(g,d){const who=tvWho(g);return(st,v)=>{bzHead(st,st.n);const p=rxPlan(g.cfg.game,g.seed,Math.min(st.i,st.n-1),d.k);
+  if(st.ph==='s')v.innerHTML=`<div class="tv-center"><b class="tv-big">${t('rx_stage',p.stage+1,RX.STAGES)}</b><p class="tv-sub">${p.stage?t('rx_faster'):rxGoal(p)}</p></div>`;
+  else if(st.ph==='q'){sfx('turn');v.innerHTML=`<div class="tv-center"><b class="tv-big">👀 ${t('rx_tvLook')}</b><p class="tv-sub">${rxGoal(p)}</p></div>`}
+  else if(st.ph==='r'){const w=st.w?who[st.w]:null;sfx('good');
+    v.innerHTML=`<div class="tv-center"><b class="tv-big">${w?`${esc(w.av||'')} ${t('pc_first',esc(w.nm||'?'))}`:t('rx_nobody')}</b></div><div class="rx-times tv">${(st.tm||[]).slice(0,12).map(([pid,ms])=>`<div><span>${esc((who[pid]||{}).av||'🙂')} ${esc((who[pid]||{}).nm||'?')}</span><b class="tnum">${rxMsTxt(ms)}</b></div>`).join('')}</div>${tvLb(st.lb,who)}`}}}
+function hfTv(g){const who=tvWho(g);return(st,v)=>{
+  const team=s=>{const m=Object.keys(st.sides).filter(p=>st.sides[p]===s);return m.length===1?esc((who[m[0]]||{}).nm||'?'):t('hf_side'+s)};
+  const head=`<div class="hf-teams tv"><span class="t1 ${st.turn===1?'on':''}">● ${team(1)} <i>${t('hf_dir1')}</i></span><span class="t2 ${st.turn===2?'on':''}">● ${team(2)} <i>${t('hf_dir2')}</i></span></div>`;
+  const board=hfBoardHtml(st.L,st.own,st.n,false);
+  if(st.ph==='pick')v.innerHTML=`<div class="hf-tv">${head}${board}<b class="tv-big">${t('hf_waitPick',team(st.turn))}</b></div>`;
+  else if(st.ph==='q'){const q=bankById(st.q);sfx('turn');v.innerHTML=`<div class="hf-tv two">${head}<div class="hf-tvrow">${board}<div class="tv-center"><span class="hf-letter">${st.L[st.c]}</span><h1 class="tv-q sm">${q?esc(q.q):''}</h1><p class="tv-sub">${t('pc_tvType')}</p><b class="tv-clock tnum" id="tvclk">${HF.T}</b></div></div></div>`;
+    const c=$(`[data-hx="${st.c}"]`,v);if(c)c.classList.add('cur');tvClock(v,HF.T,st)}
+  else if(st.ph==='r'){const q=bankById(st.q),w=st.w?who[st.w]:null;sfx('good');
+    v.innerHTML=`<div class="hf-tv">${head}${board}<b class="tv-big">${w?t('hf_took',esc(w.nm||'?'),st.L[st.c]):t('pc_none')}</b><p class="tv-sub">${q?t('pc_was',esc(q.a[0])):''}</p>${st.ws?`<h1 class="tv-q">${t('hf_won',team(st.ws))}</h1>`:''}</div>`;
+    const c=$(`[data-hx="${st.c}"]`,v);if(c)c.classList.add('cur')}}}
+function wrTv(g){const who=tvWho(g);return(st,v)=>{const s=st.s,names=st.ids.map(p=>(who[p]||{}).nm||'?');
+  v.innerHTML=`<div class="wr-legend tv">${st.ids.map((p,i)=>`<span style="color:${WR_COL[i]}" class="${i===s.turn&&s.win<0?'on':''}">● ${esc(names[i])} · ${t('wr_steps',arN(wrDist(s,i),'خطوات','خطوة','steps'))} · 🧱${s.left[i]}</span>`).join('')}</div><b class="tv-big" style="display:block;text-align:center">${wrStatus(s,names,-1)}</b>${wrSvg(s,-1)}`;
+  if(s.win>=0)sfx('win')}}
 
 /* ----- solo / online-with-bots quiz ----- */
 async function gQuiz(){
@@ -2594,7 +2644,7 @@ function tvLobby(cfg){
   document.body.classList.add('tvm');
   const code=NET.code,link=roomLink(code),cap=cfg.cap||QZ.CAP_FREE,list=NET.players().filter(x=>x.pid!==NET.pid).slice(0,cap);
   const cats=(cfg.opts&&cfg.opts.cats)||[];
-  app.innerHTML=`<section class="tvs tv-lobby"><header class="tv-top"><button class="icon-btn" id="tvx" aria-label="${t('leaveRoom')}">${ic('x')}</button><b>${t('g_quiz')} · ${t('m_tv')}</b><button class="icon-btn" id="tvfs" aria-label="${t('tvFull')}">${FS_IC}</button></header>
+  app.innerHTML=`<section class="tvs tv-lobby"><header class="tv-top"><button class="icon-btn" id="tvx" aria-label="${t('leaveRoom')}">${ic('x')}</button><b>${t('g_'+(cfg.game||'quiz'))} · ${t('m_tv')}</b><button class="icon-btn" id="tvfs" aria-label="${t('tvFull')}">${FS_IC}</button></header>
   <div class="tvl-grid"><div class="tvl-join panel"><h2>${t('tvJoin')}</h2><div class="tv-qr" id="tvqr"></div><div class="room-code tnum">${code}</div><code class="small" dir="ltr">${esc(link)}</code><p class="small muted">${t('tvJoinHow')}</p>
     <div class="row"><button class="btn sm" style="flex:1" id="cp-link">${ic('copy')} ${t('copyLink')}</button>${NATIVE?`<button class="btn sm" style="flex:1" id="nshare">${ic('share')} ${t('shareRoom')}</button>`:`<a class="btn sm" style="flex:1;text-decoration:none;background:#1F8F5C" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(t('app')+' — '+t('roomCode')+': '+code+'\n'+link)}">${ic('share')} ${t('shareWA')}</a>`}</div></div>
    <div class="tvl-players panel"><div class="row between"><h2>${t('players')}</h2><b class="tnum tv-count">${list.length}/${cap}</b></div>
@@ -2658,13 +2708,20 @@ function sudokuMake(holes){const g=Array(81).fill(0);
   for(const i of gshuffle([...Array(81).keys()])){if(removed>=holes)break;const v=g[i];g[i]=0;if(sdkCount(g,2)!==1)g[i]=v;else removed++}
   return{puz:g,sol}}
 async function gSudoku(){
+  if(M.tvHost)return sdTv();
   const id=M.id,d=M.diff;M.players.forEach(p=>{p.score=0;p.scoreText='–'});M.showTurn=false;gameShell();renderPlayers();
   const board=$('#gboard'),foot=$('#gfoot'),me=M.players.find(p=>p.isMe)||M.players[0];
   status(t('sdkGen'));await sleep(40);if(!alive(id))return;
   const {puz,sol}=sudokuMake(d.holes);M.t0=Date.now();
   const cur=puz.slice();let sel=-1,mistakes=0,done=false;
   const left=()=>cur.reduce((a,v,i)=>a+(v!==sol[i]?1:0),0);
-  const say=()=>status(`${t('sdkLeft',left())} · ${t('sdkMist',mistakes)}${mistakes?` (+${mistakes*15}s)`:''}`);
+  const race=!M.solo,SD_MAX=3;
+  const say=()=>status(race?`${t('sdkLeft',left())} · ${t('sd_strikes',mistakes,SD_MAX)}`:`${t('sdkLeft',left())} · ${t('sdkMist',mistakes)}${mistakes?` (+${mistakes*15}s)`:''}`);
+  const pubP=(extra)=>{if(M.net)NET.set({sdp:{gid:NET.game.gid,l:left(),m:mistakes,...(extra||{})}})};
+  if(M.net){board.insertAdjacentHTML('beforebegin','<div class="sd-riv" id="sdr"></div>');pubP();
+    const riv=()=>{if(!alive(id))return clearInterval(rv);const e=$('#sdr');if(!e)return;e.innerHTML=M.players.filter(p=>p.remote).map(p=>{const x=(NET.pres[p.id]||{}).sdp;const ok=x&&x.gid===NET.game.gid;
+      return`<span><i>${esc(p.avatar)}</i>${esc(p.name)} <b class="tnum">${!ok?'…':x.out?t('sd_outS'):x.f?'✓ '+fmtTime(x.f):x.l}</b>${ok&&x.m?' '+'✗'.repeat(Math.min(3,x.m)):''}</span>`}).join('')};
+    var rv=setInterval(riv,800);riv()}
   const draw=()=>{const sv=sel>=0?cur[sel]:0,sr=sel>=0?(sel/9)|0:-1,sc=sel>=0?sel%9:-1,sb=sel>=0?((sr/3)|0)*3+((sc/3)|0):-1;
     board.innerHTML=`<div class="sdk">${cur.map((v,i)=>{const r=(i/9)|0,c=i%9,b=((r/3)|0)*3+((c/3)|0);
       const cls=[puz[i]?'giv':'',c===8?'c8':c%3===2?'b3':'',r===8?'r8':r%3===2?'r3':'',i===sel?'sel':(sv&&v===sv?'same':(sel>=0&&(r===sr||c===sc||b===sb)?'hl':'')),v&&v!==sol[i]?'err':''].join(' ');
@@ -2674,22 +2731,42 @@ async function gSudoku(){
   const put=n=>{if(done||sel<0||puz[sel]||!alive(id))return;if(n===0){if(cur[sel]!==sol[sel])cur[sel]=0;draw();return}
     if(cur[sel]===sol[sel])return;cur[sel]=n;
     if(n!==sol[sel]){mistakes++;sfx('bad')}else sfx('pad',n);
-    draw();say();if(!left())finishSdk()};
+    draw();say();pubP();if(race&&mistakes>=SD_MAX){outSdk();return}if(!left())finishSdk()};
   board.onclick=e=>{const b=e.target.closest('[data-i]');if(!b||done)return;sel=+b.dataset.i;sfx('tap');draw()};
   foot.onclick=e=>{const b=e.target.closest('[data-n]');if(!b||b.disabled)return;put(+b.dataset.n)};
   const onKey=e=>{if(!alive(id)){removeEventListener('keydown',onKey);return}if(/^[1-9]$/.test(e.key))put(+e.key);else if(e.key==='Backspace'||e.key==='Delete'||e.key==='0')put(0);
     else if(e.key.startsWith('Arrow')&&sel>=0){const dir=document.documentElement.dir==='rtl'?-1:1;sel=Math.max(0,Math.min(80,sel+({ArrowLeft:-dir,ArrowRight:dir,ArrowUp:-9,ArrowDown:9}[e.key]||0)));draw()}};
   addEventListener('keydown',onKey);
   draw();say();
+  async function outSdk(){done=true;removeEventListener('keydown',onKey);sfx('lose');pubP({out:1});
+    const total=100000+left();me.score=total;me.scoreText=t('sd_outS');status(t('sd_out',SD_MAX));
+    M.players.filter(p=>p.isBot).forEach(p=>{p.score=Math.round(d.target*(1.75-p.skill)*(.8+rnd()*.4));p.scoreText=fmtTime(p.score)});renderPlayers();
+    await sleep(1200);if(!alive(id))return;
+    if(M.net){NET.setRes(total,t('sd_outS'));if(!await waitRemotes(id,v=>v>=100000?t('sd_outS'):fmtTime(v)))return}
+    finish({order:M.players.map(p=>({p,val:outVal(p,-p.score),txt:p.score>=100000?t('sd_outS'):fmtTime(p.score)}))})}
   async function finishSdk(){done=true;removeEventListener('keydown',onKey);sfx('win');
-    const total=Math.round((Date.now()-M.t0)/1000)+mistakes*15;me.score=total;me.scoreText=fmtTime(total);
+    const total=Math.round((Date.now()-M.t0)/1000)+(race?0:mistakes*15);pubP({f:total});me.score=total;me.scoreText=fmtTime(total);
     M.players.filter(p=>p.isBot).forEach(p=>{p.score=Math.round(d.target*(1.75-p.skill)*(.8+rnd()*.4));p.scoreText=fmtTime(p.score)});renderPlayers();
     await sleep(700);if(!alive(id))return;
-    if(M.net){NET.setRes(total,fmtTime(total));if(!await waitRemotes(id,v=>fmtTime(v)))return}
+    if(M.net){NET.setRes(total,fmtTime(total));if(!await waitRemotes(id,v=>v>=100000?t('sd_outS'):fmtTime(v)))return}
     if(M.solo)finish({perf:clamp(d.target/total,0,1),metric:total,line:`${fmtTime(total)} · ${t('sdkMist',mistakes)}`});
-    else finish({order:M.players.map(p=>({p,val:outVal(p,-p.score),txt:fmtTime(p.score)}))});
+    else finish({order:M.players.map(p=>({p,val:outVal(p,-p.score),txt:p.score>=100000?t('sd_outS'):fmtTime(p.score)}))});
   }
 }
+
+/* sudoku on the TV: everyone's progress live, then the final order */
+async function sdTv(){const id=M.id,g=NET.game,holes=M.diff.holes;
+  app.innerHTML=`<section class="game qz-live"><header class="gtop"><button class="icon-btn" id="gquit" aria-label="${t('quit')}">${ic('x')}</button><div class="gtitle">${t('g_sudoku')} · ${t('m_tv')}</div><div class="gtimer tnum" id="sdclk">0:00</div></header><div class="qzv" id="qzv"></div></section>`;
+  $('#gquit').onclick=async()=>{if(await confirmBox(t('quitQ'),t('quit'))){M.alive=false;NET.leave();go('home')}};
+  const v=$('#qzv'),t0=Date.now(),info=p=>{const x=(NET.pres[p.id]||{}).sdp;return x&&x.gid===g.gid?x:null};
+  while(alive(id)){const rows=M.players.map(p=>({p,x:info(p),gone:!NET.pres[p.id]}));
+    const doneAll=rows.every(r=>r.gone||(r.x&&(r.x.out||r.x.f)));const ck=$('#sdclk');if(ck)ck.textContent=fmtTime(Math.round((Date.now()-t0)/1000));
+    const rank=rows.slice().sort((a,b)=>{const va=a.x?(a.x.f?a.x.f:a.x.out?1e5+a.x.l:5e4+a.x.l):9e9,vb=b.x?(b.x.f?b.x.f:b.x.out?1e5+b.x.l:5e4+b.x.l):9e9;return va-vb});
+    v.innerHTML=`<h2 class="tv-h">${doneAll?t('qzFinal'):t('sd_tvLive')}</h2><div class="sd-tv">${rank.map((r,k)=>{const x=r.x||{l:holes,m:0},pct=Math.round((1-x.l/holes)*100);
+      return`<div class="sd-row ${x.out?'out':x.f?'fin':''}"><b class="tnum">${k+1}</b><span class="nm">${esc(r.p.avatar)} ${esc(r.p.name)}</span><div class="sd-bar"><i style="width:${x.f?100:pct}%"></i></div><span class="st tnum">${x.out?t('sd_outS'):x.f?'✓ '+fmtTime(x.f):t('sdkLeft',x.l)}</span><span class="mx">${'✗'.repeat(Math.min(3,x.m||0))}</span></div>`}).join('')}</div>
+      ${doneAll?`<button class="btn primary tv-next" id="tvagain">${ic('redo')} ${t('qzNewRound')}</button>`:''}`;
+    if(doneAll){sfx('win');if(typeof confetti==='function')confetti();$('#tvagain').onclick=()=>{M.alive=false;go('lobby',{})};return}
+    await sleep(800)}}
 
 /* ---------- Deception ---------- */
 const DC={TRUTH:3,FOOL:1,CAP_FREE:8,CAP_PREM:12};
@@ -2717,7 +2794,7 @@ async function deceitSolo(id,qs){
 /* Multiplayer: the host (room creator, or this device when playing virtual players) runs the round:
    collects lies, builds the options, collects picks, scores, and publishes one state everyone renders. */
 async function deceitMulti(id,qs){
-  const board=$('#gboard'),me=M.players.find(p=>p.isMe)||M.players[0],host=!M.net||NET.isHost;
+  const board=$('#gboard'),me=M.players.find(p=>p.isMe)||(M.tvHost?{id:'__tv',name:'TV'}:M.players[0]),host=!M.net||NET.isHost;
   const gid=M.net?NET.game.gid:'local';
   const nameOf=pid=>{const p=M.players.find(x=>x.id===pid);return p?p.name:'?'};
   const myFake={},myPick={};let S=null,lastKey='',deadline=0;
@@ -2729,16 +2806,16 @@ async function deceitMulti(id,qs){
     const qh=`<div class="qcard">${S.stage==='reveal'?'':'<div class="qtimer"><i id="qbar"></i></div>'}${S.stage==='reveal'&&q.aimg?qzAImg(q):qzImg(q)}<p class="dq">${dqHtml(q)}</p></div>`;
     board.onclick=null;
     if(S.stage==='write'){status(t('dcRound',S.q+1,qs.length));
-      if(myFake[S.q]==null){
+      if(myFake[S.q]==null&&!M.tvHost){
         board.innerHTML=qh+`<form class="stack" id="dcf" style="margin-top:12px;gap:8px"><p class="small muted" style="text-align:center">${t('dcWrite')}</p><div class="wbox"><input type="text" id="dci" maxlength="40" autocomplete="off" placeholder="${t('dcWritePh')}"><button class="btn primary" type="submit">${t('dcSend')}</button></div><p class="small" id="dce" style="color:var(--bad);min-height:18px"></p></form>`;
         $('#dcf').onsubmit=e=>{e.preventDefault();const v=$('#dci').value.trim();if(!v)return;if(isTruth(q,v)){$('#dce').textContent=t('dcTooTrue');sfx('bad');return}
           myFake[S.q]=v.slice(0,40);sfx('tap');submit();lastKey='';render()};
         setTimeout(()=>{const i=$('#dci');if(i)i.focus()},60)}
-      else board.innerHTML=qh+`<p class="note" style="margin-top:12px;text-align:center">${t('dcWaiting',waiting||'…')}</p>`}
+      else board.innerHTML=qh+`${M.tvHost?`<p class="tv-sub" style="text-align:center">${t('dc_tvWrite')}</p>`:''}<p class="note" style="margin-top:12px;text-align:center">${t('dcWaiting',waiting||'…')}</p>`}
     else if(S.stage==='pick'){status(t('dcRound',S.q+1,qs.length));
       const mine=S.by.map(b=>Array.isArray(b)&&b.includes(me.id)),picked=myPick[S.q];
       board.innerHTML=qh+`<p class="small muted" style="text-align:center;margin:12px 0 8px">${picked!=null?t('dcWaiting',waiting||'…'):t('dcPick')}</p><div class="dopts">${S.opts.map((o,k)=>`<button class="dopt ${mine[k]?'mine':''} ${picked===k?'picked':''}" data-k="${k}" ${mine[k]||picked!=null?'disabled':''}><span>${esc(o)}</span>${mine[k]?`<span class="who"><span class="tag">${t('dcYours')}</span></span>`:''}</button>`).join('')}</div>`;
-      if(picked==null)board.onclick=e=>{const b=e.target.closest('.dopt');if(!b||b.disabled||myPick[S.q]!=null)return;myPick[S.q]=+b.dataset.k;sfx('tap');submit();lastKey='';render()}}
+      if(picked==null&&!M.tvHost)board.onclick=e=>{const b=e.target.closest('.dopt');if(!b||b.disabled||myPick[S.q]!=null)return;myPick[S.q]=+b.dataset.k;sfx('tap');submit();lastKey='';render()}}
     else if(S.stage==='reveal'){
       const picks=S.picks||{};
       board.innerHTML=qh+`<div class="dopts" style="margin-top:12px">${S.opts.map((o,k)=>{const by=S.by[k];
@@ -2748,9 +2825,10 @@ async function deceitMulti(id,qs){
       const mp=picks[me.id];let line=mp==null?t('dcNoPick'):S.by[mp]===null?t('dcGotTruth',DC.TRUTH):Array.isArray(S.by[mp])?t('dcGotFooled',S.by[mp].map(nameOf).join('، ')):t('qWrong');
       const fooled=Object.keys(picks).filter(pid=>pid!==me.id&&Array.isArray(S.by[picks[pid]])&&S.by[picks[pid]].includes(me.id)).map(nameOf);
       if(fooled.length)line+=' · '+t('dcFooled',fooled.join('، '),fooled.length*DC.FOOL);
-      status(esc(line));sfx(((S.gain||{})[me.id]||0)>0?'good':'turn')}
+      if(M.tvHost)status(t('dcRound',S.q+1,qs.length));else status(esc(line));sfx(((S.gain||{})[me.id]||0)>0?'good':'turn')}
   }
   function endGame(){if(!alive(id))return;NET.onTick=null;M.players.forEach(p=>{p.score=(S&&S.sc&&S.sc[p.id])||0;p.scoreText=p.score});
+    if(M.tvHost){const w={};M.players.forEach(p=>w[p.id]={nm:p.name,av:p.avatar});tvFinal(board,M.players.slice().sort((a,b)=>b.score-a.score).map(p=>[p.id,p.score]),w);return}
     finish({order:M.players.map(p=>({p,val:outVal(p,p.score),txt:p.score}))})}
 
   /* ----- guest: render what the host publishes, send own lie/pick through presence ----- */
