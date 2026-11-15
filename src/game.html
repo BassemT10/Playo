@@ -587,6 +587,9 @@ input[type=number],input[type=email],input[type=password]{font:inherit;font-weig
 .sd-bar{height:16px;background:var(--bg2);border-radius:8px;overflow:hidden}.sd-bar i{display:block;height:100%;background:var(--teal);border-radius:8px;transition:width .5s}
 .sd-row.fin .sd-bar i{background:var(--good)}.sd-row.out{opacity:.55}.sd-row.out .sd-bar i{background:var(--bad)}.sd-row .mx{color:var(--bad);font-weight:900}
 .tv-final{font-size:22px;text-align:center}
+.tv-end{max-width:900px;margin:0 auto;padding:24px 16px;text-align:center}.tv-ranks{display:grid;gap:12px;margin:20px 0}.tv-end .tv-next{margin:0 auto}
+.tv-rank{display:grid;text-align:start;grid-template-columns:60px 1fr auto;gap:14px;align-items:center;background:var(--surface);border-radius:16px;padding:14px 20px;font-size:24px;font-weight:800}.tv-rank.first{outline:3px solid var(--accent)}
+.tvm .game .gboard{font-size:1.15em}
 </style>
 
 <div class="app" id="app"></div>
@@ -879,6 +882,7 @@ wr_face10:['مواجهة · 10 حوائط','Facing · 10 walls'],wr_face15:['م�
 wr_move:['تحرّك','Move'],wr_wall:['حائط','Wall'],wr_rotate:['تدوير','Rotate'],wr_place:['ضع الحائط','Place wall'],wr_noWall:['لا يمكن وضعه هنا','Can\'t place it here'],wr_tapMove:['اضغط على نقطة لتتحرك','Tap a dot to move'],wr_tapWall:['اضغط بين الخانات لاختيار مكان الحائط','Tap between cells to choose where the wall goes'],
 wr_yourTurn:['دورك','Your turn'],wr_turnOf:['دور {0}','{0}\'s turn'],wr_won:['🏆 وصل {0} أولاً!','🏆 {0} got there first!'],wr_steps:['{0}','{0}'],wr_winTag:['وصل أولاً','Reached first'],wr_youCol:['لونك مميز بحد أبيض','Your pawn has a white ring'],wr_watch:['تشاهد المباراة','Watching'],
 pc_tvType:['اكتبوا الجواب على هواتفكم','Type the answer on your phones'],rx_tvLook:['انظروا إلى هواتفكم!','Look at your phones!'],dc_tvWrite:['اكتبوا إجابة مخادعة على هواتفكم','Write a fake answer on your phones'],sd_strikes:['الأخطاء {0} من {1}','Mistakes {0} of {1}'],sd_out:['خرجت: {0} أخطاء','You\'re out: {0} mistakes'],sd_outS:['خرج','Out'],sd_tvLive:['السباق جارٍ','Race in progress'],
+mem_tvPlay:['كل لاعب يلعب على هاتفه الآن','Everyone is playing on their phone'],mem_tvWait:['تظهر النتائج هنا عندما ينتهي الجميع','Results appear here when everyone finishes'],
 us_hint:['تُحفظ على جهازك وعلى حسابك','Saved on your device and your account'],qzFewQ:['متوفر {0} سؤالاً فقط في الفئات المختارة','Only {0} questions in the chosen categories'],
 tvJoin:['ادخل من هاتفك','Join from your phone'],tvJoinHow:['امسح الرمز بكاميرا الهاتف، أو افتح الرابط وأدخل الكود. لا حاجة لتحميل التطبيق.','Scan the code with your phone camera, or open the link and enter the code. No download needed.'],
 tvWaitP:['بانتظار انضمام اللاعبين…','Waiting for players to join…'],tvFull:['ملء الشاشة','Full screen'],tvEnd:['إنهاء الجولة','End round'],tvEndQ:['إنهاء الجولة للجميع؟','End the round for everyone?'],
@@ -971,7 +975,7 @@ const GAMES=[
 {id:'drawing',ready:true,def:0,diffs:[{k:'d12',lbl:['nDraw',12],n:12,cols:4,rows:4,view:25,mult:1},{k:'d15',lbl:['nDraw',15],n:15,cols:5,rows:4,view:30,mult:1.3},{k:'d20',lbl:['nDraw',20],n:20,cols:5,rows:5,view:35,mult:1.7}],run:()=>gDrawing()},
 {id:'sequence',ready:true,def:1,diffs:[{k:'easy',lbl:'d_easy',speed:720,mult:1},{k:'normal',lbl:'d_normal',speed:540,mult:1.3},{k:'hard',lbl:'d_hard',speed:400,mult:1.6}],run:()=>gSequence(false)},
 {id:'locations',ready:true,def:1,diffs:[{k:'g3',lbl:['nGrid','3×3'],grid:3,mult:1},{k:'g4',lbl:['nGrid','4×4'],grid:4,mult:1.3},{k:'g5',lbl:['nGrid','5×5'],grid:5,mult:1.6}],run:()=>gSequence(true)},
-{id:'vanish',ready:false},{id:'shapes',ready:false},{id:'words',ready:false}].map(g=>({sec:'memory',...g}));
+{id:'vanish',ready:false},{id:'shapes',ready:false},{id:'words',ready:false}].map(g=>({sec:'memory',modes:['solo','local','friends','tv','online'],...g}));
 const SOLO_MODES=['solo','friends','online'];
 const TV_MODES=['solo','friends','tv','online'];
 GAMES.push(
@@ -1911,6 +1915,7 @@ function drawPad(existing){return new Promise(res=>{
     requestAnimationFrame(fit);chips();
   })})}
 async function gDrawing(){
+  if(M.tvHost)return memTvSim(M.id);
   const id=M.id,d=M.diff,cells=d.cols*d.rows,humans=M.players.filter(p=>!p.isBot&&!p.remote).length;
   M.players.forEach(p=>{p.score=0;p.scoreText='–'});M.showTurn=true;
   gameShell();const board=$('#gboard'),foot=$('#gfoot');renderPlayers();
@@ -1956,6 +1961,10 @@ async function gDrawing(){
   if(M.net&&!await waitRemotes(id,v=>v+'%'))return;
   if(M.solo)finish(soloRes);else finish({order:M.players.map(p=>({p,val:outVal(p,p.score),txt:p.score+'%'}))});
 }
+async function memTvSim(id){gameShell();M.showTurn=false;renderPlayers();status(t('mem_tvPlay'));
+  $('#gboard').innerHTML=`<div class="tv-center"><b class="tv-big">📱 ${t('mem_tvPlay')}</b><p class="tv-sub">${t('mem_tvWait')}</p></div>`;
+  await Promise.all(M.players.map(p=>waitRes(p).then(r=>{if(!alive(id))return;if(r==='OUT'){p.score=-1e9;p.scoreText='—';markOut(p)}else{p.score=Number(r.score)||0;p.scoreText=r.txt||String(p.score)}renderPlayers()})));
+  if(!alive(id))return;const lower=!!M.g.lower;finish({order:M.players.map(p=>({p,val:lower?-p.score:p.score,txt:p.scoreText}))})}
 async function waitRemotes(id,fmt){const rem=M.players.filter(p=>p.remote);if(!rem.length)return alive(id);
   M.showTurn=false;renderPlayers();$('#gboard').innerHTML='';$('#gfoot').innerHTML='';status(t('waitOthers'));
   await Promise.all(rem.map(p=>waitRes(p).then(r=>{if(!alive(id))return;if(r==='OUT'){p.score=0;markOut(p)}else{p.score=Number(r.score)||0;p.scoreText=fmt(p.score)}renderPlayers()})));
@@ -1963,6 +1972,7 @@ async function waitRemotes(id,fmt){const rem=M.players.filter(p=>p.remote);if(!r
 
 /* ---------- Games 5 & 9: sequence engine ---------- */
 async function gSequence(isLoc){
+  if(M.tvHost)return memTvSim(M.id);
   const id=M.id,d=M.diff,n=isLoc?d.grid*d.grid:4,speed=isLoc?560:d.speed;
   const seq=[];for(let i=0;i<60;i++){let v;do{v=Math.floor(grnd()*n)}while(isLoc&&i&&v===seq[i-1]);seq.push(v)}
   const startLen=2,humans=M.players.filter(p=>!p.isBot&&!p.remote).length;
@@ -2889,6 +2899,9 @@ async function deceitMulti(id,qs){
 /* ========= finish & rewards ========= */
 function finish(o){
   if(!M||!M.alive)return;clearInterval(M.tid);M.alive=false;
+  if(M.tvHost){const ord=(o.order||[]).slice().sort((a,b)=>b.val-a.val);sfx('win');setTimeout(()=>typeof confetti==='function'&&confetti(),200);
+    app.innerHTML=`<section class="tvs tv-end"><h2 class="tv-h">${t('qzFinal')} · ${t('g_'+M.g.id)}</h2><div class="tv-ranks">${ord.map((x,k)=>`<div class="tv-rank ${k===0?'first':''}"><b class="tnum">${k===0?'🏆':k+1}</b><span>${esc(x.p.avatar)} ${esc(x.p.name)}</span><span class="tnum">${esc(String(x.txt!=null?x.txt:x.val))}</span></div>`).join('')}</div><button class="btn primary tv-next" id="tvagain">${ic('redo')} ${t('qzNewRound')}</button></section>`;
+    $('#tvagain').onclick=()=>go('lobby',{});return}
   const g=M.g,dk=M.diff.k,n=M.players.length,day=today();
   profile.farm=profile.farm[day]?{[day]:profile.farm[day]}:{[day]:{}};
   const fk=g.id+'_'+dk,cnt=profile.farm[day][fk]||0;profile.farm[day][fk]=cnt+1;
