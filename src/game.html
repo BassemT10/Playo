@@ -660,6 +660,16 @@ input[type=number],input[type=email],input[type=password]{font:inherit;font-weig
 .fd-item{padding:8px 0;border-bottom:1px solid var(--line)}
 body.tvm .fd-q,body:has(.fd-grid) .fd-q{font-size:clamp(20px,2.4vw,40px)}
 @media (min-width:900px){.fd-slot{min-height:64px;font-size:clamp(16px,1.6vw,26px)}}
+.ct-row{align-items:center}.ct-row.off{opacity:.5}
+.ct-ans{display:grid;grid-template-columns:auto 1fr 1fr;gap:6px;align-items:center}.ct-ans b{font-size:12px;color:var(--accent);min-width:38px}
+.ct-ans input{min-width:0}
+.ct-words{display:flex;flex-wrap:wrap;gap:6px}
+.ct-w{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface2);color:var(--fg);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.ct-w small{font-weight:500;color:var(--muted);font-size:11px}
+.ct-w.off{opacity:.4;text-decoration:line-through}
+.ct-w.mine{background:color-mix(in srgb,var(--accent) 28%,var(--surface2));border-color:var(--accent);cursor:default}
+.ct-w.mine button{background:none;border:0;color:var(--bad);cursor:pointer;font-size:13px;padding:0 2px}
+.modal #ct-map .mp-svg{max-height:42vh}
 .tv-end{max-width:900px;margin:0 auto;padding:24px 16px;text-align:center}.tv-ranks{display:grid;gap:12px;margin:20px 0}.tv-end .tv-next{margin:0 auto}
 .tv-rank{display:grid;text-align:start;grid-template-columns:60px 1fr auto;gap:14px;align-items:center;background:var(--surface);border-radius:16px;padding:14px 20px;font-size:24px;font-weight:800}.tv-rank.first{outline:3px solid var(--accent)}
 .tvm .game .gboard{font-size:1.15em}
@@ -881,7 +891,7 @@ qzRankOf:['المركز {0} من {1}','Place {0} of {1}'],qzBoard:['الترتي
 qzHostLost:['انقطع اتصال المقدّم، انتهت الجولة','The host disconnected; the round ended'],qzFinal:['النتيجة النهائية','Final results'],qzNewRound:['جولة جديدة','New round'],
 qzCapNote:['حتى {0}','Up to {0}'],qzCapPrem:['حتى {0} مع بريميوم','up to {0} with Premium'],
 banned:['هذا الحساب موقوف','This account is suspended'],
-at_admin:['نظرة عامة','Overview'],at_admp:['اللاعبون','Players'],at_admq:['الأسئلة','Questions'],at_admg:['الألعاب','Games'],at_admc:['الأكواد والخصومات','Codes & discounts'],
+at_admin:['نظرة عامة','Overview'],at_admp:['اللاعبون','Players'],at_admq:['الأسئلة','Questions'],at_admg:['الألعاب','Games'],at_admc:['الأكواد والخصومات','Codes & discounts'],at_admx:['محتوى الألعاب','Game content'],
 adm_demo:['بيانات تجريبية للعرض فقط. البيانات الحقيقية تظهر بعد ربط الخادم والدخول بحساب المدير.','Sample data for preview. Real data appears once the server is connected and you sign in with the admin account.'],
 adm_needLogin:['سجّل الدخول بحساب المدير','Sign in with the admin account'],adm_notAdmin:['الحساب {0} ليس حساب مدير.','{0} is not an admin account.'],
 ad_players:['اللاعبون','Players'],ad_7d:['هذا الأسبوع','this week'],ad_active1:['نشطون اليوم','Active today'],ad_active7:['نشطون 7 أيام','Active 7 days'],ad_premium:['مشتركون','Subscribers'],ad_matches1:['مباريات اليوم','Matches today'],ad_matches7:['مباريات 7 أيام','Matches 7 days'],
@@ -998,6 +1008,24 @@ fd_tapTip:['أو اضغط على الخانة الصحيحة مباشرة','Or t
 fd_again:['العب مجدداً','Play again'],fd_home:['الرئيسية','Home'],fd_none:['لا توجد أسئلة. أضف أسئلتك أو اختر الجاهزة.','No questions. Add yours or use the built-in ones.'],
 fd_mine:['أسئلتي للعبة عشرة أجوبة','My Top Ten questions'],fd_add:['سؤال جديد','New question'],fd_addTip:['اكتب الأجوبة من الأشهر إلى الأقل (3 على الأقل). يمكنك كتابة صيغ مقبولة بفاصل /، مثل: قهوة/كوفي','Write answers from most to least common (at least 3). Add accepted variants with /, e.g. coffee/espresso'],
 fd_qPh:['السؤال، مثل: شيء تأخذه إلى الشاطئ','Question, e.g. something you take to the beach'],fd_aPh:['الجواب {0}','Answer {0}'],fd_save:['حفظ السؤال','Save question'],fd_noneMine:['لم تضف أسئلة بعد','No questions yet'],fd_need:['اكتب السؤال و3 أجوبة على الأقل','Write the question and at least 3 answers'],
+mpr_europe:['أوروبا','Europe'],mpr_arab:['الوطن العربي','Arab world'],mpr_asia:['آسيا','Asia'],mpr_africa:['أفريقيا','Africa'],mpr_nam:['أمريكا الشمالية','North America'],mpr_sam:['أمريكا الجنوبية','South America'],mpr_world:['العالم','World'],
+ct_t_map:['أين على الخريطة؟','Where on the map?'],ct_t_feud:['عشرة أجوبة','Top ten'],ct_t_spy:['كلمات الجاسوس','Spy words'],
+ct_k_land:['معالم ومدن','Landmarks & cities'],ct_k_ctry:['دول','Countries'],ct_k_cap:['عواصم','Capitals'],
+ct_country:['خريطة الدولة','Country map'],ct_region:['المنطقة','Region'],ct_tapPin:['اضغط على الخريطة في المكان الصحيح تماماً (قرّب بالأزرار أو بإصبعين للدقة).','Tap the exact spot on the map (zoom in with the buttons or two fingers for accuracy).'],ct_tapCtry:['اضغط على الدولة على الخريطة لاختيارها.','Tap the country on the map to choose it.'],
+ct_noPick:['لم تحدد المكان بعد','No spot chosen yet'],ct_nameAr:['الاسم بالعربية','Name in Arabic'],ct_nameEn:['الاسم بالإنجليزية','Name in English'],ct_needName:['اكتب الاسم بالعربية','Write the Arabic name'],ct_needPick:['حدد المكان على الخريطة','Choose the spot on the map'],
+ct_qAr:['السؤال بالعربية','Question in Arabic'],ct_qEn:['السؤال بالإنجليزية','Question in English'],ct_ansAr:['الجواب','Answer'],
+ct_feudHint:['رتّب الأجوبة من الأكثر شيوعاً (1000 نقطة) إلى الأقل (100). للجواب أكثر من صيغة؟ افصل بينها بـ / مثل: سيارة/عربية.','Order answers from most common (1000 points) to least (100). More than one spelling? Separate with / e.g. car/auto.'],
+ct_needFeud:['اكتب السؤال والأجوبة العشرة بالعربية','Write the question and all ten Arabic answers'],ct_feudInfo:['{0} سؤالاً في اللعبة. أسئلة الحكم الخاصة تبقى على جهازه.','{0} questions in the game. A judge\'s own questions stay on their device.'],
+ct_cat:['الفئة','Category'],ct_newCat:['فئة جديدة','New category'],ct_catAr:['اسم الفئة بالعربية','Category name in Arabic'],ct_catEn:['اسم الفئة بالإنجليزية','Category name in English'],
+ct_addWords:['إضافة كلمات','Add words'],ct_words:['الكلمات','Words'],ct_wordsPh:['مطار | Airport\nمستشفى | Hospital','Airport | Airport\nHospital | Hospital'],
+ct_wordsHint:['كلمة في كل سطر: العربية | الإنجليزية. الإنجليزية اختيارية، والكلمات المكررة تُتجاهل.','One word per line: Arabic | English. English is optional; duplicates are skipped.'],
+ct_needWords:['اكتب كلمة جديدة واحدة على الأقل','Write at least one new word'],ct_addedW:['أُضيفت {0} كلمة','{0} words added'],
+ct_spyInfo:['اختر فئة لترى كلماتها. يحتاج كل فئة 8 كلمات على الأقل لتدخل اللعبة.','Pick a category to see its words. A category needs at least 8 words to be used.'],
+ct_few:['هذه الفئة فيها {0} كلمات فقط ولن تظهر في اللعب حتى تصل إلى 8.','This category has only {0} words and won\'t be played until it reaches 8.'],
+ct_spyTap:['اضغط على كلمة مدمجة لإخفائها أو إظهارها. كلماتك مميزة باللون ويمكن حذفها بـ ✕.','Tap a built-in word to hide or show it. Your words are highlighted and can be removed with ✕.'],
+ct_delCat:['حذف الفئة','Delete category'],ct_delCatQ:['حذف فئة «{0}» وكل كلماتها؟','Delete the "{0}" category and all its words?'],
+ct_mine:['مضاف','Added'],ct_shown:['ظاهر','Shown'],ct_hidden:['مخفي','Hidden'],ct_delQ:['حذف هذا العنصر؟','Delete this item?'],
+ct_where_l:['معاينة: ما تحفظه هنا يبقى على هذا الجهاز. بعد ربط الخادم والدخول بحساب المدير يصل لكل اللاعبين.','Preview: what you save stays on this device. Once the server is connected and you sign in as admin it reaches every player.'],
 us_hint:['تُحفظ على جهازك وعلى حسابك','Saved on your device and your account'],qzFewQ:['متوفر {0} سؤالاً فقط في الفئات المختارة','Only {0} questions in the chosen categories'],
 tvJoin:['ادخل من هاتفك','Join from your phone'],tvJoinHow:['امسح الرمز بكاميرا الهاتف، أو افتح الرابط وأدخل الكود. لا حاجة لتحميل التطبيق.','Scan the code with your phone camera, or open the link and enter the code. No download needed.'],
 tvWaitP:['بانتظار انضمام اللاعبين…','Waiting for players to join…'],tvFull:['ملء الشاشة','Full screen'],tvEnd:['إنهاء الجولة','End round'],tvEndQ:['إنهاء الجولة للجميع؟','End the round for everyone?'],
@@ -2992,7 +3020,7 @@ const pinSvg=(x,y,col,sz,lbl)=>`<g class="pin" transform="translate(${x.toFixed(
 /* the map on screen: zoom (buttons, wheel, pinch), drag to pan, tap to drop your pin */
 function mapWidget(host,q,o){o=o||{};const v=mapView(mapBox(q));
   host.innerHTML=`<div class="mp-wrap">${mapSvg(q,v)}<div class="mp-zoom"><button type="button" data-z="1" aria-label="+">+</button><button type="button" data-z="-1" aria-label="−">−</button></div></div>`;
-  const svg=$('svg',host),gp=$('.mp-pins',svg),gt=$('.mp-tg',svg);let vb=[0,0,v.W,v.H],mine=null,shown=[],tgt=null,locked=!!o.readonly;
+  const svg=$('svg',host),gp=$('.mp-pins',svg),gt=$('.mp-tg',svg);let vb=[0,0,v.W,v.H],mine=o.pin||null,shown=[],tgt=null,locked=!!o.readonly;
   const unit=()=>vb[2]/Math.max(200,svg.clientWidth||360);
   const draw=()=>{const u=unit();gt.innerHTML=tgt?tgt():'';gp.innerHTML=shown.map(p=>p.ll?pinSvg(...v.px(p.ll[0],p.ll[1]),p.col,u*1.5,p.lbl):'').join('')+(mine&&!shown.length?pinSvg(...v.px(mine[0],mine[1]),'#FFB547',u*1.7,''):'')};
   const setVB=()=>{svg.setAttribute('viewBox',vb.map(n=>n.toFixed(1)).join(' '));draw()};
@@ -3023,6 +3051,7 @@ async function gMap(){
   const id=M.id,d=M.diff;
   if(M.tvHost){app.innerHTML=`<section class="game qz-live"><div class="qzv" id="qzv"><p class="qz-wait">${t('mp_load')}</p></div></section>`}else{gameShell();status(t('mp_load'))}
   const md=await mapLoad();if(!alive(id))return;if(!md){toast(t('mp_noMap'));M.alive=false;if(M.net)NET.leave();go('home');return}
+  await CONTENT_P;if(!alive(id))return;
   const R=mulberry(M.net?NET.game.seed:Math.floor(Math.random()*2**31)),qs=mapPick(d.k,d.n,R);
   if(M.net)return gMapLive(qs);
   M.players.forEach(p=>{p.score=0;p.scoreText='0'});M.showTurn=false;renderPlayers();
@@ -3157,11 +3186,11 @@ function spyPlan(seed,r){const R=mulberry((seed^Math.imul(r+11,2654435761))|0),c
   const others=SPY_W[cat].map((_,k)=>k).filter(k=>k!==w);for(let j=others.length-1;j>0;j--){const k=Math.floor(R()*(j+1));[others[j],others[k]]=[others[k],others[j]]}
   const opts=others.slice(0,7).concat(w);for(let j=opts.length-1;j>0;j--){const k=Math.floor(R()*(j+1));[opts[j],opts[k]]=[opts[k],opts[j]]}return{cat,w,opts,R}}
 const spyClueBad=(txt,cat,w)=>{const n=normA(txt);return !n||SPY_W[cat][w].some(x=>{const k=normA(x);return k&&(n.includes(k)||k.includes(n)&&n.length>=3)})};
-const spyRoleHtml=(isSpy,cat,w,big)=>isSpy?`<div class="sp-card spy ${big?'big':''}"><span class="sp-ic">🕵️</span><b>${t('sp_youSpy')}</b><span>${t('sp_cat',t('spc_'+cat))}</span><small>${t('sp_spyTip')}</small></div>`
-  :`<div class="sp-card ${big?'big':''}"><span>${t('sp_cat',t('spc_'+cat))}</span><small>${t('sp_word')}</small><b>${esc(spyWord(cat,w))}</b><small>${t('sp_wordTip')}</small></div>`;
+const spyRoleHtml=(isSpy,cat,w,big)=>isSpy?`<div class="sp-card spy ${big?'big':''}"><span class="sp-ic">🕵️</span><b>${t('sp_youSpy')}</b><span>${t('sp_cat',spyCatName(cat))}</span><small>${t('sp_spyTip')}</small></div>`
+  :`<div class="sp-card ${big?'big':''}"><span>${t('sp_cat',spyCatName(cat))}</span><small>${t('sp_word')}</small><b>${esc(spyWord(cat,w))}</b><small>${t('sp_wordTip')}</small></div>`;
 /* one phone passed around the table */
 async function gSpy(){
-  const id=M.id,d=M.diff;if(M.net)return gSpyLive();
+  const id=M.id,d=M.diff;await CONTENT_P;if(!alive(id))return;if(M.net)return gSpyLive();
   M.players.forEach(p=>{p.score=0;p.scoreText='0'});M.showTurn=false;gameShell();renderPlayers();
   const board=$('#gboard'),foot=$('#gfoot'),seed=Math.floor(Math.random()*2**31),n=M.players.length;
   const tap=(html,btn)=>new Promise(r=>{board.innerHTML=html;foot.innerHTML=`<button class="btn primary block" id="spgo">${btn}</button>`;$('#spgo').onclick=()=>{sfx('tap');r()}});
@@ -3228,8 +3257,8 @@ async function gSpyLive(){
 const spTally=(st,who)=>`<div class="sp-tally">${Object.keys(st.tally||{}).sort((a,b)=>st.tally[b]-st.tally[a]).map(p=>`<span class="${p===st.spy?'spy':''}">${esc((who[p]||{}).av||'🙂')} ${esc((who[p]||{}).nm||'?')} <b class="tnum">${st.tally[p]}</b></span>`).join('')}</div>`;
 function spyTv(g){const who=tvWho(g);return(st,v)=>{const e=$('#qzn');if(e)e.textContent='· '+t('dcRound',Math.min(st.i+1,st.n),st.n);
   const cnt=key=>{const k=st.ph+':'+st.i,f=()=>{const s=bzState()||{},el=$('#spcnt',v);if(!el||s.ph+':'+s.i!==k)return;const n=g.order.filter(x=>{const a=(NET.pres[x.pid]||{}).ba;return a&&a.gid===g.gid&&a.a&&a.a[key]!==undefined}).length;el.textContent=t('mp_tvAns',n,g.order.length);setTimeout(f,500)};f()};
-  if(st.ph==='w'){sfx('turn');v.innerHTML=`<div class="tv-center"><span class="sp-ic big">🕵️</span><h1 class="tv-q">${t('sp_tvLook')}</h1><p class="tv-sub">${t('sp_cat',t('spc_'+st.cat))}</p></div>`}
-  else if(st.ph==='c1'||st.ph==='c2'){v.innerHTML=`<div class="tv-center"><h1 class="tv-q sm">${t(st.ph==='c1'?'sp_tvClue1':'sp_tvClue2')}</h1><p class="tv-sub">${t('sp_cat',t('spc_'+st.cat))}</p><b class="tv-clock tnum" id="tvclk">${SPY.C}</b><p class="tv-sub" id="spcnt"></p></div>${st.ph==='c2'?`<div class="sp-list tv">${spClues({c1:st.c1},who,null)}</div>`:''}`;tvClock(v,SPY.C,st);cnt(st.i*10+(st.ph==='c1'?1:2))}
+  if(st.ph==='w'){sfx('turn');v.innerHTML=`<div class="tv-center"><span class="sp-ic big">🕵️</span><h1 class="tv-q">${t('sp_tvLook')}</h1><p class="tv-sub">${t('sp_cat',spyCatName(st.cat))}</p></div>`}
+  else if(st.ph==='c1'||st.ph==='c2'){v.innerHTML=`<div class="tv-center"><h1 class="tv-q sm">${t(st.ph==='c1'?'sp_tvClue1':'sp_tvClue2')}</h1><p class="tv-sub">${t('sp_cat',spyCatName(st.cat))}</p><b class="tv-clock tnum" id="tvclk">${SPY.C}</b><p class="tv-sub" id="spcnt"></p></div>${st.ph==='c2'?`<div class="sp-list tv">${spClues({c1:st.c1},who,null)}</div>`:''}`;tvClock(v,SPY.C,st);cnt(st.i*10+(st.ph==='c1'?1:2))}
   else if(st.ph==='v'){v.innerHTML=`<div class="tv-center"><h1 class="tv-q sm">${t('sp_voteQ')}</h1><b class="tv-clock tnum" id="tvclk">${SPY.V}</b><p class="tv-sub" id="spcnt"></p></div><div class="sp-list tv">${spClues(st,who,null)}</div>`;tvClock(v,SPY.V,st);cnt(st.i*10+3)}
   else if(st.ph==='g'){v.innerHTML=`<div class="tv-center"><span class="sp-ic big">🕵️</span><h1 class="tv-q">${t('sp_caughtL',esc((who[st.spy]||{}).nm||'?'))}</h1><p class="tv-sub">${t('sp_guessing')}</p><b class="tv-clock tnum" id="tvclk">${SPY.G}</b></div>${spTally(st,who)}`;tvClock(v,SPY.G,st)}
   else if(st.ph==='r'){sfx(st.caught&&!st.guessed?'win':'bad');v.innerHTML=`<div class="tv-center"><span class="sp-ic big">🕵️</span><h1 class="tv-q">${t('sp_was',esc((who[st.spy]||{}).nm||'?'))}</h1><b class="tv-big">${t('sp_theWord',esc(spyWord(st.cat,st.w)))}</b><p class="tv-sub">${!st.caught?t('sp_escaped'):st.guessed?t('sp_guessed'):t('sp_caught')}</p></div>${spTally(st,who)}${tvLb(st.lb,who)}`}}}
@@ -3332,7 +3361,35 @@ const feudMine=()=>store.get('feudMine',[]);
 function feudQs(src){const mine=feudMine().filter(x=>x.q&&x.a&&x.a.filter(Boolean).length>=3).map(x=>({q:x.q,a:x.a.filter(Boolean).slice(0,10)}));
   if(src==='mine')return mine;return FEUD_BANK.map(x=>({q:x[L()],a:x[2].map(a=>a[L()])})).concat(src==='both'?mine:[])}
 const feudMatch=(ans,txt)=>{const n=normA(txt);if(!n)return false;return String(ans).split('/').some(x=>{const k=normA(x);return k===n||(k.length>=4&&n.length>=4&&(k.includes(n)||n.includes(k)))||(k.length>=4&&lev(k,n)<=1)})};
+/* ========= owner content for map / top ten / spy (server: app_config "content") =========
+   {land:[[ctry,lat,lon,ar,en]], ctry:[[region,id,ar,en]], cap:[[region,lat,lon,ar,en]], feud:[[qa,qe,[[ar,en]×10]]],
+    spy:[[cat,ar,en]], spyc:[[key,ar,en]], off:{land:[key],ctry:[key],cap:[key],feud:[key],spy:['cat|ar']}}  — off hides built-in items */
+const CT_B={land:MAPQ_LAND.slice(),ctry:MAPQ_CTRY.slice(),cap:MAPQ_CAP.slice(),feud:FEUD_BANK.slice(),spy:JSON.parse(JSON.stringify(SPY_W))};
+const ctKey={land:x=>x[0]+'|'+x[3],ctry:x=>x[0]+'|'+x[1],cap:x=>x[0]+'|'+x[3],feud:x=>x[0]};
+const ctEmpty=()=>({land:[],ctry:[],cap:[],feud:[],spy:[],spyc:[],off:{}});
+const ctNorm=c=>{const e=ctEmpty(),o={...e,...(c&&typeof c==='object'?c:{})};for(const k in e)if(k!=='off'&&!Array.isArray(o[k]))o[k]=[];if(!o.off||typeof o.off!=='object')o.off={};return o};
+let CONTENT=ctNorm(store.get('content',{}));
+function applyContent(c){c=ctNorm(c);const off=c.off;
+  const set=(arr,k)=>{const o=new Set(off[k]||[]);arr.length=0;arr.push(...CT_B[k].filter(x=>!o.has(ctKey[k](x))),...c[k])};
+  set(MAPQ_LAND,'land');set(MAPQ_CTRY,'ctry');set(MAPQ_CAP,'cap');set(FEUD_BANK,'feud');
+  const so=new Set(off.spy||[]);Object.keys(SPY_W).forEach(k=>delete SPY_W[k]);
+  Object.entries(CT_B.spy).forEach(([k,v])=>SPY_W[k]=v.filter(w=>!so.has(k+'|'+w[0])));
+  c.spyc.forEach(x=>{if(x&&x[0]&&!SPY_W[x[0]])SPY_W[x[0]]=[]});
+  c.spy.forEach(x=>{if(x&&SPY_W[x[0]])SPY_W[x[0]].push([x[1],x[2]||x[1]])});
+  SPY_CATS.length=0;SPY_CATS.push(...Object.keys(SPY_W).filter(k=>SPY_W[k].length>=8));CONTENT=c}
+const spyCatName=c=>{const x=(CONTENT.spyc||[]).find(y=>y[0]===c);return x?(L()?x[2]||x[1]:x[1]):t('spc_'+c)};
+async function fetchContent(){if(!SB_ON())return;
+  try{const r=await fetch(ZKC.supabaseUrl+'/rest/v1/app_config?select=value&key=eq.content',{headers:{apikey:ZKC.supabaseKey,Authorization:'Bearer '+ZKC.supabaseKey}});
+    if(!r.ok)return;const rows=await r.json(),c=ctNorm((rows[0]&&rows[0].value)||{});store.set('content',c);applyContent(c)}catch(e){}}
+applyContent(CONTENT);
+/* games wait for this (max 4 s) so every phone in a room picks from the same questions and words */
+const CONTENT_P=Promise.race([fetchContent(),sleep(4000)]);
+async function ctSave(c){c=ctNorm(c);
+  if(admLive()){const {error}=await admClient().from('app_config').upsert({key:'content',value:c});if(error){toast(t('adm_saveFail',error.message));return false}}
+  else if(ACC.client()){toast(t('adm_needLogin'));return false}
+  store.set('content',c);applyContent(c);return true}
 async function gFeud(){
+  await CONTENT_P;
   const id=M.id,o=M.cfg.opts||{},teams=M.players,n=teams.length;let qs=shuffle(feudQs(o.fsrc||'bank')).slice(0,o.frounds||5);
   if(!qs.length){toast(t('fd_none'));M.alive=false;go('home');return}
   teams.forEach(p=>{p.score=0;p.scoreText='0'});M.showTurn=true;M.cur=0;gameShell();renderPlayers();if(innerWidth>=900)document.body.classList.add('tvm');
@@ -3714,6 +3771,109 @@ function adForm(a,done){a=a||{title:'',img:'',url:'',active:true,starts:null,end
       const d=v=>v?new Date(v+'T00:00:00').toISOString():null,de=v=>v?new Date(v+'T23:59:59').toISOString():null;
       const rec={title:qn($('#a-t',m).value),img,url:/^https?:\/\//i.test(url)?url:'',starts:d($('#a-s',m).value),ends:de($('#a-e',m).value),weight:Math.max(1,Math.min(10,+$('#a-w',m).value||1)),active:$('#a-on',m).checked};
       if(a.id)rec.id=a.id;if(await adSave(rec)){close();toast(t('adm_saved'));done()}}})}
+/* ----- admin: content for the map game, top ten and the spy ----- */
+const ctCName=id=>{const x=CT_B.ctry.concat(CONTENT.ctry).find(y=>y[1]===id);return x?(L()?x[3]||x[2]:x[2]):(MAPD.d&&MAPD.d[id]?MAPD.d[id].n:id)};
+const ctRegName=r=>t('mpr_'+r);
+function ctryAt(ll){if(!MAPD.d)return null;for(const k in MAPD.d){const c=MAPD.d[k];if(c.r.some((pts,i)=>{const b=c.bb[i];return ll[0]>=b[0]&&ll[0]<=b[2]&&ll[1]>=b[1]&&ll[1]<=b[3]&&inRing(ll,pts)}))return k}return null}
+const ctClone=()=>JSON.parse(JSON.stringify(CONTENT));
+const ctLL=ll=>ll?ll[1].toFixed(3)+', '+ll[0].toFixed(3):'—';
+/* map item form: landmark (country + pin), capital (region + pin) or country (region + tap the country) */
+function ctMapForm(kind,item,done){
+  const md=MAPD.d,cs=Object.keys(md).map(k=>[k,ctCName(k)]).sort((a,b)=>a[1].localeCompare(b[1],L()?'en':'ar'));
+  const regs=Object.keys(MAP_REG).filter(r=>r!=='world');
+  let f=kind==='land'?{r:item?item[0]:'250',ll:item?[item[2],item[1]]:null,ar:item?item[3]:'',en:item?item[4]:''}
+    :kind==='cap'?{r:item?item[0]:'europe',ll:item?[item[2],item[1]]:null,ar:item?item[3]:'',en:item?item[4]:''}
+    :{r:item?item[0]:'europe',c:item?item[1]:null,ar:item?item[2]:'',en:item?item[3]:''};
+  modal(`<form class="stack" id="ctf" style="gap:10px"><h3>${t(item?'adm_edit':'adm_add')} · ${t('ct_k_'+kind)}</h3>
+    <label class="field">${t(kind==='land'?'ct_country':'ct_region')}<select id="ct-r">${kind==='land'?cs.map(([k,n])=>`<option value="${k}" ${k===f.r?'selected':''}>${esc(n)}</option>`).join(''):regs.map(r=>`<option value="${r}" ${r===f.r?'selected':''}>${ctRegName(r)}</option>`).join('')}</select></label>
+    <p class="small muted" style="margin:0">${t(kind==='ctry'?'ct_tapCtry':'ct_tapPin')}</p>
+    <div id="ct-map"></div><p class="small" id="ct-at" style="margin:0;font-weight:700"></p>
+    <div class="fgrid"><label class="field">${t('ct_nameAr')}<input type="text" id="ct-ar" maxlength="50" value="${esc(f.ar)}"></label><label class="field">${t('ct_nameEn')}<input type="text" id="ct-en" maxlength="50" dir="ltr" value="${esc(f.en)}"></label></div>
+    <div class="row" style="justify-content:flex-end"><button type="button" class="btn ghost" data-cx>${t('cancel')}</button><button class="btn primary" type="submit">${t('save')}</button></div></form>`,(m,close)=>{
+    $('[data-cx]',m).onclick=close;const at=$('#ct-at',m),host=$('#ct-map',m);
+    const show=()=>{at.textContent=kind==='ctry'?(f.c?'✓ '+ctCName(f.c):t('ct_noPick')):(f.ll?'📍 '+ctLL(f.ll):t('ct_noPick'))};
+    const mark=()=>{$$('#ct-map path.tg',m).forEach(p=>p.classList.remove('tg'));if(f.c)$$(`#ct-map [data-c="${f.c}"]`,m).forEach(p=>p.classList.add('tg'))};
+    const draw=()=>{mapWidget(host,{r:f.r},{pin:kind==='ctry'?null:f.ll,onPin:ll=>{if(kind==='ctry'){const c=ctryAt(ll);f.c=c;mark();
+          if(c&&!$('#ct-ar',m).value){const n=CT_B.ctry.find(y=>y[1]===c);if(n){$('#ct-ar',m).value=n[2];$('#ct-en',m).value=n[3]}else $('#ct-en',m).value=md[c].n}}
+        else f.ll=ll;show()}});mark();show()};
+    $('#ct-r',m).onchange=e=>{f.r=e.target.value;if(kind!=='land')f.c=null;if(kind==='land')f.ll=null;draw()};draw();
+    $('#ctf',m).onsubmit=async e=>{e.preventDefault();const ar=qn($('#ct-ar',m).value),en=qn($('#ct-en',m).value)||ar;
+      if(!ar){toast(t('ct_needName'));return}if(kind==='ctry'?!f.c:!f.ll){toast(t('ct_needPick'));return}
+      const r6=n=>Math.round(n*1e4)/1e4,rec=kind==='ctry'?[f.r,f.c,ar,en]:[f.r,r6(f.ll[1]),r6(f.ll[0]),ar,en];
+      if(await done(rec))close()}})}
+function ctFeudForm(item,done){const a=item?item[2]:[];
+  modal(`<form class="stack" id="ctf" style="gap:10px"><h3>${t(item?'adm_edit':'adm_add')} · ${t('g_feud')}</h3>
+    <div class="fgrid"><label class="field">${t('ct_qAr')}<input type="text" id="cf-qa" maxlength="90" value="${esc(item?item[0]:'')}"></label><label class="field">${t('ct_qEn')}<input type="text" id="cf-qe" maxlength="90" dir="ltr" value="${esc(item?item[1]:'')}"></label></div>
+    <p class="small muted" style="margin:0">${t('ct_feudHint')}</p>
+    <div class="ct-ans">${FD_PTS.map((p,i)=>`<b class="tnum">${p}</b><input type="text" data-a="${i}" maxlength="40" placeholder="${t('ct_ansAr')}" value="${esc(a[i]?a[i][0]:'')}"><input type="text" data-e="${i}" maxlength="40" dir="ltr" placeholder="English" value="${esc(a[i]?a[i][1]:'')}">`).join('')}</div>
+    <div class="row" style="justify-content:flex-end"><button type="button" class="btn ghost" data-cx>${t('cancel')}</button><button class="btn primary" type="submit">${t('save')}</button></div></form>`,(m,close)=>{
+    $('[data-cx]',m).onclick=close;
+    $('#ctf',m).onsubmit=async e=>{e.preventDefault();const qa=qn($('#cf-qa',m).value),qe=qn($('#cf-qe',m).value)||qa;
+      const ans=FD_PTS.map((_,i)=>{const x=qn($(`[data-a="${i}"]`,m).value),y=qn($(`[data-e="${i}"]`,m).value);return[x,y||x]});
+      if(!qa||ans.some(x=>!x[0])){toast(t('ct_needFeud'));return}
+      if(await done([qa,qe,ans]))close()}})}
+function ctSpyForm(cat,done){const cats=SPY_CATS_ALL();
+  modal(`<form class="stack" id="ctf" style="gap:10px"><h3>${t('ct_addWords')}</h3>
+    <label class="field">${t('ct_cat')}<select id="cs-c">${cats.map(k=>`<option value="${esc(k)}" ${k===cat?'selected':''}>${esc(spyCatName(k))}</option>`).join('')}<option value="__new">＋ ${t('ct_newCat')}</option></select></label>
+    <div class="fgrid" id="cs-new" hidden><label class="field">${t('ct_catAr')}<input type="text" id="cs-na" maxlength="30"></label><label class="field">${t('ct_catEn')}<input type="text" id="cs-ne" maxlength="30" dir="ltr"></label></div>
+    <label class="field">${t('ct_words')}<textarea id="cs-w" rows="7" placeholder="${t('ct_wordsPh')}"></textarea></label>
+    <p class="small muted" style="margin:0">${t('ct_wordsHint')}</p>
+    <div class="row" style="justify-content:flex-end"><button type="button" class="btn ghost" data-cx>${t('cancel')}</button><button class="btn primary" type="submit">${t('save')}</button></div></form>`,(m,close)=>{
+    $('[data-cx]',m).onclick=close;const sel=$('#cs-c',m),nw=$('#cs-new',m);sel.onchange=()=>nw.hidden=sel.value!=='__new';
+    $('#ctf',m).onsubmit=async e=>{e.preventDefault();let c=sel.value,newCat=null;
+      if(c==='__new'){const na=qn($('#cs-na',m).value),ne=qn($('#cs-ne',m).value)||na;if(!na){toast(t('ct_needName'));return}c='c'+Date.now().toString(36);newCat=[c,na,ne]}
+      const have=new Set((SPY_W[c]||[]).map(w=>normA(w[0])));
+      const words=$('#cs-w',m).value.split(/\n+/).map(l=>l.split(/[|،,]/).map(qn)).filter(x=>x[0]&&!have.has(normA(x[0]))&&(have.add(normA(x[0])),true)).map(x=>[c,x[0],x[1]||x[0]]);
+      if(!words.length){toast(t('ct_needWords'));return}
+      if(await done(c,newCat,words))close()}})}
+const SPY_CATS_ALL=()=>Object.keys(CT_B.spy).concat((CONTENT.spyc||[]).map(x=>x[0]));
+SCREENS.admx=async function(p){const bind=await admEnter();if(current!=='admx')return;
+  const st=Object.assign({tab:'map',kind:'land',cat:null,q:''},p||{});
+  app.innerHTML=admHead('admx')+`<p class="muted">${t('adm_loading')}</p>`;bind();
+  await CONTENT_P;const md=await mapLoad();if(current!=='admx')return;
+  const save=async(c,msg)=>{if(await ctSave(c)){toast(msg||t('adm_saved'));render();return true}return false};
+  const tog=(k,key)=>{const c=ctClone();c.off[k]=c.off[k]||[];const i=c.off[k].indexOf(key);if(i>=0)c.off[k].splice(i,1);else c.off[k].push(key);return save(c)};
+  const del=async(k,i)=>{if(!await confirmBox(t('ct_delQ'),t('remove')))return;const c=ctClone();c[k].splice(i,1);save(c,t('adm_deleted'))};
+  const row=(main,sub,acts,off)=>`<div class="adm-row ct-row ${off?'off':''}"><div class="grow"><b>${main}</b>${sub?`<span class="small muted">${sub}</span>`:''}</div>${acts}</div>`;
+  const offB=(k,key,off)=>`<button class="chip ${off?'':'on'}" data-tg="${k}" data-key="${esc(key)}" aria-pressed="${!off}">${off?t('ct_hidden'):t('ct_shown')}</button>`;
+  const mineB=(k,i)=>`<span class="src l">${t('ct_mine')}</span><button class="btn ghost sm" data-ed="${k}" data-i="${i}">${t('adm_edit')}</button><button class="btn ghost sm" data-del="${k}" data-i="${i}" style="color:var(--bad)" aria-label="${t('remove')}">✕</button>`;
+  const hit=s=>!st.q||normA(s).includes(normA(st.q));
+  function render(){const c=CONTENT,off=c.off;let body='';
+    const tabs=`<div class="tabs">${['map','feud','spy'].map(x=>`<button data-tab="${x}" class="${st.tab===x?'on':''}">${t('ct_t_'+x)}</button>`).join('')}</div>`;
+    if(st.tab==='map'){const k=st.kind,o=new Set(off[k]||[]),B=CT_B[k];
+      const sub=x=>k==='land'?ctCName(x[0]):ctRegName(x[0]),nm=x=>k==='ctry'?(L()?x[3]:x[2]):(L()?x[4]:x[3]);
+      const list=[...c[k].map((x,i)=>({x,i,mine:1})),...B.map(x=>({x}))].filter(e=>hit(nm(e.x)+' '+sub(e.x)));
+      if(!md)body=`<p class="note">${t('mp_noMap')}</p>`;
+      body+=`<div class="row wrap" style="gap:6px">${['land','ctry','cap'].map(x=>`<button class="chip ${k===x?'on':''}" data-kind="${x}">${t('ct_k_'+x)} · ${CT_B[x].length-(off[x]||[]).length+c[x].length}</button>`).join('')}</div>
+        <div class="row wrap"><button class="btn primary sm" id="ct-add" ${md?'':'disabled'}>${ic('plus')} ${t('adm_add')}</button><input type="text" id="ct-q" placeholder="${t('adm_search')}" value="${esc(st.q)}" style="flex:1;min-width:160px"></div>
+        <div class="panel" style="padding:4px 10px">${list.slice(0,150).map(e=>row(esc(nm(e.x)),esc(sub(e.x))+(k==='ctry'?'':' · <span dir="ltr">'+ctLL([e.x[2],e.x[1]])+'</span>'),e.mine?mineB(k,e.i):offB(k,ctKey[k](e.x),o.has(ctKey[k](e.x))),!e.mine&&o.has(ctKey[k](e.x)))).join('')||`<p class="muted">—</p>`}${list.length>150?`<p class="small muted">${t('adm_more',list.length-150)}</p>`:''}</div>`}
+    else if(st.tab==='feud'){const o=new Set(off.feud||[]),nm=x=>L()?x[1]:x[0];
+      const list=[...c.feud.map((x,i)=>({x,i,mine:1})),...CT_B.feud.map(x=>({x}))].filter(e=>hit(e.x[0]+' '+e.x[1]));
+      body=`<p class="small muted">${t('ct_feudInfo',CT_B.feud.length-(off.feud||[]).length+c.feud.length)}</p>
+        <div class="row wrap"><button class="btn primary sm" id="ct-add">${ic('plus')} ${t('adm_add')}</button><input type="text" id="ct-q" placeholder="${t('adm_search')}" value="${esc(st.q)}" style="flex:1;min-width:160px"></div>
+        <div class="panel" style="padding:4px 10px">${list.map(e=>row(esc(nm(e.x)),esc(e.x[2].slice(0,4).map(a=>a[L()]).join(' · '))+' …',e.mine?mineB('feud',e.i):offB('feud',e.x[0],o.has(e.x[0])),!e.mine&&o.has(e.x[0]))).join('')||`<p class="muted">—</p>`}</div>`}
+    else{const so=new Set(off.spy||[]),cats=SPY_CATS_ALL();if(!st.cat||!cats.includes(st.cat))st.cat=cats[0];const cat=st.cat;
+      const n=k=>(SPY_W[k]||[]).length,mineW=c.spy.map((x,i)=>({x,i})).filter(e=>e.x[0]===cat),base=(CT_B.spy[cat]||[]);
+      const isNew=!CT_B.spy[cat];
+      body=`<p class="small muted">${t('ct_spyInfo')}</p>
+        <div class="row wrap" style="gap:6px">${cats.map(k=>`<button class="chip ${k===cat?'on':''}" data-cat="${esc(k)}">${esc(spyCatName(k))} · ${n(k)}${n(k)<8?' ⚠':''}</button>`).join('')}</div>
+        <div class="row wrap"><button class="btn primary sm" id="ct-add">${ic('plus')} ${t('ct_addWords')}</button>${isNew?`<button class="btn ghost sm" id="ct-delcat" style="color:var(--bad)">${t('ct_delCat')}</button>`:''}</div>
+        ${n(cat)<8?`<p class="note">${t('ct_few',n(cat))}</p>`:''}
+        <div class="ct-words">${mineW.map(e=>`<span class="ct-w mine">${esc(e.x[1])}<small>${esc(e.x[2]||'')}</small><button data-del="spy" data-i="${e.i}" aria-label="${t('remove')}">✕</button></span>`).join('')}${base.map(w=>{const key=cat+'|'+w[0],hid=so.has(key);return`<button class="ct-w ${hid?'off':''}" data-tg="spy" data-key="${esc(key)}" title="${hid?t('ct_hidden'):t('ct_shown')}">${esc(w[0])}<small>${esc(w[1])}</small></button>`}).join('')}</div>
+        <p class="small muted">${t('ct_spyTap')}</p>`}
+    app.innerHTML=admHead('admx')+`<div class="stack"><p class="small muted">${admLive()?t('adm_where_r'):t('ct_where_l')}</p>${tabs}${body}</div>`;bind();
+    $$('[data-tab]').forEach(b=>b.onclick=()=>{st.tab=b.dataset.tab;st.q='';render()});
+    $$('[data-kind]').forEach(b=>b.onclick=()=>{st.kind=b.dataset.kind;st.q='';render()});
+    $$('[data-cat]').forEach(b=>b.onclick=()=>{st.cat=b.dataset.cat;render()});
+    $$('[data-tg]').forEach(b=>b.onclick=()=>tog(b.dataset.tg,b.dataset.key));
+    $$('[data-del]').forEach(b=>b.onclick=e=>{e.stopPropagation();del(b.dataset.del,+b.dataset.i)});
+    const q=$('#ct-q');if(q)q.oninput=()=>{st.q=q.value;clearTimeout(q._t);q._t=setTimeout(()=>{render();const n=$('#ct-q');if(n){n.focus();n.setSelectionRange(n.value.length,n.value.length)}},250)};
+    const put=(k,i)=>async rec=>{const cc=ctClone();if(i==null)cc[k].unshift(rec);else cc[k][i]=rec;return save(cc)};
+    $$('[data-ed]').forEach(b=>b.onclick=()=>{const k=b.dataset.ed,i=+b.dataset.i;if(k==='feud')ctFeudForm(c.feud[i],put('feud',i));else ctMapForm(k,c[k][i],put(k,i))});
+    const add=$('#ct-add');if(add)add.onclick=()=>{if(st.tab==='map')ctMapForm(st.kind,null,put(st.kind));else if(st.tab==='feud')ctFeudForm(null,put('feud'));
+      else ctSpyForm(st.cat,async(cat,newCat,words)=>{const cc=ctClone();if(newCat)cc.spyc.push(newCat);cc.spy.push(...words);st.cat=cat;return save(cc,t('ct_addedW',words.length))})};
+    const dc=$('#ct-delcat');if(dc)dc.onclick=async()=>{if(!await confirmBox(t('ct_delCatQ',spyCatName(st.cat)),t('remove')))return;const cc=ctClone(),k=st.cat;cc.spyc=cc.spyc.filter(x=>x[0]!==k);cc.spy=cc.spy.filter(x=>x[0]!==k);st.cat=null;save(cc,t('adm_deleted'))}}
+  render()};
 SCREENS.adma=async function(){const bind=await admEnter();if(current!=='adma')return;
   const render=async()=>{const list=await adsList();if(current!=='adma')return;const now=Date.now();
     const st=a=>!a.active?t('aa_off'):a.ends&&Date.parse(a.ends)<now?t('aa_ended'):a.starts&&Date.parse(a.starts)>now?t('aa_soon'):t('aa_live');
@@ -3726,7 +3886,7 @@ SCREENS.adma=async function(){const bind=await admEnter();if(current!=='adma')re
     $$('[data-da]').forEach(b=>b.onclick=async()=>{if(await confirmBox(t('aa_delQ'),t('remove'))){await adDel(+b.dataset.da||b.dataset.da);render()}})};
   render()};
 
-const ADM_TABS=['admin','admp','admq','admg','admc','adma'];
+const ADM_TABS=['admin','admp','admq','admx','admg','admc','adma'];
 const arN=(n,few,many,en)=>L()?n+' '+en:n+' '+(n>=3&&n<=10?few:many);
 const dN=n=>arN(n,'أيام','يوماً',n===1?'day':'days');
 const kp=(v,l,sub)=>`<div class="kpi"><b class="tnum">${v}</b><span>${l}</span>${sub?`<i>${sub}</i>`:''}</div>`;
