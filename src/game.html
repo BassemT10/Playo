@@ -673,7 +673,7 @@ body.tvm .fd-q,body:has(.fd-grid) .fd-q{font-size:clamp(20px,2.4vw,40px)}
 .tv-end{max-width:900px;margin:0 auto;padding:24px 16px;text-align:center}.tv-ranks{display:grid;gap:12px;margin:20px 0}.tv-end .tv-next{margin:0 auto}
 .tv-rank{display:grid;text-align:start;grid-template-columns:60px 1fr auto;gap:14px;align-items:center;background:var(--surface);border-radius:16px;padding:14px 20px;font-size:24px;font-weight:800}.tv-rank.first{outline:3px solid var(--accent)}
 .tvm .game .gboard{font-size:1.15em}
-</style>
+.adm-link{background:none;border:0;color:var(--muted);font:inherit;font-size:12px;opacity:.7;padding:6px;margin:0 auto;text-decoration:underline;cursor:pointer}</style>
 
 <div class="app" id="app"></div>
 <div id="ad" hidden></div>
@@ -893,7 +893,7 @@ qzCapNote:['حتى {0}','Up to {0}'],qzCapPrem:['حتى {0} مع بريميوم'
 banned:['هذا الحساب موقوف','This account is suspended'],
 at_admin:['نظرة عامة','Overview'],at_admp:['اللاعبون','Players'],at_admq:['الأسئلة','Questions'],at_admg:['الألعاب','Games'],at_admc:['الأكواد والخصومات','Codes & discounts'],at_admx:['محتوى الألعاب','Game content'],
 adm_demo:['بيانات تجريبية للعرض فقط. البيانات الحقيقية تظهر بعد ربط الخادم والدخول بحساب المدير.','Sample data for preview. Real data appears once the server is connected and you sign in with the admin account.'],
-adm_needLogin:['سجّل الدخول بحساب المدير','Sign in with the admin account'],adm_notAdmin:['الحساب {0} ليس حساب مدير.','{0} is not an admin account.'],
+admEntry:['دخول الإدارة','Admin sign-in'],adm_needLogin:['سجّل الدخول بحساب المدير','Sign in with the admin account'],adm_notAdmin:['الحساب {0} ليس حساب مدير.','{0} is not an admin account.'],
 ad_players:['اللاعبون','Players'],ad_7d:['هذا الأسبوع','this week'],ad_active1:['نشطون اليوم','Active today'],ad_active7:['نشطون 7 أيام','Active 7 days'],ad_premium:['مشتركون','Subscribers'],ad_matches1:['مباريات اليوم','Matches today'],ad_matches7:['مباريات 7 أيام','Matches 7 days'],
 ad_daily:['المباريات يومياً (14 يوماً)','Matches per day (14 days)'],ad_topGames:['أكثر الألعاب لعباً (30 يوماً)','Most played games (30 days)'],ad_plans:['الاشتراكات الفعالة','Active subscriptions'],ad_revNote:['الإيرادات بالتفصيل في لوحتي Google Play وApp Store وRevenueCat.','Revenue details are in Google Play, App Store and RevenueCat.'],
 pl_other:['أخرى','Other'],pl_gift:['هدية','Gift'],pl_test:['تجربة','Test'],
@@ -4220,7 +4220,8 @@ SCREENS.settings=function(){
   <div class="panel">${sw('s-sound',settings.sound,t('sound'))}${sw('s-music',settings.music,t('music'))}</div>
   <div class="panel"><h3 style="margin-bottom:4px">${t('gameplay')}</h3>${sw('s-xt',settings.extraTurn,t('extraTurn'))}</div>
   <div class="panel"><h3 style="margin-bottom:4px">${t('notifSet')}</h3>${['friend','invite','rank','ach','online'].map(k=>sw('n-'+k,settings.notif[k],t('nf_'+k))).join('')}</div>
-  ${ADM.ok||!ACC.client()||store.get('isAdmin',false)?`<button class="btn block" data-go="admin">${t('admin')}</button>`:''}<div class="panel stack" style="gap:8px"><button class="btn ghost block" id="pp">${t('privacy')}</button><button class="btn ghost block" id="tm">${t('terms')}</button><button class="btn ghost block" id="rs" style="color:var(--bad)">${t('reset')}</button></div></div>`;
+  ${ADM.ok||!ACC.client()||store.get('isAdmin',false)?`<button class="btn block" data-go="admin">${ic('lock')} ${t('admin')}</button>`:''}<div class="panel stack" style="gap:8px"><button class="btn ghost block" id="pp">${t('privacy')}</button><button class="btn ghost block" id="tm">${t('terms')}</button><button class="btn ghost block" id="rs" style="color:var(--bad)">${t('reset')}</button></div>
+  ${ADM.ok||!ACC.client()||store.get('isAdmin',false)?'':`<button class="adm-link" data-go="admin">${t('admEntry')}</button>`}</div>`;
   $$('[data-l]').forEach(b=>b.onclick=()=>{settings.lang=b.dataset.l;store.set('settings',settings);applyLang();SCREENS.settings()});
   const ai=$('#acc-in');if(ai)ai.onclick=accountModal;const ao=$('#acc-out');if(ao)ao.onclick=async()=>{await ACC.signOut();SCREENS.settings()};
   const bind=(id,fn)=>{$('#'+id).onclick=()=>{fn();store.set('settings',settings);SCREENS.settings()}};
