@@ -876,7 +876,7 @@ adm_alt:['إجابات صحيحة أخرى مقبولة (افصل بينها ب�
 adm_saved:['تم الحفظ','Saved'],adm_deleted:['تم الحذف','Deleted'],adm_delQ:['حذف هذا السؤال؟','Delete this question?'],adm_where_l:['ما تضيفه هنا يُحفظ على هذا الجهاز فقط ويظهر في لعبك الفردي. بعد ربط الخادم يصل لكل اللاعبين.','What you add here is saved on this device only and appears in your solo games. Once the server is connected it reaches all players.'],adm_where_r:['متصل بالخادم: ما تحفظه يصل لكل اللاعبين.','Connected to the server: what you save reaches every player.'],
 adm_login:['سجّل دخول المدير لنشر الأسئلة لكل اللاعبين','Sign in as admin to publish questions to all players'],adm_email:['البريد','Email'],adm_pass:['كلمة المرور','Password'],adm_signin:['دخول','Sign in'],adm_signout:['خروج','Sign out'],adm_badlogin:['تعذّر الدخول، تحقق من البريد وكلمة المرور','Sign-in failed; check email and password'],
 adm_imported:['تم استيراد {0} سؤالاً','{0} questions imported'],adm_preview:['وجدنا {0} سؤال أسئلة و{1} سؤال خداع. استيرادها؟','Found {0} quiz and {1} deception questions. Import them?'],adm_noRows:['لم نجد أسئلة في الملف. استخدم نموذج Excel.','No questions found. Use the Excel template.'],
-adm_needOpts:['أكمل السؤال والإجابة وخياراً خاطئاً واحداً على الأقل','Fill in the question, the answer and at least one wrong option'],adm_needFakes:['أكمل السؤال والإجابة الصحيحة و4 إجابات خاطئة على الأقل','Fill in the question, the correct answer and at least 4 wrong answers'],adm_readonly:['الأمثلة المدمجة للقراءة فقط','Built-in samples are read-only'],
+adm_needOpts:['أكمل السؤال والإجابة','Fill in the question and the answer'],adm_tpl:['ملف Excel فارغ للتعبئة','Blank Excel template'],adm_en:['النسخة الإنجليزية (اختياري)','English version (optional)'],adm_autoW:['الخيارات الخاطئة اختيارية: إن تركتها فارغة تُؤخذ من إجابات أسئلة أخرى في الفئة نفسها.','Wrong options are optional: empty ones are taken from other answers in the same category.'],adm_needFakes:['أكمل السؤال والإجابة الصحيحة و4 إجابات خاطئة على الأقل','Fill in the question, the correct answer and at least 4 wrong answers'],adm_readonly:['الأمثلة المدمجة للقراءة فقط','Built-in samples are read-only'],
 adm_saveFail:['تعذّر الحفظ على الخادم: {0}','Could not save to the server: {0}'],adm_edit:['تعديل','Edit'],adm_dlFail:['التصدير متاح في نسخة المتصفح على الكمبيوتر','Export works in the web version on a computer'],adm_loading:['جارٍ قراءة الملف…','Reading the file…'],adm_more:['و{0} أخرى… استخدم البحث','and {0} more… use search'],
 prem:['الباقات','Plans'],premTitle:['اختر باقتك','Choose your plan'],
 premF1:['بدون إعلانات','No ads'],premF2:['كل ألعاب الذاكرة الست','All six memory games'],premF3:['كل فئات الأسئلة والخداع وكل أطوال الجولات','Every quiz and deception category and round length'],premF4:['كل صعوبات السودوكو','Every Sudoku difficulty'],premF5:['أنشئ غرفاً واختر اللعبة لأصدقائك','Create rooms and pick the game for your friends'],premF6:['سجل مباريات كامل وصور مميزة','Full match history and special avatars'],
@@ -1180,7 +1180,9 @@ const BUILTIN_DECEIT=[
 ['طعام','سُمّي الهامبرغر نسبة إلى مدينة ____.','هامبورغ','فرانكفورت|ميونخ|برلين|كولونيا','هامبورج'],['علوم','عدد الأسنان الدائمة عند الإنسان البالغ ____.','32','28|30|36|24','اثنان وثلاثون'],
 ['جغرافيا','أكبر محيط في العالم هو المحيط ____.','الهادئ','الأطلسي|الهندي|المتجمد الشمالي|الجنوبي','الهادي|الباسيفيكي']];
 const qn=s=>String(s==null?'':s).trim();
-function mkQuiz(id,cat,q,opts,tm,src,ex){ex=ex||{};return{id,kind:'quiz',cat:qn(cat)||'عام',q:qn(q),a:(opts||[]).map(qn).filter(Boolean),t:20,img:/^https?:\/\//i.test(qn(ex.img))?qn(ex.img):'',aimg:/^https?:\/\//i.test(qn(ex.aimg))?qn(ex.aimg):'',x2:!!ex.x2,emo:qn(ex.emo).slice(0,16),alt:(ex.alt||[]).map(qn).filter(Boolean),qt:ex.qt==='order'||ex.qt==='type'?ex.qt:'',src}}
+/* optional English version of a question: {cat, q, a:[same order as the Arabic answers], alt} */
+const qEn=e=>e&&typeof e==='object'&&qn(e.q)?{cat:qn(e.cat),q:qn(e.q),a:(e.a||[]).map(qn),alt:(e.alt||[]).map(qn).filter(Boolean)}:null;
+function mkQuiz(id,cat,q,opts,tm,src,ex){ex=ex||{};return{id,kind:'quiz',cat:qn(cat)||'عام',q:qn(q),a:(opts||[]).map(qn).filter(Boolean),t:20,img:/^https?:\/\//i.test(qn(ex.img))?qn(ex.img):'',aimg:/^https?:\/\//i.test(qn(ex.aimg))?qn(ex.aimg):'',x2:!!ex.x2,emo:qn(ex.emo).slice(0,16),alt:(ex.alt||[]).map(qn).filter(Boolean),qt:ex.qt==='order'||ex.qt==='type'?ex.qt:'',en:qEn(ex.en),src}}
 function mkDeceit(id,cat,q,a,fakes,alt,src,ex){const img=qn(ex&&ex.img);return{id,kind:'deceit',cat:qn(cat)||'عام',q:qn(q),a:qn(a),f:(fakes||[]).map(qn).filter(Boolean),alt:(alt||[]).map(qn).filter(Boolean),img:/^https:\/\//i.test(img)?img:'',aimg:/^https:\/\//i.test(qn(ex&&ex.aimg))?qn(ex.aimg):'',src}}
 const BUILTIN_PIC=[
 ['حيوانات','🦒','زرافة'],['حيوانات','🐘','فيل'],['حيوانات','🦁','أسد'],['حيوانات','🐪','جمل','بعير'],['حيوانات','🐧','بطريق'],['حيوانات','🦓','حمار وحشي','حمار الوحش'],['حيوانات','🐢','سلحفاة','سلحفاه'],['حيوانات','🦉','بومة','بومه'],['حيوانات','🐬','دلفين','دولفين'],['حيوانات','🦋','فراشة','فراشه'],
@@ -1234,8 +1236,36 @@ const BANK={quiz:[],deceit:[]};
 function loadBank(){
   const loc=store.get('bank_local',{quiz:[],deceit:[]}),rem=store.get('bank_remote',{quiz:[],deceit:[]});
   BANK.quiz=[...BUILTIN_QUIZ.map((r,i)=>mkQuiz('bq'+(i+1),r[0],r[1],r.slice(2),20,'b')),...BUILTIN_PIC.map(picQ),...BUILTIN_HUROOF.map(hfQ),...BUILTIN_ORDER.map(ordQ),...(rem.quiz||[]).map(x=>({...x,src:'r'})),...(loc.quiz||[]).map(x=>({...x,src:'l'}))];
+  qzAuto();
   BANK.deceit=[...BUILTIN_DECEIT.map((r,i)=>mkDeceit('bd'+(i+1),r[0],r[1],r[2],r[3].split('|'),r[4]?r[4].split('|'):[],'b')),...(rem.deceit||[]).map(x=>({...x,src:'r'})),...(loc.deceit||[]).map(x=>({...x,src:'l'}))];
 }
+/* A multiple-choice question that only has its correct answer borrows wrong options from the answers of
+   other questions in the same category. The pick depends only on the question ids, so every phone in a
+   room shows the same options. */
+let CAT_EN={};
+function qzAuto(){CAT_EN={};const by={},normA=x=>String(x||'').trim().toLowerCase().replace(/[أإآ]/g,'ا').replace(/\s+/g,' ');
+  const TF=/^(صح|خطأ|خطا|صحيح|true|false|نعم|لا|yes|no)$/i,isNum=x=>/^-?[\d٠-٩]+([.,][\d٠-٩]+)?$/.test(String(x).trim());
+  const key=q=>normA(q.q).replace(/[؟?]/g,'').split(' ').slice(0,2).join(' ');
+  BANK.quiz.forEach(q=>{if(q.en&&q.en.cat&&!CAT_EN[q.cat])CAT_EN[q.cat]=q.en.cat;if(q.qt||q.emo||!q.a[0]||TF.test(q.a[0]))return;(by[q.cat]=by[q.cat]||[]).push(q)});
+  BANK.quiz.forEach(q=>{q.ax=[];q.axe=[];if(q.qt||q.emo||q.src==='b'||q.a.length>=4||!q.a[0])return;   // only the owner's questions get borrowed options
+    const num=isNum(q.a[0]),k=key(q),own=q.src!=='b',seen=new Set(q.a.map(normA));
+    /* closest first: same kind of answer (number / text), same question opening ("ما عاصمة"), the owner's own questions, then a fixed pseudo-random order */
+    const cand=(by[q.cat]||[]).filter(d=>d.id!==q.id&&isNum(d.a[0])===num&&(d.src!=='l'||q.src==='l'))
+      .map(d=>[(key(d)===k?0:2)+((d.src!=='b')===own?0:1),hash(q.id+'|'+d.id),d]).sort((x,y)=>x[0]-y[0]||x[1]-y[1]);
+    for(const [,,d] of cand){if(q.a.length+q.ax.length>=4)break;const n=normA(d.a[0]);if(!n||seen.has(n))continue;seen.add(n);q.ax.push(d.a[0])}
+    /* English options only from questions that have an English answer */
+    if(q.en){const se=new Set(q.en.a.map(normA));for(const [,,d] of cand){if(q.a.length+q.axe.length>=4)break;const x=d.en&&d.en.a[0],n=normA(x);if(!n||se.has(n))continue;se.add(n);q.axe.push(x)}}
+    if(num){const v=parseFloat(String(q.a[0]).replace(/[٠-٩]/g,c=>'٠١٢٣٤٥٦٧٨٩'.indexOf(c)).replace(',','.')),h=hash(q.id),step=Math.max(1,Math.round(Math.abs(v)*.15));
+      for(let i=0;q.a.length+q.ax.length<4&&i<8;i++){const off=[1,-1,2,-2,3,-3,4,-4][(i+h)%8]*step,x=String(Math.round(v+off));if(Math.round(v+off)<0||seen.has(x))continue;seen.add(x);q.ax.push(x)}
+      if(q.en)q.axe=q.ax.slice()}})}
+const catLabel=c=>L()&&CAT_EN[c]||c;
+/* the copy a game shows: English text when the app is in English and the question has it, plus any borrowed options */
+function qL(q){if(!q||q.kind!=='quiz')return q;const ax=q.ax||[],e=L()&&q.en;
+  const a=[...q.a,...ax].slice(0,4);if(!e&&!ax.length)return q;
+  if(!e)return{...q,a};
+  const ea=q.a.map((x,i)=>e.a[i]||x);let eo=[...ea,...(q.axe||[])].slice(0,4);
+  if(!q.qt&&eo.length<2)eo=[...ea,...ax].slice(0,4);                 // not enough English options yet: borrow the Arabic ones
+  return{...q,q:e.q,a:eo,alt:[...(q.alt||[]),...e.alt],cat:e.cat||q.cat}}
 loadBank();
 const SB_ON=()=>!!(ZKC.supabaseUrl&&ZKC.supabaseUrl.indexOf('__')!==0);
 async function fetchRemoteBank(){if(!SB_ON())return false;
@@ -1246,8 +1276,9 @@ async function fetchRemoteBank(){if(!SB_ON())return false;
 fetchRemoteBank();
 const bankCats=kind=>[...new Set(BANK[kind].map(q=>q.cat))];
 const playCats=kind=>[...new Set(BANK[kind].filter(q=>usableQ(kind,q)).map(q=>q.cat))];
-const bankById=id=>BANK.quiz.find(q=>q.id===id)||BANK.deceit.find(q=>q.id===id);
-const usableQ=(kind,q)=>kind==='quiz'?q.q&&(q.qt==='type'?!!q.a[0]:q.qt==='order'?q.a.length>=3:q.a.length>=2):q.q&&q.a&&q.f.length>=1;
+const bankRaw=id=>BANK.quiz.find(q=>q.id===id)||BANK.deceit.find(q=>q.id===id);
+const bankById=id=>qL(bankRaw(id));
+const usableQ=(kind,q)=>kind==='quiz'?q.q&&(q.qt==='type'?!!q.a[0]:q.qt==='order'?q.a.length>=3:q.a.length+((q.ax||[]).length)>=2):q.q&&q.a&&q.f.length>=1;
 function pickQuestions(kind,n,cat,shareable,qts){
   const cats=(Array.isArray(cat)?cat:(cat&&cat!=='all'?[cat]:[])).filter(c=>!catLocked(c));
   const pool=BANK[kind].filter(q=>usableQ(kind,q)&&!catLocked(q.cat)&&(!cats.length||cats.includes(q.cat))&&(!shareable||q.src!=='l')&&(kind!=='quiz'||qtAllowed(q,qts)));
@@ -1257,10 +1288,10 @@ function pickQuestions(kind,n,cat,shareable,qts){
   if(kind==='quiz'){const cs=shuffle(cats.length?cats.slice():[...new Set(pool.map(q=>q.cat))]).slice(0,MAX_CATS),by=cs.map(c=>order(pool.filter(q=>q.cat===c)));out=[];
     for(let i=0;out.length<n&&by.some(b=>i<b.length);i++)by.forEach(b=>{if(out.length<n&&b[i])out.push(b[i])});out=shuffle(out)}
   else out=order(pool).slice(0,n);
-  store.set('seen_'+kind,[...seen,...out.map(q=>q.id)].slice(-400));return out}
+  store.set('seen_'+kind,[...seen,...out.map(q=>q.id)].slice(-400));return out.map(qL)}
 /* a player's own set travels inside the room settings (opts.uqs); bank questions travel as ids (opts.qids) */
 const mkU=x=>x.kind==='quiz'?mkQuiz(x.id,x.cat,x.q,x.a,20,'u',x):mkDeceit(x.id,x.cat,x.q,x.a,x.f,x.alt,'u',x);
-const roomQs=o=>o.uqs&&o.uqs.length?o.uqs.map(mkU):(o.qids||[]).map(bankById).filter(Boolean);
+const roomQs=o=>o.uqs&&o.uqs.length?o.uqs.map(mkU):(o.qids||[]).map(bankById).filter(Boolean);   // bankById already gives the shown copy
 function getQs(kind,n){const uq=M.cfg.opts&&M.cfg.opts.uqs;if(uq&&uq.length)return uq.map(mkU);
   const ids=M.cfg.opts&&M.cfg.opts.qids;
   if(ids){const qs=ids.map(bankById).filter(Boolean);if(qs.length<ids.length){toast(t('missingQ'));M.alive=false;if(M.net)NET.leave();go('home');return null}return qs}
@@ -1703,7 +1734,7 @@ SCREENS.setup=function(p){
       ${g.id==='pairs'?`<div><h3 style="margin-bottom:8px">${t('imageSet')}</h3><div class="chips">${Object.keys(PAIR_SETS).map(s=>`<button class="chip ${st.set===s?'on':''}" data-set="${s}">${splitEmoji(PAIR_SETS[s])[0]} ${t('set_'+s)}</button>`).join('')}</div>
         <div class="toggle" style="border:0;padding-bottom:0"><span>${t('extraTurn')}</span><button class="sw ${settings.extraTurn?'on':''}" id="xt" aria-pressed="${settings.extraTurn}" aria-label="${t('extraTurn')}"></button></div></div>`:''}
       ${g.id==='quiz'?`<div><h3 style="margin-bottom:8px">${t('qt_title')}</h3><div class="chips">${QTYPES.map(k=>`<button class="chip ${st.qts.includes(k)?'on':''}" data-qt="${k}">${t('qt_'+k)}${qtLocked(k)?lockTag():''}</button>`).join('')}</div></div>`:''}
-      ${(g.id==='quiz'||g.id==='deceit'||g.id==='pic'||g.id==='survive')?`<div><h3 style="margin-bottom:2px">${t('category')}</h3><p class="small muted" style="margin:0 0 8px">${t('catsPick')}</p><div class="chips"><button class="chip ${!st.cats.length&&!st.uset?'on':''}" data-cat="all">${t('allCats')}</button>${(g.id==='pic'?picCats():playCats(g.id==='survive'?'quiz':g.id)).map(c=>`<button class="chip ${st.cats.includes(c)?'on':''}" data-cat="${esc(c)}">${esc(c)}${catLocked(c)?lockTag():''}</button>`).join('')}</div></div>
+      ${(g.id==='quiz'||g.id==='deceit'||g.id==='pic'||g.id==='survive')?`<div><h3 style="margin-bottom:2px">${t('category')}</h3><p class="small muted" style="margin:0 0 8px">${t('catsPick')}</p><div class="chips"><button class="chip ${!st.cats.length&&!st.uset?'on':''}" data-cat="all">${t('allCats')}</button>${(g.id==='pic'?picCats():playCats(g.id==='survive'?'quiz':g.id)).map(c=>`<button class="chip ${st.cats.includes(c)?'on':''}" data-cat="${esc(c)}">${esc(catLabel(c))}${catLocked(c)?lockTag():''}</button>`).join('')}</div></div>
       ${g.id==='pic'||g.id==='survive'?'':`<div><div class="row between" style="margin-bottom:8px"><h3>${t('us_mine')}</h3><button class="btn ghost sm" data-go="sets" data-p='{"kind":"${g.id}"}'>${t('us_manage')}</button></div>${usets(g.id).length?`<div class="chips">${usets(g.id).map(x=>`<button class="chip ${st.uset===x.id?'on':''}" data-uset="${x.id}">⭐ ${esc(x.name)} · ${x.qs.length}${canSets()?'':lockTag()}</button>`).join('')}</div>`:`<p class="small muted">${t('us_none')}</p>`}</div>`}`:''}
       ${st.mode==='local'?`<div><h3 style="margin-bottom:8px">${t('players')}</h3><div class="seg" style="margin-bottom:10px">${(g.id==='spy'?[3,4,5,6,7,8]:[2,3,4]).map(n=>`<button data-count="${n}" class="${st.count===n?'on':''}">${t('nPlayers',n)}</button>`).join('')}</div>
         <div class="stack" style="gap:8px"><input type="text" value="${esc(profile.name)}" disabled aria-label="${t('playerN',1)}">${[...Array(st.count-1)].map((_,i)=>`<input type="text" id="pn${i}" maxlength="14" placeholder="${t('playerN',i+2)}" value="${esc(st.names[i])}" data-ni="${i}">`).join('')}</div></div>`:''}
@@ -3704,7 +3735,7 @@ async function uploadImg(file){const sb=ACC.client();if(!sb||!ACC.user){toast(t(
     const {error}=await sb.storage.from('qimg').upload(name,blob,{contentType:'image/jpeg',upsert:true});if(error)throw error;
     return sb.storage.from('qimg').getPublicUrl(name).data.publicUrl}catch(e){toast(t('adm_upFail'));return null}}
 const newQid=()=>'q'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
-const qData=q=>q.kind==='quiz'?{q:q.q,a:q.a,t:20,img:q.img||'',aimg:q.aimg||'',x2:!!q.x2,qt:q.qt||'',alt:q.alt||[]}:{q:q.q,a:q.a,f:q.f,alt:q.alt,img:q.img||'',aimg:q.aimg||''};
+const qData=q=>q.kind==='quiz'?{q:q.q,a:q.a,t:20,img:q.img||'',aimg:q.aimg||'',x2:!!q.x2,qt:q.qt||'',alt:q.alt||[],en:q.en||null}:{q:q.q,a:q.a,f:q.f,alt:q.alt,img:q.img||'',aimg:q.aimg||''};
 async function admSave(list){
   const sb=admClient();
   if(admLive()){const rows=list.map(q=>({id:q.id,kind:q.kind,cat:q.cat,data:qData(q),active:true}));
@@ -3719,10 +3750,47 @@ async function admDelete(q){
 function loadXLSX(){return new Promise((res,rej)=>{if(window.XLSX)return res(window.XLSX);const s=document.createElement('script');s.src=ZKC.xlsxUrl||'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';s.onload=()=>res(window.XLSX);s.onerror=rej;document.head.appendChild(s)})}
 /* Excel layout (see the template): sheet "أسئلة": category, question, correct, wrong 1..3, image link, double (نعم).
    sheet "خداع": category, question with ____, answer, other accepted answers (comma separated), lie 1..5, image link */
+const XL_BI_HEAD=['الفئة','Category (EN)','السؤال','Question (EN)','الإجابة الصحيحة','Answer (EN)','خيار خاطئ 1 (اختياري)','Wrong 1 (EN)','خيار خاطئ 2 (اختياري)','Wrong 2 (EN)','خيار خاطئ 3 (اختياري)','Wrong 3 (EN)','رابط الصورة (اختياري)','نقاط مضاعفة (نعم)','النوع (اختيار / كتابة / ترتيب)','صورة الإجابة (اختياري)'];
+function xlBiQ(r){const ar=[r[2],r[4],r[6],r[8],r[10]],en=[r[3],r[5],r[7],r[9],r[11]];
+  const qa=ar[0]||en[0],aa=ar[1]||en[1];if(!qa||!aa)return null;                 // English-only rows are fine too
+  const cat=r[0]||r[1]||'عام',ty=/ترتيب|order/i.test(r[14]||'')?'order':/كتاب|type|write/i.test(r[14]||'')?'type':'';
+  const opts=[1,2,3,4].map(i=>ar[i]||en[i]),eo=[1,2,3,4].map(i=>en[i]||ar[i]);
+  const keep=opts.map((x,i)=>x?i:-1).filter(i=>i>=0);                              // drop empty wrong options in both languages together
+  const hasEn=!!(en[0]&&en[1]),e=hasEn?{cat:r[1],q:en[0],a:keep.map(i=>eo[i])}:null;
+  const ex={img:r[12],aimg:r[15],x2:/^(نعم|yes|y|x2|×2|2|✓|true)$/i.test(r[13]||''),qt:ty};
+  let q;
+  if(ty==='type'){q=mkQuiz(newQid(),cat,qa,[aa],20,'l',{...ex,alt:opts.slice(1),en:hasEn?{cat:r[1],q:en[0],a:[en[1]],alt:eo.slice(1)}:null})}
+  else q=mkQuiz(newQid(),cat,qa,keep.map(i=>opts[i]),20,'l',{...ex,en:e});
+  return q.q&&q.a[0]&&(ty!=='order'||q.a.length>=3)?q:null}
+function xlBiRow(q){const e=q.en||{},ea=e.a||[];const w=i=>q.qt==='type'?[(q.alt||[])[i-1]||'',(e.alt||[])[i-1]||'']:[q.a[i]||'',ea[i]||''];
+  return[q.cat,e.cat||'',q.q,e.q||'',q.a[0]||'',ea[0]||'',...w(1),...w(2),...w(3),q.img||'',q.x2?'نعم':'',q.qt==='order'?'ترتيب':q.qt==='type'?'كتابة':'',q.aimg||'']}
+/* the empty template the owner fills in: a filled example row in each language mix, plus a short how-to sheet */
+function xlTemplate(X){const wb=X.utils.book_new();
+  const ex=[['جغرافيا','Geography','ما عاصمة اليابان؟','What is the capital of Japan?','طوكيو','Tokyo','بكين','Beijing','سيول','Seoul','أوساكا','Osaka','','','',''],
+    ['جغرافيا','Geography','ما أطول نهر في العالم؟','What is the longest river in the world?','النيل','The Nile','','','','','','','','','',''],
+    ['رياضة','Sports','كم لاعباً في فريق كرة القدم داخل الملعب؟','How many players does a football team have on the pitch?','11','11','','','','','','','','نعم','',''],
+    ['علوم','Science','ما الرمز الكيميائي للذهب؟','What is the chemical symbol for gold?','Au','Au','','','','','','','','','كتابة','']];
+  const ws=X.utils.aoa_to_sheet([XL_BI_HEAD,...ex]);ws['!cols']=XL_BI_HEAD.map((h,i)=>({wch:[14,14,40,40,18,18].concat(Array(10).fill(16))[i]}));
+  X.utils.book_append_sheet(wb,ws,'أسئلة');
+  const help=[['طريقة التعبئة · How to fill it in'],[''],
+    ['• كل سطر سؤال واحد. الأعمدة الإلزامية: الفئة، السؤال، الإجابة الصحيحة.'],
+    ['• الأعمدة الإنجليزية (EN) اختيارية: إذا ملأتها يظهر السؤال بالإنجليزية لمن يلعب بالإنجليزية، وإلا يظهر بالعربية للجميع.'],
+    ['• الخيارات الخاطئة اختيارية: إذا تركتها فارغة يختار التطبيق خيارات من إجابات أسئلة أخرى في الفئة نفسها، لذلك ضع 4 أسئلة على الأقل في كل فئة، ويُفضّل أن تكون إجاباتها من النوع نفسه (مدن مع مدن، أرقام مع أرقام).'],
+    ['• نقاط مضاعفة: اكتب «نعم» ليكون السؤال بنقاط ×2.'],
+    ['• النوع: اتركه فارغاً لسؤال اختيارات، أو اكتب «كتابة» ليكتب اللاعب الإجابة (الخيارات الخاطئة تصبح إجابات مقبولة أخرى)، أو «ترتيب» لسؤال ترتيب (الإجابة ثم الخيارات بالترتيب الصحيح).'],
+    ['• رابط الصورة: رابط يبدأ بـ https لصورة تظهر مع السؤال.'],
+    ['• احذف أسطر الأمثلة قبل الرفع، ثم من لوحة الإدارة ← الأسئلة ← «استيراد من Excel».'],[''],
+    ['• One question per row. Required: category, question, correct answer (Arabic or English).'],
+    ['• English columns are optional; with them, players using the app in English see the English text.'],
+    ['• Wrong options are optional; empty ones are filled from other answers in the same category (keep at least 4 questions per category).']];
+  const hs=X.utils.aoa_to_sheet(help);hs['!cols']=[{wch:120}];X.utils.book_append_sheet(wb,hs,'طريقة التعبئة');
+  return wb}
 function parseWorkbook(X,wb){const out={quiz:[],deceit:[]};
   wb.SheetNames.forEach(name=>{const rows=X.utils.sheet_to_json(wb.Sheets[name],{header:1,defval:''}).map(r=>r.map(c=>qn(c)));if(!rows.length)return;
     const head=rows[0].join(' ');const isDeceit=/خداع|decept|deceit|bluff/i.test(name)||/خداع|lie|fake/i.test(head);
     const body=/سؤال|السؤال|question/i.test(head)?rows.slice(1):rows;
+    /* bilingual sheet (the downloadable template): الفئة | Category | السؤال | Question | الإجابة | Answer | wrong 1..3 (ar, en) | image | double | type | answer image */
+    if(!isDeceit&&/category|\(en\)|english/i.test(head)){body.forEach(r=>{const q=xlBiQ(r);if(q)out.quiz.push(q)});return}
     body.forEach(r=>{if(!r[1]||!r[2])return;
       if(isDeceit){const q=mkDeceit(newQid(),r[0],r[1],r[2],r.slice(4,9),r[3]?r[3].split(/[,،]/):[],'l',{img:r[9],aimg:r[10]});if(q.f.length>=1)out.deceit.push(q)}
       else{const ty=/ترتيب|order/i.test(r[9]||'')?'order':/كتاب|type|write/i.test(r[9]||'')?'type':'',ex={img:r[6],aimg:r[8],x2:/^(نعم|yes|y|x2|×2|2|✓|true)$/i.test(r[7]||''),qt:ty};const q=ty==='type'?mkQuiz(newQid(),r[0],r[1],[r[2]],20,'l',{...ex,alt:[r[3],r[4],r[5]]}):mkQuiz(newQid(),r[0],r[1],[r[2],r[3],r[4],r[5]],20,'l',ex);if(usableQ('quiz',q))out.quiz.push(q)}})});
@@ -4081,14 +4149,14 @@ SCREENS.admq=async function(p){const bind=await admEnter();if(current!=='admq')r
     else{const cats=[...new Set([...bankCats(st.tab),...CATS_ALL])].sort((a,b)=>a.localeCompare(b,'ar'));
       body=`<p class="small muted">${t('cat_hint2')}</p><p class="small" style="font-weight:700">${t('cat_freeN',cats.filter(freeCat).length,MAX_CATS)}</p><div class="panel" style="padding:4px 10px">${cats.map(c=>`<div class="cat-row"><button class="grow" data-open="${esc(c)}"><b>${esc(c)}</b><span class="small muted">${nQ(c,st.tab)} ${t('adm_'+st.tab)}${freeCat(c)?' · '+t('cat_isFree'):''}</span></button><button class="chip ${freeCat(c)?'on':''}" data-pc="${esc(c)}" aria-pressed="${freeCat(c)}">${freeCat(c)?'✓ '+t('cat_isFree'):CROWN+' '+t('cat_isPaid')}</button></div>`).join('')}</div>`}
     app.innerHTML=admHead('admq')+`<div class="stack">${tabs}
-      ${st.cat?'':`<div class="row wrap"><button class="btn primary sm" id="c-new">${ic('plus')} ${t('cat_new')}</button><label class="btn sm" style="cursor:pointer">${t('adm_import')}<input type="file" id="adm-file" accept=".xlsx,.xls,.csv" hidden></label><button class="btn ghost sm" id="adm-exp">${t('adm_export')}</button></div>
+      ${st.cat?'':`<div class="row wrap"><button class="btn primary sm" id="c-new">${ic('plus')} ${t('cat_new')}</button><label class="btn sm" style="cursor:pointer">${t('adm_import')}<input type="file" id="adm-file" accept=".xlsx,.xls,.csv" hidden></label><button class="btn ghost sm" id="adm-exp">${t('adm_export')}</button><button class="btn ghost sm" id="adm-tpl">${t('adm_tpl')}</button></div>
       <input type="text" id="adm-q" placeholder="${t('adm_search')}" value="${esc(st.q)}">`}
       <p class="small muted">${admLive()?t('adm_where_r'):t('adm_where_l')}</p>${body}</div>`;
     bind();
     $$('[data-tab]').forEach(b=>b.onclick=()=>{st.tab=b.dataset.tab;render()});
     $$('[data-open]').forEach(b=>b.onclick=()=>{st.cat=b.dataset.open;render();window.scrollTo(0,0)});
     $$('[data-pc]').forEach(b=>b.onclick=async()=>{const c=b.dataset.pc;if(await setFreeCat(c,!freeCat(c)))render()});
-    $$('[data-ed]').forEach(b=>b.onclick=()=>admForm(st.tab,bankById(b.dataset.ed),render,st.cat?{cat:st.cat}:undefined));
+    $$('[data-ed]').forEach(b=>b.onclick=()=>admForm(st.tab,bankRaw(b.dataset.ed),render,st.cat?{cat:st.cat}:undefined));
     const qi=$('#adm-q');if(qi)qi.oninput=()=>{st.q=qi.value;clearTimeout(qi._t);qi._t=setTimeout(()=>{render().then(()=>{const n=$('#adm-q');if(n){n.focus();n.setSelectionRange(n.value.length,n.value.length)}})},250)};
     const cn=$('#c-new');if(cn)cn.onclick=()=>nameModal(t('cat_new'),'',async v=>{const n=await addCat(v);if(!n)return false;st.cat=n;render()});
     const cb=$('#c-back');if(cb)cb.onclick=()=>{st.cat=null;render()};
@@ -4101,9 +4169,10 @@ SCREENS.admq=async function(p){const bind=await admEnter();if(current!=='admq')r
         if(!n){toast(t('adm_noRows'));return}
         if(await confirmBox(t('adm_preview',got.quiz.length,got.deceit.length),t('adm_import'))){if(await admSave([...got.quiz,...got.deceit]))toast(t('adm_imported',n));render()}}
       catch(err){toast(t('adm_noRows'))}};
+    const tp=$('#adm-tpl');if(tp)tp.onclick=async()=>{if(NATIVE||!ZKC.linkBase){toast(t('adm_dlFail'));return}const X=await loadXLSX();X.writeFile(xlTemplate(X),'playo-questions-template.xlsx')};
     const ex=$('#adm-exp');if(ex)ex.onclick=async()=>{if(NATIVE||!ZKC.linkBase){toast(t('adm_dlFail'));return}
       const X=await loadXLSX();const wb=X.utils.book_new();
-      X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال','الإجابة الصحيحة','خيار خاطئ 1','خيار خاطئ 2','خيار خاطئ 3','رابط الصورة','نقاط مضاعفة','صورة الإجابة','النوع'],...BANK.quiz.filter(q=>q.src!=='b').map(q=>{const b=q.qt==='type'?[q.a[0],...(q.alt||[]).concat(['','','']).slice(0,3)]:[q.a[0],q.a[1]||'',q.a[2]||'',q.a[3]||''];return[q.cat,q.q,...b,q.img||'',q.x2?'نعم':'',q.aimg||'',q.qt==='order'?'ترتيب':q.qt==='type'?'كتابة':'']})]),'أسئلة');
+      X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([XL_BI_HEAD,...BANK.quiz.filter(q=>q.src!=='b').map(xlBiRow)]),'أسئلة');
       X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال (ضع ____ مكان الإجابة)','الإجابة الصحيحة','إجابات مقبولة أخرى','خداع 1','خداع 2','خداع 3','خداع 4','خداع 5','رابط الصورة','صورة الإجابة'],...BANK.deceit.filter(q=>q.src!=='b').map(q=>[q.cat,q.q,q.a,(q.alt||[]).join('، '),...[0,1,2,3,4].map(i=>q.f[i]||''),q.img||'',q.aimg||''])]),'خداع');
       X.writeFile(wb,'playo-questions.xlsx')};
   };render();
@@ -4118,6 +4187,11 @@ function admForm(kind,q,done,o){
     ${[1,2,3].map(i=>`<label class="field">${t('adm_wrong',i)}<input type="text" id="f-a${i}" maxlength="60" value="${esc(q.qt?'':q.a[i]||'')}"></label>`).join('')}</div>
     <div data-g="order" class="field" ${qt==='order'?'':'hidden'}>${t('qt_orderAdm')}${[0,1,2,3,4].map(i=>`<input type="text" id="f-o${i}" maxlength="40" placeholder="${i+1}${i>2?' · '+t('adm_opt'):''}" value="${esc(q.qt==='order'?q.a[i]||'':'')}">`).join('')}</div>
     <div data-g="type" ${qt==='type'?'':'hidden'}><label class="field">${t('adm_correct')}<input type="text" id="f-t0" maxlength="60" value="${esc(q.qt==='type'?q.a[0]||'':'')}"></label><label class="field">${t('adm_alt')}<input type="text" id="f-talt" maxlength="200" value="${esc(q.qt==='type'?(q.alt||[]).join('، '):'')}"></label></div>
+    <p class="small muted" data-g="mc" ${qt==='mc'?'':'hidden'} style="margin:0">${t('adm_autoW')}</p>
+    <details class="panel" style="padding:10px" ${q.en?'open':''}><summary style="font-weight:700;cursor:pointer">${t('adm_en')}</summary><div class="stack" style="gap:6px;margin-top:8px" dir="ltr">
+      <input type="text" id="f-ecat" maxlength="30" placeholder="Category" value="${esc((q.en&&q.en.cat)||CAT_EN[q.cat]||'')}">
+      <textarea id="f-eq" maxlength="200" placeholder="Question">${esc((q.en&&q.en.q)||'')}</textarea>
+      ${[0,1,2,3].map(i=>`<input type="text" id="f-ea${i}" maxlength="60" placeholder="${i?'Option '+(i+1)+' / other accepted answer':'Correct answer'}" value="${esc(q.en?(q.qt==='type'&&i?(q.en.alt||[])[i-1]:q.en.a[i])||'':'')}">`).join('')}</div></details>
     ${imgFields(q)}${imgFields(q,1)}
     <label class="toggle" style="border:0;padding:0"><span>${t('adm_x2')}</span><input type="checkbox" id="f-x2" ${q.x2?'checked':''} style="width:22px;height:22px"></label>`
    :`<label class="field">${t('adm_q')}<textarea id="f-q" maxlength="200" placeholder="${t('adm_dqHint')}">${esc(q.q)}</textarea><span class="small muted" style="font-weight:500">${t('adm_dqHint')}</span></label>
@@ -4134,10 +4208,13 @@ function admForm(kind,q,done,o){
       fi.oninput=()=>{pv.src=fi.value;pv.style.display=fi.value?'':'none'}});
     const del=$('#f-del',m);if(del)del.onclick=async()=>{close();if(await confirmBox(t('adm_delQ'),t('remove'))&&await (o.del||admDelete)(q)){toast(t('adm_deleted'));done()}};
     $('#qf',m).onsubmit=async e=>{e.preventDefault();if(!o.save&&q.src==='r'&&!admLive()){toast(t('adm_needLogin'));return}const cat=$('#f-cat',m).value;let nq;
-      if(kind==='quiz'){const ex={img:$('#f-img',m).value,aimg:$('#f-aimg',m).value,x2:$('#f-x2',m).checked};
-        if(qt==='order'){nq=mkQuiz(q.id,cat,$('#f-q',m).value,[0,1,2,3,4].map(i=>$('#f-o'+i,m).value),20,q.src,{...ex,qt:'order'});if(!nq.q||nq.a.length<3){toast(t('qt_needOrder'));return}}
-        else if(qt==='type'){nq=mkQuiz(q.id,cat,$('#f-q',m).value,[$('#f-t0',m).value],20,q.src,{...ex,qt:'type',alt:$('#f-talt',m).value.split(/[,،]/)});if(!nq.q||!nq.a[0]){toast(t('adm_needOpts'));return}}
-        else{nq=mkQuiz(q.id,cat,$('#f-q',m).value,[0,1,2,3].map(i=>$('#f-a'+i,m).value),20,q.src,ex);if(!nq.q||!qn($('#f-a0',m).value)||nq.a.length<2){toast(t('adm_needOpts'));return}}}
+      if(kind==='quiz'){const ev=[0,1,2,3].map(i=>qn($('#f-ea'+i,m).value)),eq=qn($('#f-eq',m).value),ecat=qn($('#f-ecat',m).value);
+        const ex={img:$('#f-img',m).value,aimg:$('#f-aimg',m).value,x2:$('#f-x2',m).checked};
+        /* English answers line up with the Arabic ones that are filled in */
+        const enFor=(arIn,type)=>!eq||!ev[0]?null:type?{cat:ecat,q:eq,a:[ev[0]],alt:ev.slice(1)}:{cat:ecat,q:eq,a:arIn.map((x,i)=>qn(x)?ev[i]||'':null).filter(x=>x!==null)};
+        if(qt==='order'){{const ar=[0,1,2,3,4].map(i=>$('#f-o'+i,m).value);nq=mkQuiz(q.id,cat,$('#f-q',m).value,ar,20,q.src,{...ex,qt:'order',en:enFor(ar.slice(0,4))})}if(!nq.q||nq.a.length<3){toast(t('qt_needOrder'));return}}
+        else if(qt==='type'){nq=mkQuiz(q.id,cat,$('#f-q',m).value,[$('#f-t0',m).value],20,q.src,{...ex,qt:'type',alt:$('#f-talt',m).value.split(/[,،]/),en:enFor(null,1)});if(!nq.q||!nq.a[0]){toast(t('adm_needOpts'));return}}
+        else{const ar=[0,1,2,3].map(i=>$('#f-a'+i,m).value);nq=mkQuiz(q.id,cat,$('#f-q',m).value,ar,20,q.src,{...ex,en:enFor(ar)});if(!nq.q||!qn(ar[0])){toast(t('adm_needOpts'));return}}}
       else{nq=mkDeceit(q.id,cat,$('#f-q',m).value,$('#f-a',m).value,[0,1,2,3,4].map(i=>$('#f-f'+i,m).value),$('#f-alt',m).value.split(/[,،]/),q.src);if(!nq.q||!nq.a||nq.f.length<4){toast(t('adm_needFakes'));return}if(nq.f.some(f=>isTruth(nq,f))){toast(t('adm_fakeTrue'));return}['img','aimg'].forEach(k=>{nq[k]=qn($('#f-'+k,m).value);if(!/^https:\/\//i.test(nq[k]))nq[k]=''})}
       if(await (o.save||admSave)([nq])){close();toast(t('adm_saved'));done()}}})}
 
