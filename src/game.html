@@ -673,7 +673,33 @@ body.tvm .fd-q,body:has(.fd-grid) .fd-q{font-size:clamp(20px,2.4vw,40px)}
 .tv-end{max-width:900px;margin:0 auto;padding:24px 16px;text-align:center}.tv-ranks{display:grid;gap:12px;margin:20px 0}.tv-end .tv-next{margin:0 auto}
 .tv-rank{display:grid;text-align:start;grid-template-columns:60px 1fr auto;gap:14px;align-items:center;background:var(--surface);border-radius:16px;padding:14px 20px;font-size:24px;font-weight:800}.tv-rank.first{outline:3px solid var(--accent)}
 .tvm .game .gboard{font-size:1.15em}
-.adm-link{background:none;border:0;color:var(--muted);font:inherit;font-size:12px;opacity:.7;padding:6px;margin:0 auto;text-decoration:underline;cursor:pointer}</style>
+.adm-link{background:none;border:0;color:var(--muted);font:inherit;font-size:12px;opacity:.7;padding:6px;margin:0 auto;text-decoration:underline;cursor:pointer}.f4{display:flex;flex-direction:column;gap:6px;max-width:560px;margin:0 auto}
+.f4-info{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);padding:0 4px}.f4-tr{display:inline-flex;align-items:center;gap:5px}
+.f4-table{position:relative;height:clamp(280px,40vh,380px);border-radius:22px;background:radial-gradient(ellipse at center,#1f6b46 0%,#134a31 72%);box-shadow:inset 0 0 0 3px rgba(255,255,255,.08),inset 0 6px 30px rgba(0,0,0,.35)}
+.f4s{position:absolute;display:flex;align-items:center;gap:6px;background:rgba(10,16,30,.75);padding:4px 9px 4px 5px;border-radius:14px;font-size:12px;line-height:1.25;border:2px solid transparent;z-index:2}
+.f4s b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:96px}.f4s .tnum{color:var(--muted)}.f4s .bot{font-size:9px}
+.f4s.us{border-color:rgba(79,209,197,.6)}.f4s.them{border-color:rgba(255,122,147,.5)}.f4s.on{box-shadow:0 0 0 3px var(--accent),0 0 18px var(--accent)}
+.f4av{font-size:22px;line-height:1}
+.f4-t{top:8px;left:50%;transform:translateX(-50%)}.f4-b{bottom:8px;left:50%;transform:translateX(-50%)}
+.f4-l,.f4-r{top:50%;transform:translateY(-50%);flex-direction:column;text-align:center;padding:6px 5px;max-width:82px}.f4-l{left:6px}.f4-r{right:6px}.f4-l b,.f4-r b{max-width:72px}
+.f4-mid{position:absolute;left:50%;top:50%;width:150px;height:150px;transform:translate(-50%,-50%)}
+.f4-p{position:absolute;animation:f4in .22s ease-out}.f4-pb{bottom:0;left:54px}.f4-pt{top:0;left:54px}.f4-pl{left:0;top:43px}.f4-pr{right:0;top:43px}
+@keyframes f4in{from{opacity:0;transform:scale(.6)}}
+.f4-p.win .uc{box-shadow:0 0 0 3px #FFD23F,0 0 22px #FFD23F}
+.f4-tw{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.75);padding:4px 11px;border-radius:999px;font-size:12px;white-space:nowrap;font-weight:700;z-index:3}
+.f4-msg{text-align:center;margin:2px 0;font-weight:700;min-height:20px}
+.f4-hand{display:flex;justify-content:center;padding:18px 0 4px}.f4-hand .uc{--w:var(--cw)}.f4-hand .uc+.uc{margin-left:var(--ov)}
+.f4-hand .uc.ok{cursor:pointer}.f4-hand .uc.dim{filter:brightness(.5) saturate(.6)}.f4-hand .uc.sel{transform:translateY(-16px);box-shadow:0 0 0 3px #FFD23F,0 8px 16px rgba(0,0,0,.5)}
+.uc{--w:50px;position:relative;display:inline-flex;align-items:center;justify-content:center;width:var(--w);height:calc(var(--w)*1.48);border-radius:calc(var(--w)*.16);background:var(--uc);border:calc(var(--w)*.06) solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.4);font-family:'Baloo Bhaijaan 2',sans-serif;color:#fff;flex:none;box-sizing:border-box;transition:transform .15s}
+.uc::before{content:'';position:absolute;left:12%;right:12%;top:18%;bottom:18%;background:#fff;border-radius:50%;transform:rotate(28deg)}
+.uc b{position:relative;color:var(--uc);font-size:calc(var(--w)*.46);font-weight:800;line-height:1;-webkit-text-stroke:calc(var(--w)*.014) rgba(0,0,0,.35)}
+.uc-k{position:absolute;top:2%;left:8%;font-style:normal;font-weight:800;font-size:calc(var(--w)*.22);line-height:1.1;text-shadow:0 1px 2px rgba(0,0,0,.45)}.uc-k.z{top:auto;left:auto;bottom:2%;right:8%;transform:rotate(180deg)}
+.uc.sm{--w:42px}.uc.xs{--w:16px;border-width:1.5px}.uc.xs .uc-k{display:none}
+.f4-bn{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}.f4-bid p,.f4-tot{text-align:center;margin:6px 0 0}
+.f4-sum{position:fixed;left:12px;right:12px;bottom:12px;max-width:520px;margin:0 auto;background:var(--panel,#17223A);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:14px;box-shadow:0 10px 40px rgba(0,0,0,.6);z-index:50}
+.f4-sum h3{text-align:center;margin:0}.f4-sum table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}.f4-sum td,.f4-sum th{padding:6px 4px;text-align:center}.f4-sum th{color:var(--muted);font-weight:500}.f4-sum td:first-child{text-align:start}
+.f4-sum tr.us td{background:rgba(79,209,197,.08)}.f4-sum .ok{color:var(--good)}.f4-sum .no{color:var(--bad)}
+</style>
 
 <div class="app" id="app"></div>
 <div id="ad" hidden></div>
@@ -968,6 +994,16 @@ pc_tvType:['اكتبوا الجواب على هواتفكم','Type the answer on
 mem_tvPlay:['كل لاعب يلعب على هاتفه الآن','Everyone is playing on their phone'],mem_tvWait:['تظهر النتائج هنا عندما ينتهي الجميع','Results appear here when everyone finishes'],
 sec_maps:['خرائط','Maps'],sec_mapsD:['ضع دبوسك، والأقرب يأخذ النقطة','Drop your pin, closest wins'],
 sec_spy:['الجاسوس','The Spy'],sec_spyD:['واحد منكم لا يعرف الكلمة… اكشفوه','One of you doesn\'t know the word… find them'],
+sec_cards:['ورق','Cards'],sec_cardsD:['400 بأوراق الأونو، مع أصدقائك أو ضد الكمبيوتر','400 with UNO cards, with friends or vs the computer'],
+g_c400:['400 بورق الأونو','400 (UNO cards)'],g_c400D:['اطلب أكلاتك، الأحمر حكم، وأول فريق إلى 41 يفوز','Bid your tricks, red is trump, first team to 41 wins'],
+r_c400:[['4 لاعبين في فريقين: أنت وشريكك المقابل لك ضد اللاعبَين على جانبيك. العب ضد الكمبيوتر، أو مع أصدقائك كل واحد من بيته، أو أونلاين مع لاعبين آخرين. المقاعد الفارغة يأخذها الكمبيوتر.','52 ورقة أونو بأربعة ألوان (أحمر، أصفر، أخضر، أزرق)، 13 ورقة لكل لاعب. الأحمر هو الحكم.','القوة من الأعلى: 1 (الآص)، ثم ⊘ توقيف الدور (العجوز)، ثم +2 (المرأة)، ثم ⇄ عكس الدور (الشاب)، ثم 0 (العشرة)، ثم 9 حتى 2.','كل لاعب يطلب عدد الأكلات التي يتوقعها. أقل طلب 2 (3 من 30 نقطة، و4 من 40). مجموع الطلبات يجب أن يكون 11 على الأقل (12 إذا وصل أحد إلى 30، و13 إذا وصل إلى 40) وإلا تُعاد التوزيعة.','العب من لون الورقة الأولى إن كان معك، وإلا اقطع بالأحمر أو ارمِ أي ورقة. أعلى أحمر يأخذ الأكلة، وإلا أعلى ورقة من اللون الأول.','إذا صحّ طلبك تأخذ نقاطه: 2 و3 و4 كما هي، 5=10، 6=12، 7=14، 8=16، 9=27، و10 فأكثر=40 (بعد 30 نقطة: 5=5 و6=6). إذا لم يصح يُخصم الطلب من نقاطك.','يفوز الفريق عندما يصل أحد لاعبيه إلى الهدف (41) وتكون نقاط شريكه فوق الصفر.'],['4 players in two teams: you and the partner opposite you against the two at your sides. Play the computer, friends from their own homes, or other players online. Empty seats are taken by the computer.','52 UNO cards in four colours (red, yellow, green, blue), 13 each. Red is trump.','From high to low: 1 (ace), ⊘ skip (king), +2 (queen), ⇄ reverse (jack), 0 (ten), then 9 down to 2.','Everyone bids how many tricks they expect. Minimum bid 2 (3 from 30 points, 4 from 40). Bids must add up to at least 11 (12 once anyone has 30, 13 at 40) or the cards are redealt.','Follow the colour that was led if you can; otherwise trump with red or throw any card. The highest red wins the trick, otherwise the highest card of the led colour.','Make your bid and score it: 2, 3, 4 as is, 5=10, 6=12, 7=14, 8=16, 9=27, 10+=40 (from 30 points: 5=5, 6=6). Miss it and the bid is taken off your score.','A team wins when one player reaches the target (41) and the partner is above zero.']],
+f4_41:['حتى 41 (كاملة)','To 41 (full)'],f4_31:['حتى 31 (سريعة)','To 31 (quick)'],f4_cpu:['كمبيوتر {0}','CPU {0}'],f4_bw:['{0} من {1}','{0} of {1}'],
+f4_yourBid:['كم أكلة تطلب؟','How many tricks do you bid?'],f4_waitBid:['بانتظار طلب {0}…','Waiting for {0} to bid…'],f4_yourTurn:['دورك: اختر ورقة','Your turn: pick a card'],f4_tapAgain:['اضغط الورقة مرة ثانية لرميها','Tap the card again to play it'],
+f4_turnOf:['دور {0}','{0} to play'],f4_took:['{0} أخذ الأكلة','{0} took the trick'],f4_youTook:['أخذتَ الأكلة!','You took the trick!'],f4_void:['مجموع الطلبات {0} أقل من {1}: إعادة توزيع','Bids total {0}, below {1}: redealing'],
+f4_tot:['مجموع الطلبات {0} (المطلوب {1} على الأقل)','Bids so far {0} (need at least {1})'],f4_minBid:['أقل طلب لك {0}','your minimum is {0}'],f4_round:['الجولة {0}','Round {0}'],f4_trump:['الحكم','Trump'],f4_target:['الهدف {0}','Target {0}'],
+f4_sum:['نتيجة الجولة {0}','Round {0} result'],f4_bid:['طلب','Bid'],f4_won:['أخذ','Won'],f4_pts:['نقاط','Points'],f4_total:['المجموع','Total'],f4_next:['الجولة التالية','Next round'],f4_nextSoon:['الجولة التالية بعد لحظات…','Next round in a moment…'],f4_waitOthers:['بانتظار الباقين…','Waiting for the others…'],
+f4_weWin:['🏆 فاز فريقكم!','🏆 Your team wins!'],f4_theyWin:['فاز الفريق الآخر','The other team wins'],f4_together:['نلعب معاً كفريق','We play as a team'],f4_vs:['ضد بعض','Against each other'],f4_teams:['الفرق','Teams'],
+f4_teamSeek:['ابحثا عن خصمين أونلاين','Find two opponents online'],f4_teamSeekD:['أنتما فريق واحد ضد لاعبَين من أي مكان.','You two as one team against two players from anywhere.'],f4_partySearch:['تبحثان كفريق عن خصمين…','Searching for two opponents as a team…'],f4_partyBots:['العبا ضد الكمبيوتر','Play the computer'],
 sec_puzzle:['ألغاز الأشكال','Block Puzzle'],sec_puzzleD:['ركّب كل القطع داخل اللوح أولاً','Fit every piece first'],
 sec_feud:['عشرة أجوبة','Top Ten'],sec_feudD:['فرق وحكم: خمّنوا الأجوبة الأشهر','Teams and a judge: guess the top answers'],
 g_map:['أين على الخريطة؟','Where on the map?'],g_mapD:['ضع دبوسك في المكان الصحيح.','Drop your pin in the right place.'],
@@ -1108,8 +1144,11 @@ ART.spy=`<svg viewBox="0 0 120 80"><path d="M34 34h52l-6-16H40z" fill="#1F2E4D"/
 ART.survive=`<svg viewBox="0 0 120 80">${[0,1,2,3,4].map(i=>`<circle cx="${26+i*17}" cy="40" r="7" fill="${i===2?'#FFB547':'#2A3B5E'}"/>`).join('')}<path d="M60 18c-4-6-14-3-12 5 1 5 12 11 12 11s11-6 12-11c2-8-8-11-12-5z" fill="#FF5E5B"/><path d="M26 56l8 8M34 56l-8 8M77 56l8 8M85 56l-8 8" stroke="#FF5E5B" stroke-width="3" stroke-linecap="round"/></svg>`;
 ART.blocks=`<svg viewBox="0 0 120 80"><rect x="30" y="12" width="60" height="48" rx="6" fill="#17223A" stroke="#2A3B5E" stroke-width="2"/><path d="M33 15h36v12H57v12H45V27H33z" fill="#FF7A93"/><path d="M69 15h18v24H75v-12h-6z" fill="#4FD1C5"/><path d="M33 27h12v30H33z" fill="#FFB547"/><path d="M45 39h12v18H45z" fill="#9D8CFF" opacity=".5"/><path d="M96 30h6v6h6v6h-6v6h-6v-6h-6v-6h6z" fill="#35D07F"/></svg>`;
 ART.puzzle=ART.blocks;
+ART.c400=`<svg viewBox="0 0 120 80" font-family="Baloo Bhaijaan 2,sans-serif" font-weight="800" text-anchor="middle">${[['#2F6FE0','⊘',-16,38],['#F2C200','+2',0,60],['#E5393B','1',16,82]].map(([c,f,r,x])=>`<g transform="rotate(${r} ${x} 44)"><rect x="${x-15}" y="20" width="30" height="45" rx="5" fill="${c}" stroke="#fff" stroke-width="2.5"/><ellipse cx="${x}" cy="42.5" rx="10" ry="16" transform="rotate(28 ${x} 42.5)" fill="#fff"/><text x="${x}" y="49" font-size="17" fill="${c}">${f}</text></g>`).join('')}</svg>`;
+ART.cards=ART.c400;
+
 ART.feud=`<svg viewBox="0 0 120 80" font-family="Baloo Bhaijaan 2,sans-serif" font-weight="800" font-size="9">${[0,1,2,3,4].flatMap(r=>[0,1].map(c=>`<rect x="${22+c*40}" y="${10+r*13}" width="36" height="10" rx="3" fill="${r<2&&c===0||r===0?'#FFB547':'#1F2E4D'}"/>`)).join('')}<text x="52" y="18" fill="#2B1900" text-anchor="end">1000</text></svg>`;
-const TINT={map:'var(--c-blue)',maps:'var(--c-blue)',spy:'var(--c-violet)',survive:'var(--c-red)',blocks:'var(--c-green)',puzzle:'var(--c-green)',feud:'var(--accent)',wall:'var(--c-red)',huroof:'var(--c-yellow)',speed:'var(--c-yellow)',pic:'var(--c-blue)',rx_green:'var(--c-green)',rx_target:'var(--c-red)',rx_color:'var(--c-violet)',rx_pair:'var(--teal)',quiz:'var(--c-blue)',sudoku:'var(--teal)',deceit:'var(--c-violet)',memory:'var(--c-red)',stones:'var(--c-violet)',numbers:'var(--teal)',pairs:'var(--c-red)',drawing:'var(--c-yellow)',sequence:'var(--c-green)',locations:'var(--c-blue)',vanish:'var(--c-red)',shapes:'var(--c-green)',words:'var(--c-violet)'};
+const TINT={cards:'var(--c-red)',c400:'var(--c-red)',map:'var(--c-blue)',maps:'var(--c-blue)',spy:'var(--c-violet)',survive:'var(--c-red)',blocks:'var(--c-green)',puzzle:'var(--c-green)',feud:'var(--accent)',wall:'var(--c-red)',huroof:'var(--c-yellow)',speed:'var(--c-yellow)',pic:'var(--c-blue)',rx_green:'var(--c-green)',rx_target:'var(--c-red)',rx_color:'var(--c-violet)',rx_pair:'var(--teal)',quiz:'var(--c-blue)',sudoku:'var(--teal)',deceit:'var(--c-violet)',memory:'var(--c-red)',stones:'var(--c-violet)',numbers:'var(--teal)',pairs:'var(--c-red)',drawing:'var(--c-yellow)',sequence:'var(--c-green)',locations:'var(--c-blue)',vanish:'var(--c-red)',shapes:'var(--c-green)',words:'var(--c-violet)'};
 
 /* drawing shapes (100x100) */
 function starPath(){let s='';for(let i=0;i<10;i++){const r=i%2?16:38,a=-Math.PI/2+i*Math.PI/5;s+=(i?'L':'M')+(50+r*Math.cos(a)).toFixed(1)+' '+(53+r*Math.sin(a)).toFixed(1)}return s+'Z'}
@@ -1141,8 +1180,9 @@ GAMES.push(
 {id:'survive',sec:'quiz',ready:true,def:0,modes:['friends','tv','online'],diffs:[{k:'s10',lbl:'sv_10',n:10,mult:1.2},{k:'s20',lbl:'sv_20',n:20,mult:1.4},{k:'s30',lbl:'sv_30',n:30,mult:1.6}],run:()=>gSurvive()},
 {id:'spy',sec:'spy',ready:true,def:0,modes:['local','friends','tv'],diffs:[{k:'r3',lbl:'sp_r3',n:3,mult:1.2},{k:'r5',lbl:'sp_r5',n:5,mult:1.5}],run:()=>gSpy()},
 {id:'blocks',sec:'puzzle',ready:true,def:1,modes:TV_MODES,lower:true,diffs:[{k:'easy',lbl:'bk_easy',w:5,h:4,min:4,max:5,T:120,target:45,mult:1},{k:'normal',lbl:'bk_normal',w:5,h:5,min:4,max:5,T:180,target:75,mult:1.3},{k:'hard',lbl:'bk_hard',w:6,h:5,min:4,max:5,T:240,target:110,mult:1.6},{k:'expert',lbl:'bk_expert',w:8,h:5,min:4,max:5,T:300,target:170,mult:2}],run:()=>gBlocks()},
-{id:'feud',sec:'feud',ready:true,def:0,modes:['teams'],diffs:[{k:'std',lbl:'fd_std',mult:1}],run:()=>gFeud()});
-const SECTIONS=['memory','quiz','maps','huroof','speed','spy','puzzle','wall','sudoku','deceit','feud'];
+{id:'feud',sec:'feud',ready:true,def:0,modes:['teams'],diffs:[{k:'std',lbl:'fd_std',mult:1}],run:()=>gFeud()},
+{id:'c400',sec:'cards',ready:true,def:0,modes:SOLO_MODES,diffs:[{k:'t41',lbl:'f4_41',target:41,mult:1.5},{k:'t31',lbl:'f4_31',target:31,mult:1.2}],run:()=>gC400()});
+const SECTIONS=['memory','quiz','cards','maps','huroof','speed','spy','puzzle','wall','sudoku','deceit','feud'];
 const GAME=id=>GAMES.find(g=>g.id===id);
 const fmtTime=s=>{s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
 const PCT_GAMES=['drawing','stones','numbers','pairs'];
@@ -1768,6 +1808,8 @@ SCREENS.lobby=function(p){
   if(!NET.nr){go('home');return}
   const host=NET.host(),cfg=(NET.isHost?NET.lobbyCfg:(host&&host.lobby))||NET.lobbyCfg||{game:'stones',diffIdx:1,opts:{}};
   if(NET.isHost&&cfg.tv)return tvLobby(cfg);
+  /* the host started a team search for 400: leave the room together and look for two opponents */
+  const ts0=cfg.tseek;if(!NET.isHost&&ts0&&Array.isArray(ts0.pids)&&ts0.pids.includes(NET.pid)&&Date.now()-ts0.t<20000&&NET.tsDone!==ts0.t){NET.tsDone=ts0.t;NET.leave();go('match',{cfg:{game:'c400',diffIdx:cfg.diffIdx||0,mode:'online',opts:{size:4}},party:ts0.pids});return}
   const cap=cfg.cap||4,list=NET.players().filter(x=>!(x.host&&x.tv)).slice(0,cap),hostTv=!!(host&&host.tv);
   const g=GAME(cfg.game)||GAME('stones'),code=NET.code,link=roomLink(code);
   const meX=list.find(x=>x.pid===NET.pid)||{};const guests=list.filter(x=>!x.host);
@@ -1788,6 +1830,8 @@ SCREENS.lobby=function(p){
   <div class="panel stack" style="gap:10px"><div class="row between"><h3>${t('g_'+g.id)}</h3><span class="small muted">${dlabel(g.diffs[cfg.diffIdx]||g.diffs[g.def])}</span></div>
     ${NET.isHost?`<div class="chips">${GAMES.filter(x=>x.ready&&gameOn(x)&&(x.modes||['friends']).includes('friends')).map(x=>`<button class="chip ${x.id===g.id?'on':''}" data-lg="${x.id}">${t('g_'+x.id)}${gameLocked(x)?lockTag():''}</button>`).join('')}</div>
       <div class="chips">${g.diffs.map((d,i)=>`<button class="chip ${cfg.diffIdx===i?'on':''}" data-ld="${i}">${dlabel(d)}${diffLocked(g,d)?lockTag():''}</button>`).join('')}</div>`:`<p class="small muted">${t('hostPicks')}</p>`}</div>
+  ${g.id==='c400'&&list.length===2?`<div class="panel stack" style="gap:8px"><h3>${t('f4_teams')}</h3>${NET.isHost?`<div class="seg"><button data-f4t="mate" class="${(cfg.opts||{}).f4t!=='vs'?'on':''}">${t('f4_together')}</button><button data-f4t="vs" class="${(cfg.opts||{}).f4t==='vs'?'on':''}">${t('f4_vs')}</button></div>
+    <button class="btn block" id="f4ts">${ic('globe')} ${t('f4_teamSeek')}</button><p class="small muted" style="margin:0">${t('f4_teamSeekD')}</p>`:`<p class="small muted" style="margin:0">${(cfg.opts||{}).f4t==='vs'?t('f4_vs'):t('f4_together')}</p>`}</div>`:''}
   ${hostTv?`<p class="note">${t('tvGuest')}</p>`:''}${inProg?`<p class="note">${t('inProgress')}</p>`:''}
   ${NET.isHost?`<button class="btn primary block" id="start" ${canStart?'':'disabled'}>${ic('play')} ${t('startMatch')}</button>${canStart?'':`<p class="small muted" style="text-align:center">${t('startNeed')}</p>`}`
    :hostTv?`<p class="small muted" style="text-align:center">${t('waitHost')}</p>`:`<button class="btn ${meX.rdy?'':'primary'} block" id="rdy">${meX.rdy?t('notReady'):t('imReady')}</button><p class="small muted" style="text-align:center">${t('waitHost')}</p>`}
@@ -1800,6 +1844,10 @@ SCREENS.lobby=function(p){
   $$('[data-lg]').forEach(b=>b.onclick=()=>{const ng=GAME(b.dataset.lg);if(gameLocked(ng)){needPrem();return}NET.lobbyCfg={game:ng.id,diffIdx:diffLocked(ng,ng.diffs[ng.def])?Math.max(0,ng.diffs.findIndex(d=>!diffLocked(ng,d))):ng.def,opts:{cats:(cfg.opts||{}).cats||[]},cap:roomCap(ng.id)};NET.set({lobby:NET.lobbyCfg});SCREENS.lobby({})});
   $$('[data-ld]').forEach(b=>b.onclick=()=>{if(diffLocked(g,g.diffs[+b.dataset.ld])){needPrem();return}NET.lobbyCfg={...cfg,diffIdx:+b.dataset.ld};NET.set({lobby:NET.lobbyCfg});SCREENS.lobby({})});
   const st=$('#start');if(st)st.onclick=()=>{sfx('tap');NET.hostStart()};
+  $$('[data-f4t]').forEach(b=>b.onclick=()=>{NET.lobbyCfg={...cfg,opts:{...(cfg.opts||{}),f4t:b.dataset.f4t}};NET.set({lobby:NET.lobbyCfg});SCREENS.lobby({})});
+  const f4ts=$('#f4ts');if(f4ts)f4ts.onclick=()=>{sfx('tap');f4ts.disabled=true;const pids=list.map(x=>x.pid).sort();
+    NET.lobbyCfg={...cfg,tseek:{pids,t:Date.now()}};NET.set({lobby:NET.lobbyCfg});
+    setTimeout(()=>{NET.leave();go('match',{cfg:{game:'c400',diffIdx:cfg.diffIdx||0,mode:'online',opts:{size:4}},party:pids})},1500)};
   const rd=$('#rdy');if(rd)rd.onclick=()=>{sfx('tick');NET.set({rdy:!meX.rdy})};
 };
 function lobbyDemo(p){
@@ -1842,33 +1890,42 @@ function lobbyDemo(p){
 
 /* ----- online matchmaking ----- */
 function liveMatch(p){
-  const cfg=p.cfg,g=GAME(cfg.game),need=cfg.opts.size||2,k=`${cfg.game}|${cfg.diffIdx}|${need}`,t0=Date.now();
+  const party=Array.isArray(p.party)&&p.party.length===2?p.party.slice().sort():null;
+  const cfg=p.cfg,g=GAME(cfg.game),need=party?4:cfg.opts.size||2,k=`${cfg.game}|${cfg.diffIdx}|${need}`,t0=Date.now();
   let done=false,iv=0;
   app.innerHTML=head(t('playOnline'),'setup')+`<div class="panel stack" style="text-align:center"><span class="muted small">${t('g_'+g.id)} · ${dlabel(g.diffs[cfg.diffIdx])} · ${t('nPlayers',need)}</span>
     <div class="radar"><div class="avatar lg">${profile.avatar}</div></div>
-    <h3>${t('searchingLive',t('g_'+g.id))}</h3><span class="tnum muted" id="mm-s">0s</span>
+    <h3>${party?t('f4_partySearch'):t('searchingLive',t('g_'+g.id))}</h3><span class="tnum muted" id="mm-s">0s</span>
     <div class="found" id="mm-f"></div><p class="note" id="mm-n" hidden>${t('noOneYet')}</p>
-    <div class="row" style="justify-content:center;flex-wrap:wrap"><button class="btn ghost" id="mm-c">${t('cancel')}</button><button class="btn primary" id="mm-b" hidden>${t('playBots')}</button></div></div>`;
-  NET.api.presence({...me0(),seek:{k,t:t0},assign:null}).catch(()=>{});
+    <div class="row" style="justify-content:center;flex-wrap:wrap"><button class="btn ghost" id="mm-c">${t('cancel')}</button><button class="btn primary" id="mm-b" hidden>${party?t('f4_partyBots'):t('playBots')}</button></div></div>`;
+  NET.api.presence({...me0(),seek:{k,t:t0,party},assign:null}).catch(()=>{});
   const stop=()=>{done=true;NET.onLobby=null;clearInterval(iv);NET.api.presence({seek:null}).catch(()=>{})};
   const back=()=>{stop();go('setup',{game:cfg.game,mode:'online'})};
   $('#mm-c').onclick=back;
   $('[data-go="setup"]').onclick=e=>{e.stopPropagation();back()};
-  $('#mm-b').onclick=()=>{stop();go('match',{cfg,demo:true})};
+  /* a team of two that waited long enough plays the computer together */
+  const mkRoom=(pids,pairs)=>{const code=newCode();stop();
+    NET.api.presence({assign:{code,pids,t:Date.now()},seek:null}).catch(()=>{});
+    NET.join(code,true,{game:cfg.game,diffIdx:cfg.diffIdx,opts:{set:cfg.opts.set,cats:cfg.opts.cats,pairs,f4t:'vs'}}).then(ok=>{if(!ok){go('home');return}NET.autoStart=pids;go('lobby',{});
+      setTimeout(()=>{NET.api&&NET.api.presence({assign:null}).catch(()=>{})},30000)})};
+  $('#mm-b').onclick=()=>{if(party){mkRoom(party,[party]);return}stop();go('match',{cfg,demo:true})};
   let shown='';
   const check=()=>{if(done)return;
     const seen={};const ps=NET.lobbyPeers.map(P).filter(x=>x.pid&&!seen[x.pid]&&(seen[x.pid]=1));
     const a=ps.find(x=>x.pid!==NET.pid&&x.assign&&Array.isArray(x.assign.pids)&&x.assign.pids.includes(NET.pid)&&Date.now()-(x.assign.t||0)<45000);
     if(a){stop();NET.join(String(a.assign.code),false,null,true).then(ok=>go(ok?'lobby':'home',{}));return}
     const seekers=ps.filter(x=>x.seek&&x.seek.k===k).sort((x,y)=>(x.seek.t-y.seek.t)||String(x.pid).localeCompare(String(y.pid)));
-    const others=seekers.filter(x=>x.pid!==NET.pid).slice(0,need-1);const sig=others.map(x=>x.pid).join();
+    /* players who came as a team of two count as one unit; a team only counts once both of them are searching */
+    const units=[],inU=new Set();
+    seekers.forEach(x=>{if(inU.has(x.pid))return;const pt=Array.isArray(x.seek.party)&&x.seek.party.length===2?x.seek.party:null;
+      if(pt){const ms=pt.map(id=>seekers.find(y=>y.pid===id&&Array.isArray(y.seek.party)&&y.seek.party.join()===pt.join()));ms.forEach(m=>m&&inU.add(m.pid));if(ms.every(Boolean))units.push(ms)}
+      else{inU.add(x.pid);units.push([x])}});
+    const grp=[];let slots=need;for(const u of units){if(u.length<=slots){grp.push(u);slots-=u.length}if(!slots)break}
+    const gp=grp.flat(),others=(gp.some(x=>x.pid===NET.pid)?gp:seekers).filter(x=>x.pid!==NET.pid).slice(0,need-1);const sig=others.map(x=>x.pid).join();
     if(sig!==shown){shown=sig;$('#mm-f').innerHTML=others.map(o=>`<div style="text-align:center"><div class="avatar">${esc(o.av||'🙂')}</div><div class="small" style="margin-top:4px">${esc(o.nm||'?')} ${o.cc?flag(o.cc):''}</div></div>`).join('');if(others.length)sfx('tick')}
-    if(seekers.length>=need&&seekers[0].pid===NET.pid){const pids=seekers.slice(0,need).map(x=>x.pid);const code=newCode();stop();
-      NET.api.presence({assign:{code,pids,t:Date.now()},seek:null}).catch(()=>{});
-      NET.join(code,true,{game:cfg.game,diffIdx:cfg.diffIdx,opts:{set:cfg.opts.set,cats:cfg.opts.cats}}).then(ok=>{if(!ok){go('home');return}NET.autoStart=pids;go('lobby',{});
-        setTimeout(()=>{NET.api&&NET.api.presence({assign:null}).catch(()=>{})},30000)})}};
+    if(!slots&&gp[0].pid===NET.pid)mkRoom(gp.map(x=>x.pid),grp.filter(u=>u.length===2).map(u=>u.map(x=>x.pid)))};
   NET.onLobby=check;
-  iv=setInterval(()=>{if(done||current!=='match'){if(!done)stop();return}const s=Math.floor((Date.now()-t0)/1000);$('#mm-s').textContent=s+'s';if(s>=20){$('#mm-b').hidden=false;$('#mm-n').hidden=false}check()},1000);
+  iv=setInterval(()=>{if(done||current!=='match'){if(!done)stop();return}const s=Math.floor((Date.now()-t0)/1000);$('#mm-s').textContent=s+'s';if(s>=20){$('#mm-b').hidden=!!party&&party[0]!==NET.pid;$('#mm-n').hidden=false}check()},1000);
   check();
 }
 SCREENS.match=function(p){
@@ -2684,6 +2741,184 @@ async function gWallLive(){
       const mv=await wrTurn($('#wrb',v),s,me,id,()=>{const c=bzState()||{};return c.i!==st.i});
       if(mv&&(bzState()||{}).i===st.i){BZL.my.mv={k:s.k,m:mv};NET.set({ba:{gid:g.gid,a:{},mv:BZL.my.mv}});if(NET.isHost)bzNotify();v.innerHTML=legend+wrSvg(wrApply(s,me,mv)||s,me)}}
     else{v.innerHTML=legend+`<p class="pic-ans">${wrStatus(s,names,me)}</p>`+wrSvg(s,me);if(s.win>=0){sfx(s.win===me?'win':'tap');if(s.win===me&&typeof confetti==='function')confetti()}}})}
+
+/* ========= 400 played with UNO cards =========
+   52 cards: 4 colours × 13. Card code = colour letter + rank 2..14
+   (14 = the "1" ace, 13 = skip ⊘ the old man, 12 = +2 the woman, 11 = reverse ⇄ the young man, 10 = the 0, then 9..2).
+   Red is always trump. Seats 0..3 in turn order; 0 & 2 are partners against 1 & 3. */
+const F4={COL:['r','y','g','b'],TR:'r',TURN:30,BOT:650,TRICK:1300,SUM:9000};
+const F4HEX={r:'#E5393B',y:'#F2C200',g:'#2EA44F',b:'#2F6FE0'};
+const f4C=c=>c[0],f4R=c=>+c.slice(1);
+const f4Face=r=>r===14?'1':r===13?'⊘':r===12?'+2':r===11?'⇄':r===10?'0':String(r);
+function f4Deck(R){const d=[];F4.COL.forEach(c=>{for(let r=2;r<=14;r++)d.push(c+r)});for(let i=d.length-1;i>0;i--){const j=Math.floor(R()*(i+1));[d[i],d[j]]=[d[j],d[i]]}return d}
+const f4Sort=h=>h.slice().sort((a,b)=>F4.COL.indexOf(f4C(a))-F4.COL.indexOf(f4C(b))||f4R(b)-f4R(a));
+const f4MinBid=sc=>sc>=40?4:sc>=30?3:2;
+const f4MinTot=s=>{const m=Math.max(...s.sc);return m>=40?13:m>=30?12:11};
+/* points for a bid that was made; a player on 30+ gets 5 and 6 at face value */
+const f4Val=(b,sc)=>b>=10?40:b===9?27:b===8?16:b===7?14:b===6?(sc>=30?6:12):b===5?(sc>=30?5:10):b;
+function f4New(target,dealer){return{k:0,ph:'deal',target,dealer,sc:[0,0,0,0],round:0,hands:[[],[],[],[]],bids:[null,null,null,null],won:[0,0,0,0],trick:[],lead:0,turn:-1,played:[],last:null,res:null,win:-1,tw:-1,seats:[]}}
+function f4Deal(s,R){let d;
+  /* a hand with no picture card (1, ⊘, +2, ⇄) is redealt, as in the card game */
+  do{d=f4Deck(R)}while([0,1,2,3].some(i=>!d.slice(i*13,i*13+13).some(c=>f4R(c)>=11)));
+  s.hands=[0,1,2,3].map(i=>f4Sort(d.slice(i*13,i*13+13)));s.bids=[null,null,null,null];s.won=[0,0,0,0];s.trick=[];s.played=[];s.last=null;s.res=null;s.tw=-1;
+  s.turn=(s.dealer+1)%4;s.lead=s.turn;s.ph='bid';s.k++}
+function f4Legal(s,seat){const h=s.hands[seat];if(!s.trick.length)return h.slice();const lc=f4C(s.trick[0].c),f=h.filter(c=>f4C(c)===lc);return f.length?f:h.slice()}
+function f4Best(tr){let b=tr[0];for(const x of tr.slice(1)){const bc=f4C(b.c),xc=f4C(x.c);if(xc===bc?f4R(x.c)>f4R(b.c):xc===F4.TR)b=x}return b}
+function f4Apply(s,seat,m){
+  if(!m||seat!==s.turn)return false;
+  if(s.ph==='bid'&&m.t==='bid'){const n=Math.floor(+m.n);if(!(n>=f4MinBid(s.sc[seat])&&n<=13))return false;
+    s.bids[seat]=n;s.turn=(seat+1)%4;
+    if(s.bids.every(b=>b!=null)){if(s.bids.reduce((a,b)=>a+b,0)<f4MinTot(s)){s.ph='void';s.turn=-1}else{s.ph='play';s.turn=s.lead}}
+    s.k++;return true}
+  if(s.ph==='play'&&m.t==='play'){if(!f4Legal(s,seat).includes(m.c))return false;
+    s.hands[seat]=s.hands[seat].filter(c=>c!==m.c);s.trick.push({s:seat,c:m.c});s.played.push(m.c);
+    if(s.trick.length===4){const w=f4Best(s.trick).s;s.won[w]++;s.tw=w;s.ph='trick';s.turn=-1}else s.turn=(seat+1)%4;
+    s.k++;return true}
+  return false}
+function f4Next(s){s.last={t:s.trick,w:s.tw};s.trick=[];
+  if(s.hands[0].length){s.ph='play';s.turn=s.tw;s.lead=s.tw}else f4Score(s);s.k++}
+function f4Score(s){
+  s.res=[0,1,2,3].map(i=>{const b=s.bids[i],ok=s.won[i]>=b;return{b,w:s.won[i],ok,v:ok?f4Val(b,s.sc[i]):-b}});
+  s.res.forEach((r,i)=>s.sc[i]+=r.v);s.ph='sum';s.turn=-1;s.round++;   // redealt hands do not count as rounds
+  /* a team wins when one of its players reaches the target and the partner is above zero */
+  const best=[0,1].map(tm=>Math.max(...[tm,tm+2].filter(i=>s.sc[i]>=s.target&&s.sc[(i+2)%4]>0).map(i=>s.sc[i]),-1e9));
+  if(best[0]>-1e9||best[1]>-1e9){if(best[0]>best[1])s.win=0;else if(best[1]>best[0])s.win=1}}
+
+/* ----- computer players ----- */
+function f4Est(h){let e=0;const by={};h.forEach(c=>(by[f4C(c)]=by[f4C(c)]||[]).push(f4R(c)));const tr=by[F4.TR]||[];
+  tr.forEach(r=>{e+=r===14?1:r===13?.85:r===12?.6:r===11?.4:0});e+=Math.max(0,tr.length-3)*.75;
+  F4.COL.filter(c=>c!==F4.TR).forEach(c=>{const a=by[c]||[],n=a.length;
+    if(a.includes(14))e+=n<=5?.9:.6;if(a.includes(13)&&n>=2)e+=n<=4?.65:.35;if(a.includes(12)&&n>=3&&n<=4)e+=.3;
+    if(tr.length>=3){if(n===0)e+=.9;else if(n===1&&!a.includes(14))e+=.5;else if(n===2)e+=.2}});
+  return e}
+function f4BotBid(s,seat){let b=Math.round(f4Est(s.hands[seat])-.15);
+  const others=s.bids.filter((x,i)=>i!==seat&&x!=null);
+  if(others.length===3){const need=f4MinTot(s)-others.reduce((a,x)=>a+x,0);if(need>b&&need<=b+1)b=need}   // last to bid: avoid a void deal when close
+  return clamp(b,f4MinBid(s.sc[seat]),13)}
+function f4BotPlay(s,seat){const L=f4Legal(s,seat),tr=s.trick,need=s.bids[seat]-s.won[seat];
+  const low=a=>a.slice().sort((x,y)=>(f4C(x)===F4.TR)-(f4C(y)===F4.TR)||f4R(x)-f4R(y))[0];
+  const high=a=>a.slice().sort((x,y)=>f4R(y)-f4R(x))[0];
+  const seen=new Set([...s.played,...s.hands[seat]]);
+  const top=c=>{for(let r=14;r>f4R(c);r--)if(!seen.has(f4C(c)+r))return false;return true};   // no unseen card of its colour beats it
+  if(!tr.length){
+    const tops=L.filter(c=>f4C(c)!==F4.TR&&top(c));if(tops.length)return high(tops);
+    const trs=L.filter(c=>f4C(c)===F4.TR);if(trs.length>=4){const t1=trs.filter(top);if(t1.length)return high(t1)}
+    const nt=L.filter(c=>f4C(c)!==F4.TR);
+    if(nt.length){const cnt={};nt.forEach(c=>cnt[f4C(c)]=(cnt[f4C(c)]||0)+1);const col=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a])[0];return low(nt.filter(c=>f4C(c)===col))}
+    return low(L)}
+  const cur=f4Best(tr),last=tr.length===3;
+  const beats=L.filter(c=>f4Best([...tr,{s:seat,c}]).s===seat);
+  if(cur.s===(seat+2)%4&&(last||top(cur.c)))return low(L);                 // partner already has it
+  if(beats.length){if(last)return low(beats);
+    const sure=beats.filter(c=>f4C(c)===F4.TR||top(c));if(sure.length)return low(sure);
+    return need>0?high(beats):low(L)}
+  return low(L)}
+
+/* the game loop, shared by solo play (this phone) and live rooms (the host's phone) */
+async function f4Run(o){const s=o.s;
+  while(o.ok()&&s.win<0){
+    f4Deal(s,o.R);o.show();
+    while(o.ok()&&(s.ph==='bid'||s.ph==='play')){const seat=s.turn,m=await o.ask(seat);if(!o.ok())return;
+      if(!f4Apply(s,seat,m))f4Apply(s,seat,s.ph==='bid'?{t:'bid',n:f4BotBid(s,seat)}:{t:'play',c:f4BotPlay(s,seat)});
+      o.show();
+      if(s.ph==='trick'){await o.wait(F4.TRICK);if(!o.ok())return;f4Next(s);o.show()}}
+    if(!o.ok())return;
+    if(s.ph==='void'){await o.wait(2600);s.dealer=(s.dealer+1)%4;continue}
+    if(s.ph==='sum'){await o.wait('sum');s.dealer=(s.dealer+1)%4}}}
+
+/* ----- table view: me at the bottom, partner on top, the next player on my right (play goes counter-clockwise) ----- */
+const f4Card=(c,cls='')=>`<span class="uc ${cls}" style="--uc:${F4HEX[f4C(c)]}" data-c="${c}"><i class="uc-k">${f4Face(f4R(c))}</i><b>${f4Face(f4R(c))}</b><i class="uc-k z">${f4Face(f4R(c))}</i></span>`;
+const F4V={k:-1,sel:null,sent:-1};
+function f4View(v,s,me,act){
+  const view=me<0?0:me,pos=i=>['b','r','t','l'][(i-view+4)%4],team=i=>i%2===view%2?'us':'them';
+  const nm=i=>i===me?t('youTag'):esc((s.seats[i]||{}).nm||'?');
+  const fresh=F4V.k!==s.k;if(fresh){F4V.k=s.k;F4V.sel=null}
+  const myTurn=me>=0&&s.turn===me&&F4V.sent!==s.k;
+  const seat=i=>{const b=s.bids[i];return`<div class="f4s f4-${pos(i)} ${team(i)} ${s.turn===i?'on':''}"><span class="f4av">${esc((s.seats[i]||{}).av||'🙂')}</span><div><b dir="auto">${nm(i)}</b><span class="tnum" dir="ltr">⭐${s.sc[i]} · 🃏${b==null?(s.ph==='bid'&&s.turn===i?'…':'–'):s.won[i]+'/'+b}</span></div></div>`};
+  const shown=s.ph==='trick'?s.trick:s.trick.length?s.trick:[];
+  const mid=`<div class="f4-mid">${shown.map(x=>`<div class="f4-p f4-p${pos(x.s)} ${s.ph==='trick'&&x.s===s.tw?'win':''}">${f4Card(x.c,'sm')}</div>`).join('')}
+    ${s.ph==='trick'?`<div class="f4-tw">${s.tw===me?t('f4_youTook'):t('f4_took',nm(s.tw))}</div>`:''}</div>`;
+  let msg='';
+  if(s.ph==='bid')msg=myTurn?t('f4_yourBid'):t('f4_waitBid',nm(s.turn));
+  else if(s.ph==='play')msg=myTurn?(F4V.sel?t('f4_tapAgain'):t('f4_yourTurn')):t('f4_turnOf',nm(s.turn));
+  else if(s.ph==='void')msg=t('f4_void',s.bids.reduce((a,b)=>a+(b||0),0),f4MinTot(s));
+  const tot=s.bids.reduce((a,b)=>a+(b||0),0);
+  const hand=me>=0?s.hands[me]:[],legal=myTurn&&s.ph==='play'?f4Legal(s,me):[];
+  const W=Math.min(v.clientWidth||window.innerWidth||360,560)-16,cw=W<380?46:W<460?52:60,ov=hand.length>1?Math.min(4,(W-cw*hand.length)/(hand.length-1)):0;
+  let panel='';
+  if(s.ph==='bid'&&myTurn){const mn=f4MinBid(s.sc[me]);
+    panel=`<div class="f4-bid"><div class="f4-bn">${[2,3,4,5,6,7,8,9,10,11,12,13].map(n=>`<button class="btn sm ${n<mn?'':'primary'}" data-bid="${n}" ${n<mn?'disabled':''}>${n}</button>`).join('')}</div>
+      <p class="small muted">${t('f4_tot',tot,f4MinTot(s))}${mn>2?' · '+t('f4_minBid',mn):''}</p></div>`}
+  else if(s.ph==='bid')panel=`<p class="small muted f4-tot">${t('f4_tot',tot,f4MinTot(s))}</p>`;
+  let sum='';
+  if(s.ph==='sum'&&s.res){const tm=[0,1].map(x=>s.sc[x]+s.sc[x+2]);
+    sum=`<div class="f4-sum" dir="${L()?'ltr':'rtl'}"><h3>${s.win<0?t('f4_sum',s.round):s.win===view%2?t('f4_weWin'):t('f4_theyWin')}</h3>
+      <table><tr><th></th><th>${t('f4_bid')}</th><th>${t('f4_won')}</th><th>${t('f4_pts')}</th><th>${t('f4_total')}</th></tr>
+      ${[view,(view+2)%4,(view+1)%4,(view+3)%4].map(i=>{const r=s.res[i];return`<tr class="${team(i)}"><td>${esc((s.seats[i]||{}).av||'')} ${nm(i)}</td><td class="tnum">${r.b}</td><td class="tnum">${r.w}</td><td class="tnum ${r.ok?'ok':'no'}"><bdi dir="ltr">${r.v>0?'+':''}${r.v}</bdi> ${r.ok?'✓':'✗'}</td><td class="tnum"><b dir="ltr">${s.sc[i]}</b></td></tr>`}).join('')}</table>
+      ${s.win<0?(act&&me>=0?`<button class="btn primary block" data-f4="next">${t('f4_next')}</button>`:`<p class="small muted">${t('f4_nextSoon')}</p>`):''}</div>`}
+  v.innerHTML=`<div class="f4" dir="ltr">
+    <div class="f4-info" dir="${L()?'ltr':'rtl'}"><span>${t('f4_round',s.ph==='sum'?s.round:s.round+1)}</span><span class="f4-tr">${f4Card('r14','xs')} ${t('f4_trump')}</span><span>${t('f4_target',s.target)}</span></div>
+    <div class="f4-table">${[0,1,2,3].map(seat).join('')}${mid}</div>
+    <p class="f4-msg" dir="${L()?'ltr':'rtl'}">${msg}</p>
+    ${me>=0?`<div class="f4-hand" style="--cw:${cw}px;--ov:${ov}px">${hand.map(c=>f4Card(c,(legal.includes(c)?'ok':myTurn&&s.ph==='play'?'dim':'')+(F4V.sel===c?' sel':''))).join('')}</div>`:''}
+    <div dir="${L()?'ltr':'rtl'}">${panel}</div>${sum}</div>`;
+  if(fresh){if(s.ph==='trick')sfx(team(s.tw)==='us'?'good':'tap');else if(myTurn)sfx('turn')}
+  if(!act)return;
+  const send=m=>{F4V.sent=s.k;act(m)};
+  $$('[data-bid]:not([disabled])',v).forEach(b=>b.onclick=()=>{sfx('tap');send({t:'bid',n:+b.dataset.bid});f4View(v,s,me,act)});
+  $$('.f4-hand .uc.ok',v).forEach(e=>e.onclick=()=>{const c=e.dataset.c;if(F4V.sel===c){sfx('tap');send({t:'play',c});
+      /* show the card on the table straight away */
+      const n=JSON.parse(JSON.stringify(s));if(f4Apply(n,me,{t:'play',c})){F4V.k=n.k;F4V.sent=n.k;f4View(v,n,me,null)}}
+    else{F4V.sel=c;f4View(v,s,me,act)}});
+  const nx=$('[data-f4="next"]',v);if(nx)nx.onclick=()=>{sfx('tap');act({t:'next'})}}
+
+/* ----- solo: you and a computer partner against two computers ----- */
+async function gC400(){
+  if(M.net)return gC400Live();
+  const id=M.id,d=M.diff,me=M.players.find(p=>p.isMe),others=M.players.filter(p=>!p.isMe);
+  const cpu=i=>({id:'cpu'+i,name:t('f4_cpu',i),avatar:['🤖','🦾','👾'][i-1],isBot:true,score:0});
+  M.players=[me,others[0]||cpu(1),others[1]||cpu(2),others[2]||cpu(3)];M.players.forEach((p,i)=>p.col=PCOL[i]);M.solo=false;
+  const s=f4New(d.target,Math.floor(Math.random()*4));s.seats=M.players.map((p,i)=>({nm:p.name,av:p.avatar,bot:i>0}));
+  gameShell();$('#pbar').style.display='none';$('#gfoot').style.display='none';const board=$('#gboard');
+  let mine=null,goOn=null;F4V.k=-1;F4V.sent=-1;
+  const act=m=>{if(m.t==='next'){if(goOn)goOn();return}if(mine){const r=mine;mine=null;r(m)}};
+  const show=()=>{if(alive(id))f4View(board,s,0,act)};
+  await f4Run({s,R:Math.random,ok:()=>alive(id),show,
+    ask:seat=>seat===0?new Promise(res=>{mine=res}):sleep(F4.BOT).then(()=>s.ph==='bid'?{t:'bid',n:f4BotBid(s,seat)}:{t:'play',c:f4BotPlay(s,seat)}),
+    wait:x=>x==='sum'?new Promise(res=>{goOn=res;setTimeout(res,s.win>=0?3000:25000)}):sleep(x)});
+  if(!alive(id))return;
+  if(s.win===0&&typeof confetti==='function')confetti();
+  finish({order:M.players.map((p,i)=>({p,val:(i%2===s.win?1000:0)+s.sc[i],txt:(i%2===s.win?'🏆 ':'')+s.sc[i]}))})}
+
+/* ----- live room: the host's phone runs the table; empty seats are computer players ----- */
+function f4Seats(g){const o=g.cfg.opts||{},hum=g.order.slice(0,4),seats=[null,null,null,null],H=pid=>hum.find(h=>h.pid===pid);
+  const put=(h,i)=>{seats[i]={nm:String(h.nm||'?').slice(0,16),av:h.av||'🙂',pid:h.pid}};
+  const pairs=(o.pairs||[]).filter(p=>Array.isArray(p)&&p.length===2&&p.every(H)),used=new Set();
+  pairs.slice(0,2).forEach((p,k)=>{put(H(p[0]),k);put(H(p[1]),k+2);p.forEach(x=>used.add(x))});
+  const rest=hum.filter(h=>!used.has(h.pid)),free=[0,1,2,3].filter(i=>!seats[i]);
+  const order=rest.length===2&&free.length===4&&o.f4t!=='vs'?[0,2]:free;     // two friends play together unless they chose to face each other
+  rest.forEach((h,k)=>{if(order[k]!=null)put(h,order[k])});
+  let n=0;return seats.map(x=>x||{nm:t('f4_cpu',++n),av:['🤖','🦾','👾'][n-1],bot:true})}
+async function f4Direct(g){
+  const run=++BZD.run,{live,pub,here}=bzHelpers(g,run),d=GAME('c400').diffs[g.cfg.diffIdx],R=mulberry(g.seed);
+  const s=f4New(d.target,Math.floor(R()*4));s.seats=f4Seats(g);
+  const mvOf=pid=>{const a=pid===NET.pid?BZL.my:(NET.pres[pid]||{}).ba;return a&&a.gid===g.gid&&a.mv&&a.mv.k===s.k?a.mv.m:null};
+  const nextOf=pid=>{const a=pid===NET.pid?BZL.my:(NET.pres[pid]||{}).ba;return a&&a.gid===g.gid&&a.nx===s.k};
+  BZD.st=null;await sleep(1200);
+  await f4Run({s,R,ok:live,show:()=>pub({ph:'p',i:s.k,s}),
+    ask:async seat=>{const pid=s.seats[seat].pid;if(!pid||!here(pid)){await sleep(F4.BOT);return null}
+      let m=null;await until(()=>{if(!live())return true;m=mvOf(pid);return !!m||!here(pid)},F4.TURN*1000);return m},
+    wait:x=>x==='sum'?until(()=>!live()||s.seats.every(z=>!z.pid||!here(z.pid)||nextOf(z.pid)),s.win>=0?3000:F4.SUM*2):sleep(x)});
+  if(!live())return;
+  pub({ph:'e',i:s.k+1,s,lb:g.order.map(x=>{const i=s.seats.findIndex(z=>z.pid===x.pid);if(i<0)return[x.pid,0,0,0,0,-1e4,'–'];
+    return[x.pid,s.sc[i],0,0,0,(i%2===s.win?1000:0)+s.sc[i],(i%2===s.win?'🏆 ':'')+s.sc[i]]}).sort((a,b)=>b[5]-a[5])})}
+async function gC400Live(){
+  const g=NET.game;F4V.k=-1;F4V.sent=-1;
+  if(NET.isHost)setTimeout(()=>f4Direct(g),0);
+  return bzLive(g,t('g_c400'),(st,v)=>{const s=st.s,me=s.seats.findIndex(x=>x.pid===NET.pid),sc=$('#qzme');if(sc&&me>=0)sc.textContent=s.sc[me];
+    f4View(v,s,me,m=>{if((bzState()||{}).i!==st.i)return;
+      if(m.t==='next'){BZL.my.nx=s.k;NET.set({ba:{gid:g.gid,a:{},mv:BZL.my.mv,nx:s.k}});if(NET.isHost)bzNotify();const b=$('[data-f4="next"]',v);if(b){b.disabled=true;b.textContent=t('f4_waitOthers')}return}
+      BZL.my.mv={k:s.k,m};NET.set({ba:{gid:g.gid,a:{},mv:BZL.my.mv,nx:BZL.my.nx}});if(NET.isHost)bzNotify()})})}
 
 /* ----- big-screen host for every live game: the laptop/TV runs the room and shows the play, phones play ----- */
 const tvLb=(lb,who)=>qzBoardHtml(lb||[],who,null,40).replace('qz-lb','qz-lb tv'+((lb||[]).length<=8?' one':''));
