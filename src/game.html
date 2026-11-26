@@ -547,12 +547,12 @@ input[type=number],input[type=email],input[type=password]{font:inherit;font-weig
 .rx-stagecard{text-align:center;padding:50px 10px;display:flex;flex-direction:column;gap:8px}.rx-stagecard b{font-size:30px;font-family:var(--f-display)}
 .rx-times{display:flex;flex-direction:column;gap:4px;margin:8px 0}.rx-times div{display:flex;justify-content:space-between;background:var(--surface);border-radius:12px;padding:8px 12px}.rx-times div.me{outline:2px solid var(--accent)}
 :root{--hf1:#FF8A3D;--hf2:#22B573}
-.hx-wrap{--w:min(17vw,66px);position:relative;margin:6px auto;padding:10px 14px;border-radius:18px;background:var(--surface);direction:ltr;width:max-content;max-width:100%;
+.hx-wrap{--w:min(66px,calc((100vw - 104px)/5.5));position:relative;margin:6px auto;padding:10px 14px;border-radius:18px;background:var(--surface);direction:ltr;width:max-content;max-width:100%;
   border-top:6px solid var(--hf1);border-bottom:6px solid var(--hf1);border-left:6px solid var(--hf2);border-right:6px solid var(--hf2)}
-.hx-wrap.n4{--w:min(20vw,74px)}
+.hx-wrap.n4{--w:min(74px,calc((100vw - 100px)/4.5))}
 .hx-board{display:flex;flex-direction:column;align-items:flex-start}
 .hx-row{display:flex;gap:3px;margin-top:calc(var(--w)*-.27)}.hx-row:first-child{margin-top:0}.hx-row.odd{margin-left:calc(var(--w)/2 + 1.5px)}
-.hx{width:var(--w);height:calc(var(--w)*1.12);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);border:0;background:var(--bg2);color:var(--text);font:800 calc(var(--w)*.42) var(--f-display);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s,background .2s}
+.hx{flex:none;padding:0;line-height:1;width:var(--w);height:calc(var(--w)*1.12);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);border:0;background:var(--bg2);color:var(--text);font:800 calc(var(--w)*.42) var(--f-display);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s,background .2s}
 .hx:not([disabled]):hover{transform:scale(1.06);background:var(--accent);color:#111}
 .hx[disabled]{cursor:default}.hx.o1{background:var(--hf1);color:#fff}.hx.o2{background:var(--hf2);color:#fff}
 .hx.cur{animation:hxpulse 1s infinite}.hx.picked{background:var(--accent);color:#111}
@@ -744,7 +744,7 @@ const L=()=>settings.lang==='en'?1:0;
 
 /* ========= i18n ========= */
 const STR={
-app:['Rijo','Rijo'],tagline:['ذاكرة، أسئلة، سودوكو وخداع','Memory, quiz, sudoku & deception'],
+app:['Rijo','Rijo'],tagline:['ذاكرة، أسئلة، ورق وتحديات','Memory, quiz, cards & challenges'],
 play:['العب الآن','Play now'],games:['الألعاب','Games'],allGames:['كل الألعاب','All games'],
 friends:['الأصدقاء','Friends'],playFriends:['مع الأصدقاء','With friends'],playFriendsD:['أنشئ غرفة وادعُ حتى 3','Make a room, invite up to 3'],
 playOnline:['أونلاين','Online'],playOnlineD:['لاعبون من كل مكان','Players from anywhere'],
@@ -1073,7 +1073,7 @@ premActive:['أنت مشترك في بريميوم','You are a Premium member'],
 premTest:['وضع التجربة','Test mode'],premTestD:['الدفع غير مربوط بعد لأنه يحتاج حسابات المتاجر. فعّل اشتراكاً تجريبياً لترى الميزات المفتوحة.','Payments are not connected yet; they need the store accounts. Turn on a test subscription to see the unlocked features.'],
 premTestOn:['فعّل اشتراكاً تجريبياً','Turn on test subscription'],premTestOff:['أوقف الاشتراك التجريبي','Turn off test subscription'],premDone:['مرحباً بك في بريميوم!','Welcome to Premium!'],premRestored:['تمت استعادة اشتراكك','Your subscription was restored'],premNone:['لم نجد اشتراكاً سابقاً','No previous subscription found'],premFail:['لم تكتمل عملية الشراء','The purchase did not complete'],
 premSignFirst:['سجّل دخولك أولاً حتى يبقى اشتراكك معك على أي جهاز','Sign in first so your subscription follows you to any device'],premWeb:['تُفتح صفحة دفع آمنة. بعد الدفع ارجع هنا واضغط «استعادة المشتريات».','A secure payment page opens. After paying, come back and tap “Restore purchases”.'],
-account:['الحساب','Account'],accLocal:['حسابك محفوظ على هذا الجهاز فقط','Your account is saved on this device only'],accSignIn:['سجّل الدخول لحفظ تقدمك واشتراكك','Sign in to save your progress and subscription'],accEmail:['بريدك الإلكتروني','Your email'],accSend:['أرسل رمزاً للبريد','Email me a code'],accEnter:['دخول','Sign in'],accPw:['كلمة المرور (6 أحرف على الأقل)','Password (at least 6 characters)'],accPwHint:['أول مرة؟ اختر كلمة مرور ويُنشأ حسابك.','First time? Choose a password and your account is created.'],accPwShort:['كلمة المرور 6 أحرف على الأقل','Password must be at least 6 characters'],accPwErr_confirm:['أرسلنا رابط تأكيد إلى بريدك: اضغطه مرة واحدة ثم ادخل هنا من جديد.','We emailed you a confirmation link: tap it once, then sign in here again.'],accPwErr_badpw:['كلمة المرور غير صحيحة','Wrong password'],accPwErr_fail:['تعذّر الدخول، حاول بعد قليل','Could not sign in; try again shortly'],accPwErr_srv:['الخادم غير متصل','Server not connected'],
+account:['الحساب','Account'],adm_only:['لوحة الإدارة للمدير فقط: سجّل الدخول بحساب الإدارة','Admin only: sign in with the admin account'],signInShort:['تسجيل الدخول','Sign in'],signInWhy:['احفظ نقاطك وتقدمك على أي جهاز','Keep your points and progress on any device'],accLocal:['حسابك محفوظ على هذا الجهاز فقط','Your account is saved on this device only'],accSignIn:['سجّل الدخول لحفظ تقدمك واشتراكك','Sign in to save your progress and subscription'],accEmail:['بريدك الإلكتروني','Your email'],accSend:['أرسل رمزاً للبريد','Email me a code'],accEnter:['دخول','Sign in'],accPw:['كلمة المرور (6 أحرف على الأقل)','Password (at least 6 characters)'],accPwHint:['أول مرة؟ اختر كلمة مرور ويُنشأ حسابك.','First time? Choose a password and your account is created.'],accPwShort:['كلمة المرور 6 أحرف على الأقل','Password must be at least 6 characters'],accPwErr_confirm:['أرسلنا رابط تأكيد إلى بريدك: اضغطه مرة واحدة ثم ادخل هنا من جديد.','We emailed you a confirmation link: tap it once, then sign in here again.'],accPwErr_badpw:['كلمة المرور غير صحيحة','Wrong password'],accPwErr_fail:['تعذّر الدخول، حاول بعد قليل','Could not sign in; try again shortly'],accPwErr_srv:['الخادم غير متصل','Server not connected'],
 accCodeSent:['أرسلنا رمزاً إلى {0}','We sent a code to {0}'],accCode:['الرمز','Code'],accVerify:['تأكيد','Verify'],accBadCode:['الرمز غير صحيح أو انتهت صلاحيته','The code is wrong or expired'],accSignedIn:['مسجّل باسم {0}','Signed in as {0}'],accSignOut:['تسجيل الخروج','Sign out'],
 accNoServer:['تسجيل الدخول يعمل بعد ربط الخادم. حتى ذلك الحين يُحفظ تقدمك على هذا الجهاز.','Sign-in works once the server is connected. Until then your progress is saved on this device.'],accSendFail:['تعذّر إرسال الرمز، حاول بعد قليل','Could not send the code; try again shortly'],accWelcome:['تم تسجيل الدخول','Signed in'],
 historyMore:['مع بريميوم ترى سجل مبارياتك كاملاً','Premium shows your full match history'],premBadge:['بريميوم','Premium'],
@@ -1262,6 +1262,143 @@ const BUILTIN_HUROOF=[
 ['ما الدولة التي عاصمتها طوكيو؟','اليابان','يابان'],['ما العضو الذي نمسك به الأشياء؟','يد'],['ما الدولة التي عاصمتها صنعاء؟','اليمن','يمن']];
 const hfQ=(r,i)=>mkQuiz('bh'+(i+1),'حروف',r[0],[r[1]],20,'b',{alt:r.slice(2),qt:'type'});
 /* starter "put in order" questions: answers listed in the right order */
+/* bilingual multiple-choice questions: [cat, category EN, question, question EN, [correct, wrong×3], [same in English]] */
+const BUILTIN_QUIZ2=[
+['عام','General','كم عدد ساعات اليوم؟','How many hours are in a day?',['24','12','36','48'],['24','12','36','48']],
+['عام','General','كم عدد أشهر السنة؟','How many months are in a year?',['12','10','11','13'],['12','10','11','13']],
+['عام','General','ما لون الزمرد؟','What colour is an emerald?',['أخضر','أحمر','أزرق','أصفر'],['Green','Red','Blue','Yellow']],
+['عام','General','كم عدد أضلاع المثلث؟','How many sides does a triangle have?',['3','4','5','6'],['3','4','5','6']],
+['عام','General','ما الشهر الهجري الذي يصوم فيه المسلمون؟','In which Hijri month do Muslims fast?',['رمضان','شعبان','شوال','رجب'],['Ramadan','Shaban','Shawwal','Rajab']],
+['عام','General','كم عدد الدقائق في الساعة؟','How many minutes are in an hour?',['60','100','30','90'],['60','100','30','90']],
+['عام','General','أي من هذه ليس من ألوان علم لبنان؟','Which of these is not a colour of the Lebanese flag?',['الأزرق','الأحمر','الأبيض','الأخضر'],['Blue','Red','White','Green']],
+['عام','General','ما اللغة الأكثر انتشاراً كلغة أم في العالم؟','Which language has the most native speakers?',['الصينية الماندرين','الإنجليزية','الإسبانية','العربية'],['Mandarin Chinese','English','Spanish','Arabic']],
+['عام','General','كم عدد لاعبي فريق كرة القدم داخل الملعب؟','How many players does a football team have on the pitch?',['11','10','9','12'],['11','10','9','12']],
+['عام','General','ما الحيوان الذي يُلقب بسفينة الصحراء؟','Which animal is called the ship of the desert?',['الجمل','الحصان','الفيل','الحمار'],['The camel','The horse','The elephant','The donkey']],
+['عام','General','كم عدد قارات العالم؟','How many continents are there?',['7','5','6','8'],['7','5','6','8']],
+['عام','General','ما العملة الرسمية في اليابان؟','What is the currency of Japan?',['الين','اليوان','الوون','الروبية'],['Yen','Yuan','Won','Rupee']],
+['جغرافيا','Geography','ما عاصمة مصر؟','What is the capital of Egypt?',['القاهرة','الإسكندرية','الأقصر','أسوان'],['Cairo','Alexandria','Luxor','Aswan']],
+['جغرافيا','Geography','ما عاصمة المغرب؟','What is the capital of Morocco?',['الرباط','الدار البيضاء','مراكش','فاس'],['Rabat','Casablanca','Marrakesh','Fez']],
+['جغرافيا','Geography','ما عاصمة أستراليا؟','What is the capital of Australia?',['كانبرا','سيدني','ملبورن','بيرث'],['Canberra','Sydney','Melbourne','Perth']],
+['جغرافيا','Geography','ما عاصمة كندا؟','What is the capital of Canada?',['أوتاوا','تورنتو','مونتريال','فانكوفر'],['Ottawa','Toronto','Montreal','Vancouver']],
+['جغرافيا','Geography','ما عاصمة تركيا؟','What is the capital of Turkey?',['أنقرة','إسطنبول','إزمير','أنطاليا'],['Ankara','Istanbul','Izmir','Antalya']],
+['جغرافيا','Geography','ما أكبر محيط في العالم؟','What is the largest ocean in the world?',['المحيط الهادئ','المحيط الأطلسي','المحيط الهندي','المحيط المتجمد الشمالي'],['Pacific Ocean','Atlantic Ocean','Indian Ocean','Arctic Ocean']],
+['جغرافيا','Geography','ما أعلى جبل في العالم؟','What is the highest mountain in the world?',['إيفرست','كليمنجارو','مون بلان','كي 2'],['Everest','Kilimanjaro','Mont Blanc','K2']],
+['جغرافيا','Geography','ما أكبر صحراء حارة في العالم؟','What is the largest hot desert in the world?',['الصحراء الكبرى','صحراء الربع الخالي','صحراء غوبي','صحراء كالاهاري'],['The Sahara','The Empty Quarter','The Gobi','The Kalahari']],
+['جغرافيا','Geography','في أي قارة تقع البرازيل؟','On which continent is Brazil?',['أمريكا الجنوبية','أفريقيا','أمريكا الشمالية','أوروبا'],['South America','Africa','North America','Europe']],
+['جغرافيا','Geography','ما أكبر دولة في العالم مساحة؟','What is the largest country by area?',['روسيا','كندا','الصين','الولايات المتحدة'],['Russia','Canada','China','United States']],
+['جغرافيا','Geography','على أي نهر تقع مدينة بغداد؟','Which river runs through Baghdad?',['دجلة','الفرات','النيل','الأردن'],['Tigris','Euphrates','Nile','Jordan']],
+['جغرافيا','Geography','ما الدولة التي تشتهر بالأهرامات؟','Which country is famous for the pyramids of Giza?',['مصر','المكسيك','العراق','السودان'],['Egypt','Mexico','Iraq','Sudan']],
+['جغرافيا','Geography','ما عاصمة إسبانيا؟','What is the capital of Spain?',['مدريد','برشلونة','إشبيلية','فالنسيا'],['Madrid','Barcelona','Seville','Valencia']],
+['جغرافيا','Geography','ما عاصمة الأردن؟','What is the capital of Jordan?',['عمّان','إربد','الزرقاء','العقبة'],['Amman','Irbid','Zarqa','Aqaba']],
+['علوم','Science','ما الرمز الكيميائي للماء؟','What is the chemical formula of water?',['H2O','CO2','O2','NaCl'],['H2O','CO2','O2','NaCl']],
+['علوم','Science','ما أكبر كوكب في المجموعة الشمسية؟','What is the largest planet in the solar system?',['المشتري','زحل','الأرض','نبتون'],['Jupiter','Saturn','Earth','Neptune']],
+['علوم','Science','ما الكوكب الملقب بالكوكب الأحمر؟','Which planet is called the Red Planet?',['المريخ','الزهرة','عطارد','المشتري'],['Mars','Venus','Mercury','Jupiter']],
+['علوم','Science','ما العضو الذي يضخ الدم في الجسم؟','Which organ pumps blood around the body?',['القلب','الرئة','الكبد','الكلية'],['The heart','The lungs','The liver','The kidney']],
+['علوم','Science','عند كم درجة مئوية يغلي الماء عند مستوى سطح البحر؟','At what temperature (°C) does water boil at sea level?',['100','90','80','120'],['100','90','80','120']],
+['علوم','Science','ما الغاز الذي نحتاجه للتنفس؟','Which gas do we need to breathe?',['الأكسجين','النيتروجين','الهيليوم','ثاني أكسيد الكربون'],['Oxygen','Nitrogen','Helium','Carbon dioxide']],
+['علوم','Science','ما المعدن السائل في درجة حرارة الغرفة؟','Which metal is liquid at room temperature?',['الزئبق','الحديد','النحاس','الألمنيوم'],['Mercury','Iron','Copper','Aluminium']],
+['علوم','Science','ما أصلب مادة طبيعية؟','What is the hardest natural material?',['الألماس','الحديد','الكوارتز','الجرانيت'],['Diamond','Iron','Quartz','Granite']],
+['علوم','Science','كم عدد أرجل الحشرة؟','How many legs does an insect have?',['6','8','4','10'],['6','8','4','10']],
+['علوم','Science','ما أكبر عضو في جسم الإنسان؟','What is the largest organ of the human body?',['الجلد','الكبد','الرئة','الدماغ'],['The skin','The liver','The lungs','The brain']],
+['علوم','Science','ما أقرب نجم إلى الأرض؟','What is the closest star to Earth?',['الشمس','الشعرى اليمانية','نجم القطب','سهيل'],['The Sun','Sirius','Polaris','Canopus']],
+['علوم','Science','من صاحب نظرية النسبية؟','Who developed the theory of relativity?',['أينشتاين','نيوتن','غاليليو','داروين'],['Einstein','Newton','Galileo','Darwin']],
+['رياضة','Sports','كم مدة شوط مباراة كرة القدم؟','How long is a half in a football match?',['45 دقيقة','30 دقيقة','40 دقيقة','60 دقيقة'],['45 minutes','30 minutes','40 minutes','60 minutes']],
+['رياضة','Sports','كم عدد لاعبي فريق كرة السلة في الملعب؟','How many players does a basketball team have on court?',['5','6','7','4'],['5','6','7','4']],
+['رياضة','Sports','أين أقيمت بطولة كأس العالم لكرة القدم 2022؟','Where was the 2022 FIFA World Cup held?',['قطر','روسيا','البرازيل','الإمارات'],['Qatar','Russia','Brazil','UAE']],
+['رياضة','Sports','من فاز بكأس العالم لكرة القدم 2022؟','Who won the 2022 FIFA World Cup?',['الأرجنتين','فرنسا','البرازيل','كرواتيا'],['Argentina','France','Brazil','Croatia']],
+['رياضة','Sports','كل كم سنة تقام الألعاب الأولمبية الصيفية؟','How often are the Summer Olympics held?',['كل 4 سنوات','كل سنتين','كل 3 سنوات','كل 5 سنوات'],['Every 4 years','Every 2 years','Every 3 years','Every 5 years']],
+['رياضة','Sports','في أي رياضة يُستخدم المضرب والريشة؟','Which sport uses a racket and a shuttlecock?',['الريشة الطائرة','التنس','الإسكواش','تنس الطاولة'],['Badminton','Tennis','Squash','Table tennis']],
+['رياضة','Sports','كم عدد الحلقات في شعار الألعاب الأولمبية؟','How many rings are in the Olympic symbol?',['5','4','6','7'],['5','4','6','7']],
+['رياضة','Sports','ما الرياضة التي يشتهر بها مايكل جوردان؟','Which sport is Michael Jordan famous for?',['كرة السلة','كرة القدم','البيسبول','الغولف'],['Basketball','Football','Baseball','Golf']],
+['رياضة','Sports','كم نقطة تساوي رمية من خارج القوس في كرة السلة؟','How many points is a shot from beyond the arc in basketball?',['3','2','4','1'],['3','2','4','1']],
+['رياضة','Sports','ما اسم ضربة البداية في التنس؟','What is the opening shot in tennis called?',['الإرسال','الضربة الساحقة','الضربة الأمامية','الكرة الطائرة'],['The serve','The smash','The forehand','The volley']],
+['رياضة','Sports','في أي دولة نشأت رياضة الجودو؟','In which country did judo originate?',['اليابان','الصين','كوريا','تايلاند'],['Japan','China','Korea','Thailand']],
+['تاريخ','History','في أي سنة هبط الإنسان على القمر لأول مرة؟','In which year did humans first land on the Moon?',['1969','1959','1975','1981'],['1969','1959','1975','1981']],
+['تاريخ','History','من أول من مشى على سطح القمر؟','Who was the first person to walk on the Moon?',['نيل أرمسترونغ','يوري غاغارين','باز ألدرين','جون غلين'],['Neil Armstrong','Yuri Gagarin','Buzz Aldrin','John Glenn']],
+['تاريخ','History','في أي سنة سقط جدار برلين؟','In which year did the Berlin Wall fall?',['1989','1991','1985','1979'],['1989','1991','1985','1979']],
+['تاريخ','History','من بنى الأهرامات في الجيزة؟','Who built the pyramids of Giza?',['المصريون القدماء','الرومان','الفرس','اليونانيون'],['The ancient Egyptians','The Romans','The Persians','The Greeks']],
+['تاريخ','History','ما المدينة التي كانت عاصمة الدولة الأموية؟','Which city was the capital of the Umayyad Caliphate?',['دمشق','بغداد','القاهرة','قرطبة'],['Damascus','Baghdad','Cairo','Cordoba']],
+['تاريخ','History','ما المدينة التي كانت عاصمة الدولة العباسية؟','Which city was the capital of the Abbasid Caliphate?',['بغداد','دمشق','الكوفة','حلب'],['Baghdad','Damascus','Kufa','Aleppo']],
+['تاريخ','History','في أي سنة بدأت الحرب العالمية الثانية؟','In which year did World War II begin?',['1939','1914','1945','1929'],['1939','1914','1945','1929']],
+['تاريخ','History','من مخترع المصباح الكهربائي الأشهر؟','Who is best known for inventing the light bulb?',['توماس إديسون','نيكولا تسلا','ألكسندر غراهام بل','جيمس واط'],['Thomas Edison','Nikola Tesla','Alexander Graham Bell','James Watt']],
+['تاريخ','History','من أول رائد فضاء في التاريخ؟','Who was the first human in space?',['يوري غاغارين','نيل أرمسترونغ','جون غلين','آلان شيبرد'],['Yuri Gagarin','Neil Armstrong','John Glenn','Alan Shepard']],
+['تاريخ','History','أين كانت مكتبة الحكمة الشهيرة؟','Where was the famous House of Wisdom?',['بغداد','القاهرة','قرطبة','دمشق'],['Baghdad','Cairo','Cordoba','Damascus']],
+['فن','Art','من رسم لوحة الموناليزا؟','Who painted the Mona Lisa?',['ليوناردو دا فينشي','بيكاسو','فان غوخ','مايكل أنجلو'],['Leonardo da Vinci','Picasso','Van Gogh','Michelangelo']],
+['فن','Art','من رسم لوحة ليلة النجوم؟','Who painted The Starry Night?',['فان غوخ','مونيه','دالي','رامبرانت'],['Van Gogh','Monet','Dalí','Rembrandt']],
+['فن','Art','ما الآلة الموسيقية التي لها 88 مفتاحاً عادة؟','Which instrument usually has 88 keys?',['البيانو','الأكورديون','الأورغ','القانون'],['Piano','Accordion','Organ','Qanun']],
+['فن','Art','من المطربة اللبنانية الملقبة بسفيرتنا إلى النجوم؟','Which Lebanese singer is called "our ambassador to the stars"?',['فيروز','صباح','نجوى كرم','ماجدة الرومي'],['Fairuz','Sabah','Najwa Karam','Majida El Roumi']],
+['فن','Art','من المطربة الملقبة بكوكب الشرق؟','Which singer is known as the "Star of the East"?',['أم كلثوم','فيروز','وردة','أسمهان'],['Umm Kulthum','Fairuz','Warda','Asmahan']],
+['فن','Art','ما الألوان الأساسية في الرسم؟','What are the primary colours in painting?',['الأحمر والأصفر والأزرق','الأحمر والأخضر والأزرق','الأسود والأبيض والرمادي','البرتقالي والبنفسجي والأخضر'],['Red, yellow and blue','Red, green and blue','Black, white and grey','Orange, purple and green']],
+['فن','Art','من نحت تمثال داوود الشهير في فلورنسا؟','Who sculpted the famous David in Florence?',['مايكل أنجلو','دوناتيلو','رودان','برنيني'],['Michelangelo','Donatello','Rodin','Bernini']],
+['رياضيات','Math','كم يساوي 7 × 8؟','What is 7 × 8?',['56','54','48','64'],['56','54','48','64']],
+['رياضيات','Math','ما الجذر التربيعي للعدد 81؟','What is the square root of 81?',['9','8','7','11'],['9','8','7','11']],
+['رياضيات','Math','كم يساوي 15% من 200؟','What is 15% of 200?',['30','15','20','35'],['30','15','20','35']],
+['رياضيات','Math','كم عدد درجات زوايا المثلث مجتمعة؟','What do the angles of a triangle add up to?',['180°','90°','360°','270°'],['180°','90°','360°','270°']],
+['رياضيات','Math','ما العدد الأولي بين هذه الأعداد؟','Which of these numbers is prime?',['13','15','21','27'],['13','15','21','27']],
+['رياضيات','Math','كم يساوي 2 أس 10؟','What is 2 to the power of 10?',['1024','512','1000','2048'],['1024','512','1000','2048']],
+['رياضيات','Math','كم ضلعاً للشكل السداسي؟','How many sides does a hexagon have?',['6','5','7','8'],['6','5','7','8']],
+['رياضيات','Math','كم يساوي 144 ÷ 12؟','What is 144 ÷ 12?',['12','11','14','10'],['12','11','14','10']],
+['رياضيات','Math','ما قيمة π تقريباً؟','What is the approximate value of π?',['3.14','2.71','1.61','3.41'],['3.14','2.71','1.61','3.41']],
+['رياضيات','Math','كم عدد الثواني في الساعة؟','How many seconds are in an hour?',['3600','360','6000','1440'],['3600','360','6000','1440']],
+['تكنولوجيا','Technology','ما الشركة المصنعة لهاتف آيفون؟','Which company makes the iPhone?',['أبل','سامسونج','غوغل','هواوي'],['Apple','Samsung','Google','Huawei']],
+['تكنولوجيا','Technology','ماذا يعني اختصار CPU؟','What does CPU stand for?',['وحدة المعالجة المركزية','وحدة الطاقة الرئيسية','ذاكرة الحاسوب','وحدة العرض'],['Central Processing Unit','Central Power Unit','Computer Personal Unit','Control Panel Unit']],
+['تكنولوجيا','Technology','من مؤسس شركة مايكروسوفت مع بول ألن؟','Who co-founded Microsoft with Paul Allen?',['بيل غيتس','ستيف جوبز','مارك زوكربيرغ','إيلون ماسك'],['Bill Gates','Steve Jobs','Mark Zuckerberg','Elon Musk']],
+['تكنولوجيا','Technology','ما نظام التشغيل الذي تطوره غوغل للهواتف؟','Which phone operating system is developed by Google?',['أندرويد','آي أو إس','ويندوز','لينكس'],['Android','iOS','Windows','Linux']],
+['تكنولوجيا','Technology','كم بت في البايت الواحد؟','How many bits are in a byte?',['8','4','16','10'],['8','4','16','10']],
+['تكنولوجيا','Technology','ما اسم أشهر محرك بحث على الإنترنت؟','What is the most used internet search engine?',['غوغل','ياهو','بينغ','ياندكس'],['Google','Yahoo','Bing','Yandex']],
+['تكنولوجيا','Technology','ما الذي يرمز إليه WWW في عناوين المواقع؟','What does WWW stand for?',['الشبكة العنكبوتية العالمية','الويب اللاسلكي','عالم الألعاب','البريد العالمي'],['World Wide Web','Wireless Web World','World Web Wide','Wide World Web']],
+['تكنولوجيا','Technology','أي من هذه شبكة تواصل اجتماعي للصور والفيديو القصير أسسها كيفن سيستروم؟','Which photo and short-video app was co-founded by Kevin Systrom?',['إنستغرام','تيك توك','سناب شات','بنترست'],['Instagram','TikTok','Snapchat','Pinterest']],
+['تكنولوجيا','Technology','ما وحدة قياس سرعة المعالج؟','Which unit is used for processor speed?',['الهرتز','الواط','البايت','الفولت'],['Hertz','Watt','Byte','Volt']],
+['تكنولوجيا','Technology','ما الشركة المصنعة لجهاز بلايستيشن؟','Which company makes the PlayStation?',['سوني','نينتندو','مايكروسوفت','سيغا'],['Sony','Nintendo','Microsoft','Sega']],
+['طعام','Food','من أي بلد أصل طبق السوشي؟','Which country does sushi come from?',['اليابان','الصين','كوريا','تايلاند'],['Japan','China','Korea','Thailand']],
+['طعام','Food','من أي بلد أصل البيتزا؟','Which country does pizza come from?',['إيطاليا','فرنسا','اليونان','إسبانيا'],['Italy','France','Greece','Spain']],
+['طعام','Food','ما المكون الأساسي في الحمص بطحينة؟','What is the main ingredient of hummus?',['الحمص','الفول','العدس','الفاصولياء'],['Chickpeas','Fava beans','Lentils','Kidney beans']],
+['طعام','Food','من أي فاكهة يُصنع الغواكامولي؟','Which fruit is guacamole made from?',['الأفوكادو','المانجو','الكيوي','الجوافة'],['Avocado','Mango','Kiwi','Guava']],
+['طعام','Food','ما الحبوب التي يُصنع منها الأرز بالحليب؟','Rice pudding is made from which grain?',['الأرز','القمح','الشوفان','الذرة'],['Rice','Wheat','Oats','Corn']],
+['طعام','Food','ما التوابل التي تعطي الأرز لوناً أصفر في الكبسة والبرياني عادة؟','Which spice usually gives rice a yellow colour in biryani?',['الكركم','الكمون','الفلفل الأسود','القرفة'],['Turmeric','Cumin','Black pepper','Cinnamon']],
+['طعام','Food','ما المكون الأساسي في التبولة؟','What is the main ingredient of tabbouleh?',['البقدونس','الخس','النعناع','الملفوف'],['Parsley','Lettuce','Mint','Cabbage']],
+['طعام','Food','ما الذي تنتجه النحلة؟','What do bees produce?',['العسل','السكر','الحليب','الزيت'],['Honey','Sugar','Milk','Oil']],
+['طعام','Food','من أي بلد أصل الكرواسون كما يُعرف اليوم؟','Which country is the croissant (as we know it) associated with?',['فرنسا','إيطاليا','ألمانيا','بلجيكا'],['France','Italy','Germany','Belgium']],
+['طعام','Food','ما المشروب الذي يُصنع من حبوب البن؟','Which drink is made from roasted beans?',['القهوة','الشاي','الكاكاو','العصير'],['Coffee','Tea','Cocoa','Juice']]
+];
+const BUILTIN_HUROOF2=[
+['ما الفاكهة الحلوة التي تنبت على النخيل؟','تمر','التمر'],['ما الزاحف الكبير الذي يعيش في الأنهار وله فك قوي؟','تمساح','التمساح'],
+['ما الطائر الذي يصيح عند الفجر؟','ديك','الديك'],['ما اسم العملة الرسمية في الكويت؟','دينار','الدينار'],
+['ما المعدن الأصفر الثمين؟','ذهب','الذهب'],['ما الحشرة الصغيرة المزعجة التي تطير حول الطعام؟','ذبابة','ذباب','الذبابة'],
+['ما عاصمة كوريا الجنوبية؟','سيول'],['ما الأداة التي نعرف بها الوقت؟','ساعة','الساعة'],
+['ما النجم الذي تدور حوله الأرض؟','شمس','الشمس'],['ما الشهر الهجري الذي يأتي بعد رمضان؟','شوال'],
+['ما الحيوان البرمائي الذي يقفز وينقنق؟','ضفدع','الضفدع'],['ما الحيوان المفترس الذي يُعرف بصوت يشبه الضحك؟','ضبع','الضبع'],
+['ما الحيوان الرشيق من فصيلة الغزلان الذي يُضرب به المثل في السرعة؟','ظبي','الظبي'],['ما الشيء الذي يتبعك في الشمس ولا تستطيع لمسه؟','ظل','الظل'],
+['ما الحشرة التي تنسج شبكة؟','عنكبوت','العنكبوت'],['ما الفاكهة التي يُصنع منها الزبيب؟','عنب','العنب'],
+['ما الطائر الأسود المعروف بنعيقه؟','غراب','الغراب'],['ما الحيوان الرشيق الذي يُضرب به المثل في جمال العيون؟','غزال','الغزال'],
+['ما الشيء الذي نقرأه ويتكون من صفحات؟','كتاب','الكتاب'],['ما الحيوان الأليف الذي ينبح؟','كلب','الكلب'],
+['ما الحشرة التي تصنع العسل؟','نحلة','نحل','النحلة'],['ما أكبر طائر في العالم ولا يطير؟','نعامة','النعامة'],
+['ما الجهاز الذي نتصل به ونحمله في جيوبنا؟','هاتف','الهاتف'],['ما شكل القمر في أول الشهر الهجري؟','هلال','الهلال'],
+['ما اسم الأرض المنخفضة بين الجبال؟','وادي','واد','الوادي'],['ما الزهرة الحمراء الشهيرة رمز المحبة؟','وردة','ورد','الوردة'],
+['ما وسيلة النقل التي تطير في السماء؟','طائرة','الطائرة'],['ما الحيوان المعروف بالمكر في الحكايات؟','ثعلب','الثعلب'],
+['ما الطعام الذي يُصنع من الطحين ويُخبز في الفرن؟','خبز','الخبز'],['ما الزهرة البيضاء العطرة رمز دمشق؟','ياسمين','الياسمين'],
+['ما الجرم الذي يضيء الليل ويدور حول الأرض؟','قمر','القمر'],['ما أطول الحيوانات في العالم؟','زرافة','الزرافة'],
+['ما اسم صغير الأسد؟','شبل','الشبل'],['ما الطائر الذي يُستخدم رمزاً للسلام؟','حمامة','حمام','الحمامة']
+];
+const BUILTIN_DECEIT2=[
+['حيوانات','عدد أرجل العنكبوت ____.','ثمانية','ستة|عشرة|أربعة|اثنا عشر','8|ثمان'],
+['حيوانات','أكبر حيوان على وجه الأرض هو ____.','الحوت الأزرق','الفيل الأفريقي|القرش الأبيض|الزرافة|الحوت القاتل','حوت أزرق|الحوت'],
+['جغرافيا','أعلى قمة جبلية في العالم هي ____.','إيفرست','كليمنجارو|مون بلان|كي 2|الألب','افرست|ايفرست'],
+['جغرافيا','عاصمة كندا هي ____.','أوتاوا','تورنتو|مونتريال|فانكوفر|كيبيك','اوتاوا'],
+['جغرافيا','عاصمة تركيا هي ____.','أنقرة','إسطنبول|إزمير|أنطاليا|بورصة','انقرة'],
+['علوم','الغاز الأكثر وفرة في هواء الأرض هو ____.','النيتروجين','الأكسجين|ثاني أكسيد الكربون|الهيدروجين|الأرغون','نيتروجين'],
+['علوم','أكبر كوكب في المجموعة الشمسية هو ____.','المشتري','زحل|أورانوس|نبتون|الأرض','مشتري'],
+['علوم','المعدن السائل في درجة حرارة الغرفة هو ____.','الزئبق','الرصاص|الألمنيوم|القصدير|النحاس','زئبق'],
+['طعام','البلد الأصلي لطبق السوشي هو ____.','اليابان','الصين|كوريا|تايلاند|فيتنام','يابان'],
+['طعام','الفاكهة التي يُصنع منها الغواكامولي هي ____.','الأفوكادو','المانجو|الكيوي|الجوافة|البابايا','افوكادو'],
+['تاريخ','أول من مشى على سطح القمر هو ____.','نيل أرمسترونغ','باز ألدرين|يوري غاغارين|مايكل كولنز|جون غلين','ارمسترونغ|أرمسترونغ|نيل ارمسترونغ'],
+['تاريخ','سقط جدار برلين سنة ____.','1989','1991|1987|1985|1993',''],
+['رياضة','عدد لاعبي فريق كرة السلة في الملعب ____.','خمسة','ستة|سبعة|أربعة|ثمانية','5|خمس'],
+['رياضة','الدولة التي استضافت كأس العالم 2022 هي ____.','قطر','الإمارات|روسيا|البرازيل|السعودية',''],
+['رياضة','مدة شوط كرة القدم ____ دقيقة.','45','40|50|30|60','خمس وأربعون'],
+['تاريخ','عاصمة الدولة الأموية كانت ____.','دمشق','بغداد|القاهرة|الكوفة|حلب','']
+];
+BUILTIN_HUROOF.push(...BUILTIN_HUROOF2);BUILTIN_DECEIT.push(...BUILTIN_DECEIT2);
 const BUILTIN_ORDER=[
 ['علوم','رتّب الكواكب من الأقرب إلى الشمس','عطارد','الزهرة','الأرض','المريخ'],
 ['جغرافيا','رتّب القارات من الأكبر مساحة','آسيا','أفريقيا','أمريكا الشمالية','أمريكا الجنوبية'],
@@ -1275,7 +1412,7 @@ const ordQ=(r,i)=>mkQuiz('bo'+(i+1),r[0],r[1],r.slice(2),20,'b',{qt:'order'});
 const BANK={quiz:[],deceit:[]};
 function loadBank(){
   const loc=store.get('bank_local',{quiz:[],deceit:[]}),rem=store.get('bank_remote',{quiz:[],deceit:[]});
-  BANK.quiz=[...BUILTIN_QUIZ.map((r,i)=>mkQuiz('bq'+(i+1),r[0],r[1],r.slice(2),20,'b')),...BUILTIN_PIC.map(picQ),...BUILTIN_HUROOF.map(hfQ),...BUILTIN_ORDER.map(ordQ),...(rem.quiz||[]).map(x=>({...x,src:'r'})),...(loc.quiz||[]).map(x=>({...x,src:'l'}))];
+  BANK.quiz=[...BUILTIN_QUIZ.map((r,i)=>mkQuiz('bq'+(i+1),r[0],r[1],r.slice(2),20,'b')),...BUILTIN_QUIZ2.map((r,i)=>mkQuiz('bq2_'+(i+1),r[0],r[2],r[4],20,'b',{en:{cat:r[1],q:r[3],a:r[5]}})),...BUILTIN_PIC.map(picQ),...BUILTIN_HUROOF.map(hfQ),...BUILTIN_ORDER.map(ordQ),...(rem.quiz||[]).map(x=>({...x,src:'r'})),...(loc.quiz||[]).map(x=>({...x,src:'l'}))];
   qzAuto();
   BANK.deceit=[...BUILTIN_DECEIT.map((r,i)=>mkDeceit('bd'+(i+1),r[0],r[1],r[2],r[3].split('|'),r[4]?r[4].split('|'):[],'b')),...(rem.deceit||[]).map(x=>({...x,src:'r'})),...(loc.deceit||[]).map(x=>({...x,src:'l'}))];
 }
@@ -1515,7 +1652,9 @@ const PREM_AVATARS=['👑','🐉','🦅','🦈','🐺','🦩','🦋','🌟'];
 let ENT=store.get('ent',{until:0,plan:null,src:null,tier:null});
 /* plans: free · plus · premium (saves from before Plus existed had one all-in plan → premium) */
 const TIERS=['free','plus','premium'];
-const tierOf=()=>ENT.until>Date.now()?(ENT.tier==='plus'?'plus':'premium'):'free';
+/* the owner's admin account plays with everything unlocked */
+const ADM={ok:false,checked:false};
+const tierOf=()=>ADM.ok?'premium':ENT.until>Date.now()?(ENT.tier==='plus'?'plus':'premium'):'free';
 const tierAtLeast=x=>TIERS.indexOf(tierOf())>=TIERS.indexOf(x);
 const isPrem=()=>tierOf()!=='free';   // any paid plan
 /* 24-hour passes bought without a subscription: {room20:until, allcats:until, editor:until} */
@@ -1638,7 +1777,7 @@ const ACC={sb:null,user:null,_t:0,
       if(data){['xp','points','matches','wins'].forEach(k=>{profile[k]=Math.max(profile[k]||0,data[k]||0)});saveAll();await ACC.pullEnt()}
       await sb.from('profiles').upsert({id:ACC.user.id,username:profile.name,avatar:profile.avatar,country:profile.country,xp:profile.xp,points:profile.points,matches:profile.matches,wins:profile.wins,last_seen:new Date().toISOString()})}catch(e){}},
   later(){clearTimeout(ACC._t);ACC._t=setTimeout(()=>ACC.sync(),1500)},
-  async signOut(){try{await ACC.client().auth.signOut()}catch(e){}ACC.user=null;if(PAY.P)PAY.P.logOut().catch(()=>{});if(ENT.src==='server')setEnt({until:0,plan:null,src:null})}};
+  async signOut(){try{await ACC.client().auth.signOut()}catch(e){}ACC.user=null;ADM.ok=false;store.set('isAdmin',false);if(PAY.P)PAY.P.logOut().catch(()=>{});if(ENT.src==='server')setEnt({until:0,plan:null,src:null})}};
 
 function accountModal(){
   if(!ACC.client()){modal(`<h3 style="margin-bottom:10px">${t('account')}</h3><p class="muted">${t('accNoServer')}</p><button class="btn block" style="margin-top:14px" data-ok>${t('ok')}</button>`,(m,c)=>{$('[data-ok]',m).onclick=c});return}
@@ -1651,12 +1790,12 @@ function accountModal(){
       $('#acc1',box).onsubmit=async e=>{e.preventDefault();email=$('#acc-e',box).value.trim();const pw=$('#acc-p',box).value;if(!/^\S+@\S+\.\S+$/.test(email))return;
         if(pw.length<6){$('#acc-x',box).textContent=t('accPwShort');return}const b=$('button[type=submit]',box);b.disabled=true;
         const r=await ACC.passLogin(email,pw);b.disabled=false;
-        if(r.ok){close();toast(t('accWelcome'));if(current==='settings'||current==='premium'||ADM_TABS.includes(current))go(current,params);return}
+        if(r.ok){close();toast(t('accWelcome'));if(!['game','lobby','match'].includes(current))go(current,params);return}
         $('#acc-x',box).textContent=t('accPwErr_'+(r.err||'fail'))}};
     const step2=()=>{box.innerHTML=`<form class="stack" id="acc2"><h3>${t('accCodeSent',esc(email))}</h3><input type="text" id="acc-c" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="${t('accCode')}" dir="ltr" style="font-family:var(--f-display);font-size:26px;letter-spacing:.3em;text-align:center"><p class="small" id="acc-x" style="color:var(--bad);min-height:18px"></p><div class="row" style="justify-content:space-between"><button type="button" class="btn ghost sm" data-b>${t('back')}</button><button class="btn primary" type="submit">${t('accVerify')}</button></div></form>`;
       $('[data-b]',box).onclick=step1;$('#acc-c',box).focus();
       $('#acc2',box).onsubmit=async e=>{e.preventDefault();const b=$('button[type=submit]',box);b.disabled=true;
-        if(await ACC.verify(email,$('#acc-c',box).value.trim())){close();toast(t('accWelcome'));if(current==='settings'||current==='premium'||ADM_TABS.includes(current))go(current,params)}else{b.disabled=false;$('#acc-x',box).textContent=t('accBadCode')}}};
+        if(await ACC.verify(email,$('#acc-c',box).value.trim())){close();toast(t('accWelcome'));if(!['game','lobby','match'].includes(current))go(current,params)}else{b.disabled=false;$('#acc-x',box).textContent=t('accBadCode')}}};
     step1()})}
 
 /* ----- subscription screen ----- */
@@ -1733,6 +1872,7 @@ SCREENS.home=function(){
       <div class="row" style="gap:8px"><span class="lvl">${t('level',lv)}</span>${profile.dayStreak>1?`<span class="small muted">${t('streak',profile.dayStreak)}</span>`:''}</div>
       <div class="xpbar"><i style="width:${Math.round(lvlProgress(profile.xp)*100)}%"></i></div></div>
     <div class="pts"><b class="tnum">${profile.points.toLocaleString()}</b><span>${t('pointsL')}</span></div></div>
+  ${ACC.client()&&!ACC.real()?`<div class="panel row between" style="gap:10px;padding:10px 14px"><span class="small">${t('signInWhy')}</span><button class="btn primary sm" id="home-acc" style="flex:none">${t('signInShort')}</button></div>`:''}
   <div class="play-hero"><button class="btn primary big" data-go="games">${ic('play')} ${t('play')}</button>
     <button class="tile t1" data-go="games" data-p='{"mode":"friends"}'>${ic('users')}<b>${t('playFriends')}</b><span>${t('playFriendsD')}</span></button>
     <button class="tile t2" data-go="games" data-p='{"mode":"online"}'>${ic('globe')}<b>${t('playOnline')}</b><span id="online-n">${NET.ok?t('onlineNow',NET.lobbyPeers.length||1):t('playOnlineD')}</span></button>
@@ -1743,6 +1883,7 @@ SCREENS.home=function(){
   <div class="hub">${SECTIONS.filter(x=>GAMES.some(g=>g.sec===x&&gameOn(g))).map(x=>`<button class="hub-card" style="--tint:${TINT[x]}" data-sec="${x}"><div class="art">${ART[x]}</div><b>${t('sec_'+x)}</b><span>${t('sec_'+x+'D')}</span></button>`).join('')}</div>
   <div class="nav4"><button data-go="leaderboard">${ic('trophy')}${t('leaderboard')}</button><button data-go="friends">${ic('users')}${t('friends')}</button><button data-go="profile">${ic('user')}${t('profile')}</button><button data-go="settings">${ic('gear')}${t('settings')}</button></div>`;
   const dg=$('#daily-go');if(dg)dg.onclick=()=>{sfx('tap');startMatch(dc)};
+  const ha=$('#home-acc');if(ha)ha.onclick=()=>{sfx('tap');accountModal()};
   $('#join-btn').onclick=()=>{sfx('tap');joinModal()};const ib=$('#inst-btn');if(ib)ib.onclick=()=>{sfx('tap');installModal()};
   if(NET.nr){NET.leave()}
   $$('[data-sec]').forEach(b=>b.onclick=()=>{sfx('tap');const x=b.dataset.sec;if(GAMES.filter(g=>g.sec===x).length>1)go('games',{sec:x});else go('setup',{game:(GAMES.find(g=>g.sec===x)||{}).id||x,mode:'solo'})});
@@ -2509,7 +2650,8 @@ async function gReactLive(){
    Orange connects TOP↔BOTTOM, green connects LEFT↔RIGHT (there is always a winner).
    Questions: built-in starters + every question in the bank whose correct answer starts with that letter. */
 const HF={T:20,PICK:15,GRACE:600,LETTERS:'ابتثجحخدذرزسشصضطظعغفقكلمنهوي'.split('')};
-const hfLetter=a=>{const n=normA(a);return HF.LETTERS.includes(n[0])?n[0]:null};
+/* the letter of an answer ignores the article: «القلب» belongs to ق */
+const hfLetter=a=>{let n=normA(a);if(n.length>3&&n.startsWith('ال'))n=n.slice(2);return HF.LETTERS.includes(n[0])?n[0]:null};
 const hfUsable=(q,share)=>q.a&&q.a[0]&&q.qt!=='order'&&!q.emo&&!q.img&&hfLetter(q.a[0])&&(!share||q.src!=='l');
 function hfPool(share){const by={};BANK.quiz.forEach(q=>{if(!hfUsable(q,share))return;const l=hfLetter(q.a[0]);(by[l]=by[l]||[]).push(q)});return by}
 function hfBoardLetters(n,R,share){const by=hfPool(share),have=HF.LETTERS.filter(l=>by[l]&&by[l].length),out=[];
@@ -3960,10 +4102,11 @@ function editProfile(){let av=profile.avatar;modal(`<h3 style="margin-bottom:12p
 
 /* ----- question manager (open with #admin) ----- */
 /* ----- admin access: only accounts listed in the server's "admins" table (supabase/owner.sql) ----- */
-const ADM={ok:false,checked:false};
 async function admCheck(){const sb=ACC.client();if(!sb||!ACC.real()){ADM.ok=false;return false}
   try{const {data}=await sb.rpc('is_admin');ADM.ok=data===true}catch(e){ADM.ok=false}
-  ADM.checked=true;store.set('isAdmin',ADM.ok);return ADM.ok}
+  const was=store.get('isAdmin',false);ADM.checked=true;store.set('isAdmin',ADM.ok);
+  if(ADM.ok!==was&&['home','settings','games','setup','premium'].includes(current))go(current,params);   // show the unlocked games and the admin button
+  return ADM.ok}
 const admClient=()=>ACC.client();
 const admLive=()=>!!(ACC.client()&&ADM.ok);
 /* images go to the public "qimg" bucket, shrunk to 1000 px so they load fast on phones */
@@ -4205,7 +4348,10 @@ function admBanner(){
   if(!ACC.real())return `<div class="panel stack" style="gap:8px;margin-bottom:12px"><b>${t('adm_needLogin')}</b><button class="btn primary sm" id="adm-in">${t('accSignIn')}</button></div>`;
   if(!ADM.ok)return `<p class="note" style="margin-bottom:12px">${t('adm_notAdmin',esc(ACC.user.email||''))}</p>`;
   return ''}
-async function admEnter(){if(!ACC.client())store.set('isAdmin',true);if(ACC.real()&&!ADM.checked)await admCheck();return()=>{const x=$('#adm-in');if(x)x.onclick=accountModal}}
+async function admEnter(){if(!ACC.client())store.set('isAdmin',true);if(ACC.real()&&!ADM.checked)await admCheck();
+  /* with a server, only a signed-in admin account can open the dashboard */
+  if(ACC.client()&&!ADM.ok){toast(t('adm_only'));go('home',{});return()=>{}}
+  return()=>{const x=$('#adm-in');if(x)x.onclick=accountModal}}
 
 /* sample data for the preview */
 let DEMO=null;
@@ -4535,8 +4681,7 @@ SCREENS.settings=function(){
   <div class="panel">${sw('s-sound',settings.sound,t('sound'))}${sw('s-music',settings.music,t('music'))}</div>
   <div class="panel"><h3 style="margin-bottom:4px">${t('gameplay')}</h3>${sw('s-xt',settings.extraTurn,t('extraTurn'))}</div>
   <div class="panel"><h3 style="margin-bottom:4px">${t('notifSet')}</h3>${['friend','invite','rank','ach','online'].map(k=>sw('n-'+k,settings.notif[k],t('nf_'+k))).join('')}</div>
-  ${ADM.ok||!ACC.client()||store.get('isAdmin',false)?`<button class="btn block" data-go="admin">${ic('lock')} ${t('admin')}</button>`:''}<div class="panel stack" style="gap:8px"><button class="btn ghost block" id="pp">${t('privacy')}</button><button class="btn ghost block" id="tm">${t('terms')}</button><button class="btn ghost block" id="rs" style="color:var(--bad)">${t('reset')}</button></div>
-  ${ADM.ok||!ACC.client()||store.get('isAdmin',false)?'':`<button class="adm-link" data-go="admin">${t('admEntry')}</button>`}</div>`;
+  ${ADM.ok?`<button class="btn block" data-go="admin">${ic('lock')} ${t('admin')}</button>`:''}<div class="panel stack" style="gap:8px"><button class="btn ghost block" id="pp">${t('privacy')}</button><button class="btn ghost block" id="tm">${t('terms')}</button><button class="btn ghost block" id="rs" style="color:var(--bad)">${t('reset')}</button></div></div>`;
   $$('[data-l]').forEach(b=>b.onclick=()=>{settings.lang=b.dataset.l;store.set('settings',settings);applyLang();SCREENS.settings()});
   const ai=$('#acc-in');if(ai)ai.onclick=accountModal;const ao=$('#acc-out');if(ao)ao.onclick=async()=>{await ACC.signOut();SCREENS.settings()};
   const bind=(id,fn)=>{$('#'+id).onclick=()=>{fn();store.set('settings',settings);SCREENS.settings()}};
