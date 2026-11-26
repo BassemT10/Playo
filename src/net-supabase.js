@@ -19,7 +19,7 @@
   var tab = Math.random().toString(36).slice(2, 12);
   var ver = Date.now();
   var TRACK_GAP = 10500;         // ≥ 10.5 s between Presence updates → never more than 3 per 30 s
-  var SEND_GAP = 70;             // batch rapid state changes into one broadcast
+  var SEND_GAP = 40;             // batch rapid state changes into one broadcast
   var BEAT_ROOM = 3000, BEAT_LOBBY = 6000, STALE = 9000;
 
   function mkRoom(name, isLobby) {

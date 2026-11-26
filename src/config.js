@@ -2,7 +2,7 @@
 window.ZK_CONFIG = {
   supabaseUrl: 'https://akrpiapogmejbywvqnal.supabase.co',
   supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFrcnBpYXBvZ21lamJ5d3ZxbmFsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ2NjU0MDAsImV4cCI6MjExMDI0MTQwMH0.u7NTMVr6nqNrC-Rxge2edPvwzka0wIxQ1Xe_8B8t2gk',
-  linkBase: 'https://bassemt10.github.io/Playo/',
+  linkBase: 'https://rijoplay.com/',
   xlsxUrl: 'xlsx.js',
   qrUrl: 'qrcode.js',
   // Plans: RevenueCat public SDK keys (one per store). Entitlements "plus" and "premium";

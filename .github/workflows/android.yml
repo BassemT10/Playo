@@ -41,7 +41,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v1.0.${{ github.run_number }}
-          name: Playo 1.0.${{ github.run_number }}
+          name: Rijo 1.0.${{ github.run_number }}
           make_latest: true
           files: playo.apk
           body: |

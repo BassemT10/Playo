@@ -1,4 +1,4 @@
-<title>Playo</title>
+<title>Rijo</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -744,7 +744,7 @@ const L=()=>settings.lang==='en'?1:0;
 
 /* ========= i18n ========= */
 const STR={
-app:['Playo','Playo'],tagline:['ذاكرة، أسئلة، سودوكو وخداع','Memory, quiz, sudoku & deception'],
+app:['Rijo','Rijo'],tagline:['ذاكرة، أسئلة، سودوكو وخداع','Memory, quiz, sudoku & deception'],
 play:['العب الآن','Play now'],games:['الألعاب','Games'],allGames:['كل الألعاب','All games'],
 friends:['الأصدقاء','Friends'],playFriends:['مع الأصدقاء','With friends'],playFriendsD:['أنشئ غرفة وادعُ حتى 3','Make a room, invite up to 3'],
 playOnline:['أونلاين','Online'],playOnlineD:['لاعبون من كل مكان','Players from anywhere'],
@@ -3253,7 +3253,7 @@ const MERC=lat=>Math.log(Math.tan(Math.PI/4+clamp(lat,-82,82)*Math.PI/360));
 const IMERC=y=>Math.atan(Math.sinh(y))*180/Math.PI;
 const MAPD={d:null,p:null,svg:{}};
 function mapLoad(){if(MAPD.d)return Promise.resolve(MAPD.d);if(MAPD.p)return MAPD.p;
-  const urls=[...new Set([ZKC.mapUrl||'map.json','https://bassemt10.github.io/Playo/map.json'])];
+  const urls=[...new Set([ZKC.mapUrl||'map.json','https://rijoplay.com/map.json'])];
   MAPD.p=(async()=>{for(const u of urls){try{const r=await fetch(u);if(!r.ok)continue;const j=await r.json();
     for(const k in j){const c=j[k];c.r=c.p.map(a=>{const pts=[];let wrap=false;for(let i=0;i<a.length;i+=2){pts.push([a[i]/20,a[i+1]/20]);if(i&&Math.abs(a[i]-a[i-2])>3600)wrap=true}
         if(wrap)pts.forEach(p=>{if(p[0]<0)p[0]+=360});return pts});delete c.p;   /* rings crossing the 180° line (Russia, Fiji) are unwrapped so they don't streak across the map */
@@ -4407,12 +4407,12 @@ SCREENS.admq=async function(p){const bind=await admEnter();if(current!=='admq')r
         if(!n){toast(t('adm_noRows'));return}
         if(await confirmBox(t('adm_preview',got.quiz.length,got.deceit.length),t('adm_import'))){if(await admSave([...got.quiz,...got.deceit]))toast(t('adm_imported',n));render()}}
       catch(err){toast(t('adm_noRows'))}};
-    const tp=$('#adm-tpl');if(tp)tp.onclick=async()=>{if(NATIVE||!ZKC.linkBase){toast(t('adm_dlFail'));return}const X=await loadXLSX();X.writeFile(xlTemplate(X),'playo-questions-template.xlsx')};
+    const tp=$('#adm-tpl');if(tp)tp.onclick=async()=>{if(NATIVE||!ZKC.linkBase){toast(t('adm_dlFail'));return}const X=await loadXLSX();X.writeFile(xlTemplate(X),'rijo-questions-template.xlsx')};
     const ex=$('#adm-exp');if(ex)ex.onclick=async()=>{if(NATIVE||!ZKC.linkBase){toast(t('adm_dlFail'));return}
       const X=await loadXLSX();const wb=X.utils.book_new();
       X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([XL_BI_HEAD,...BANK.quiz.filter(q=>q.src!=='b').map(xlBiRow)]),'أسئلة');
       X.utils.book_append_sheet(wb,X.utils.aoa_to_sheet([['الفئة','السؤال (ضع ____ مكان الإجابة)','الإجابة الصحيحة','إجابات مقبولة أخرى','خداع 1','خداع 2','خداع 3','خداع 4','خداع 5','رابط الصورة','صورة الإجابة'],...BANK.deceit.filter(q=>q.src!=='b').map(q=>[q.cat,q.q,q.a,(q.alt||[]).join('، '),...[0,1,2,3,4].map(i=>q.f[i]||''),q.img||'',q.aimg||''])]),'خداع');
-      X.writeFile(wb,'playo-questions.xlsx')};
+      X.writeFile(wb,'rijo-questions.xlsx')};
   };render();
 };
 function admForm(kind,q,done,o){
