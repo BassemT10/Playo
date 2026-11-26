@@ -642,12 +642,12 @@ input[type=number],input[type=email],input[type=password]{font:inherit;font-weig
 .sp-tally{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0}.sp-tally span{background:var(--surface);border-radius:999px;padding:6px 12px}.sp-tally span.spy{background:rgba(180,124,255,.25)}
 /* block puzzle */
 .bk-area{display:flex;justify-content:center;padding:6px 0}
-.bk-board{position:relative;background-color:#111B2E;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);border:2px solid var(--line);border-radius:6px;box-sizing:content-box}
+.bk-board{touch-action:none;position:relative;background-color:#111B2E;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);border:2px solid var(--line);border-radius:6px;box-sizing:content-box}
 .bk-pc{position:relative;touch-action:none;cursor:grab}
 .bk-pc i{position:absolute;border-radius:5px;box-shadow:inset 0 -3px 0 rgba(0,0,0,.25),inset 0 0 0 1px rgba(0,0,0,.2)}
-.bk-tray{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;min-height:70px;background:var(--surface);border-radius:14px;padding:12px}
+.bk-tray{touch-action:none;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;min-height:70px;background:var(--surface);border-radius:14px;padding:12px}
 .bk-slot{display:grid;place-items:center;padding:4px}
-.bk-ghost{position:fixed;left:0;top:0;pointer-events:none;z-index:50;opacity:.92;filter:drop-shadow(0 8px 14px rgba(0,0,0,.45))}
+.bk-ghost{position:fixed;left:0;top:0;pointer-events:none;z-index:50;opacity:.9;will-change:transform}   /* no filter: a moving drop-shadow is slow on cheaper phones */
 .bk-clk{display:block;width:max-content;margin:0 auto;font-family:var(--f-display);font-size:clamp(40px,6vw,96px);background:var(--accent);color:#1a1033;border-radius:24px;padding:0 32px;line-height:1.35}.bk-clk.low{background:#E5484D;color:#fff}
 .bk-done{font-size:30px;color:var(--good)}
 /* top ten */
@@ -3727,18 +3727,32 @@ function bkGame(board,foot,pz,W,H,onChange){
   const render=()=>{
     board.innerHTML=`<div class="bk-area"><div class="bk-board" id="bkb" style="width:${W*cs}px;height:${H*cs}px;background-size:${cs}px ${cs}px">${pz.filter(p=>p.at).map(p=>pcHtml(p,cs,`position:absolute;left:${p.at.x*cs}px;top:${p.at.y*cs}px`)).join('')}</div></div>`;
     foot.innerHTML=`<div class="bk-tray">${pz.filter(p=>!p.at).map(p=>`<div class="bk-slot">${pcHtml(p,ts,'')}</div>`).join('')||`<b class="bk-done">✓</b>`}</div><p class="small muted" style="text-align:center;margin:6px 0 0">${t('bk_hint')}</p>`};
-  const onDown=e=>{if(done)return;const el=e.target.closest('.bk-pc');if(!el)return;e.preventDefault();const p=pz[+el.dataset.p],sz=+el.dataset.sz,r=el.getBoundingClientRect(),k=cs/sz;
+  /* Dragging works with touch events on phones (they reliably stop the page from scrolling or cancelling the drag
+     in every Android WebView and iPhone) and with pointer events for a mouse. On touch the piece is lifted above the
+     finger so you can see where it goes; a tap without moving rotates the piece. */
+  const start=(el,cx,cy,touch)=>{if(done||drag||!el)return false;const p=pz[+el.dataset.p],sz=+el.dataset.sz,r=el.getBoundingClientRect(),k=cs/sz;
     const gh=document.createElement('div');gh.className='bk-ghost';gh.innerHTML=pcHtml(p,cs,'');document.body.appendChild(gh);
-    drag={p,ox:(e.clientX-r.left)*k,oy:(e.clientY-r.top)*k,sx:e.clientX,sy:e.clientY,moved:false,gh,el};el.style.opacity='.25';
-    const mv=ev=>{if(!drag)return;if(Math.hypot(ev.clientX-drag.sx,ev.clientY-drag.sy)>7)drag.moved=true;gh.style.transform=`translate(${ev.clientX-drag.ox}px,${ev.clientY-drag.oy}px)`};mv(e);
-    const upH=ev=>{removeEventListener('pointermove',mv);removeEventListener('pointerup',upH);removeEventListener('pointercancel',upH);if(!drag)return;const d=drag;drag=null;gh.remove();
-      if(!d.moved||ev.type==='pointercancel'){if(ev.type!=='pointercancel'){d.p.cells=bkRot(d.p.cells);if(d.p.at&&!fits(d.p,d.p.at.x,d.p.at.y))d.p.at=null;sfx('tick')}}
-      else{const b=$('#bkb').getBoundingClientRect(),x=Math.round((ev.clientX-d.ox-b.left)/cs),y=Math.round((ev.clientY-d.oy-b.top)/cs);d.p.at=null;
-        if(fits(d.p,x,y)){d.p.at={x,y};sfx('pad',(d.p.id%8)+1)}else sfx('tap')}
-      render();onChange(left())};
-    addEventListener('pointermove',mv);addEventListener('pointerup',upH);addEventListener('pointercancel',upH)};
-  board.onpointerdown=onDown;foot.onpointerdown=onDown;render();
-  return{left,stop(){done=true;board.onpointerdown=null;foot.onpointerdown=null}}}
+    drag={p,ox:(cx-r.left)*k,oy:(cy-r.top)*k,lift:touch?Math.round(cs*1.1):0,sx:cx,sy:cy,lx:cx,ly:cy,moved:false,gh,el};el.style.opacity='.25';move(cx,cy);return true};
+  const move=(cx,cy)=>{if(!drag)return;drag.lx=cx;drag.ly=cy;if(Math.hypot(cx-drag.sx,cy-drag.sy)>7)drag.moved=true;
+    drag.gh.style.transform=`translate3d(${cx-drag.ox}px,${cy-drag.oy-(drag.moved?drag.lift:0)}px,0)`};
+  const end=(cx,cy,cancel)=>{if(!drag)return;const d=drag;drag=null;d.gh.remove();if(cx==null){cx=d.lx;cy=d.ly}
+    if(!d.moved){if(!cancel){d.p.cells=bkRot(d.p.cells);if(d.p.at&&!fits(d.p,d.p.at.x,d.p.at.y))d.p.at=null;sfx('tick')}}
+    else{const b=$('#bkb').getBoundingClientRect(),x=Math.round((cx-d.ox-b.left)/cs),y=Math.round((cy-d.oy-d.lift-b.top)/cs);d.p.at=null;
+      if(fits(d.p,x,y)){d.p.at={x,y};sfx('pad',(d.p.id%8)+1)}else sfx('tap')}
+    render();onChange(left())};
+  let tid=null;
+  const tMove=e=>{const t=[...e.changedTouches].find(x=>x.identifier===tid);if(!t)return;e.preventDefault();move(t.clientX,t.clientY)};
+  const tEnd=e=>{const t=[...e.changedTouches].find(x=>x.identifier===tid);if(!t)return;e.preventDefault();tid=null;
+    removeEventListener('touchmove',tMove);removeEventListener('touchend',tEnd);removeEventListener('touchcancel',tEnd);end(t.clientX,t.clientY,e.type==='touchcancel')};
+  const onTouch=e=>{if(tid!=null)return;const el=e.target.closest&&e.target.closest('.bk-pc');if(!el)return;const t=e.changedTouches[0];e.preventDefault();
+    if(!start(el,t.clientX,t.clientY,true))return;tid=t.identifier;
+    addEventListener('touchmove',tMove,{passive:false});addEventListener('touchend',tEnd,{passive:false});addEventListener('touchcancel',tEnd,{passive:false})};
+  const pMove=e=>move(e.clientX,e.clientY);
+  const pUp=e=>{removeEventListener('pointermove',pMove);removeEventListener('pointerup',pUp);removeEventListener('pointercancel',pUp);end(e.clientX,e.clientY,e.type==='pointercancel')};
+  const onDown=e=>{if(e.pointerType==='touch'||tid!=null)return;const el=e.target.closest('.bk-pc');if(!el)return;e.preventDefault();
+    if(!start(el,e.clientX,e.clientY,false))return;addEventListener('pointermove',pMove);addEventListener('pointerup',pUp);addEventListener('pointercancel',pUp)};
+  [board,foot].forEach(x=>{x.onpointerdown=onDown;x.addEventListener('touchstart',onTouch,{passive:false})});render();
+  return{left,stop(){done=true;[board,foot].forEach(x=>{x.onpointerdown=null;x.removeEventListener('touchstart',onTouch)});if(drag){drag.gh.remove();drag=null}}}}
 async function gBlocks(){
   if(M.tvHost)return bkTv();
   const id=M.id,d=M.diff;M.players.forEach(p=>{p.score=0;p.scoreText='–'});M.showTurn=false;gameShell();renderPlayers();
