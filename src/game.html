@@ -572,7 +572,13 @@ input[type=number],input[type=email],input[type=password]{font:inherit;font-weig
 .wr-mv{fill:var(--accent);opacity:.75}
 .wr-w{fill:#F4E6C8;stroke:#7A5B2E;stroke-width:.3}.wr-w.pv{fill:var(--good);opacity:.85}.wr-w.pv.bad{fill:var(--bad)}
 .wr-p{stroke:#fff;stroke-width:.6}.wr-p.on{stroke:var(--accent);stroke-width:1}
-.wr-bar{display:flex;align-items:center;gap:8px;justify-content:space-between}.wr-bar .seg{flex:1;max-width:260px}.wr-bar b{font-size:20px;min-width:30px;text-align:center}.wr-bar b.low{color:var(--bad)}
+.wr-bar{display:flex;align-items:center;gap:8px;justify-content:space-between;min-height:34px}.wr-bar .seg{flex:1;max-width:260px}.wr-bar b{font-size:20px;min-width:30px;text-align:center}.wr-bar b.low{color:var(--bad)}
+.wr-tray{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px;flex-wrap:wrap}.wr-pieces{display:flex;gap:8px}
+.wr-piece{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:12px;background:var(--surface);border:2px solid transparent;color:var(--text);font:inherit;font-weight:700;touch-action:none;cursor:grab;-webkit-user-select:none;user-select:none}
+.wr-piece.sel{border-color:var(--accent)}.wr-piece[disabled]{opacity:.4;cursor:default}
+.wr-piece i{display:block;background:#F4E6C8;border:1px solid #7A5B2E;border-radius:3px}.wr-piece.h i{width:36px;height:8px}.wr-piece.v i{width:8px;height:36px}
+.wr-ghost{position:fixed;z-index:80;pointer-events:none;background:#F4E6C8;border:1px solid #7A5B2E;border-radius:4px;opacity:.9;transform:translate(-50%,-50%)}
+.wr-okslot{min-height:48px;margin-top:6px}
 .wr-legend{display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:center;font-weight:800;font-size:13px}.wr-legend span{opacity:.7}.wr-legend span.on{opacity:1;text-decoration:underline}
 
 .tvm .qzv{max-width:1200px;margin:0 auto;font-size:1.25em}.tvm .game .gboard,.tvm .game .gfoot{max-width:1100px;margin-inline:auto}
@@ -988,7 +994,7 @@ qt_title:['نوع الأسئلة','Question types'],qt_mc:['اختيار من م
 sec_wall:['Wall Rush','Wall Rush'],sec_wallD:['سباق وحوائط، من يصل أولاً؟','Race and walls: who gets there first?'],g_wall:['Wall Rush','Wall Rush'],g_wallD:['تحرّك أو ضع حائطاً أمام خصمك','Move, or drop a wall in your rival\'s way'],
 r_wall:[['في كل دور: تحرّك خطوة واحدة، أو ضع حائطاً طوله خانتان.','لا يُسمح بحائط يغلق الطريق تماماً على أي لاعب.','مواجهة: كل لاعب يصل إلى جهة خصمه. سباق: تبدآن من نفس الجهة وتتسابقان للجهة الأخرى.','أربعة لاعبين (للمشتركين): الكل يبدأ من منتصف ضلع، ومن يصل للمربع الأوسط أولاً يفوز.','إذا كان خصمك أمامك مباشرة تقفز فوقه. لكل دور 30 ثانية.'],['Each turn: move one step, or place a wall two cells long.','A wall may never completely block any player.','Facing: each player heads for the other side. Race: you both start on the same side and race to the far side.','Four players (subscribers): everyone starts at the middle of a side; first to the centre square wins.','If a rival is right in front of you, jump over them. 30 seconds per turn.']],
 wr_face10:['مواجهة · 10 حوائط','Facing · 10 walls'],wr_face15:['مواجهة · 15 حائطاً','Facing · 15 walls'],wr_race:['سباق جنباً إلى جنب','Side-by-side race'],wr_four:['4 لاعبين نحو المنتصف','4 players to the centre'],
-wr_move:['تحرّك','Move'],wr_wall:['حائط','Wall'],wr_rotate:['تدوير','Rotate'],wr_place:['ضع الحائط','Place wall'],wr_noWall:['لا يمكن وضعه هنا','Can\'t place it here'],wr_tapMove:['اضغط على نقطة لتتحرك','Tap a dot to move'],wr_tapWall:['اضغط بين الخانات لاختيار مكان الحائط','Tap between cells to choose where the wall goes'],
+wr_move:['تحرّك','Move'],wr_dragWall:['اسحب حائطاً إلى اللوحة، أو اضغطه ثم اضغط مكانه','Drag a wall onto the board, or tap it then tap a spot'],wr_wallH:['عرضي','Across'],wr_wallV:['طولي','Up-down'],wr_wall:['حائط','Wall'],wr_rotate:['تدوير','Rotate'],wr_place:['ضع الحائط','Place wall'],wr_noWall:['لا يمكن وضعه هنا','Can\'t place it here'],wr_tapMove:['اضغط على نقطة لتتحرك','Tap a dot to move'],wr_tapWall:['اضغط بين الخانات لاختيار مكان الحائط','Tap between cells to choose where the wall goes'],
 wr_yourTurn:['دورك','Your turn'],wr_turnOf:['دور {0}','{0}\'s turn'],wr_won:['🏆 وصل {0} أولاً!','🏆 {0} got there first!'],wr_steps:['{0}','{0}'],wr_winTag:['وصل أولاً','Reached first'],wr_youCol:['لونك مميز بحد أبيض','Your pawn has a white ring'],wr_watch:['تشاهد المباراة','Watching'],
 pc_tvType:['اكتبوا الجواب على هواتفكم','Type the answer on your phones'],rx_tvLook:['انظروا إلى هواتفكم!','Look at your phones!'],dc_tvWrite:['اكتبوا إجابة مخادعة على هواتفكم','Write a fake answer on your phones'],sd_strikes:['الأخطاء {0} من {1}','Mistakes {0} of {1}'],sd_out:['خرجت: {0} أخطاء','You\'re out: {0} mistakes'],sd_outS:['خرج','Out'],sd_tvLive:['السباق جارٍ','Race in progress'],
 mem_tvPlay:['كل لاعب يلعب على هاتفه الآن','Everyone is playing on their phone'],mem_tvWait:['تظهر النتائج هنا عندما ينتهي الجميع','Results appear here when everyone finishes'],
@@ -2833,19 +2839,40 @@ function wrSvg(s,me,ui){const N=s.N,C=10,moves=ui&&ui.moves||[],pv=ui&&ui.previe
   const pawns=s.pos.map((p,i)=>`<circle cx="${p[0]*C+5}" cy="${p[1]*C+5}" r="3.4" fill="${WR_COL[i]}" class="wr-p${i===s.turn&&s.win<0?' on':''}${i===me?' me':''}"/>`).join('');
   return`<svg class="wr-svg" viewBox="-1 -1 ${N*C+2} ${N*C+2}" id="wrsvg">${cells.join('')}${mv}${s.walls.map(w=>wall(w,'wr-w')).join('')}${pv?wall(pv,'wr-w pv'+(pv.ok?'':' bad')):''}${pawns}</svg>`}
 const wrStatus=(s,names,me)=>s.win>=0?t('wr_won',names[s.win]):s.turn===me?t('wr_yourTurn'):t('wr_turnOf',names[s.turn]);
-/* one turn on this phone; resolves a move (or null on time-out) */
-function wrTurn(box,s,me,id,onTick){return new Promise(res=>{let mode='m',o='h',pv=null,done=false;const t0=Date.now();
-  const fin=m=>{if(done)return;done=true;clearInterval(iv);res(m)};
-  const draw=()=>{const moves=mode==='m'?wrMoves(s,me):[];
-    box.innerHTML=`<div class="wr-bar"><div class="seg"><button data-wm="m" class="${mode==='m'?'on':''}">${t('wr_move')}</button><button data-wm="w" class="${mode==='w'?'on':''}" ${s.left[me]>0?'':'disabled'}>${t('wr_wall')} · ${s.left[me]}</button></div>${mode==='w'?`<button class="btn sm" id="wro">${o==='h'?'⟷':'↕'} ${t('wr_rotate')}</button>`:''}<b class="tnum" id="wrt">${WR.TURN}</b></div>
-      ${wrSvg(s,me,{moves,preview:pv})}<p class="small muted" style="text-align:center;margin:4px 0">${mode==='m'?t('wr_tapMove'):t('wr_tapWall')}</p>${mode==='w'&&pv?`<button class="btn primary block" id="wrok" ${pv.ok?'':'disabled'}>${pv.ok?t('wr_place'):t('wr_noWall')}</button>`:''}`;
-    $$('[data-wm]',box).forEach(b=>b.onclick=()=>{mode=b.dataset.wm;pv=null;draw()});
-    const ob=$('#wro',box);if(ob)ob.onclick=()=>{o=o==='h'?'v':'h';if(pv){pv=[pv[0],pv[1],o];pv.ok=wrWallOk(s,pv)}draw()};
-    const ok=$('#wrok',box);if(ok)ok.onclick=()=>{if(pv&&pv.ok){sfx('tap');fin({t:'w',x:pv[0],y:pv[1],o:pv[2]})}};
-    const svg=$('#wrsvg',box);svg.onclick=e=>{const r=svg.getBoundingClientRect(),vb=svg.viewBox.baseVal,px=(e.clientX-r.left)/r.width*vb.width+vb.x,py=(e.clientY-r.top)/r.height*vb.height+vb.y;
-      if(mode==='m'){const x=Math.floor(px/10),y=Math.floor(py/10);if(moves.some(m=>m[0]===x&&m[1]===y)){sfx('tap');fin({t:'m',x,y})}}
-      else{const x=Math.min(s.N-1,Math.max(1,Math.round(px/10))),y=Math.min(s.N-1,Math.max(1,Math.round(py/10)));pv=[x,y,o];pv.ok=wrWallOk(s,pv)&&s.left[me]>0;draw()}}};
-  draw();
+/* the board area keeps one fixed layout (bar, board, wall tray, button slot) on every turn so the page never jumps */
+const wrTray=(s,me,dis)=>`<div class="wr-tray"><span class="small muted">${t('wr_dragWall')} · 🧱${me>=0?s.left[me]:0}</span><div class="wr-pieces">${['h','v'].map(o=>`<button class="wr-piece ${o}" data-wo="${o}" ${dis||me<0||s.left[me]<=0?'disabled':''}><i></i><span>${t(o==='h'?'wr_wallH':'wr_wallV')}</span></button>`).join('')}</div></div>`;
+const wrIdle=(s,me,msg)=>`<div class="wr-bar"><span class="small">${msg||''}</span><b class="tnum"></b></div><div>${wrSvg(s,me)}</div>${wrTray(s,me,true)}<div class="wr-okslot"></div>`;
+/* one turn on this phone; resolves a move (or null on time-out).
+   Move: tap a dot. Wall: drag a horizontal or vertical wall from the tray onto the board (it snaps to the nearest gap),
+   or tap the wall then tap a spot and confirm. */
+function wrTurn(box,s,me,id,onTick){return new Promise(res=>{let pv=null,sel=null,drag=null,ghost=null,done=false;const t0=Date.now(),moves=wrMoves(s,me);
+  const fin=m=>{if(done)return;done=true;clearInterval(iv);cleanup();res(m)};
+  box.innerHTML=`<div class="wr-bar"><span class="small">${t('wr_tapMove')}</span><b class="tnum" id="wrt">${WR.TURN}</b></div><div id="wrsv"></div>${wrTray(s,me,false)}<div class="wr-okslot" id="wrslot"></div>`;
+  const sv=$('#wrsv',box),slot=$('#wrslot',box);
+  const toBoard=(cx,cy)=>{const svg=$('#wrsvg',box);if(!svg)return null;const r=svg.getBoundingClientRect(),vb=svg.viewBox.baseVal;
+    return{px:(cx-r.left)/r.width*vb.width+vb.x,py:(cy-r.top)/r.height*vb.height+vb.y,inside:cx>=r.left&&cx<=r.right&&cy>=r.top&&cy<=r.bottom,cell:r.width/vb.width*10}};
+  const snap=(p,o)=>{const w=[Math.min(s.N-1,Math.max(1,Math.round(p.px/10))),Math.min(s.N-1,Math.max(1,Math.round(p.py/10))),o];w.ok=s.left[me]>0&&wrWallOk(s,w);return w};
+  const drawBoard=()=>{sv.innerHTML=wrSvg(s,me,{moves,preview:pv});
+    $('#wrsvg',box).onclick=e=>{const p=toBoard(e.clientX,e.clientY);if(!p)return;
+      if(sel){pv=snap(p,sel);drawBoard();drawSlot();return}
+      const x=Math.floor(p.px/10),y=Math.floor(p.py/10);if(moves.some(m=>m[0]===x&&m[1]===y)){sfx('tap');fin({t:'m',x,y})}}};
+  const drawSlot=()=>{slot.innerHTML=sel&&pv?`<button class="btn primary block" id="wrok" ${pv.ok?'':'disabled'}>${pv.ok?t('wr_place'):t('wr_noWall')}</button>`:'';
+    const ok=$('#wrok',box);if(ok)ok.onclick=()=>{if(pv&&pv.ok){sfx('tap');fin({t:'w',x:pv[0],y:pv[1],o:pv[2]})}}};
+  const mark=()=>$$('[data-wo]',box).forEach(b=>b.classList.toggle('sel',b.dataset.wo===sel));
+  const onMove=e=>{if(!drag)return;if(Math.hypot(e.clientX-drag.x0,e.clientY-drag.y0)>6)drag.moved=true;if(!drag.moved)return;
+    const p=toBoard(e.clientX,e.clientY-30);   // aim a little above the finger so the wall stays visible
+    if(!ghost){ghost=document.createElement('div');ghost.className='wr-ghost';document.body.appendChild(ghost)}
+    const len=(p?p.cell:30)*2,th=Math.max(6,(p?p.cell:30)*.2);ghost.style.width=(drag.o==='h'?len:th)+'px';ghost.style.height=(drag.o==='h'?th:len)+'px';
+    ghost.style.left=e.clientX+'px';ghost.style.top=(e.clientY-30)+'px';ghost.style.display=p&&p.inside?'none':'block';
+    const n=p&&p.inside?snap(p,drag.o):null;if(String(n)!==String(pv)||(n&&pv&&n.ok!==pv.ok)){pv=n;drawBoard()}};
+  const onUp=()=>{document.removeEventListener('pointermove',onMove);if(ghost){ghost.remove();ghost=null}const d=drag;drag=null;if(!d)return;
+    if(!d.moved){sel=sel===d.o?null:d.o;pv=null;mark();drawBoard();drawSlot();return}      // a tap picks the wall for tap-to-place
+    if(pv&&pv.ok){sfx('tap');fin({t:'w',x:pv[0],y:pv[1],o:pv[2]});return}
+    if(pv)toast(t('wr_noWall'));pv=null;drawBoard()};
+  $$('[data-wo]:not([disabled])',box).forEach(b=>b.onpointerdown=e=>{e.preventDefault();drag={o:b.dataset.wo,x0:e.clientX,y0:e.clientY,moved:false};
+    document.addEventListener('pointermove',onMove);document.addEventListener('pointerup',onUp,{once:true})});
+  const cleanup=()=>{document.removeEventListener('pointermove',onMove);document.removeEventListener('pointerup',onUp);if(ghost){ghost.remove();ghost=null}};
+  drawBoard();
   const iv=setInterval(()=>{if(!alive(id))return fin(null);const left=Math.max(0,WR.TURN-Math.floor((Date.now()-t0)/1000)),e=$('#wrt',box);if(e){e.textContent=left;e.classList.toggle('low',left<=5)}if(onTick&&onTick())return fin(null);if(left<=0)fin(null)},500)})}
 
 async function gWall(){
@@ -2857,10 +2884,10 @@ async function gWall(){
   gameShell();M.players.forEach((p,i)=>{p.col=WR_COL[i];p.scoreText=t('wr_steps',arN(wrDist(s,i),'خطوات','خطوة','steps'))});renderPlayers();const board=$('#gboard'),foot=$('#gfoot');
   while(s.win<0){status(wrStatus(s,names,me));foot.innerHTML='';
     let mv;if(s.turn===me){mv=await wrTurn(board,s,me,id);if(!alive(id))return;if(!mv)mv=wrBot(s,me,0)}
-    else{board.innerHTML=wrSvg(s,me);await sleep(650);if(!alive(id))return;mv=wrBot(s,s.turn,M.players[s.turn].skill)}
+    else{board.innerHTML=wrIdle(s,me,wrStatus(s,names,me));await sleep(650);if(!alive(id))return;mv=wrBot(s,s.turn,M.players[s.turn].skill)}
     const n=wrApply(s,s.turn,mv)||wrApply(s,s.turn,wrBot(s,s.turn,0));if(!n)break;s=n;if(mv.t==='w')sfx('tap');
     M.players.forEach((p,i)=>p.scoreText=t('wr_steps',arN(wrDist(s,i),'خطوات','خطوة','steps')));renderPlayers()}
-  board.innerHTML=wrSvg(s,me);status(wrStatus(s,names,me));if(s.win===me&&typeof confetti==='function')confetti();await sleep(1600);
+  board.innerHTML=wrIdle(s,me,wrStatus(s,names,me));status(wrStatus(s,names,me));if(s.win===me&&typeof confetti==='function')confetti();await sleep(1600);
   finish({order:M.players.map((p,i)=>({p,val:i===s.win?100:-wrDist(s,i),txt:i===s.win?t('wr_winTag'):t('wr_steps',arN(wrDist(s,i),'خطوات','خطوة','steps'))}))})}
 
 async function wrDirect(g){
@@ -2881,8 +2908,8 @@ async function gWallLive(){
     const legend=`<div class="wr-legend">${st.ids.map((p,i)=>`<span style="color:${WR_COL[i]}" class="${i===s.turn&&s.win<0?'on':''}">● ${esc(names[i])} · ${t('wr_steps',arN(wrDist(s,i),'خطوات','خطوة','steps'))} · 🧱${s.left[i]}</span>`).join('')}</div>`;
     if(s.win<0&&s.turn===me){v.innerHTML=legend+`<p class="pic-ans">${t('wr_yourTurn')}</p><div id="wrb"></div>`;
       const mv=await wrTurn($('#wrb',v),s,me,id,()=>{const c=bzState()||{};return c.i!==st.i});
-      if(mv&&(bzState()||{}).i===st.i){BZL.my.mv={k:s.k,m:mv};NET.set({ba:{gid:g.gid,a:{},mv:BZL.my.mv}});if(NET.isHost)bzNotify();v.innerHTML=legend+wrSvg(wrApply(s,me,mv)||s,me)}}
-    else{v.innerHTML=legend+`<p class="pic-ans">${wrStatus(s,names,me)}</p>`+wrSvg(s,me);if(s.win>=0){sfx(s.win===me?'win':'tap');if(s.win===me&&typeof confetti==='function')confetti()}}})}
+      if(mv&&(bzState()||{}).i===st.i){BZL.my.mv={k:s.k,m:mv};NET.set({ba:{gid:g.gid,a:{},mv:BZL.my.mv}});if(NET.isHost)bzNotify();v.innerHTML=legend+`<p class="pic-ans">&nbsp;</p>`+wrIdle(wrApply(s,me,mv)||s,me)}}
+    else{v.innerHTML=legend+`<p class="pic-ans">${wrStatus(s,names,me)}</p>`+wrIdle(s,me);if(s.win>=0){sfx(s.win===me?'win':'tap');if(s.win===me&&typeof confetti==='function')confetti()}}})}
 
 /* ========= 400 played with UNO cards =========
    52 cards: 4 colours × 13. Card code = colour letter + rank 2..14
