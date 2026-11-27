@@ -41,7 +41,9 @@
         add(k, b && (b.v || 0) >= (m._v || 0) ? b.p : m);
       });
       /* someone whose broadcasts arrive before their presence does */
-      Object.keys(bc).forEach(function (k) { if (!seen[k] && now - bc[k].at < STALE && !bc[k].gone) add(k, bc[k].p); });
+      /* Presence briefly drops a player while their state is re-sent (a leave then a join for the same player), so a player
+         who just "left" stays listed for 3 s; a real departure still disappears after that. */
+      Object.keys(bc).forEach(function (k) { if (!seen[k] && now - bc[k].at < STALE && (!bc[k].gone || now - bc[k].gone < 3000)) add(k, bc[k].p); });
       return out;
     }
     function fire() {
@@ -72,7 +74,7 @@
     function hasLobbyState() { return mine.seek || mine.assign; }
 
     ch.on('presence', { event: 'sync' }, fire);
-    ch.on('presence', { event: 'leave' }, function (e) { if (e && e.key && bc[e.key]) bc[e.key].gone = true; fire(); });
+    ch.on('presence', { event: 'leave' }, function (e) { if (e && e.key && bc[e.key]) bc[e.key].gone = Date.now(); fire(); setTimeout(fire, 3100); });
     ch.on('presence', { event: 'join' }, function (e) { if (e && e.key && bc[e.key]) bc[e.key].gone = false; if (joined) sendNow(); });
     ch.on('broadcast', { event: 's' }, function (msg) {
       var d = msg && msg.payload; if (!d || !d.k || d.k === tab) return;
